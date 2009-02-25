@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
+  <Asset Type="Graphics:NodeContent">
+    <Name>Model</Name>
+    <Identity>
+      <SourceFilename>C:\Users\Walter\Documents\Visual Studio 2008\Projects\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
+      <SourceTool>FbxImporter</SourceTool>
+    </Identity>
+    <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+    <Children>
+      <Child Type="Graphics:MeshContent">
+        <Name>Mesh1</Name>
+        <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+        <Positions>60 24 -4.761952E-16 0 0 0 60 0 -4.761952E-16 60 24 -60 60 0 -60 0 0 -60 60 0 -60 0 0 0 0 0 -60 60 0 -4.761952E-16 60 0 -60 60 24 -4.761952E-16 60 0 -4.761952E-16 60 24 -60 60 24 -4.761952E-16 0 0 -60 0 0 0 60 24 -60</Positions>
+        <Geometry>
+          <Batch>
+            <Material>#Resource1</Material>
+            <Indices>2 1 0 5 4 3 8 7 6 9 6 7 12 11 10 13 10 11</Indices>
+            <Vertices>
+              <PositionIndices>0 1 2 3 4 5 6 7 8 9 10 11 12 13</PositionIndices>
+              <Channels>
+                <VertexChannel Name="Normal0" ElementType="Framework:Vector3">7.936586E-18 0 1 7.936586E-18 0 1 7.936586E-18 0 1 -7.936586E-18 0 -1 -7.936586E-18 0 -1 -7.936586E-18 0 -1 0 -1 -0 0 -1 -0 0 -1 -0 0 -1 -0 1 0 -7.936586E-18 1 0 -7.936586E-18 1 0 -7.936586E-18 1 0 -7.936586E-18</VertexChannel>
+                <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">3.33333325 -0.333333343 -2.099647E-34 1 3.33333325 1 -3.33333325 -0.333333343 -3.33333325 1 -2.64552874E-17 1 -3.33333325 -2.33333325 0 1 0 -2.33333325 -3.33333325 1 3.33333325 1 -2.64552874E-17 -0.333333343 -2.64552874E-17 1 3.33333325 -0.333333343</VertexChannel>
+              </Channels>
+            </Vertices>
+          </Batch>
+          <Batch>
+            <Material>#Resource2</Material>
+            <Indices>2 1 0 3 0 1</Indices>
+            <Vertices>
+              <PositionIndices>14 15 16 17</PositionIndices>
+              <Channels>
+                <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.371390671 0.9284767 5.87967341E-18 -0.371390671 0.9284767 5.87967341E-18 -0.371390671 0.9284767 5.87967341E-18 -0.371390671 0.9284767 5.87967341E-18</VertexChannel>
+                <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">4.736952E-16 -63.62198 -60 1 0 1 -60 -63.62198</VertexChannel>
+              </Channels>
+            </Vertices>
+          </Batch>
+        </Geometry>
+      </Child>
+    </Children>
+  </Asset>
+  <Resources>
+    <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
+      <Name>Groundcover_Sand_Smooth</Name>
+      <Identity>
+        <SourceFilename>C:\Users\Walter\Documents\Visual Studio 2008\Projects\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.7137255 0.5803922 0.396078438</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.33 0.33 0.33</Data>
+        <Data Key="SpecularPower" Type="float">20</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External1</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+    <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
+      <Name>Color_000</Name>
+      <Identity>
+        <SourceFilename>C:\Users\Walter\Documents\Visual Studio 2008\Projects\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">1 1 1</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.33 0.33 0.33</Data>
+        <Data Key="SpecularPower" Type="float">20</Data>
+      </OpaqueData>
+    </Resource>
+  </Resources>
+  <ExternalReferences>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\Textures\Groundcover_Sand_Smooth.jpg</ExternalReference>
+  </ExternalReferences>
+</XnaContent>
