@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
+  <Asset Type="Graphics:NodeContent">
+    <Name>Model</Name>
+    <Identity>
+      <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
+      <SourceTool>FbxImporter</SourceTool>
+    </Identity>
+    <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+    <Children>
+      <Child>
+        <Name>Component_1_1</Name>
+        <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+        <Children>
+          <Child Type="Graphics:MeshContent">
+            <Name>Mesh1</Name>
+            <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+            <Positions>60 0 -60 60 24 0 60 0 0 60 24 -60 7.10542736E-15 24 -60 60 0 -60 7.10542736E-15 0 -60 60 24 -60 7.10542736E-15 0 -60 60 0 0 0 0 -3.850694E-15 60 0 -60 60 24 -60 0 0 -3.850694E-15 60 24 0 60 24 -60 7.10542736E-15 24 -60 0 0 -3.850694E-15 60 24 0 0 0 -3.850694E-15 60 0 0 7.10542736E-15 0 -60 0 0 -3.850694E-15 7.10542736E-15 24 -60</Positions>
+            <Geometry>
+              <Batch>
+                <Material>#Resource1</Material>
+                <Indices>2 1 0 3 0 1 6 5 4 7 4 5 10 9 8 11 8 9 14 13 12 17 16 15</Indices>
+                <Vertices>
+                  <PositionIndices>0 1 2 3 4 5 6 7 8 9 10 11 18 19 20 21 22 23</PositionIndices>
+                  <Channels>
+                    <VertexChannel Name="Normal0" ElementType="Framework:Vector3">1 0 6.417823E-17 1 0 6.417823E-17 1 0 6.417823E-17 1 0 6.417823E-17 6.417823E-17 0 -1 6.417823E-17 0 -1 6.417823E-17 0 -1 6.417823E-17 0 -1 0 -1 -0 0 -1 -0 0 -1 -0 0 -1 -0 -6.417823E-17 0 1 -6.417823E-17 0 1 -6.417823E-17 0 1 -1 0 -6.417823E-17 -1 0 -6.417823E-17 -1 0 -6.417823E-17</VertexChannel>
+                    <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">3.33333325 1 2.13927435E-16 -0.333333343 2.13927435E-16 1 3.33333325 -0.333333343 -1.80818532E-16 -0.333333343 -3.33333325 1 -1.80818532E-16 1 -3.33333325 -0.333333343 -3.94745967E-16 -2.33333325 -3.33333325 1 0 1 -3.33333325 -2.33333325 3.33333325 -0.333333343 -1.37294846E-32 1 3.33333325 1 -3.33333325 1 -2.13927435E-16 1 -3.33333325 -0.333333343</VertexChannel>
+                  </Channels>
+                </Vertices>
+              </Batch>
+              <Batch>
+                <Material>#Resource2</Material>
+                <Indices>2 1 0 5 4 3</Indices>
+                <Vertices>
+                  <PositionIndices>12 13 14 15 16 17</PositionIndices>
+                  <Channels>
+                    <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.371390671 0.9284767 -6.63354638E-18 -0.371390671 0.9284767 -6.63354638E-18 -0.371390671 0.9284767 -6.63354638E-18 -8.19733257E-18 0.9284767 0.371390671 -8.19733257E-18 0.9284767 0.371390671 -8.19733257E-18 0.9284767 0.371390671</VertexChannel>
+                    <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">-2.5 -1.69258237 -1.60445576E-16 1 -4.46534263E-17 -1.69258237 2.5 -1.69258237 2.408795E-16 -1.69258237 -3.54135379E-33 1</VertexChannel>
+                  </Channels>
+                </Vertices>
+              </Batch>
+            </Geometry>
+          </Child>
+        </Children>
+      </Child>
+    </Children>
+  </Asset>
+  <Resources>
+    <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
+      <Name>Groundcover_Sand_Smooth</Name>
+      <Identity>
+        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.7137255 0.5803922 0.396078438</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.33 0.33 0.33</Data>
+        <Data Key="SpecularPower" Type="float">20</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External1</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+    <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
+      <Name>Vegetation_Grass_Artificial</Name>
+      <Identity>
+        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.384313732 0.549019635 0.2901961</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.33 0.33 0.33</Data>
+        <Data Key="SpecularPower" Type="float">20</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External2</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+  </Resources>
+  <ExternalReferences>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\Textures\Groundcover_Sand_Smooth.jpg</ExternalReference>
+    <ExternalReference ID="#External2" TargetType="Graphics:TextureContent">..\..\..\..\Textures\Vegetation_Grass_Artificial.jpg</ExternalReference>
+  </ExternalReferences>
+</XnaContent>
