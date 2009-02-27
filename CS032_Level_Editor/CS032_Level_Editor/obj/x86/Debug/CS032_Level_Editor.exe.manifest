@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CS032_Level_Editor.exe" size="31232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CS032_Level_Editor.exe" size="32256">
       <assemblyIdentity name="CS032_Level_Editor" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>aJrFNXXflaRXXCWlhDWZqutJsH0=</dsig:DigestValue>
+        <dsig:DigestValue>p3r/oC45a48yRTz2mvTPtrobAro=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
