@@ -63,18 +63,18 @@ namespace CS032_Level_Editor
         public void draw()
         {
             // Draw the model. A model can have multiple meshes, so loop.
-            foreach (ModelMesh mesh in m_model.Meshes)
+            foreach (ModelMesh mesh in _model.Meshes)
             {
                 // This is where the mesh orientation is set,
                 // (Camera and Projection are set once within the main rendering class per render step)
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    Matrix rotY = Matrix.CreateRotationY(Rotation.Y);
+                    Matrix rotY = Matrix.CreateRotationY(_rotation.Y);
                     effect.World =
                             Matrix.CreateTranslation(-(new Vector3(30.0f, 0.0f, -30.0f))) *
-                            Matrix.CreateFromYawPitchRoll(Rotation.Y, Rotation.X, Rotation.Z) *
+                            Matrix.CreateFromYawPitchRoll(_rotation.Y, _rotation.X, _rotation.Z) *
                             Matrix.CreateTranslation(new Vector3(30.0f, 0.0f, -30.0f)) *
-                            Matrix.CreateTranslation(Position);
+                            Matrix.CreateTranslation(_position);
                 }
                 // Draw the mesh, using the effects set above.
                 mesh.Draw();
