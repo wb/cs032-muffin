@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="buttonManager.cs" />
     <Compile Include="CollisionRegion.cs" />
+    <Compile Include="GameMaterial.cs" />
     <Compile Include="GameModel.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameTile.cs" />
