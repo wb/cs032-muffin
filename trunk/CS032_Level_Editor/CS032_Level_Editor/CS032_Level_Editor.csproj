@@ -90,7 +90,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="buttonManager.cs" />
+    <Compile Include="CollisionRegion.cs" />
     <Compile Include="GameModel.cs" />
+    <Compile Include="GameObject.cs" />
     <Compile Include="GameTile.cs" />
     <Compile Include="Grid3D.cs" />
     <Compile Include="input.cs" />
