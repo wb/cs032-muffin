@@ -35,27 +35,24 @@ namespace CS032_Level_Editor
     class CollisionRegion
     {
         private CollisionType _collisionType;
-        private Vector3 _pointOne, _pointTwo, _pointThree;
+        private Vector3[] _points;
 
         public CollisionRegion(GameObject o, Vector3 one)
         {
             _collisionType = CollisionType.POINT;
-            _pointOne = one;
+            _points = new Vector3[1] { one };
         }
 
         public CollisionRegion(GameObject o, Vector3 one, Vector3 two)
         {
             _collisionType = CollisionType.LINE;
-            _pointOne = one;
-            _pointTwo = two;
+            _points = new Vector3[2] { one, two };
         }
 
         public CollisionRegion(GameObject o, Vector3 one, Vector3 two, Vector3 three)
         {
             _collisionType = CollisionType.PLANE;
-            _pointOne = one;
-            _pointTwo = two;
-            _pointThree = three;
+            _points = new Vector3[] { one, two, three };
         }
 
         public CollisionType collisionType()
@@ -64,14 +61,27 @@ namespace CS032_Level_Editor
 
         }
 
+        public Vector3[] getPoints()
+        {
+            return _points;
+        }
+
+        public Vector3 getPoint(int index)
+        {
+            if (index >= 0 && index < _points.Length)
+                return _points[index];
+            else
+                throw new ArgumentOutOfRangeException("Invalid index into array.");
+        }
+
         public Vector3 normalVector()
         {
             // a normal can only be computed if there is a plane
             if (_collisionType == CollisionType.PLANE)
             {
                 // compute two vectors in the plane
-                Vector3 vectorA = _pointOne - _pointTwo;
-                Vector3 vectorB = _pointThree - _pointTwo;
+                Vector3 vectorA = _points[0] - _points[1];
+                Vector3 vectorB = _points[2] - _points[1];
 
                 // now, find the cross product of these two vectors
                 Vector3 normal = Vector3.Cross(vectorA, vectorB);
