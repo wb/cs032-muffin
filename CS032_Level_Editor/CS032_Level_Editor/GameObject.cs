@@ -49,6 +49,9 @@ namespace CS032_Level_Editor
             _material = material;
             _locked = locked;
 
+            // force set to 0 initially -- will be computed by the physics engine
+            _force = Vector3.Zero;
+
             // object should be active initially
             _inactive = false;
         }
