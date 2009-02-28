@@ -25,7 +25,7 @@ namespace CS032_Level_Editor
 
         // units in: meters, meters per second, meters per second squared, newtons, meters, and radians
         private Vector3 _position, _velocity, _acceleration, _force, _centerOfMass, _rotation;
-        private double _mass;
+        private float _mass;
         
         // The material contains properties like friction and coefficient of restitution.
         private GameMaterial _material;
@@ -37,7 +37,7 @@ namespace CS032_Level_Editor
         private Boolean _locked, _inactive;
 
 
-        public GameObject(Model model, ModelType modelType, Vector3 position, Vector3 velocity, Vector3 acceleration, Vector3 rotation, double mass, GameMaterial material, Boolean locked)
+        public GameObject(Model model, ModelType modelType, Vector3 position, Vector3 velocity, Vector3 acceleration, Vector3 rotation, float mass, GameMaterial material, Boolean locked)
         {
             _model = model;
             _modelType = modelType;
@@ -132,7 +132,7 @@ namespace CS032_Level_Editor
             set { _rotation = value; }
         }
 
-        public double mass
+        public float mass
         {
             get { return _mass; }
             set { _mass = value; }

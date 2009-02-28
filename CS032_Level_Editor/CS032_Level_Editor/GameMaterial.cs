@@ -7,24 +7,35 @@ namespace CS032_Level_Editor
 {
     class GameMaterial
     {
-        double _friction, _restitution;
+        float _friction, _restitution;
 
-        public GameMaterial(double friction, double restitution)
+        public GameMaterial(float friction, float restitution)
         {
             _friction = friction;
             _restitution = restitution;
         }
 
-        public double friction
+        public float friction
         {
             get { return _friction; }
             set { _friction = value; }
         }
 
-        public double restitution
+        public float restitution
         {
             get { return _restitution; }
             set { _restitution = value; }
         }
+
+        /**
+         * Some common materials to allow for easier access.
+         * 
+         * Note: These are made-up values.  They can be tweaked during
+         * testing for most fun or most accurate response.
+         * 
+         **/
+
+        public static readonly GameMaterial wood = new GameMaterial(0.1f, 0.2f);
+        public static readonly GameMaterial grass = new GameMaterial(0.4f, 0.5f);
     }
 }
