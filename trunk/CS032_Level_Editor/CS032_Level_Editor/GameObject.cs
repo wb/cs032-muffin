@@ -36,6 +36,8 @@ namespace CS032_Level_Editor
         // of the physics computation and updated as necessary.
         private Boolean _locked, _inactive;
 
+        // The collisionregions list contains all of the collisions for this round of calculations
+        private List<CollisionRegion> _collisionRegions;
 
         public GameObject(Model model, ModelType modelType, Vector3 position, Vector3 velocity, Vector3 acceleration, Vector3 rotation, float mass, GameMaterial material, Boolean locked)
         {
@@ -54,13 +56,9 @@ namespace CS032_Level_Editor
 
             // object should be active initially
             _inactive = false;
-        }
 
-
-        // resets the force at the end of each loop
-        public void resetForce()
-        {
-            _force = Vector3.Zero;
+            // create a new list of collision regions
+            _collisionRegions = new List<CollisionRegion>();
         }
 
         public void draw()
@@ -86,7 +84,34 @@ namespace CS032_Level_Editor
         }
 
         /**
-         * All of the getters and setters.
+         * Methods relating to collisions.
+         * 
+         **/
+
+        public List<CollisionRegion> getCollisions()
+        {
+            return _collisionRegions;
+
+        }
+
+        public void addCollision(CollisionRegion collision)
+        {
+            _collisionRegions.Add(collision);
+        }
+
+        /**
+         * This method resets all of the fields after each round of calculation is done.
+         * 
+         **/
+
+        public void reset()
+        {
+            _collisionRegions.Clear();
+            _force = Vector3.Zero;
+        }
+
+        /**
+         * All of the gets and sets.
          * 
          **/
 
@@ -155,8 +180,6 @@ namespace CS032_Level_Editor
             get { return _material; }
             set { _material = value; }
         }
-
-        
 
     }
 }
