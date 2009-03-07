@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>Model</Name>
     <Identity>
-      <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\WindowsGame1\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
+      <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -49,7 +49,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Groundcover_Sand_Smooth</Name>
       <Identity>
-        <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\WindowsGame1\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -71,7 +71,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Vegetation_Grass_Artificial</Name>
       <Identity>
-        <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\WindowsGame1\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
+        <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\Content\Models\inverted_corner.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>

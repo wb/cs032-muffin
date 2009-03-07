@@ -74,7 +74,7 @@ namespace WindowsGame1
         {
             Vector3 v = cameraTarget - cameraPosition;
             v.Normalize();
-            cameraPosition += (((float)scrollFactor / 10.0f) * v);
+            cameraPosition += (((float)scrollFactor / 1.0f) * v);
         }
     }
 }
