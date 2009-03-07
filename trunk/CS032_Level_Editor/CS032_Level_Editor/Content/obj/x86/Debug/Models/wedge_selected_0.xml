@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>Model</Name>
     <Identity>
-      <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
+      <SourceFilename>D:\dev\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -43,7 +43,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Groundcover_Sand_Smooth</Name>
       <Identity>
-        <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
+        <SourceFilename>D:\dev\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -65,7 +65,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Color_000</Name>
       <Identity>
-        <SourceFilename>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
+        <SourceFilename>D:\dev\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\Models\wedge_selected.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
