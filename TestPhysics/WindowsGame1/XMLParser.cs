@@ -61,13 +61,15 @@ namespace WindowsGame1
                 Vector3 pos = parsePosition(children.Item(1));
                 Vector3 rotation = parseRotation(children.Item(2));
 
+                Quaternion rot = Quaternion.CreateFromAxisAngle(Vector3.Up, MathHelper.ToRadians(rotation.Y));
+
                 Console.WriteLine("Model: ");
                 Console.WriteLine(pos.ToString());
                     Console.WriteLine(rotation.ToString());
                         
 
                 //add the object to the array of active objects
-                m_objects.Add(new GameObject((Model)m_models.ElementAt((int)name), ModelType.TERRAIN, pos, rotation));
+                m_objects.Add(new GameObject((Model)m_models.ElementAt((int)name), ModelType.TERRAIN, pos, rot, true));
             } else {
                 Console.WriteLine("Bad parse input");
             }

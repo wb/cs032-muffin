@@ -138,6 +138,8 @@ namespace WindowsGame1
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
+        /// 
+        GameObject test;
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -160,10 +162,10 @@ namespace WindowsGame1
             //m_game_object.Add(new GameObject((Model)m_models.ElementAt((int)ModelName.FLAT), ModelType.TERRAIN,
             //new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f)));
 
-            //m_game_object.Add(new GameObject((Model)m_models.ElementAt((int)ModelName.CORNER), ModelType.TERRAIN,
-            //new Vector3(60.0f, 0.0f, 60.0f), new Vector3(0.0f, 0.0f, 0.0f)));
+            test = new GameObject((Model)m_models.ElementAt((int)ModelName.CORNER), ModelType.TERRAIN,
+            new Vector3(60.0f, 100.0f, 60.0f), Quaternion.Identity);
             // TODO: use this.Content to load your game content here
-
+            m_game_object.Add(test);
             aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
 
             //Camera initialization
@@ -186,6 +188,13 @@ namespace WindowsGame1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
+            // physics processing
+            foreach (GameObject o in m_game_object)
+            {
+                o.updatePosition((float) gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -207,6 +216,9 @@ namespace WindowsGame1
                 cameraRotation = Vector3.Zero;
 
             camera.Update(cameraRotation);
+
+
+            
             base.Update(gameTime);
         }
 
