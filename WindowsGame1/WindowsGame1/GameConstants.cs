@@ -16,6 +16,7 @@ namespace WindowsGame1
 {
     public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, NONE };
     public enum ModelType { TERRAIN, ENEMY, OBJECT, HUMAN };
+    public enum AIState { ACTIVE, INACTIVE };
 
     class GameConstants
     {

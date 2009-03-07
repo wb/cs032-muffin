@@ -7,69 +7,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\corner.xnb</Output>
-      <Time>2009-02-23T03:49:32.5734541-05:00</Time>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\corner.xnb</Output>
+      <Time>2009-03-06T20:21:34.1839936-05:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\corner_0.xml</Key>
-        <Value>2009-02-23T03:50:30.0273145-05:00</Value>
+        <Value>2009-03-06T20:23:50.2149936-05:00</Value>
       </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Textures\Groundcover_Sand_Smooth.jpg</Source>
-      <Name>Textures\Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth.xnb</Output>
-      <Time>2009-02-20T18:24:00-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
-      <Name>Textures\Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial.xnb</Output>
-      <Time>2009-02-20T18:24:00-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\corner.fbx</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>obj\x86\Debug\Models\corner_0.xml</Output>
-      <Time>2009-02-23T03:49:32.5734541-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
-        <Data Key="GenerateMipmaps" Type="bool">true</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Output>
-      <Time>2009-02-20T18:24:00-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Groundcover_Sand_Smooth.jpg</Source>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Parameters>
-        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
-        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
-        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
-        <Data Key="GenerateMipmaps" Type="bool">true</Data>
-        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Output>
-      <Time>2009-02-20T18:24:00-05:00</Time>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\flat.fbx</Source>
@@ -77,14 +22,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\flat.xnb</Output>
-      <Time>2009-02-24T17:11:00.5625-05:00</Time>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\flat.xnb</Output>
+      <Time>2009-03-06T20:21:34.1819936-05:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\flat_0.xml</Key>
-        <Value>2009-02-24T17:54:42.734375-05:00</Value>
+        <Value>2009-03-06T20:23:52.3049936-05:00</Value>
       </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\inverted_corner.fbx</Source>
@@ -92,14 +37,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
-      <Time>2009-02-24T17:10:56.8125-05:00</Time>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
+      <Time>2009-03-06T20:21:34.1849936-05:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\inverted_corner_0.xml</Key>
-        <Value>2009-02-24T17:54:43.03125-05:00</Value>
+        <Value>2009-03-06T20:23:53.3399936-05:00</Value>
       </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\wedge.fbx</Source>
@@ -107,70 +52,125 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\wedge.xnb</Output>
-      <Time>2009-02-24T17:10:53.40625-05:00</Time>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Models\wedge.xnb</Output>
+      <Time>2009-03-06T20:21:34.1879936-05:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\wedge_0.xml</Key>
-        <Value>2009-02-24T17:54:43.09375-05:00</Value>
+        <Value>2009-03-06T20:23:54.3829936-05:00</Value>
       </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Textures\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Textures\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-06T20:21:34.7609936-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Textures\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-06T20:21:34.7639936-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\corner_0.xml</Output>
+      <Time>2009-03-06T20:21:34.1839936-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-06T20:21:34.7639936-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-06T20:21:34.7609936-05:00</Time>
     </Item>
     <Item>
       <Source>Models\flat.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\flat_0.xml</Output>
-      <Time>2009-02-24T17:11:00.5625-05:00</Time>
+      <Time>2009-03-06T20:21:34.1819936-05:00</Time>
     </Item>
     <Item>
       <Source>Models\inverted_corner.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\inverted_corner_0.xml</Output>
-      <Time>2009-02-24T17:10:56.8125-05:00</Time>
+      <Time>2009-03-06T20:21:34.1849936-05:00</Time>
     </Item>
     <Item>
       <Source>Models\wedge.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\wedge_0.xml</Output>
-      <Time>2009-02-24T17:10:53.40625-05:00</Time>
+      <Time>2009-03-06T20:21:34.1879936-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\Content\</RootDirectory>
+      <LoggerRootDirectory>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2008-10-10T18:42:32-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
         <Value>2008-10-10T18:43:28-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
         <Value>2008-10-10T18:43:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
         <Value>2008-10-10T18:48:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
         <Value>2008-10-10T18:48:50-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2009-01-21T21:57:47.390625-05:00</Value>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-01-09T23:01:51.9510142-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

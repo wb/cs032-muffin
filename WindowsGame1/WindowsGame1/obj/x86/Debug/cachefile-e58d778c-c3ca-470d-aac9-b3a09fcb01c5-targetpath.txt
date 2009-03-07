@@ -1,10 +1,10 @@
 Content\Models\corner.xnb
+Content\Models\flat.xnb
+Content\Models\inverted_corner.xnb
+Content\Models\wedge.xnb
 Content\Textures\Groundcover_Sand_Smooth.xnb
 Content\Textures\Vegetation_Grass_Artificial.xnb
 Content\Textures\Vegetation_Grass_Artificial_0.xnb
 Content\Textures\Groundcover_Sand_Smooth_0.xnb
-Content\Models\flat.xnb
-Content\Models\inverted_corner.xnb
-Content\Models\wedge.xnb
 Content\Levels\level1.xml
 Content\Levels\level2.xml
