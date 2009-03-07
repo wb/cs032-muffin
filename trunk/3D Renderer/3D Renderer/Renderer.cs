@@ -22,20 +22,23 @@ namespace _3D_Renderer
         {
             private Vector3 position;
             private Vector2 texcoord;
+            private Vector3 normal;
 
-            public MyOwnVertexFormat(Vector3 position, Vector2 tex)
+            public MyOwnVertexFormat(Vector3 position, Vector2 tex, Vector3 normal)
             {
                 this.position = position;
                 this.texcoord = tex;
+                this.normal = normal;
             }
 
             public static VertexElement[] VertexElements =
              {
                  new VertexElement(0, 0, VertexElementFormat.Vector3, VertexElementMethod.Default, VertexElementUsage.Position, 0),
                  new VertexElement(0, sizeof(float)*3, VertexElementFormat.Vector2, VertexElementMethod.Default, VertexElementUsage.TextureCoordinate, 0),
+                 new VertexElement(0, sizeof(float)*5, VertexElementFormat.Vector3, VertexElementMethod.Default, VertexElementUsage.Normal, 0),
              };
 
-            public static int SizeInBytes = sizeof(float) * (3 + 2);
+            public static int SizeInBytes = sizeof(float) * (3 + 2 + 3);
         }
 
         GraphicsDeviceManager graphics;
@@ -59,6 +62,9 @@ namespace _3D_Renderer
         Model forkLiftModel;
 
         Vector3 cameraPos;
+        Vector3 LightPos;
+        float LightIntensity;
+        float Ambient;
  
         public Renderer()
         {
@@ -75,7 +81,6 @@ namespace _3D_Renderer
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -122,20 +127,27 @@ namespace _3D_Renderer
         private void SetUpVertices()
         {
 
-            MyOwnVertexFormat[] vertices = new MyOwnVertexFormat[12];
-
-            vertices[0] = new MyOwnVertexFormat(new Vector3(-20, 0, 10), new Vector2(-0.25f, 25.0f));
-            vertices[1] = new MyOwnVertexFormat(new Vector3(-20, 0, -100), new Vector2(-0.25f, 0.0f));
-            vertices[2] = new MyOwnVertexFormat(new Vector3(2, 0, 10), new Vector2(0.25f, 25.0f));
-            vertices[3] = new MyOwnVertexFormat(new Vector3(2, 0, -100), new Vector2(0.25f, 0.0f));
-            vertices[4] = new MyOwnVertexFormat(new Vector3(2, 1, 10), new Vector2(0.375f, 25.0f));
-            vertices[5] = new MyOwnVertexFormat(new Vector3(2, 1, -100), new Vector2(0.375f, 0.0f));
-            vertices[6] = new MyOwnVertexFormat(new Vector3(3, 1, 10), new Vector2(0.5f, 25.0f));
-            vertices[7] = new MyOwnVertexFormat(new Vector3(3, 1, -100), new Vector2(0.5f, 0.0f));
-            vertices[8] = new MyOwnVertexFormat(new Vector3(13, 1, 10), new Vector2(0.75f, 25.0f));
-            vertices[9] = new MyOwnVertexFormat(new Vector3(13, 1, -100), new Vector2(0.75f, 0.0f));
-            vertices[10] = new MyOwnVertexFormat(new Vector3(13, 21, 10), new Vector2(1.25f, 25.0f));
-            vertices[11] = new MyOwnVertexFormat(new Vector3(13, 21, -100), new Vector2(1.25f, 0.0f));
+            
+             MyOwnVertexFormat[] vertices = new MyOwnVertexFormat[18];
+             
+             vertices[0] = new MyOwnVertexFormat(new Vector3(-20, 0, 10), new Vector2(-0.25f, 25.0f), new Vector3(0, 1, 0));
+             vertices[1] = new MyOwnVertexFormat(new Vector3(-20, 0, -100), new Vector2(-0.25f, 0.0f), new Vector3(0, 1, 0));
+             vertices[2] = new MyOwnVertexFormat(new Vector3(2, 0, 10), new Vector2(0.25f, 25.0f), new Vector3(0, 1, 0));
+             vertices[3] = new MyOwnVertexFormat(new Vector3(2, 0, -100), new Vector2(0.25f, 0.0f), new Vector3(0, 1, 0));
+             vertices[4] = new MyOwnVertexFormat(new Vector3(2, 0, 10), new Vector2(0.25f, 25.0f), new Vector3(-1, 0, 0));
+             vertices[5] = new MyOwnVertexFormat(new Vector3(2, 0, -100), new Vector2(0.25f, 0.0f), new Vector3(-1, 0, 0));
+             vertices[6] = new MyOwnVertexFormat(new Vector3(2, 1, 10), new Vector2(0.375f, 25.0f), new Vector3(-1, 0, 0));
+             vertices[7] = new MyOwnVertexFormat(new Vector3(2, 1, -100), new Vector2(0.375f, 0.0f), new Vector3(-1, 0, 0));
+             vertices[8] = new MyOwnVertexFormat(new Vector3(2, 1, 10), new Vector2(0.375f, 25.0f), new Vector3(0, 1, 0));
+             vertices[9] = new MyOwnVertexFormat(new Vector3(2, 1, -100), new Vector2(0.375f, 0.0f), new Vector3(0, 1, 0));
+             vertices[10] = new MyOwnVertexFormat(new Vector3(3, 1, 10), new Vector2(0.5f, 25.0f), new Vector3(0, 1, 0));
+             vertices[11] = new MyOwnVertexFormat(new Vector3(3, 1, -100), new Vector2(0.5f, 0.0f), new Vector3(0, 1, 0));
+             vertices[12] = new MyOwnVertexFormat(new Vector3(13, 1, 10), new Vector2(0.75f, 25.0f), new Vector3(0, 1, 0));
+             vertices[13] = new MyOwnVertexFormat(new Vector3(13, 1, -100), new Vector2(0.75f, 0.0f), new Vector3(0, 1, 0));
+             vertices[14] = new MyOwnVertexFormat(new Vector3(13, 1, 10), new Vector2(0.75f, 25.0f), new Vector3(-1, 0, 0));
+             vertices[15] = new MyOwnVertexFormat(new Vector3(13, 1, -100), new Vector2(0.75f, 0.0f), new Vector3(-1, 0, 0));
+             vertices[16] = new MyOwnVertexFormat(new Vector3(13, 21, 10), new Vector2(1.25f, 25.0f), new Vector3(-1, 0, 0));
+             vertices[17] = new MyOwnVertexFormat(new Vector3(13, 21, -100), new Vector2(1.25f, 0.0f), new Vector3(-1, 0, 0));
 
             vertexBuffer = new VertexBuffer(device, vertices.Length * MyOwnVertexFormat.SizeInBytes, BufferUsage.WriteOnly);
             vertexBuffer.SetData(vertices);
@@ -159,6 +171,13 @@ namespace _3D_Renderer
             // TODO: Unload any non ContentManager content here
         }
 
+        private void UpdateLightData()
+        {
+            LightPos = new Vector3(-10, 4, -2);
+            LightIntensity = 1.0f;
+            Ambient = 0.3f;
+        }
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -171,7 +190,7 @@ namespace _3D_Renderer
                 this.Exit();
 
             // TODO: Add your update logic here
-
+            UpdateLightData();
             base.Update(gameTime);
         }
 
@@ -180,7 +199,11 @@ namespace _3D_Renderer
             device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
 
             effect.CurrentTechnique = effect.Techniques["Simplest"];
+            effect.Parameters["xWorld"].SetValue(Matrix.Identity);
             effect.Parameters["xWorldViewProjection"].SetValue(Matrix.Identity * viewMatrix * projectionMatrix);
+            effect.Parameters["xLightPos"].SetValue(LightPos);
+            effect.Parameters["xLightIntensity"].SetValue(LightIntensity);
+            effect.Parameters["xAmbient"].SetValue(Ambient);
             effect.Parameters["xTexture"].SetValue(brickTexture);
             effect.Begin();
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
@@ -188,7 +211,7 @@ namespace _3D_Renderer
                 pass.Begin();
                 device.VertexDeclaration = vertexDeclaration;
                 device.Vertices[0].SetSource(vertexBuffer, 0, MyOwnVertexFormat.SizeInBytes);
-                device.DrawPrimitives(PrimitiveType.TriangleStrip, 0, 10);
+                device.DrawPrimitives(PrimitiveType.TriangleStrip, 0, 18);
                 pass.End();
             }
             effect.End();
@@ -199,7 +222,7 @@ namespace _3D_Renderer
             Matrix ship1Matrix = Matrix.CreateScale(.005f) * Matrix.CreateRotationY(MathHelper.Pi) * Matrix.CreateTranslation(-15, 2, -15);
             DrawModel(shipModel, shipTexture, ship1Matrix, "Simplest", false);
 
-            Matrix forklift1Matrix = Matrix.CreateScale(.05f) * Matrix.CreateRotationY(3.0f * MathHelper.Pi/2.0f) * Matrix.CreateTranslation(-5, 0, -15);
+            Matrix forklift1Matrix = Matrix.CreateScale(.045f) * Matrix.CreateRotationY(3.0f * MathHelper.Pi/2.0f) * Matrix.CreateTranslation(-6, 0, -15);
             DrawModel(forkLiftModel, forkLiftTexture, forklift1Matrix, "Simplest", false);
 
             //Matrix lamp1Matrix = Matrix.CreateScale(0.05f) * Matrix.CreateTranslation(4.0f, 1, -35);
@@ -222,6 +245,10 @@ namespace _3D_Renderer
                 {
                     Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
                     currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
+                    currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
+                    currentEffect.Parameters["xLightPos"].SetValue(LightPos);
+                    currentEffect.Parameters["xLightIntensity"].SetValue(LightIntensity);
+                    currentEffect.Parameters["xAmbient"].SetValue(Ambient);
                     currentEffect.Parameters["xWorldViewProjection"].SetValue(worldMatrix * viewMatrix * projectionMatrix);
                     currentEffect.Parameters["xTexture"].SetValue(textures[i++]);
                     currentEffect.Parameters["xSolidBrown"].SetValue(solidBrown);
