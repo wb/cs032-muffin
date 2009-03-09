@@ -14,7 +14,7 @@ using WindowsGame1;
 
 namespace WindowsGame1
 {
-    public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, NONE };
+    public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, BOX, NONE };
     public enum ModelType { TERRAIN, ENEMY, OBJECT, HUMAN };
 
     class GameConstants

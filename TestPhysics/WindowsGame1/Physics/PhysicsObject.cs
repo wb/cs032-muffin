@@ -26,6 +26,12 @@ namespace Physics
          * 
          * */
 
+        float mass
+        {
+            get;
+            set;
+        }
+
         Vector3 position
         {
             get;
@@ -102,12 +108,14 @@ namespace Physics
 
         /*
          * This method is used for applying a force to the
-         * object at a given location.  From this, linear
-         * force and torque will be calculated.
+         * object at a given location.  The location is given
+         * as a vector relative to the center of mass
+         * of the object. From this, linear force and torque
+         * will be calculated.
          * 
          * */
 
-        void applyForce(float force, Vector3 location);
+        void applyForce(Vector3 force, Vector3 location);
 
         /*
          * This method is used to update the position
@@ -116,7 +124,7 @@ namespace Physics
          * 
          * */
 
-        void integrate();
+        void integrate(float timestep);
 
         /*
          * Returns the list of collision regions that this object

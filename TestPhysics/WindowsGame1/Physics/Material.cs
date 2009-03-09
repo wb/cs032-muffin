@@ -7,13 +7,19 @@ namespace Physics
 {
     class Material
     {
-        float friction
+        float staticFriction
         {
             get;
             set;
         }
 
-        float restituion
+        float kineticFriction
+        {
+            get;
+            set;
+        }
+
+        float restitution
         {
             get;
             set;
