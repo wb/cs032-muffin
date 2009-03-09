@@ -17,18 +17,25 @@ using Microsoft.Xna.Framework.Storage;
 using WindowsGame1;
 using System.IO;
 
-
 namespace Physics
 {
-    interface PhysicsEngine
+    class Gravity : ForceGenerator
     {
-        /*
-         * This is the only external method of this class.  The
-         * physics engine simply needs a reference to all objects
-         * in the game, and the duration of the current timestep.
-         * 
-         * */
+        // this field stores the acceleration due to gravity.
+        // while the standard value, 9.81 will work, it might
+        // be more fun to set it higher or lower depending on
+        // the effect we want to achieve.
 
-        void update(List<GameObject> objects, float timestep);
+        private float _acceleration;
+
+        public Gravity(float acceleration)
+        {
+            _acceleration = acceleration;
+        }
+
+        public void applyForce(PhysicsObject obj)
+        {
+            obj.applyForce(new Vector3(0, _acceleration * obj.mass, 0) , obj.centerOfMass);
+        }
     }
 }

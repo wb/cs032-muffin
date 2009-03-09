@@ -33,6 +33,7 @@ namespace WindowsGame1
         List<GameObject> m_game_object;
         MouseHandler m_mouse;
         XMLParser m_parser;
+        Physics.PhysicsEngine _physicsEngine;
 
         // Set the position of the camera in world space, for our view matrix.
         GameCamera camera;
@@ -56,15 +57,15 @@ namespace WindowsGame1
             m_mouse = new MouseHandler(Mouse.GetState());
 
             //XML parser
-            if (File.Exists("Content\\Levels\\level1.xml"))
+            if (File.Exists("Content\\Levels\\level.xml"))
             {
                 XmlDocument document = new XmlDocument();
-                document.Load("Content\\Levels\\level1.xml");
+                document.Load("Content\\Levels\\level.xml");
                 m_parser = new XMLParser(document);
             }
             else
             {
-                Console.WriteLine("The file " + "Content\\Levels\\level1.xml" + " was not found");
+                Console.WriteLine("The file " + "Content\\Levels\\level.xml" + " was not found");
             }
         }
 
@@ -104,6 +105,8 @@ namespace WindowsGame1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            _physicsEngine = new Physics.Physics();
 
             base.Initialize();
         }
@@ -150,22 +153,32 @@ namespace WindowsGame1
             m_models.Add(Content.Load<Model>("Models\\wedge"));
             m_models.Add(Content.Load<Model>("Models\\corner"));
             m_models.Add(Content.Load<Model>("Models\\inverted_corner"));
+            m_models.Add(Content.Load<Model>("Models\\centered_cube"));
 
             m_parser.loadLevel(m_game_object, m_models);
 
-            //m_game_object.Add(new GameObject((Model)m_models.ElementAt((int) ModelName.FLAT), ModelType.TERRAIN,
-           // new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f)));
 
-            //m_game_object.Add(new GameObject((Model)m_models.ElementAt((int)ModelName.CORNER), ModelType.TERRAIN,
-            //new Vector3(-30.0f, 0.0f, 30.0f), new Vector3(0.0f, 0.0f, 0.0f)));
+            /**
+             * CREATE THE TEST OBJECT
+             * 
+             * */
 
-            //m_game_object.Add(new GameObject((Model)m_models.ElementAt((int)ModelName.FLAT), ModelType.TERRAIN,
-            //new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f)));
-
-            test = new GameObject((Model)m_models.ElementAt((int)ModelName.CORNER), ModelType.TERRAIN,
-            new Vector3(60.0f, 100.0f, 60.0f), Quaternion.Identity);
-            // TODO: use this.Content to load your game content here
+            // the vector is the position
+            test = new GameObject((Model)m_models.ElementAt((int)ModelName.BOX), ModelType.TERRAIN, new Vector3(210.0f, 300.0f, 210.0f), Quaternion.Identity);
             m_game_object.Add(test);
+            
+            // apply the force: force as a vector first, then location where force is applied
+            //(relative to center at 0,0,0, with vertices between (-30,-30,-30) and (30,30,30)
+            test.applyForce(new Vector3(0, 10, 0), new Vector3(0, 30, 30));
+          
+            /*
+             * END TEST OBJECT
+             * 
+             * */
+
+
+
+
             aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
 
             //Camera initialization
@@ -189,11 +202,7 @@ namespace WindowsGame1
         protected override void Update(GameTime gameTime)
         {
 
-            // physics processing
-            foreach (GameObject o in m_game_object)
-            {
-                o.updatePosition((float) gameTime.ElapsedGameTime.TotalSeconds);
-            }
+            _physicsEngine.update(m_game_object, (float)gameTime.ElapsedGameTime.TotalSeconds);
             
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)

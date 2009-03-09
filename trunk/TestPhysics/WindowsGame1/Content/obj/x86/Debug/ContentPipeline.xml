@@ -137,6 +137,96 @@
       <Output>obj\x86\Debug\Models\wedge_0.xml</Output>
       <Time>2009-02-25T15:55:02.3661444-05:00</Time>
     </Item>
+    <Item>
+      <Source>Models\box.fbx</Source>
+      <Name>Models\box</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box.xnb</Output>
+      <Time>2009-03-08T15:31:28-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\box_0.xml</Key>
+        <Value>2009-03-08T15:35:04.3035323-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\box\Wood_Floor_Parquet.jpg</Source>
+      <Name>Models\box\Wood_Floor_Parquet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet.xnb</Output>
+      <Time>2009-03-08T15:31:28-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\box_0.xml</Output>
+      <Time>2009-03-08T15:31:28-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box\Wood_Floor_Parquet.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet_0.xnb</Output>
+      <Time>2009-03-08T15:31:28-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\centered_cube.fbx</Source>
+      <Name>Models\centered_cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\centered_cube.xnb</Output>
+      <Time>2009-03-08T18:11:58-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\centered_cube_0.xml</Key>
+        <Value>2009-03-08T18:13:15.692-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\centered_cube\Wood_Lumber_ButtJoined_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\box\Wood_Lumber_ButtJoined.jpg</Source>
+      <Name>Models\box\Wood_Lumber_ButtJoined</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Lumber_ButtJoined.xnb</Output>
+      <Time>2009-03-08T18:13:02.976-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\centered_cube.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\centered_cube_0.xml</Output>
+      <Time>2009-03-08T18:11:58-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\centered_cube\Wood_Lumber_ButtJoined.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\centered_cube\Wood_Lumber_ButtJoined_0.xnb</Output>
+      <Time>2009-03-08T18:11:58-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

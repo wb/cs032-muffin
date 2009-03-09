@@ -6,5 +6,12 @@ Content\Textures\Groundcover_Sand_Smooth.xnb
 Content\Textures\Vegetation_Grass_Artificial.xnb
 Content\Textures\Vegetation_Grass_Artificial_0.xnb
 Content\Textures\Groundcover_Sand_Smooth_0.xnb
+Content\Models\box.xnb
+Content\Models\box\Wood_Floor_Parquet.xnb
+Content\Models\box\Wood_Floor_Parquet_0.xnb
+Content\Models\centered_cube.xnb
+Content\Models\box\Wood_Lumber_ButtJoined.xnb
+Content\Models\centered_cube\Wood_Lumber_ButtJoined_0.xnb
 Content\Levels\level1.xml
 Content\Levels\level2.xml
+Content\Levels\level.xml
