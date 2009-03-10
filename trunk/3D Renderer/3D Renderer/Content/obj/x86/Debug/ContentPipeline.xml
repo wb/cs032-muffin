@@ -17,7 +17,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\simpleEffect.xnb</Output>
-      <Time>2009-03-07T17:38:40.407-05:00</Time>
+      <Time>2009-03-09T03:04:20.4345773-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\rufbrick.jpg</Source>
@@ -120,20 +120,6 @@
       <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb</Request>
       <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb</Request>
       <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Models\forklift.FBX</Source>
-      <Name>Models\forklift</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.xnb</Output>
-      <Time>2009-03-07T15:29:45.641375-05:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\forklift_0.xml</Key>
-        <Value>2009-03-07T16:05:14.657-05:00</Value>
-      </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\59A5314D\forklift.fbm\diff_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\lamppost.x</Source>
@@ -275,6 +261,41 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb</Output>
       <Time>2009-03-07T16:13:46.516375-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\spotlight.jpg</Source>
+      <Name>Textures\spotlight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight.xnb</Output>
+      <Time>2009-03-08T07:36:05.01025-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\spotlight2.jpg</Source>
+      <Name>Textures\spotlight2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight2.xnb</Output>
+      <Time>2009-03-08T23:59:10.9165-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\forklift.FBX</Source>
+      <Name>Models\forklift</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="GenerateTangentFrames">True</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.xnb</Output>
+      <Time>2009-03-07T15:29:45.641375-05:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\forklift_0.xml</Key>
+        <Value>2009-03-07T16:05:14.657-05:00</Value>
+      </Dependency>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\59A5314D\forklift.fbm\diff_0.xnb</Request>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
