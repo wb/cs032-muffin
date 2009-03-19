@@ -1,0 +1,30 @@
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\effects.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\3D Renderer.exe
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\3D Renderer.pdb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\obj\x86\Debug\3D Renderer.exe
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\obj\x86\Debug\3D Renderer.pdb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\simpleEffect.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\rufbrick.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\streettexture.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.fbm\diff.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis_a.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ruedas.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ventanas.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\HUD.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\lamppost.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\car.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_0.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\59A5314D\forklift.fbm\diff_0.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\p1_wedge.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight2.xnb
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\RenderEffect.xnb
