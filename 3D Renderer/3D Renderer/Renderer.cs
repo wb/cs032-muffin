@@ -1,6 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
+using System.ComponentModel;
+using System.Data;
+using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -58,6 +63,11 @@ namespace _3D_Renderer
         Texture2D[] shipTexture;  
         Texture2D[] forkLiftTexture;
 
+        List<GameObject> m_objects;
+        List<Model> m_models;
+        List<Texture2D[]> m_model_textures;
+        XMLParser m_parser;
+
         Model carModel;
         Model lampModel;
         Model shipModel;
@@ -84,14 +94,30 @@ namespace _3D_Renderer
         {
             //renderer settings
             graphics = new GraphicsDeviceManager(this);
+            graphics.IsFullScreen = false;
             //enable anti-aliasing
             graphics.PreferMultiSampling = true;
             graphics.PreparingDeviceSettings +=
                 new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
             //mouse handler
             m_mouse = new MouseHandler(Mouse.GetState());
+            m_models = new List<Model>();
+            m_objects = new List<GameObject>();
+            m_model_textures = new List<Texture2D[]>();
             this.IsMouseVisible = true;
             Content.RootDirectory = "Content";
+
+            //XML parser
+            if (File.Exists("Content\\Levels\\level1.xml"))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load("Content\\Levels\\level1.xml");
+                m_parser = new XMLParser(document);
+            }
+            else
+            {
+                Console.WriteLine("The file " + "Content\\Levels\\level1.xml" + " was not found");
+            }
         }
 
         void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
@@ -193,6 +219,20 @@ namespace _3D_Renderer
             //save pointer to default DSB                                               
             standardDSB = device.DepthStencilBuffer;
 
+            Texture2D[] terrain;
+            m_models.Add(LoadModel("flat", out terrain));
+            m_model_textures.Add(terrain);
+            m_models.Add(LoadModel("wedge", out terrain));
+            m_model_textures.Add(terrain);
+            m_models.Add(LoadModel("corner", out terrain));
+            m_model_textures.Add(terrain);
+            m_models.Add(LoadModel("inverted_corner", out terrain));
+            m_model_textures.Add(terrain);
+            m_models.Add(forkLiftModel);
+            m_model_textures.Add(forkLiftTexture);
+
+            m_parser.loadLevel(m_objects, m_models);
+
             SetUpVertices();
             SetUpCamera();
             SetUpLights();
@@ -229,13 +269,13 @@ namespace _3D_Renderer
 
         private void SetUpCamera()
         {
-            camera = new GameCamera(new Vector3(-40, 25, 35), new Vector3(0, 2, -12), device.Viewport.AspectRatio);
+            camera = new GameCamera(new Vector3(-40, 25, 35), new Vector3(0, 0, 0), device.Viewport.AspectRatio);
         }
 
         private void SetUpLights() {
-            LightPos[0] = new Vector3(-10, 20, 10);
-            LightPos[1] = new Vector3(-10, 20, -20);
-            LightPos[2] = new Vector3(-30, 15, 0);
+            LightPos[0] = new Vector3(-20, 20, 20);
+            LightPos[1] = new Vector3(20, 20, -20);
+            LightPos[2] = new Vector3(-30, 45, 0);
             LightIntensity[0] = 2.0f;
             LightIntensity[1] = 2.0f;
             LightIntensity[2] = 2.0f;
@@ -261,8 +301,10 @@ namespace _3D_Renderer
             // TODO: Unload any non ContentManager content here
         }
 
+        Vector3 look = new Vector3(15, 15, 15);
         private void UpdateLights()
         {
+
             for (int i = 0; i < GameConstants.MaxLights; i++)
             {
                 Matrix LightView = Matrix.CreateLookAt(LightPos[i], ModelPos, new Vector3(0, 1, 0));
@@ -321,18 +363,18 @@ namespace _3D_Renderer
             gstate = GamePad.GetState(PlayerIndex.One);
             if(gstate.IsConnected){
 
-                float netRotY = -gstate.ThumbSticks.Left.X * .01f;
+                float netRotY = -gstate.ThumbSticks.Left.X * .02f;
                 ModelRot *= Matrix.CreateFromYawPitchRoll(netRotY, 0.0f, 0.0f);
                 ModelDir = Vector3.Transform(ModelDir, Matrix.CreateFromYawPitchRoll(netRotY, 0.0f, 0.0f));
                 ModelDir.Normalize();
 
                 if(gstate.Buttons.A == ButtonState.Pressed && gstate.Buttons.B == ButtonState.Released){
-                    ModelPos += ((ModelDir) *.2f);
+                    ModelPos += ((ModelDir) *.4f);
                 }
 
                 if (gstate.Buttons.B == ButtonState.Pressed && gstate.Buttons.A == ButtonState.Released)
                 {
-                    ModelPos -= ((ModelDir) * .2f);
+                    ModelPos -= ((ModelDir) * .4f);
                 }
 
                 if(gstate.Buttons.X == ButtonState.Pressed) {
@@ -341,9 +383,9 @@ namespace _3D_Renderer
                         forkMoving = true;
                         if(forkHeight == 0.0f) {
                            // Console.WriteLine("Moving up");
-                            forkVelocity = 8.0f;
+                            forkVelocity = 15.0f;
                         } else {
-                            forkVelocity = -8.0f;
+                            forkVelocity = -15.0f;
                            // Console.WriteLine("Moving down");
                         }
                     }
@@ -395,67 +437,27 @@ namespace _3D_Renderer
 
             //render the scene using shadowMap
             device.DepthStencilBuffer = standardDSB;
-            device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
+            device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1.0f, 0);
             DrawAll("ShadowedScene", 0);
 
             base.Draw(gameTime);
         }
 
-        private void DrawAll (String technique, int index)
+        private void DrawAll(String technique, int index)
         {
             device.RenderState.DepthBufferEnable = true;
             device.RenderState.CullMode = CullMode.CullCounterClockwiseFace;
             device.RenderState.AlphaBlendEnable = false;
 
-            effect.CurrentTechnique = effect.Techniques[technique];
-
-            effect.Parameters["num_lights"].SetValue(GameConstants.MaxLights);
-            effect.Parameters["current_light"].SetValue(index);
-
-            effect.Parameters["xCameraViewProjection"].SetValue(camera.ViewMatrix * camera.ProjectionMatrix);
-            effect.Parameters["xLightViewProjection"].SetValue(LightViewProjectionMatrix);
-            effect.Parameters["xWorld"].SetValue(Matrix.Identity);
-            effect.Parameters["xTexture"].SetValue(brickTexture);
-            effect.Parameters["xSpotlight"].SetValue(spotlightTexture);
-            effect.Parameters["xShadowMap1"].SetValue(shadowMap[0]);
-            effect.Parameters["xShadowMap2"].SetValue(shadowMap[1]);
-            effect.Parameters["xShadowMap3"].SetValue(shadowMap[2]);
-
-            effect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
-
-            effect.Parameters["xLightPos"].SetValue(LightPos);
-            effect.Parameters["xLightIntensity"].SetValue(LightIntensity);
-
-            effect.Parameters["xSpecular"].SetValue(Specular);
-            effect.Parameters["xShininess"].SetValue(Shininess);
-            effect.Parameters["xAmbient"].SetValue(Ambient);
-            effect.Parameters["xSolidBrown"].SetValue(false);
-            
-            effect.Begin();
-            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
-            {
-                pass.Begin();
-                device.VertexDeclaration = vertexDeclaration;
-                device.Vertices[0].SetSource(vertexBuffer, 0, MyOwnVertexFormat.SizeInBytes);
-                device.DrawPrimitives(PrimitiveType.TriangleStrip, 0, 18);
-                pass.End();
+            foreach (GameObject o in m_objects) {
+                Matrix worldMatrix = Matrix.CreateFromYawPitchRoll(o.Rotation.Y, o.Rotation.X, 0.0f) *
+                                     Matrix.CreateTranslation(o.Position) *
+                                     Matrix.CreateScale(0.20f) *
+                                     Matrix.CreateTranslation(new Vector3(-45,-4.7f,-45));
+                DrawModel(o.m_model, m_model_textures.ElementAt((int)o.m_name), worldMatrix, technique, false, index);
             }
-            effect.End();
-
-            Matrix car1Matrix = Matrix.CreateScale(4f) * Matrix.CreateTranslation(6, 1, -15);
-            DrawModel(carModel, carTexture, car1Matrix, technique, false, index);
-
-            Matrix ship1Matrix = Matrix.CreateScale(.005f) * Matrix.CreateRotationY(MathHelper.Pi) * Matrix.CreateTranslation(-15, 2, -15);
-            DrawModel(shipModel, shipTexture, ship1Matrix, technique, false, index);
-
             Matrix forklift1Matrix = Matrix.CreateScale(.045f) * ModelRot * Matrix.CreateTranslation(ModelPos);
             DrawModel(forkLiftModel, forkLiftTexture, forklift1Matrix, technique, false, index);
-
-            Matrix lamp1Matrix = Matrix.CreateScale(0.05f) * Matrix.CreateTranslation(4.0f, 1, -35);
-            DrawModel(lampModel, lampTexture, lamp1Matrix, technique, true, index);
-
-            Matrix lamp2Matrix = Matrix.CreateScale(0.05f) * Matrix.CreateTranslation(4.0f, 1, -55);
-            DrawModel(lampModel, lampTexture, lamp2Matrix, technique, true, index);
         }
 
         private void DrawModel(Model model, Texture2D[] textures, Matrix wMatrix, string technique, bool solidBrown, int index)
@@ -490,6 +492,63 @@ namespace _3D_Renderer
                 }
                 mesh.Draw();
             }
+        }
+
+        private void DrawAll2(String technique, int index)
+        {
+            device.RenderState.DepthBufferEnable = true;
+            device.RenderState.CullMode = CullMode.CullCounterClockwiseFace;
+            device.RenderState.AlphaBlendEnable = false;
+
+            effect.CurrentTechnique = effect.Techniques[technique];
+
+            effect.Parameters["num_lights"].SetValue(GameConstants.MaxLights);
+            effect.Parameters["current_light"].SetValue(index);
+
+            effect.Parameters["xCameraViewProjection"].SetValue(camera.ViewMatrix * camera.ProjectionMatrix);
+            effect.Parameters["xLightViewProjection"].SetValue(LightViewProjectionMatrix);
+            effect.Parameters["xWorld"].SetValue(Matrix.Identity);
+            effect.Parameters["xTexture"].SetValue(brickTexture);
+            effect.Parameters["xSpotlight"].SetValue(spotlightTexture);
+            effect.Parameters["xShadowMap1"].SetValue(shadowMap[0]);
+            effect.Parameters["xShadowMap2"].SetValue(shadowMap[1]);
+            effect.Parameters["xShadowMap3"].SetValue(shadowMap[2]);
+
+            effect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
+
+            effect.Parameters["xLightPos"].SetValue(LightPos);
+            effect.Parameters["xLightIntensity"].SetValue(LightIntensity);
+
+            effect.Parameters["xSpecular"].SetValue(Specular);
+            effect.Parameters["xShininess"].SetValue(Shininess);
+            effect.Parameters["xAmbient"].SetValue(Ambient);
+            effect.Parameters["xSolidBrown"].SetValue(false);
+
+            effect.Begin();
+            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
+            {
+                pass.Begin();
+                device.VertexDeclaration = vertexDeclaration;
+                device.Vertices[0].SetSource(vertexBuffer, 0, MyOwnVertexFormat.SizeInBytes);
+                device.DrawPrimitives(PrimitiveType.TriangleStrip, 0, 18);
+                pass.End();
+            }
+            effect.End();
+
+            Matrix car1Matrix = Matrix.CreateScale(4f) * Matrix.CreateTranslation(6, 1, -15);
+            DrawModel(carModel, carTexture, car1Matrix, technique, false, index);
+
+            Matrix ship1Matrix = Matrix.CreateScale(.005f) * Matrix.CreateRotationY(MathHelper.Pi) * Matrix.CreateTranslation(-15, 2, -15);
+            DrawModel(shipModel, shipTexture, ship1Matrix, technique, false, index);
+
+            Matrix forklift1Matrix = Matrix.CreateScale(.045f) * ModelRot * Matrix.CreateTranslation(ModelPos);
+            DrawModel(forkLiftModel, forkLiftTexture, forklift1Matrix, technique, false, index);
+
+            Matrix lamp1Matrix = Matrix.CreateScale(0.05f) * Matrix.CreateTranslation(4.0f, 1, -35);
+            DrawModel(lampModel, lampTexture, lamp1Matrix, technique, true, index);
+
+            Matrix lamp2Matrix = Matrix.CreateScale(0.05f) * Matrix.CreateTranslation(4.0f, 1, -55);
+            DrawModel(lampModel, lampTexture, lamp2Matrix, technique, true, index);
         }
     }
 }

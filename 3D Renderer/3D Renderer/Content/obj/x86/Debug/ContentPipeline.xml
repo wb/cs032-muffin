@@ -306,6 +306,286 @@
       <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\RenderEffect.xnb</Output>
       <Time>2009-03-14T16:41:46.6611659-04:00</Time>
     </Item>
+    <Item>
+      <Source>Models\corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\corner\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T01:16:26.40625-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\corner\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\flat\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\flat\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\inverted_corner\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\inverted_corner\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\wedge\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\wedge\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner.fbx</Source>
+      <Name>Models\corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\corner_0.xml</Key>
+        <Value>2009-03-19T05:05:00.2743829-04:00</Value>
+      </Dependency>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\flat.fbx</Source>
+      <Name>Models\flat</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\flat_0.xml</Key>
+        <Value>2009-03-19T05:05:00.7118829-04:00</Value>
+      </Dependency>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner.fbx</Source>
+      <Name>Models\inverted_corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\inverted_corner_0.xml</Key>
+        <Value>2009-03-19T05:05:01.0243829-04:00</Value>
+      </Dependency>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\wedge.fbx</Source>
+      <Name>Models\wedge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge.xnb</Output>
+      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\wedge_0.xml</Key>
+        <Value>2009-03-19T05:05:01.2587579-04:00</Value>
+      </Dependency>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\corner.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\corner_0.xml</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.40625-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\flat_0.xml</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\inverted_corner_0.xml</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\wedge_0.xml</Output>
+      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
