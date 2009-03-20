@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
+  <Asset Type="Graphics:NodeContent">
+    <Name>Model</Name>
+    <Identity>
+      <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\wedge.fbx</SourceFilename>
+      <SourceTool>FbxImporter</SourceTool>
+    </Identity>
+    <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+    <Children>
+      <Child>
+        <Name>Component_2_1</Name>
+        <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+        <Children>
+          <Child Type="Graphics:MeshContent">
+            <Name>Mesh1</Name>
+            <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
+            <Positions>30 24 -30 30 0 -30 -30 0 -30 30 0 -30 -30 0 30 -30 0 -30 30 0 30 30 24 30 -30 0 -30 -30 0 30 30 24 -30 30 0 -30 30 24 30 30 0 30 30 24 -30 30 24 30 -30 0 30 30 0 30</Positions>
+            <Geometry>
+              <Batch>
+                <Material>#Resource1</Material>
+                <Indices>2 1 0 5 4 3 6 3 4 9 8 7 10 7 8 13 12 11</Indices>
+                <Vertices>
+                  <PositionIndices>0 1 2 3 4 5 6 11 12 13 14 15 16 17</PositionIndices>
+                  <Channels>
+                    <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-7.936586E-18 0 -1 -7.936586E-18 0 -1 -7.936586E-18 0 -1 0 -1 -0 0 -1 -0 0 -1 -0 0 -1 -0 1 0 -7.936586E-18 1 0 -7.936586E-18 1 0 -7.936586E-18 1 0 -7.936586E-18 7.936586E-18 0 1 7.936586E-18 0 1 7.936586E-18 0 1</VertexChannel>
+                    <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">-3.33333325 -0.333333343 -3.33333325 1 -2.64552874E-17 1 -3.33333325 -2.33333325 0 1 0 -2.33333325 -3.33333325 1 3.33333325 1 -2.64552874E-17 -0.333333343 -2.64552874E-17 1 3.33333325 -0.333333343 3.33333325 -0.333333343 -2.099647E-34 1 3.33333325 1</VertexChannel>
+                  </Channels>
+                </Vertices>
+              </Batch>
+              <Batch>
+                <Material>#Resource2</Material>
+                <Indices>2 1 0 3 0 1</Indices>
+                <Vertices>
+                  <PositionIndices>7 8 9 10</PositionIndices>
+                  <Channels>
+                    <VertexChannel Name="Normal0" ElementType="Framework:Vector3">-0.371390671 0.9284767 5.87967341E-18 -0.371390671 0.9284767 5.87967341E-18 -0.371390671 0.9284767 5.87967341E-18 -0.371390671 0.9284767 5.87967341E-18</VertexChannel>
+                    <VertexChannel Name="TextureCoordinate0" ElementType="Framework:Vector2">3.95787626E-17 -1.69258237 -2.5 1 1.98414655E-17 1 -2.5 -1.69258237</VertexChannel>
+                  </Channels>
+                </Vertices>
+              </Batch>
+            </Geometry>
+          </Child>
+        </Children>
+      </Child>
+    </Children>
+  </Asset>
+  <Resources>
+    <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
+      <Name>Groundcover_Sand_Smooth</Name>
+      <Identity>
+        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\wedge.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.7137255 0.5803922 0.396078438</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.33 0.33 0.33</Data>
+        <Data Key="SpecularPower" Type="float">20</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External1</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+    <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
+      <Name>Vegetation_Grass_Artificial</Name>
+      <Identity>
+        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\wedge.fbx</SourceFilename>
+        <SourceTool>FbxImporter</SourceTool>
+      </Identity>
+      <OpaqueData>
+        <Data Key="DiffuseColor" Type="Framework:Vector3">0.384313732 0.549019635 0.2901961</Data>
+        <Data Key="EmissiveColor" Type="Framework:Vector3">0 0 0</Data>
+        <Data Key="Alpha" Type="float">1</Data>
+        <Data Key="SpecularColor" Type="Framework:Vector3">0.33 0.33 0.33</Data>
+        <Data Key="SpecularPower" Type="float">20</Data>
+      </OpaqueData>
+      <Textures>
+        <Texture Key="Texture">
+          <OpaqueData>
+            <Data Key="TextureCoordinate">TextureCoordinate0</Data>
+          </OpaqueData>
+          <Reference>#External2</Reference>
+        </Texture>
+      </Textures>
+    </Resource>
+  </Resources>
+  <ExternalReferences>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\..\..\..\Models\wedge\Groundcover_Sand_Smooth.jpg</ExternalReference>
+    <ExternalReference ID="#External2" TargetType="Graphics:TextureContent">..\..\..\..\Models\wedge\Vegetation_Grass_Artificial.jpg</ExternalReference>
+  </ExternalReferences>
+</XnaContent>
