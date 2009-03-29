@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collision Library", "Collision Library\Collision Library.csproj", "{54E0DBF5-42EE-47FF-8453-BFE5F95A933B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54E0DBF5-42EE-47FF-8453-BFE5F95A933B}.Debug|x86.ActiveCfg = Debug|x86
+		{54E0DBF5-42EE-47FF-8453-BFE5F95A933B}.Debug|x86.Build.0 = Debug|x86
+		{54E0DBF5-42EE-47FF-8453-BFE5F95A933B}.Release|x86.ActiveCfg = Release|x86
+		{54E0DBF5-42EE-47FF-8453-BFE5F95A933B}.Release|x86.Build.0 = Release|x86
+		{45B543FA-F746-424E-8909-1757982EDB2B}.Debug|x86.ActiveCfg = Debug|x86
+		{45B543FA-F746-424E-8909-1757982EDB2B}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

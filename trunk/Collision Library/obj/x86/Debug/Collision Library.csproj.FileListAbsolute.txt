@@ -1,0 +1,6 @@
+C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\bin\x86\Debug\Collision Library.dll
+C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\bin\x86\Debug\Collision Library.pdb
+C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\obj\x86\Debug\Collision Library.dll
+C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\obj\x86\Debug\Collision Library.pdb
