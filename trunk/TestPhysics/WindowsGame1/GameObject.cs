@@ -18,22 +18,25 @@ namespace WindowsGame1
     class GameObject : Connectable, Physics.PhysicsObject
     {
         private Model m_model;
-        private ModelType m_model_type;
+        public ModelType m_model_type;
         private Physics.Material _material;
         private float _mass;
-        private Vector3 _position, _velocity, _acceleration, _force, _centerOfMass, _angularVelocity, _angularAcceleration, _torque;
+        public Vector3 _position, _previousPosition, _velocity, _acceleration, _force, _centerOfMass, _angularVelocity, _angularAcceleration, _torque;
         private Quaternion _orientation;
         private Matrix _intertiaTensor;
         private Boolean _locked, _active;
         private List<Physics.CollisionRegion> _collisionRegions;
+        private Vector3 _dimensions;
+        private BoundingBox _boundingBox;
         
-        public GameObject(Model m, ModelType m_t, Vector3 pos, Quaternion rot, Boolean locked)
+        public GameObject(Model m, ModelType m_t, Vector3 pos, Quaternion rot, Boolean locked, Vector3 d)
         {
             //set model info
             m_model = m;
             m_model_type = m_t;
             //set model orientation
             _position = pos;
+            _previousPosition = _position;
             _orientation = rot;
             //initialize rest of the parameters
             _velocity = new Vector3();
@@ -42,14 +45,19 @@ namespace WindowsGame1
             _locked = locked;
             _mass = 100;
 
-            _centerOfMass = new Vector3(30, 30, 30);
+            _centerOfMass = new Vector3(d.X / 2, d.Y / 2, d.Z / 2);
 
             _collisionRegions = new List<Physics.CollisionRegion>();
 
             _intertiaTensor = new Matrix(1.0f / (.385f * _mass), 0, 0, 0, 0, 1.0f / (.385f * _mass), 0, 0, 0, 0, 1.0f / (.385f * _mass), 0, 0, 0, 0, 0);
+
+            _dimensions = d;
+
+            // calculate the bounding box
+            this.updateBoundingBox(_position);
         }
 
-        public GameObject(Model m, ModelType m_t, Vector3 pos, Quaternion rot)
+        public GameObject(Model m, ModelType m_t, Vector3 pos, Quaternion rot, Vector3 d)
         {
             //set model info
             m_model = m;
@@ -57,6 +65,7 @@ namespace WindowsGame1
 
             //set model placement
             _position = pos;
+            _previousPosition = _position;
             _orientation = rot;
       
             //initialize rest of the parameters
@@ -70,7 +79,31 @@ namespace WindowsGame1
 
             _intertiaTensor = new Matrix(1.0f / (.385f * _mass), 0, 0, 0, 0, 1.0f / (.385f * _mass), 0, 0, 0, 0, 1.0f / (.385f * _mass), 0, 0, 0, 0, 0);
 
-            _centerOfMass = new Vector3(30, 30, 30);
+            _centerOfMass = new Vector3(d.X / 2, d.Y / 2, d.Z / 2);
+
+            _dimensions = d;
+
+            // calculate the bounding box
+            this.updateBoundingBox(_position);
+        }
+
+        public void updateBoundingBox(Vector3 position)
+        {
+            // minimum vertices
+            /*
+             * Vector3 min = position - (_dimensions / 2);
+            Vector3 max = position + (_dimensions / 2);
+            */
+
+            Vector3 min = position;
+            Vector3 max = position + _dimensions;
+
+            _boundingBox = new BoundingBox(min, max);
+        }
+
+        public BoundingBox boundingBox
+        {
+            get { return _boundingBox; }
         }
 
         public void addForce(Vector3 force)
@@ -87,10 +120,8 @@ namespace WindowsGame1
                 // (Camera and Projection are set once within the main rendering class per render step)
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-   
-                    effect.World = 
                             //Matrix.CreateTranslation(-(new Vector3(30.0f, 0.0f, -30.0f))) *
-                            Matrix.CreateFromQuaternion(_orientation) *
+                            effect.World = Matrix.CreateFromQuaternion(_orientation) *
                             //Matrix.CreateTranslation(new Vector3(30.0f, 0.0f, -30.0f)) *
                             Matrix.CreateTranslation(_position);
                 }
@@ -98,6 +129,12 @@ namespace WindowsGame1
                 mesh.Draw();
             }
 
+        }
+
+        public Matrix getWorld()
+        {
+            return Matrix.CreateFromQuaternion(_orientation) *
+                   Matrix.CreateTranslation(_position);
         }
 
         public void connect(GameObject obj)
@@ -268,6 +305,18 @@ namespace WindowsGame1
             }
         }
 
+        public Vector3 previousPosition
+        {
+            get
+            {
+                return _previousPosition;
+            }
+            set
+            {
+                _previousPosition = value;
+            }
+        }
+
         // this is the location with respect to the center of the object
         public void applyForce(Vector3 force, Vector3 location)
         {
@@ -302,11 +351,14 @@ namespace WindowsGame1
 
                 deltaOrientation.Normalize();
 
-                _orientation *= deltaOrientation;
+               // _orientation *= deltaOrientation;
 
                 // now, solve for the new position
                 _acceleration += _force / _mass;
                 _velocity = _velocity + _acceleration * timestep;
+
+                _previousPosition = _position;
+
                 _position = _position + _velocity * timestep;
                 
                 // account for air resistance, general drag, etc
@@ -353,6 +405,10 @@ namespace WindowsGame1
 
             // clear all collision regions
             _collisionRegions.Clear();
+
+            // update the bounding box
+            this.updateBoundingBox(_position);
+
         }
 
         #endregion

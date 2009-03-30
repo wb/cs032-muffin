@@ -8,10 +8,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\corner.xnb</Output>
-      <Time>2009-02-25T15:55:02.3621444-05:00</Time>
+      <Time>2009-03-29T19:02:45.16-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\corner_0.xml</Key>
-        <Value>2009-03-06T20:49:13.394-05:00</Value>
+        <Value>2009-03-29T19:02:57.195-04:00</Value>
       </Dependency>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
@@ -23,10 +23,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\flat.xnb</Output>
-      <Time>2009-02-25T15:55:02.3611444-05:00</Time>
+      <Time>2009-03-29T19:02:45.157-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\flat_0.xml</Key>
-        <Value>2009-03-06T20:49:13.78-05:00</Value>
+        <Value>2009-03-29T19:02:57.616-04:00</Value>
       </Dependency>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
@@ -38,10 +38,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
-      <Time>2009-02-25T15:55:02.3631444-05:00</Time>
+      <Time>2009-03-29T19:02:45.159-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\inverted_corner_0.xml</Key>
-        <Value>2009-03-06T20:49:13.815-05:00</Value>
+        <Value>2009-03-29T19:02:57.65-04:00</Value>
       </Dependency>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
@@ -53,10 +53,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\wedge.xnb</Output>
-      <Time>2009-02-25T15:55:02.3661444-05:00</Time>
+      <Time>2009-03-29T19:02:45.162-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\wedge_0.xml</Key>
-        <Value>2009-03-06T20:49:13.845-05:00</Value>
+        <Value>2009-03-29T19:02:57.68-04:00</Value>
       </Dependency>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
@@ -68,7 +68,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth.xnb</Output>
-      <Time>2009-02-25T15:55:02.4051444-05:00</Time>
+      <Time>2009-03-29T19:02:45.486-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
@@ -77,14 +77,14 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial.xnb</Output>
-      <Time>2009-02-25T15:55:02.5031444-05:00</Time>
+      <Time>2009-03-29T19:02:45.434-04:00</Time>
     </Item>
     <Item>
       <Source>Models\corner.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\corner_0.xml</Output>
-      <Time>2009-02-25T15:55:02.3621444-05:00</Time>
+      <Time>2009-03-29T19:02:45.16-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
@@ -99,7 +99,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Output>
-      <Time>2009-02-25T15:55:02.5031444-05:00</Time>
+      <Time>2009-03-29T19:02:45.434-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Groundcover_Sand_Smooth.jpg</Source>
@@ -114,28 +114,28 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Output>
-      <Time>2009-02-25T15:55:02.4051444-05:00</Time>
+      <Time>2009-03-29T19:02:45.486-04:00</Time>
     </Item>
     <Item>
       <Source>Models\flat.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\flat_0.xml</Output>
-      <Time>2009-02-25T15:55:02.3611444-05:00</Time>
+      <Time>2009-03-29T19:02:45.157-04:00</Time>
     </Item>
     <Item>
       <Source>Models\inverted_corner.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\inverted_corner_0.xml</Output>
-      <Time>2009-02-25T15:55:02.3631444-05:00</Time>
+      <Time>2009-03-29T19:02:45.159-04:00</Time>
     </Item>
     <Item>
       <Source>Models\wedge.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\wedge_0.xml</Output>
-      <Time>2009-02-25T15:55:02.3661444-05:00</Time>
+      <Time>2009-03-29T19:02:45.162-04:00</Time>
     </Item>
     <Item>
       <Source>Models\box.fbx</Source>
@@ -144,10 +144,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box.xnb</Output>
-      <Time>2009-03-08T15:31:28-04:00</Time>
+      <Time>2009-03-29T19:02:45.161-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\box_0.xml</Key>
-        <Value>2009-03-08T15:35:04.3035323-04:00</Value>
+        <Value>2009-03-29T19:02:57.842-04:00</Value>
       </Dependency>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet_0.xnb</Request>
     </Item>
@@ -158,14 +158,14 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet.xnb</Output>
-      <Time>2009-03-08T15:31:28-04:00</Time>
+      <Time>2009-03-29T19:02:45.151-04:00</Time>
     </Item>
     <Item>
       <Source>Models\box.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\box_0.xml</Output>
-      <Time>2009-03-08T15:31:28-04:00</Time>
+      <Time>2009-03-29T19:02:45.161-04:00</Time>
     </Item>
     <Item>
       <Source>Models\box\Wood_Floor_Parquet.jpg</Source>
@@ -180,7 +180,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet_0.xnb</Output>
-      <Time>2009-03-08T15:31:28-04:00</Time>
+      <Time>2009-03-29T19:02:45.151-04:00</Time>
     </Item>
     <Item>
       <Source>Models\centered_cube.fbx</Source>
@@ -189,10 +189,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\centered_cube.xnb</Output>
-      <Time>2009-03-08T18:11:58-04:00</Time>
+      <Time>2009-03-29T19:02:45.158-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\centered_cube_0.xml</Key>
-        <Value>2009-03-08T18:13:15.692-04:00</Value>
+        <Value>2009-03-29T19:02:57.706-04:00</Value>
       </Dependency>
       <Request>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\centered_cube\Wood_Lumber_ButtJoined_0.xnb</Request>
     </Item>
@@ -203,14 +203,14 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\box\Wood_Lumber_ButtJoined.xnb</Output>
-      <Time>2009-03-08T18:13:02.976-04:00</Time>
+      <Time>2009-03-29T19:02:45.15-04:00</Time>
     </Item>
     <Item>
       <Source>Models\centered_cube.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\centered_cube_0.xml</Output>
-      <Time>2009-03-08T18:11:58-04:00</Time>
+      <Time>2009-03-29T19:02:45.158-04:00</Time>
     </Item>
     <Item>
       <Source>Models\centered_cube\Wood_Lumber_ButtJoined.jpg</Source>
@@ -225,7 +225,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Walter\Documents\cs032-muffin\TestPhysics\WindowsGame1\bin\x86\Debug\Content\Models\centered_cube\Wood_Lumber_ButtJoined_0.xnb</Output>
-      <Time>2009-03-08T18:11:58-04:00</Time>
+      <Time>2009-03-29T19:02:45.092-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -68,8 +68,8 @@ namespace WindowsGame1
                     Console.WriteLine(rotation.ToString());
                         
 
-                //add the object to the array of active objects
-                m_objects.Add(new GameObject((Model)m_models.ElementAt((int)name), ModelType.TERRAIN, pos, rot, true));
+                //add the object to the array of active objects // THIS MAKES THE AWFUL ASSUMPTION THAT THE TERRAIN IS A FLAT PIECE
+                m_objects.Add(new GameObject((Model)m_models.ElementAt((int)name), ModelType.TERRAIN, pos, rot, true, new Vector3(60,60,60)));
             } else {
                 Console.WriteLine("Bad parse input");
             }
