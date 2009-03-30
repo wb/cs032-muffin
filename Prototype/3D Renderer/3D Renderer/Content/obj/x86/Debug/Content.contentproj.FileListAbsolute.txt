@@ -1,0 +1,2 @@
+C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\Content\obj\x86\Debug\ResolveAssemblyReference.cache
