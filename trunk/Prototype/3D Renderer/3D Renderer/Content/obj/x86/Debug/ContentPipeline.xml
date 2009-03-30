@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Graphics="Microsoft.Xna.Framework.Graphics" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Effects\effects.fx</Source>
+      <Name>Effects\effects</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\effects.xnb</Output>
+      <Time>2009-03-19T20:56:18.3198468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\simpleEffect.fx</Source>
+      <Name>Effects\simpleEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\simpleEffect.xnb</Output>
+      <Time>2009-03-19T20:56:18.3168468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\RenderEffect.fx</Source>
+      <Name>Effects\RenderEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\RenderEffect.xnb</Output>
+      <Time>2009-03-19T20:56:18.3178468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\rufbrick.jpg</Source>
+      <Name>Textures\rufbrick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\rufbrick.xnb</Output>
+      <Time>2009-03-19T20:56:44.4568468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\streettexture.dds</Source>
+      <Name>Textures\streettexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\streettexture.xnb</Output>
+      <Time>2009-03-19T20:56:44.4528468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\chasis.jpg</Source>
+      <Name>Models\chasis</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis.xnb</Output>
+      <Time>2009-03-19T20:56:40.0238468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\chasis_a.jpg</Source>
+      <Name>Models\chasis_a</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis_a.xnb</Output>
+      <Time>2009-03-19T20:56:40.0248468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\ruedas.jpg</Source>
+      <Name>Models\ruedas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ruedas.xnb</Output>
+      <Time>2009-03-19T20:56:40.0378468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\ventanas.jpg</Source>
+      <Name>Models\ventanas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ventanas.xnb</Output>
+      <Time>2009-03-19T20:56:40.0368468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\forklift.fbm\diff.tga</Source>
+      <Name>Models\forklift.fbm\diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.fbm\diff.xnb</Output>
+      <Time>2009-03-19T20:56:26.2398468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\HUD.png</Source>
+      <Name>Models\HUD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\HUD.xnb</Output>
+      <Time>2009-03-19T20:56:40.0388468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\wedge_p1_diff_v1.tga</Source>
+      <Name>Textures\wedge_p1_diff_v1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb</Output>
+      <Time>2009-03-19T20:56:44.4548468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\spotlight.jpg</Source>
+      <Name>Textures\spotlight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight.xnb</Output>
+      <Time>2009-03-19T20:56:44.4588468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\spotlight2.jpg</Source>
+      <Name>Textures\spotlight2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight2.xnb</Output>
+      <Time>2009-03-19T20:56:44.4598468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\corner\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T20:56:26.5018468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\corner\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T20:56:26.5038468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\flat\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T20:56:26.3618468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\flat\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T20:56:26.3638468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\inverted_corner\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T20:56:26.6528468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\inverted_corner\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T20:56:26.6558468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\wedge\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-19T20:56:27.1988468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\wedge\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-19T20:56:27.2078468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\lamppost.x</Source>
+      <Name>Models\lamppost</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\lamppost.xnb</Output>
+      <Time>2009-03-19T20:56:40.0418468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\lamppost_0.xml</Key>
+        <Value>2009-03-19T20:57:16.1808468-04:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\car.x</Source>
+      <Name>Models\car</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\car.xnb</Output>
+      <Time>2009-03-19T20:56:40.0518468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\car_0.xml</Key>
+        <Value>2009-03-19T20:57:16.4278468-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_0.xnb</Request>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb</Request>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb</Request>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\forklift.FBX</Source>
+      <Name>Models\forklift</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="GenerateTangentFrames">True</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.xnb</Output>
+      <Time>2009-03-19T20:56:40.0348468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\forklift_0.xml</Key>
+        <Value>2009-03-19T20:57:17.2028468-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\2C4A22F4\forklift.fbm\diff_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\p1_wedge.fbx</Source>
+      <Name>Models\p1_wedge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\p1_wedge.xnb</Output>
+      <Time>2009-03-19T20:56:40.0488468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\p1_wedge_0.xml</Key>
+        <Value>2009-03-19T20:57:19.4468468-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\corner.fbx</Source>
+      <Name>Models\corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner.xnb</Output>
+      <Time>2009-03-19T20:56:40.0428468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\corner_0.xml</Key>
+        <Value>2009-03-19T20:57:19.5928468-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\flat.fbx</Source>
+      <Name>Models\flat</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat.xnb</Output>
+      <Time>2009-03-19T20:56:40.0408468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\flat_0.xml</Key>
+        <Value>2009-03-19T20:57:19.7478468-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner.fbx</Source>
+      <Name>Models\inverted_corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
+      <Time>2009-03-19T20:56:40.0438468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\inverted_corner_0.xml</Key>
+        <Value>2009-03-19T20:57:19.9108468-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\wedge.fbx</Source>
+      <Name>Models\wedge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge.xnb</Output>
+      <Time>2009-03-19T20:56:40.0498468-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\wedge_0.xml</Key>
+        <Value>2009-03-19T20:57:20.0648468-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\lamppost.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\lamppost_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0418468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\car.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\car_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0518468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\CHASIS.JPG</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_0.xnb</Output>
+      <Time>2009-03-19T20:56:40.0238468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\VENTANAS.JPG</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb</Output>
+      <Time>2009-03-19T20:56:40.0368468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\CHASIS_A.JPG</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb</Output>
+      <Time>2009-03-19T20:56:40.0248468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\RUEDAS.JPG</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb</Output>
+      <Time>2009-03-19T20:56:40.0378468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\forklift.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\forklift_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0348468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>obj\x86\Debug\FBX\2C4A22F4\forklift.fbm\diff.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\2C4A22F4\forklift.fbm\diff_0.xnb</Output>
+      <Time>2009-03-19T20:57:17.0618468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\p1_wedge.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\p1_wedge_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0488468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\wedge_p1_diff_v1.tga</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb</Output>
+      <Time>2009-03-19T20:56:44.4548468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\corner_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0428468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T20:56:26.5038468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T20:56:26.5018468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\flat_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0408468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T20:56:26.3638468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T20:56:26.3618468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\inverted_corner_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0438468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T20:56:26.6528468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T20:56:26.6558468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\wedge_0.xml</Output>
+      <Time>2009-03-19T20:56:40.0498468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Groundcover_Sand_Smooth.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-19T20:56:27.1988468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Vegetation_Grass_Artificial.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-19T20:56:27.2078468-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box\Wood_Floor_Parquet.jpg</Source>
+      <Name>Models\box\Wood_Floor_Parquet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet.xnb</Output>
+      <Time>2009-03-29T19:02:45.151-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box\Wood_Lumber_ButtJoined.jpg</Source>
+      <Name>Models\box\Wood_Lumber_ButtJoined</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\box\Wood_Lumber_ButtJoined.xnb</Output>
+      <Time>2009-03-29T19:02:45.15-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box.fbx</Source>
+      <Name>Models\box</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\box.xnb</Output>
+      <Time>2009-03-29T19:02:45.161-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\box_0.xml</Key>
+        <Value>2009-03-29T22:32:16.801-04:00</Value>
+      </Dependency>
+      <Request>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\box.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\box_0.xml</Output>
+      <Time>2009-03-29T19:02:45.161-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box\Wood_Floor_Parquet.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet_0.xnb</Output>
+      <Time>2009-03-29T19:02:45.151-04:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Walter\Documents\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2008-10-10T18:42:32-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2008-10-10T18:43:28-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2008-10-10T18:43:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2008-10-10T18:48:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2008-10-10T18:48:50-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-01-30T03:18:09.74593-05:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
