@@ -142,7 +142,8 @@ namespace WindowsGame1
         /// all of your content.
         /// </summary>
         /// 
-        GameObject test;
+        GameObject test, test2;
+
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -162,15 +163,31 @@ namespace WindowsGame1
              * CREATE THE TEST OBJECT
              * 
              * */
+            /*
+            // the vector is the position
+            test = new GameObject((Model)m_models.ElementAt((int)ModelName.BOX), ModelType.OBJECT, new Vector3(210.0f, 300.0f, 210.0f), Quaternion.Identity, new Vector3(60,60,60));
+            m_game_object.Add(test);
 
             // the vector is the position
-            test = new GameObject((Model)m_models.ElementAt((int)ModelName.BOX), ModelType.TERRAIN, new Vector3(210.0f, 300.0f, 210.0f), Quaternion.Identity);
-            m_game_object.Add(test);
+            test2 = new GameObject((Model)m_models.ElementAt((int)ModelName.BOX), ModelType.OBJECT, new Vector3(310.0f, 300.0f, 210.0f), Quaternion.Identity, new Vector3(60, 60, 60));
+            m_game_object.Add(test2);
+
+            test2.applyForce(new Vector3(-10000, 0, 0), Vector3.Zero);
             
             // apply the force: force as a vector first, then location where force is applied
             //(relative to center at 0,0,0, with vertices between (-30,-30,-30) and (30,30,30)
-            test.applyForce(new Vector3(0, 10, 0), new Vector3(0, 30, 30));
-          
+            //test.applyForce(new Vector3(0, 10, 0), new Vector3(0, 30, 30));
+          */
+            Random randomClass = new Random();
+
+            for (int whatever = 0; whatever < 10; whatever++)
+            {
+                GameObject thing = new GameObject((Model)m_models.ElementAt((int)ModelName.BOX), ModelType.OBJECT, new Vector3((float) randomClass.Next(0, 600), (float) randomClass.Next(600, 1200), (float) randomClass.Next(0, 600)), Quaternion.Identity, new Vector3(60, 60, 60));
+                m_game_object.Add(thing);
+
+                thing.applyForce(new Vector3(randomClass.Next(-10000, 10000), randomClass.Next(-10000, 10000), randomClass.Next(-10000, 10000)), Vector3.Zero);
+                
+            }
             /*
              * END TEST OBJECT
              * 
@@ -245,7 +262,13 @@ namespace WindowsGame1
             foreach (GameObject o in m_game_object)
             {
                 o.renderObject();
+
+                           
+
             }
+
+
+
             base.Draw(gameTime);
         }
     }
