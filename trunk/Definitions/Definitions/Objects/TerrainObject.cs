@@ -27,7 +27,7 @@ namespace Definitions
         public TerrainObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions) :
             base(model, ModelType.TERRAIN, modelName, position, rotation, true, dimensions, float.MaxValue)
         {
-            // the one think we want to do is store the worldMatrix so that it does not have to be recalculated
+            // the one thing we want to do is store the worldMatrix so that it does not have to be recalculated
             _worldMatrix = base.worldMatrix();
         }
 
