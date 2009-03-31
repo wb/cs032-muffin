@@ -7,8 +7,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\effects.xnb</Output>
-      <Time>2009-03-07T01:53:07.6206714-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\effects.xnb</Output>
+      <Time>2009-03-31T15:23:55.33016-04:00</Time>
     </Item>
     <Item>
       <Source>Effects\simpleEffect.fx</Source>
@@ -16,8 +16,17 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\simpleEffect.xnb</Output>
-      <Time>2009-03-13T03:40:56.050228-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\simpleEffect.xnb</Output>
+      <Time>2009-03-31T15:23:55.192209-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\RenderEffect.fx</Source>
+      <Name>Effects\RenderEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\RenderEffect.xnb</Output>
+      <Time>2009-03-31T15:23:55.262161-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\rufbrick.jpg</Source>
@@ -25,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\rufbrick.xnb</Output>
-      <Time>2009-03-07T14:48:04.43825-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\rufbrick.xnb</Output>
+      <Time>2009-03-31T15:24:14.283443-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\streettexture.dds</Source>
@@ -34,17 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\streettexture.xnb</Output>
-      <Time>2009-03-07T15:03:47.891375-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\forklift.fbm\diff.tga</Source>
-      <Name>Models\forklift.fbm\diff</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.fbm\diff.xnb</Output>
-      <Time>2009-03-07T15:29:45.641375-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\streettexture.xnb</Output>
+      <Time>2009-03-31T15:24:14.049586-04:00</Time>
     </Item>
     <Item>
       <Source>Models\chasis.jpg</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis.xnb</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis.xnb</Output>
+      <Time>2009-03-31T15:24:10.05016-04:00</Time>
     </Item>
     <Item>
       <Source>Models\chasis_a.jpg</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis_a.xnb</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\chasis_a.xnb</Output>
+      <Time>2009-03-31T15:24:10.160111-04:00</Time>
     </Item>
     <Item>
       <Source>Models\ruedas.jpg</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ruedas.xnb</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ruedas.xnb</Output>
+      <Time>2009-03-31T15:24:10.670015-04:00</Time>
     </Item>
     <Item>
       <Source>Models\ventanas.jpg</Source>
@@ -79,8 +79,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ventanas.xnb</Output>
-      <Time>2009-03-07T16:02:31.0945-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\ventanas.xnb</Output>
+      <Time>2009-03-31T15:24:10.556014-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\forklift.fbm\diff.tga</Source>
+      <Name>Models\forklift.fbm\diff</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.fbm\diff.xnb</Output>
+      <Time>2009-03-31T15:24:00.360445-04:00</Time>
     </Item>
     <Item>
       <Source>Models\HUD.png</Source>
@@ -88,8 +97,107 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\HUD.xnb</Output>
-      <Time>2009-03-07T15:29:45.657-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\HUD.xnb</Output>
+      <Time>2009-03-31T15:24:10.785018-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\wedge_p1_diff_v1.tga</Source>
+      <Name>Textures\wedge_p1_diff_v1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb</Output>
+      <Time>2009-03-31T15:24:14.173527-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\spotlight.jpg</Source>
+      <Name>Textures\spotlight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight.xnb</Output>
+      <Time>2009-03-31T15:24:14.392443-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\spotlight2.jpg</Source>
+      <Name>Textures\spotlight2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight2.xnb</Output>
+      <Time>2009-03-31T15:24:14.505443-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\corner\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-31T15:24:01.837301-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\corner\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-31T15:24:01.952307-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\flat\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-31T15:24:01.045445-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\flat\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\flat\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-31T15:24:01.162386-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\inverted_corner\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-31T15:24:02.608159-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\inverted_corner\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-31T15:24:02.722158-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Groundcover_Sand_Smooth.jpg</Source>
+      <Name>Models\wedge\Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-31T15:24:03.555017-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\wedge\Vegetation_Grass_Artificial.jpg</Source>
+      <Name>Models\wedge\Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-31T15:24:03.671016-04:00</Time>
     </Item>
     <Item>
       <Source>Models\lamppost.x</Source>
@@ -97,11 +205,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\lamppost.xnb</Output>
-      <Time>2009-03-07T15:14:48.672625-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\lamppost.xnb</Output>
+      <Time>2009-03-31T15:24:10.97902-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\lamppost_0.xml</Key>
-        <Value>2009-03-07T16:05:12.985125-05:00</Value>
+        <Value>2009-03-31T15:27:10.783276-04:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -110,30 +218,121 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\car.xnb</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\car.xnb</Output>
+      <Time>2009-03-31T15:24:11.450876-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\car_0.xml</Key>
-        <Value>2009-03-07T16:05:13.282-05:00</Value>
+        <Value>2009-03-31T15:27:11.510144-04:00</Value>
       </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\forklift.FBX</Source>
+      <Name>Models\forklift</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Parameters>
+        <Data Key="GenerateTangentFrames">True</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.xnb</Output>
+      <Time>2009-03-31T15:24:10.439017-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\forklift_0.xml</Key>
+        <Value>2009-03-31T15:27:14.986705-04:00</Value>
+      </Dependency>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\22EE3655\forklift.fbm\diff_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\p1_wedge.fbx</Source>
+      <Name>Models\p1_wedge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\p1_wedge.xnb</Output>
+      <Time>2009-03-31T15:24:11.257876-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\p1_wedge_0.xml</Key>
+        <Value>2009-03-31T15:27:19.345066-04:00</Value>
+      </Dependency>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\corner.fbx</Source>
+      <Name>Models\corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner.xnb</Output>
+      <Time>2009-03-31T15:24:11.062016-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\corner_0.xml</Key>
+        <Value>2009-03-31T15:27:20.88985-04:00</Value>
+      </Dependency>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\flat.fbx</Source>
+      <Name>Models\flat</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat.xnb</Output>
+      <Time>2009-03-31T15:24:10.866015-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\flat_0.xml</Key>
+        <Value>2009-03-31T15:27:22.692562-04:00</Value>
+      </Dependency>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\inverted_corner.fbx</Source>
+      <Name>Models\inverted_corner</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
+      <Time>2009-03-31T15:24:11.132994-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\inverted_corner_0.xml</Key>
+        <Value>2009-03-31T15:27:24.512274-04:00</Value>
+      </Dependency>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\wedge.fbx</Source>
+      <Name>Models\wedge</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge.xnb</Output>
+      <Time>2009-03-31T15:24:11.332872-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\wedge_0.xml</Key>
+        <Value>2009-03-31T15:27:26.301108-04:00</Value>
+      </Dependency>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\lamppost.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\lamppost_0.xml</Output>
-      <Time>2009-03-07T15:14:48.672625-05:00</Time>
+      <Time>2009-03-31T15:24:10.97902-04:00</Time>
     </Item>
     <Item>
       <Source>Models\car.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\car_0.xml</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Time>2009-03-31T15:24:11.450876-04:00</Time>
     </Item>
     <Item>
       <Source>Models\CHASIS.JPG</Source>
@@ -147,8 +346,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_0.xnb</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_0.xnb</Output>
+      <Time>2009-03-31T15:24:10.05016-04:00</Time>
     </Item>
     <Item>
       <Source>Models\VENTANAS.JPG</Source>
@@ -162,8 +361,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb</Output>
-      <Time>2009-03-07T16:02:31.0945-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\VENTANAS_0.xnb</Output>
+      <Time>2009-03-31T15:24:10.556014-04:00</Time>
     </Item>
     <Item>
       <Source>Models\CHASIS_A.JPG</Source>
@@ -177,8 +376,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\CHASIS_A_0.xnb</Output>
+      <Time>2009-03-31T15:24:10.160111-04:00</Time>
     </Item>
     <Item>
       <Source>Models\RUEDAS.JPG</Source>
@@ -192,18 +391,18 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb</Output>
-      <Time>2009-03-07T16:02:31.078875-05:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\RUEDAS_0.xnb</Output>
+      <Time>2009-03-31T15:24:10.670015-04:00</Time>
     </Item>
     <Item>
       <Source>Models\forklift.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\forklift_0.xml</Output>
-      <Time>2009-03-07T15:29:45.641375-05:00</Time>
+      <Time>2009-03-31T15:24:10.439017-04:00</Time>
     </Item>
     <Item>
-      <Source>obj\x86\Debug\FBX\59A5314D\forklift.fbm\diff.tga</Source>
+      <Source>obj\x86\Debug\FBX\22EE3655\forklift.fbm\diff.tga</Source>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Parameters>
@@ -214,38 +413,15 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\59A5314D\forklift.fbm\diff_0.xnb</Output>
-      <Time>2009-03-07T16:05:14.37575-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\wedge_p1_diff_v1.tga</Source>
-      <Name>Textures\wedge_p1_diff_v1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\wedge_p1_diff_v1.xnb</Output>
-      <Time>2009-03-07T16:13:46.516375-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\p1_wedge.fbx</Source>
-      <Name>Models\p1_wedge</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\p1_wedge.xnb</Output>
-      <Time>2009-03-07T16:12:05.172625-05:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\p1_wedge_0.xml</Key>
-        <Value>2009-03-07T16:14:59.422625-05:00</Value>
-      </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb</Request>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\22EE3655\forklift.fbm\diff_0.xnb</Output>
+      <Time>2009-03-31T15:27:14.663711-04:00</Time>
     </Item>
     <Item>
       <Source>Models\p1_wedge.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\p1_wedge_0.xml</Output>
-      <Time>2009-03-07T16:12:05.172625-05:00</Time>
+      <Time>2009-03-31T15:24:11.257876-04:00</Time>
     </Item>
     <Item>
       <Source>textures\wedge_p1_diff_v1.tga</Source>
@@ -259,191 +435,15 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb</Output>
-      <Time>2009-03-07T16:13:46.516375-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\spotlight.jpg</Source>
-      <Name>Textures\spotlight</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight.xnb</Output>
-      <Time>2009-03-08T07:36:05.01025-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\spotlight2.jpg</Source>
-      <Name>Textures\spotlight2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Textures\spotlight2.xnb</Output>
-      <Time>2009-03-08T23:59:10.9165-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\forklift.FBX</Source>
-      <Name>Models\forklift</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Parameters>
-        <Data Key="GenerateTangentFrames">True</Data>
-      </Parameters>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\forklift.xnb</Output>
-      <Time>2009-03-07T15:29:45.641375-05:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\forklift_0.xml</Key>
-        <Value>2009-03-07T16:05:14.657-05:00</Value>
-      </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\FBX\59A5314D\forklift.fbm\diff_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Effects\RenderEffect.fx</Source>
-      <Name>Effects\RenderEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Effects\RenderEffect.xnb</Output>
-      <Time>2009-03-14T16:41:46.6611659-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\corner\Groundcover_Sand_Smooth.jpg</Source>
-      <Name>Models\corner\Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth.xnb</Output>
-      <Time>2009-03-19T01:16:26.40625-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\corner\Vegetation_Grass_Artificial.jpg</Source>
-      <Name>Models\corner\Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\flat\Groundcover_Sand_Smooth.jpg</Source>
-      <Name>Models\flat\Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\flat\Vegetation_Grass_Artificial.jpg</Source>
-      <Name>Models\flat\Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\inverted_corner\Groundcover_Sand_Smooth.jpg</Source>
-      <Name>Models\inverted_corner\Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\inverted_corner\Vegetation_Grass_Artificial.jpg</Source>
-      <Name>Models\inverted_corner\Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\wedge\Groundcover_Sand_Smooth.jpg</Source>
-      <Name>Models\wedge\Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth.xnb</Output>
-      <Time>2009-03-19T01:16:26.4375-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\wedge\Vegetation_Grass_Artificial.jpg</Source>
-      <Name>Models\wedge\Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial.xnb</Output>
-      <Time>2009-03-19T01:16:26.4375-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\corner.fbx</Source>
-      <Name>Models\corner</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\corner_0.xml</Key>
-        <Value>2009-03-19T05:05:00.2743829-04:00</Value>
-      </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Models\flat.fbx</Source>
-      <Name>Models\flat</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\flat_0.xml</Key>
-        <Value>2009-03-19T05:05:00.7118829-04:00</Value>
-      </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Models\inverted_corner.fbx</Source>
-      <Name>Models\inverted_corner</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\inverted_corner_0.xml</Key>
-        <Value>2009-03-19T05:05:01.0243829-04:00</Value>
-      </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Request>
-    </Item>
-    <Item>
-      <Source>Models\wedge.fbx</Source>
-      <Name>Models\wedge</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge.xnb</Output>
-      <Time>2009-03-19T01:16:26.4375-04:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\wedge_0.xml</Key>
-        <Value>2009-03-19T05:05:01.2587579-04:00</Value>
-      </Dependency>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Request>
-      <Request>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\textures\wedge_p1_diff_v1_0.xnb</Output>
+      <Time>2009-03-31T15:24:14.173527-04:00</Time>
     </Item>
     <Item>
       <Source>Models\corner.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\corner_0.xml</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Time>2009-03-31T15:24:11.062016-04:00</Time>
     </Item>
     <Item>
       <Source>Models\corner\Vegetation_Grass_Artificial.jpg</Source>
@@ -457,8 +457,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-31T15:24:01.952307-04:00</Time>
     </Item>
     <Item>
       <Source>Models\corner\Groundcover_Sand_Smooth.jpg</Source>
@@ -472,15 +472,15 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.40625-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\corner\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-31T15:24:01.837301-04:00</Time>
     </Item>
     <Item>
       <Source>Models\flat.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\flat_0.xml</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Time>2009-03-31T15:24:10.866015-04:00</Time>
     </Item>
     <Item>
       <Source>Models\flat\Vegetation_Grass_Artificial.jpg</Source>
@@ -494,8 +494,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-31T15:24:01.162386-04:00</Time>
     </Item>
     <Item>
       <Source>Models\flat\Groundcover_Sand_Smooth.jpg</Source>
@@ -509,15 +509,15 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\flat\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-31T15:24:01.045445-04:00</Time>
     </Item>
     <Item>
       <Source>Models\inverted_corner.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\inverted_corner_0.xml</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Time>2009-03-31T15:24:11.132994-04:00</Time>
     </Item>
     <Item>
       <Source>Models\inverted_corner\Groundcover_Sand_Smooth.jpg</Source>
@@ -531,8 +531,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-31T15:24:02.608159-04:00</Time>
     </Item>
     <Item>
       <Source>Models\inverted_corner\Vegetation_Grass_Artificial.jpg</Source>
@@ -546,15 +546,15 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.421875-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\inverted_corner\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-31T15:24:02.722158-04:00</Time>
     </Item>
     <Item>
       <Source>Models\wedge.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\wedge_0.xml</Output>
-      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+      <Time>2009-03-31T15:24:11.332872-04:00</Time>
     </Item>
     <Item>
       <Source>Models\wedge\Groundcover_Sand_Smooth.jpg</Source>
@@ -568,8 +568,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-31T15:24:03.555017-04:00</Time>
     </Item>
     <Item>
       <Source>Models\wedge\Vegetation_Grass_Artificial.jpg</Source>
@@ -583,43 +583,52 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Output>
-      <Time>2009-03-19T01:16:26.4375-04:00</Time>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-31T15:24:03.671016-04:00</Time>
+    </Item>
+    <Item>
+      <Source>penguin.jpg</Source>
+      <Name>penguin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\penguin.xnb</Output>
+      <Time>2009-03-31T16:08:46.59638-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\</RootDirectory>
+      <LoggerRootDirectory>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\</LoggerRootDirectory>
+      <IntermediateDirectory>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2008-10-10T18:42:32-04:00</Value>
+        <Value>2008-10-10T17:42:32-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2008-10-10T18:43:28-04:00</Value>
+        <Value>2008-10-10T17:43:28-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2008-10-10T18:43:18-04:00</Value>
+        <Value>2008-10-10T17:43:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2008-10-10T18:48:18-04:00</Value>
+        <Value>2008-10-10T17:48:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2008-10-10T18:48:50-04:00</Value>
+        <Value>2008-10-10T17:48:50-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2009-01-21T21:57:47.390625-05:00</Value>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-03-13T03:08:02.2952775-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

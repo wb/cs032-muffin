@@ -89,9 +89,12 @@ namespace _3D_Renderer
         DepthStencilBuffer shadowDSB;
         DepthStencilBuffer standardDSB;
         Texture2D[] shadowMap = new Texture2D[3];
+        GameComponent _input;
+        public bool _showMenu = false;
 
         public Renderer()
         {
+            GameComponent menu = new Menu(this);
             //renderer settings
             graphics = new GraphicsDeviceManager(this);
             graphics.IsFullScreen = false;
@@ -106,6 +109,12 @@ namespace _3D_Renderer
             m_model_textures = new List<Texture2D[]>();
             this.IsMouseVisible = true;
             Content.RootDirectory = "Content";
+            _input = new InputHandler(this);
+
+            _input.UpdateOrder = 0;
+            menu.UpdateOrder = 1;
+            Components.Add(menu);
+            Components.Add(_input);
 
             //XML parser
             if (File.Exists("Content\\Levels\\level1.xml"))
@@ -118,6 +127,11 @@ namespace _3D_Renderer
             {
                 Console.WriteLine("The file " + "Content\\Levels\\level1.xml" + " was not found");
             }
+        }
+
+        public void SetMenuVisible(bool whatever)
+        {
+            _showMenu = whatever;
         }
 
         void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)

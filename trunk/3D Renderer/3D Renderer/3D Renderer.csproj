@@ -84,9 +84,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Input.cs" />
     <Compile Include="GameCamera.cs" />
     <Compile Include="GameConstants.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="InputBindings.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="MouseHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

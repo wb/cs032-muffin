@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>RootNode</Name>
     <Identity>
-      <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\forklift.FBX</SourceFilename>
+      <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\forklift.FBX</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -54,7 +54,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>20 - Default</Name>
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\forklift.FBX</SourceFilename>
+        <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\forklift.FBX</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -75,6 +75,6 @@
     </Resource>
   </Resources>
   <ExternalReferences>
-    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\FBX\59A5314D\forklift.fbm\diff.tga</ExternalReference>
+    <ExternalReference ID="#External1" TargetType="Graphics:TextureContent">..\FBX\22EE3655\forklift.fbm\diff.tga</ExternalReference>
   </ExternalReferences>
 </XnaContent>
