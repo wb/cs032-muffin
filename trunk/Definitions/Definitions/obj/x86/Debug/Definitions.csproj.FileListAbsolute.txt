@@ -1,0 +1,6 @@
+C:\Users\Walter\Documents\Visual Studio 2008\Projects\Definitions\Definitions\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Walter\Documents\Visual Studio 2008\Projects\Definitions\Definitions\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Walter\Documents\Visual Studio 2008\Projects\Definitions\Definitions\bin\x86\Debug\Definitions.exe
+C:\Users\Walter\Documents\Visual Studio 2008\Projects\Definitions\Definitions\bin\x86\Debug\Definitions.pdb
+C:\Users\Walter\Documents\Visual Studio 2008\Projects\Definitions\Definitions\obj\x86\Debug\Definitions.exe
+C:\Users\Walter\Documents\Visual Studio 2008\Projects\Definitions\Definitions\obj\x86\Debug\Definitions.pdb
