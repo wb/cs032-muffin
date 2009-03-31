@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>x3ds_Box01</Name>
     <Identity>
-      <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
+      <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
       <SourceTool>XImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 -21.2638435 0 1.04870987 1</Transform>
@@ -50,7 +50,7 @@
   <Resources>
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
+        <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -63,7 +63,7 @@
     </Resource>
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
+        <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -76,7 +76,7 @@
     </Resource>
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
+        <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\lamppost.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>

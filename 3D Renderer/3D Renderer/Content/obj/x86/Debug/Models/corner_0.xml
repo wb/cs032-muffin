@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>Model</Name>
     <Identity>
-      <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\corner.fbx</SourceFilename>
+      <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\corner.fbx</SourceFilename>
       <SourceTool>FbxImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -49,7 +49,7 @@
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Name>Vegetation_Grass_Artificial</Name>
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\corner.fbx</SourceFilename>
+        <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\corner.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -71,7 +71,7 @@
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Name>Groundcover_Sand_Smooth</Name>
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\3D Renderer\3D Renderer\Content\Models\corner.fbx</SourceFilename>
+        <SourceFilename>\\win.cs.brown.edu\dfs\home\kyanagaw\My Documents\Visual Studio 2008\Projects\cs032-muffin\3D Renderer\3D Renderer\Content\Models\corner.fbx</SourceFilename>
         <SourceTool>FbxImporter</SourceTool>
       </Identity>
       <OpaqueData>
