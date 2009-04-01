@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace Definitions
 {
-    class GameConstants
+    public class GameConstants
     {
         public const float NearClip = 1.0f;
         public const float FarClip = 2000.0f;

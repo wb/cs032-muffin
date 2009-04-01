@@ -69,6 +69,19 @@ namespace Definitions
         }
 
         /*
+         * This method is used to set the input to a movable object
+         * It is up to the physics engine to calculate a force vector that resolves this input
+         * 
+         * Since it is virtual, descendant classes can override this to handle it however they need to
+         * And something immobile (like terrain), can just leave it empty so input is ignored if any happens
+         * to get passed to it
+         * */
+
+        public virtual void controlInput(Vector2 dir, bool jump)
+        {
+        }
+
+        /*
          * This method is used to update the bounding box whenever the object has moved.
          * */
 
