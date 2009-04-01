@@ -22,8 +22,8 @@ namespace Definitions
          * This constructor makes a few assumptions.  Namely that an AIObject is an enemy.
          * */
 
-        public AIObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float mass) :
-            base(model, ModelType.ENEMY, modelName, position, rotation, false, dimensions, mass)
+        public AIObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float mass, float scale) :
+            base(model, ModelType.ENEMY, modelName, position, rotation, false, dimensions, mass, scale)
         {
             // constructor contents here
         }

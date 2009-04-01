@@ -24,8 +24,8 @@ namespace Definitions
          * This constructor makes a few assumptions about a PlayerObject - namely that it is of ModelType human.
          * */
 
-        public PlayerObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float mass) :
-            base(model, ModelType.HUMAN, modelName, position, rotation, false, dimensions, mass)
+        public PlayerObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float mass, float scale) :
+            base(model, ModelType.HUMAN, modelName, position, rotation, false, dimensions, mass, scale)
         {
             // constructor contents here
         }

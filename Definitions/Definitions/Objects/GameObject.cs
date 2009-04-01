@@ -25,7 +25,7 @@ namespace Definitions
         private Model _model;
         private ModelType _modelType;
         private Material _material;
-        private float _mass;
+        private float _mass, _scale;
         private ModelName _modelName;
         private Vector3 _position, _previousPosition, _velocity, _acceleration, _force, _centerOfMass, _angularVelocity, _angularAcceleration, _torque, _dimensions;
         private Quaternion _rotation;
@@ -37,7 +37,7 @@ namespace Definitions
          * This is the constructor.  
          * */
 
-        public GameObject(Model model, ModelType modelType, ModelName modelName, Vector3 position, Quaternion rotation, Boolean locked, Vector3 dimensions, float mass)
+        public GameObject(Model model, ModelType modelType, ModelName modelName, Vector3 position, Quaternion rotation, Boolean locked, Vector3 dimensions, float mass, float scale)
         {
             // set the values that have been passed in
             _model = model;
@@ -48,6 +48,7 @@ namespace Definitions
             _locked = locked;
             _dimensions = dimensions;
             _mass = mass;
+            _scale = scale;
 
             //initialize rest of the parameters to their defaults
             _velocity = new Vector3();
@@ -109,7 +110,8 @@ namespace Definitions
 
         public Matrix worldMatrix()
         {
-            return Matrix.CreateFromQuaternion(_rotation) *
+            return Matrix.CreateScale(_scale) *
+                   Matrix.CreateFromQuaternion(_rotation) *
                    Matrix.CreateTranslation(_position);
         }
 
@@ -292,6 +294,12 @@ namespace Definitions
         {
             get { return _previousPosition; }
             set { _previousPosition = value; }
+        }
+
+        public float scale
+        {
+            get { return _scale; }
+            set { _scale = value; }
         }
 
         #endregion
