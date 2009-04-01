@@ -40,5 +40,10 @@ namespace Definitions
         {
             return _worldMatrix;
         }
+
+        // These represent the (x,y) location of this terrain object in the world so the AI can easily figure out
+        // which tiles are adjacent to which
+        public int gridX { get; set; }
+        public int gridY { get; set; }
     }
 }
