@@ -167,6 +167,8 @@ namespace Muffin
                     addAIObject(o as AIObject);
                 else if (o is PlayerObject)
                     addPlayerObject(o as PlayerObject);
+                else
+                    _allObjects.Add(o);
             }
         }
         
