@@ -91,6 +91,8 @@ namespace Muffin.Components.Renderer
         DepthStencilBuffer standardDSB;
         Texture2D[] shadowMap = new Texture2D[3];
 
+        bool isLoaded = false, isInit = false;
+
         public Renderer(MuffinGame game) : base(game)
         {
             //renderer settings
@@ -183,7 +185,6 @@ namespace Muffin.Components.Renderer
             //load textures
             spotlightTexture = m_game.Content.Load<Texture2D>("Textures/spotlight");
             //load models
-            carModel = LoadModel("car", out carTexture);
             //DepthStencil Buffer and Corresponding RenderTarget for shadowMap
             PresentationParameters pp = device.PresentationParameters;
             SurfaceFormat format = device.PresentationParameters.BackBufferFormat;
@@ -237,11 +238,13 @@ namespace Muffin.Components.Renderer
 
             SetUpCamera();
             SetUpLights();
+
+            isLoaded = true;
         }
 
         private void SetUpCamera()
         {
-            camera = new GameCamera(new Vector3(-40, 25, 35), new Vector3(0, 0, 0), device.Viewport.AspectRatio);
+            camera = new GameCamera(12*new Vector3(-20, 12, -20), new Vector3(0, 0, 0), device.Viewport.AspectRatio);
         }
 
         private void SetUpLights() {
@@ -328,6 +331,9 @@ namespace Muffin.Components.Renderer
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
+            if(!isLoaded) {
+                return;
+            }
             
             gstate = GamePad.GetState(PlayerIndex.One);
             if(gstate.IsConnected){
@@ -389,6 +395,11 @@ namespace Muffin.Components.Renderer
         Matrix ModelRot = Matrix.CreateFromYawPitchRoll(3.0f * MathHelper.Pi / 2.0f, 0.0f, 0.0f);
 
         public override void Draw (GameTime gameTime) {
+
+            if (!isLoaded) {
+                return;
+            }
+
             //set DSB to the shadow DSB
             device.DepthStencilBuffer = shadowDSB;
 
@@ -419,14 +430,11 @@ namespace Muffin.Components.Renderer
             device.RenderState.AlphaBlendEnable = false;
 
             foreach (GameObject o in m_objects) {
-                Matrix worldMatrix = Matrix.CreateFromYawPitchRoll(o.rotation.Y, o.rotation.X, 0.0f) *
-                                     Matrix.CreateTranslation(o.position) *
-                                     Matrix.CreateScale(0.20f) *
-                                     Matrix.CreateTranslation(new Vector3(-45,-4.7f,-45));
+                Matrix worldMatrix = o.worldMatrix();
                 DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique, index);
             }
             Matrix forklift1Matrix = Matrix.CreateScale(.045f) * ModelRot * Matrix.CreateTranslation(ModelPos);
-            DrawModel(m_models.ElementAt((int)ModelName.BOX), forkLiftTexture, forklift1Matrix, technique, index);
+            //DrawModel(m_models.ElementAt((int)ModelName.BOX), forkLiftTexture, forklift1Matrix, technique, index);
         }
 
         private void DrawModel(Model model, Texture2D[] textures, Matrix wMatrix, string technique, int index)

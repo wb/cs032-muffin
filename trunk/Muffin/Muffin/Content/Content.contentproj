@@ -34,29 +34,6 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-<<<<<<< .mine
-  <ItemGroup>
-    <Compile Include="Effects\Bitmap1.bmp">
-      <Name>Bitmap1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\Bitmap1.bmp">
-      <Name>Bitmap1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Textures\Bitmap1.bmp">
-      <Name>Bitmap1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-=======
   <ItemGroup>
     <Compile Include="Effects\effects.fx">
       <Name>effects</Name>
@@ -75,6 +52,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\box.fbx">
+      <Name>box</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <Compile Include="Models\corner.fbx">
       <Name>corner</Name>
       <Importer>FbxImporter</Importer>
@@ -97,6 +79,80 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\box\Wood_Floor_Parquet.jpg">
+      <Name>Wood_Floor_Parquet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\box\Wood_Lumber_ButtJoined.jpg">
+      <Name>Wood_Lumber_ButtJoined</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\corner\Groundcover_Sand_Smooth.jpg">
+      <Name>Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\corner\Vegetation_Grass_Artificial.jpg">
+      <Name>Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\flat\Groundcover_Sand_Smooth.jpg">
+      <Name>Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\flat\Vegetation_Grass_Artificial.jpg">
+      <Name>Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\inverted_corner\Groundcover_Sand_Smooth.jpg">
+      <Name>Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\inverted_corner\Vegetation_Grass_Artificial.jpg">
+      <Name>Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\wedge\Groundcover_Sand_Smooth.jpg">
+      <Name>Groundcover_Sand_Smooth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\wedge\Vegetation_Grass_Artificial.jpg">
+      <Name>Vegetation_Grass_Artificial</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Levels\level1.xml">
+      <Name>level1</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Levels\level2.xml">
+      <Name>level2</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Textures\spotlight.jpg">
       <Name>spotlight</Name>
       <Importer>TextureImporter</Importer>
@@ -108,14 +164,6 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\corner\" />
-    <Folder Include="Models\flat\" />
-    <Folder Include="Models\inverted_corner\" />
-    <Folder Include="Models\wedge\" />
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
->>>>>>> .r60
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v3.0\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
