@@ -94,6 +94,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MuffinGame.cs" />
+    <Compile Include="Renderer\GameCamera.cs" />
+    <Compile Include="Renderer\MouseHandler.cs" />
+    <Compile Include="Renderer\Renderer.cs" />
+    <Compile Include="XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
