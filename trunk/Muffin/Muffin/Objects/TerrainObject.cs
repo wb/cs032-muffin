@@ -24,11 +24,13 @@ namespace Definitions
          * such as its mass, model type, and the fact that it is locked.
          * */
 
-        public TerrainObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float scale) :
+        public TerrainObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float scale, int x, int y) :
             base(model, ModelType.TERRAIN, modelName, position, rotation, true, dimensions, float.MaxValue, scale)
         {
             // the one thing we want to do is store the worldMatrix so that it does not have to be recalculated
             _worldMatrix = base.worldMatrix();
+            gridX = x;
+            gridY = y;
         }
 
         /*
