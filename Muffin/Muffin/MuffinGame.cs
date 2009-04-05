@@ -1,6 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
+using System.ComponentModel;
+using System.Data;
+using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -32,6 +37,12 @@ namespace Muffin
         // Stuff that is being updated in the current cycle
         private List<GameObject> _updatingObjects;
 
+        //GameComponents
+        GameComponent _renderer;
+
+        // Class for loading levels
+        XMLParser _xmlParser;
+
         // Flags for what's in _updatedObjects  (so you don't have to search it for specific types of objects)
         private bool _terrainChanged;
         private bool _AIChanged;
@@ -54,6 +65,10 @@ namespace Muffin
             _allTerrain = new List<TerrainObject>();
             _allAIObjects = new List<AIObject>();
             _allPlayers = new List<PlayerObject>();
+
+            _renderer = new Renderer(this);
+            Components.Add(_renderer);
+            _renderer.UpdateOrder = 0;
         }
 
         /// <summary>
@@ -78,7 +93,7 @@ namespace Muffin
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            LoadLevel();
         }
 
         /// <summary>
@@ -123,17 +138,27 @@ namespace Muffin
 
         protected void LoadLevel()
         {
+            // load the xml file corresponding to the current level
+            if (File.Exists("Content\\Levels\\" + GameConstants.CurrentLevel + ".xml"))
+            {
+                XmlDocument document = new XmlDocument();
+                document.Load("Content\\Levels\\" + GameConstants.CurrentLevel + ".xml");
+                _xmlParser = new XMLParser(document);
+            }
+            else
+            {
+                Console.WriteLine("The file " + "Content\\Levels\\" + GameConstants.CurrentLevel + ".xml" + " was not found");
+            }
+
             _allObjects.Clear();
             _allTerrain.Clear();
             _allAIObjects.Clear();
             _allPlayers.Clear();
 
-            List<GameObject> objs;
-            // The component responsible for loading from the map should return a List of objects to this function
-            // Something like:
-            // objs = something.LoadLevel();
+            // Load the current level
+            _xmlParser.loadLevel(_allObjects, null);
 
-            foreach (GameObject o in objs)
+            foreach (GameObject o in _allObjects)
             {
                 if (o is TerrainObject)
                     addTerrainObject(o as TerrainObject);
