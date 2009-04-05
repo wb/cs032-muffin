@@ -64,9 +64,9 @@ namespace _3D_Renderer
                 Console.WriteLine(pos.ToString());
                     Console.WriteLine(rotation.ToString());
                         
-
+                // I DID THAT - quaternion of 0s
                 //add the object to the array of active objects
-                m_objects.Add(new GameObject((Model)m_models.ElementAt((int)name), name, ModelType.TERRAIN, pos, rotation));
+                m_objects.Add(new GameObject((Model)m_models.ElementAt((int)name),ModelType.TERRAIN, name, pos, rotation, true, new Vector3(60,24,60)));
             } else {
                 Console.WriteLine("Bad parse input");
             }

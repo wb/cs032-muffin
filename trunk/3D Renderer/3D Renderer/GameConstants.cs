@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace _3D_Renderer
 {
-    public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, FORKLIFT, NONE };
+    public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, FORKLIFT, BOX, NONE };
     public enum ModelType { TERRAIN, ENEMY, OBJECT, HUMAN };
 
     class GameConstants
