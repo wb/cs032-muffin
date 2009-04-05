@@ -1,2 +1,3 @@
 C:\Documents and Settings\Kevin Doo\My Documents\Visual Studio 2008\Projects\WindowsGame1\WindowsGame1\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\dev\cs032-muffin\WindowsGame1\WindowsGame1\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+Z:\cs032-muffin\WindowsGame1\WindowsGame1\Content\obj\x86\Debug\ResolveAssemblyReference.cache

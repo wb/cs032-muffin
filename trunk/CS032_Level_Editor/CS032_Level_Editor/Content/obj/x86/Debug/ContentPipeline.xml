@@ -7,14 +7,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\corner.xnb</Output>
-      <Time>2009-02-20T18:40:22.1577498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\corner.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\corner_0.xml</Key>
-        <Value>2009-03-19T01:14:36.825-04:00</Value>
+        <Value>2009-03-24T00:49:29-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\flat.fbx</Source>
@@ -22,14 +22,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\flat.xnb</Output>
-      <Time>2009-02-20T18:41:23.4497498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\flat.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\flat_0.xml</Key>
-        <Value>2009-03-19T01:14:37.085-04:00</Value>
+        <Value>2009-03-24T00:49:30-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\inverted_corner.fbx</Source>
@@ -37,14 +37,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
-      <Time>2009-02-20T18:42:09.0007498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\inverted_corner.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\inverted_corner_0.xml</Key>
-        <Value>2009-03-19T01:14:37.116-04:00</Value>
+        <Value>2009-03-24T00:49:30-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\wedge.fbx</Source>
@@ -52,14 +52,14 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\wedge.xnb</Output>
-      <Time>2009-02-20T18:42:06.7117498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\wedge.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\wedge_0.xml</Key>
-        <Value>2009-03-19T01:14:37.147-04:00</Value>
+        <Value>2009-03-24T00:49:30-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\corner_selected.fbx</Source>
@@ -67,13 +67,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\corner_selected.xnb</Output>
-      <Time>2009-02-20T23:33:00.3867498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\corner_selected.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\corner_selected_0.xml</Key>
-        <Value>2009-03-19T01:14:37.171-04:00</Value>
+        <Value>2009-03-24T00:49:30-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\flat_selected.fbx</Source>
@@ -81,13 +81,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\flat_selected.xnb</Output>
-      <Time>2009-02-20T23:32:57.9707498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\flat_selected.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\flat_selected_0.xml</Key>
-        <Value>2009-03-19T01:14:37.202-04:00</Value>
+        <Value>2009-03-24T00:49:30-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\inverted_corner_selected.fbx</Source>
@@ -95,13 +95,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\inverted_corner_selected.xnb</Output>
-      <Time>2009-02-20T23:32:54.8347498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\inverted_corner_selected.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\inverted_corner_selected_0.xml</Key>
-        <Value>2009-03-19T01:14:37.227-04:00</Value>
+        <Value>2009-03-24T00:49:30-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Models\wedge_selected.fbx</Source>
@@ -109,13 +109,13 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\wedge_selected.xnb</Output>
-      <Time>2009-02-20T23:32:52.1787498-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Models\wedge_selected.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\wedge_selected_0.xml</Key>
-        <Value>2009-03-19T01:14:37.252-04:00</Value>
+        <Value>2009-03-24T00:49:30-04:00</Value>
       </Dependency>
-      <Request>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
+      <Request>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Request>
     </Item>
     <Item>
       <Source>Textures\Groundcover_Sand_Smooth.jpg</Source>
@@ -123,8 +123,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth.xnb</Output>
-      <Time>2009-02-20T18:23:39-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
@@ -132,8 +132,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial.xnb</Output>
-      <Time>2009-02-20T18:23:39-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\white.jpg</Source>
@@ -141,15 +141,15 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\white.xnb</Output>
-      <Time>2009-02-21T22:37:35.7359772-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\white.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\corner.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\corner_0.xml</Output>
-      <Time>2009-02-20T18:40:22.1577498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Vegetation_Grass_Artificial.jpg</Source>
@@ -163,8 +163,8 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Output>
-      <Time>2009-02-20T18:23:39-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Vegetation_Grass_Artificial_0.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Textures\Groundcover_Sand_Smooth.jpg</Source>
@@ -178,92 +178,92 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Output>
-      <Time>2009-02-20T18:23:39-05:00</Time>
+      <Output>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\Textures\Groundcover_Sand_Smooth_0.xnb</Output>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\flat.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\flat_0.xml</Output>
-      <Time>2009-02-20T18:41:23.4497498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\inverted_corner.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\inverted_corner_0.xml</Output>
-      <Time>2009-02-20T18:42:09.0007498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\wedge.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\wedge_0.xml</Output>
-      <Time>2009-02-20T18:42:06.7117498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\corner_selected.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\corner_selected_0.xml</Output>
-      <Time>2009-02-20T23:33:00.3867498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\flat_selected.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\flat_selected_0.xml</Output>
-      <Time>2009-02-20T23:32:57.9707498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\inverted_corner_selected.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\inverted_corner_selected_0.xml</Output>
-      <Time>2009-02-20T23:32:54.8347498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <Item>
       <Source>Models\wedge_selected.fbx</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\wedge_selected_0.xml</Output>
-      <Time>2009-02-20T23:32:52.1787498-05:00</Time>
+      <Time>2009-03-24T00:41:45-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Walter\Documents\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\</RootDirectory>
+      <LoggerRootDirectory>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\</LoggerRootDirectory>
+      <IntermediateDirectory>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>Z:\cs032-muffin\CS032_Level_Editor\CS032_Level_Editor\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2008-10-10T18:42:32-04:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2008-10-10T17:42:32-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2008-10-10T18:43:28-04:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2008-10-10T17:43:28-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2008-10-10T18:43:18-04:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2008-10-10T17:43:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2008-10-10T18:48:18-04:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2008-10-10T17:48:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2008-10-10T18:48:50-04:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2008-10-10T17:48:50-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2009-01-30T03:18:09.74593-05:00</Value>
+        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-03-24T00:45:31.798875-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
