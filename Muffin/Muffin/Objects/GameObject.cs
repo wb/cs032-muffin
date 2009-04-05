@@ -22,16 +22,27 @@ namespace Definitions
          * get/set in the appropriate place at the end of this file.
          * */
 
-        private Model _model;
-        private ModelType _modelType;
-        private Material _material;
-        private float _mass, _scale;
-        private ModelName _modelName;
-        private Vector3 _position, _previousPosition, _velocity, _acceleration, _force, _centerOfMass, _angularVelocity, _angularAcceleration, _torque, _dimensions;
-        private Quaternion _rotation;
-        private Matrix _intertiaTensor;
-        private Boolean _locked, _active;
-        private BoundingBox _boundingBox;
+        private Model _model { get; set; }
+        private ModelType _modelType { get; set; }
+        private Material _material { get; set; }
+        private float _mass { get; set; }
+        private float _scale { get; set; }
+        private ModelName _modelName { get; }
+        private Vector3 _position { get; }
+        private Vector3 _previousPosition { get; set; }
+        private Vector3 _velocity { get; set; }
+        private Vector3 _acceleration { get; set; }
+        private Vector3 _force { get; set; }
+        private Vector3 _centerOfMass { get; set; }
+        private Vector3 _angularVelocity { get; set; }
+        private Vector3 _angularAcceleration { get; set; }
+        private Vector3 _torque { get; set; }
+        private Vector3 _dimensions { get; set; }
+        private Quaternion _rotation { get; set; }
+        private Matrix _intertiaTensor { get; set; }
+        private Boolean _locked { get; set; }
+        private Boolean _active { get; set; }
+        private BoundingBox _boundingBox { get; set; }
 
         /*
          * This is the constructor.  
