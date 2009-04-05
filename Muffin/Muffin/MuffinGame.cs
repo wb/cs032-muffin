@@ -43,8 +43,8 @@ namespace Muffin
 
         #endregion
 
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public GraphicsDeviceManager graphics;
+        public SpriteBatch spriteBatch;
 
         public MuffinGame()
         {

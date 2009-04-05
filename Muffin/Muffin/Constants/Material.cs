@@ -20,7 +20,7 @@ namespace Definitions
      * and bouncing (restitution).
      * */
 
-    class Material
+    public class Material
     {
         private float _staticFriction, _kineticFriction, _restitution;
 
