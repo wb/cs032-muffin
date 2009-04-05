@@ -4,3 +4,9 @@ C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Coll
 C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\bin\x86\Debug\Collision Library.pdb
 C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\obj\x86\Debug\Collision Library.dll
 C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\obj\x86\Debug\Collision Library.pdb
+C:\Users\Walter\Documents\cs032-muffin\Collision Library\bin\x86\Debug\Collision Library.dll
+C:\Users\Walter\Documents\cs032-muffin\Collision Library\bin\x86\Debug\Collision Library.pdb
+C:\Users\Walter\Documents\cs032-muffin\Collision Library\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Walter\Documents\cs032-muffin\Collision Library\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Walter\Documents\cs032-muffin\Collision Library\obj\x86\Debug\Collision Library.dll
+C:\Users\Walter\Documents\cs032-muffin\Collision Library\obj\x86\Debug\Collision Library.pdb

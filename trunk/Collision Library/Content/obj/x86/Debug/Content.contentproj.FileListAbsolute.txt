@@ -1,1 +1,2 @@
 C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Walter\Documents\cs032-muffin\Collision Library\Content\obj\x86\Debug\ResolveAssemblyReference.cache
