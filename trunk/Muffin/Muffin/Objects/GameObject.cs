@@ -27,8 +27,8 @@ namespace Definitions
         private Material _material { get; set; }
         private float _mass { get; set; }
         private float _scale { get; set; }
-        private ModelName _modelName { get; }
-        private Vector3 _position { get; }
+        private ModelName _modelName { get; set;  }
+        private Vector3 _position { get; set; }
         private Vector3 _previousPosition { get; set; }
         private Vector3 _velocity { get; set; }
         private Vector3 _acceleration { get; set; }
