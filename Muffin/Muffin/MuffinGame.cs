@@ -32,6 +32,15 @@ namespace Muffin
         // Stuff that is being updated in the current cycle
         private List<GameObject> _updatingObjects;
 
+        // Flags for what's in _updatedObjects  (so you don't have to search it for specific types of objects)
+        private bool _terrainChanged;
+        private bool _AIChanged;
+        private bool _playersChanged;
+
+        private bool _terrainChanging;
+        private bool _AIChanging;
+        private bool _playersChanging;
+
         #endregion
 
         GraphicsDeviceManager graphics;
@@ -51,6 +60,7 @@ namespace Muffin
         /// </summary>
         protected override void Initialize()
         {
+            _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging = false;
 
             base.Initialize();
         }
@@ -134,7 +144,14 @@ namespace Muffin
         protected void beginTick()
         {
             _updatedObjects = _updatingObjects;
+            _terrainChanged = _playersChanging;
+            _AIChanged = _AIChanging;
+            _playersChanged = _playersChanging;
+
             _updatingObjects = new List<GameObject>();
+            _AIChanging = false;
+            _playersChanging = false;
+            _playersChanging = false;
         }
 
         #endregion
@@ -165,6 +182,13 @@ namespace Muffin
         public void addUpdateObject(GameObject o)
         {
             _updatingObjects.Add(o);
+
+            if (o is TerrainObject)
+                _terrainChanging = true;
+            else if (o is AIObject)
+                _AIChanging = true;
+            else if (o is PlayerObject)
+                _playersChanging = true;
         }
 
         #endregion
