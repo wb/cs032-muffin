@@ -91,6 +91,14 @@
     <Compile Include="InputBindings.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MouseHandler.cs" />
+    <Compile Include="Physics\CollisionRegion.cs" />
+    <Compile Include="Physics\CollisionType.cs" />
+    <Compile Include="Physics\ForceGenerator.cs" />
+    <Compile Include="Physics\Gravity.cs" />
+    <Compile Include="Physics\Material.cs" />
+    <Compile Include="Physics\Physics.cs" />
+    <Compile Include="Physics\PhysicsEngine.cs" />
+    <Compile Include="Physics\PhysicsObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Renderer.cs" />
