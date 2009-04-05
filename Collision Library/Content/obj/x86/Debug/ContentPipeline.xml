@@ -6,15 +6,15 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\fadeputr\My Documents\Visual Studio 2008\Projects\Collision Library\Collision Library\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Walter\Documents\cs032-muffin\Collision Library\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Walter\Documents\cs032-muffin\Collision Library\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Walter\Documents\cs032-muffin\Collision Library\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Walter\Documents\cs032-muffin\Collision Library\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2009-03-05T20:50:14.515625-05:00</Value>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2009-01-30T03:18:09.74593-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
