@@ -205,19 +205,19 @@ namespace Definitions
 
         public ModelName modelName
         {
-            get { return modelName; }
-            set { modelName = value; }
+            get { return _modelName; }
+            set { _modelName = value; }
         }
 
-        public ModelType modeltype
+        public ModelType modelType
         {
-            get { return modeltype; }
-            set { modeltype = value; }
+            get { return _modelType; }
+            set { _modelType = value; }
         }
 
         public Model model {
-            get { return model; }
-            set { model = value; }
+            get { return _model; }
+            set { _model = value; }
         }
 
         public float mass
