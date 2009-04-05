@@ -21,8 +21,6 @@ float xSpecular;
 float xShininess;
 float xAmbient;
 
-bool xSolidBrown;
-
 struct SMapVertexToPixel
 {
     float4 Position      : POSITION;
@@ -203,9 +201,6 @@ SScenePixelToFrame ShadowedScenePixelShader(SSceneVertexToPixel PSIn)
 	//load textureMap
 	float4 displayColor = tex2D(TextureSampler, PSIn.TexCoords);
 	
-	if (xSolidBrown == true)
-         displayColor = float4(0.25f, 0.21f, 0.20f, 1);
-
 	for(int i = 0; i < num_lights; i++) {
 		//Output.Color += (displayColor * (diffuseLighting[i] + xAmbient + specularLighting[i]));
 		Output.Color += spotlightIntensity[i] * (displayColor * (diffuseLighting[i] + xAmbient + specularLighting[i]));
@@ -268,9 +263,6 @@ PixelToFrame OurFirstPixelShader(VertexToPixel PSIn)
 
     PixelToFrame Output = (PixelToFrame)0;    
     Output.Color = tex2D(TextureSampler, PSIn.TexCoords);
-    
-    if (xSolidBrown == true)
-         Output.Color = float4(0.25f, 0.21f, 0.20f, 1);
     
 	Output.Color = Output.Color * (diffuseLighting + xAmbient + specularLighting);
 	//Output.Color = Output.Color * (diffuseLighting + xAmbient);
