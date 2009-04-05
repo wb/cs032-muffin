@@ -135,7 +135,7 @@ namespace Muffin
         }
 
         # region Game-specific methods
-
+        /*
         protected void LoadLevel()
         {
             // load the xml file corresponding to the current level
@@ -157,7 +157,7 @@ namespace Muffin
 
             // Load the current level
             _xmlParser.loadLevel(_allObjects, null);
-
+            
             foreach (GameObject o in _allObjects)
             {
                 if (o is TerrainObject)
@@ -168,7 +168,7 @@ namespace Muffin
                     addPlayerObject(o as PlayerObject);
             }
         }
-
+        */
         // For any global game book-keeping that needs to be done at the begining of every cycle
         protected void beginTick()
         {
