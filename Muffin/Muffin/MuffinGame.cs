@@ -16,6 +16,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using Definitions;
+using Muffin.Components.Renderer;
 
 namespace Muffin
 {
@@ -66,6 +67,9 @@ namespace Muffin
             _allAIObjects = new List<AIObject>();
             _allPlayers = new List<PlayerObject>();
 
+
+            LoadLevel();
+
             _renderer = new Renderer(this);
             Components.Add(_renderer);
             _renderer.UpdateOrder = 0;
@@ -92,8 +96,6 @@ namespace Muffin
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            LoadLevel();
         }
 
         /// <summary>
@@ -127,8 +129,6 @@ namespace Muffin
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
@@ -156,9 +156,10 @@ namespace Muffin
             _allPlayers.Clear();
 
             // Load the current level
-            _xmlParser.loadLevel(_allObjects, null);
+            List<GameObject> objs = new List<GameObject>();
+            _xmlParser.loadLevel(objs, null);
             
-            foreach (GameObject o in _allObjects)
+            foreach (GameObject o in objs)
             {
                 if (o is TerrainObject)
                     addTerrainObject(o as TerrainObject);

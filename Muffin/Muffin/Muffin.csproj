@@ -70,6 +70,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -83,6 +84,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AI\AI.cs" />
+    <Compile Include="Components\Collision\Collision.cs" />
+    <Compile Include="Components\Physics\ForceGenerator.cs" />
+    <Compile Include="Components\Physics\Gravity.cs" />
+    <Compile Include="Components\Physics\Physics.cs" />
+    <Compile Include="Components\UI\UI.cs" />
     <Compile Include="Constants\GameConstants.cs" />
     <Compile Include="Constants\Material.cs" />
     <Compile Include="Constants\ModelName.cs" />
@@ -94,9 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MuffinGame.cs" />
-    <Compile Include="Renderer\GameCamera.cs" />
-    <Compile Include="Renderer\MouseHandler.cs" />
-    <Compile Include="Renderer\Renderer.cs" />
+    <Compile Include="Components\Renderer\GameCamera.cs" />
+    <Compile Include="Components\Renderer\MouseHandler.cs" />
+    <Compile Include="Components\Renderer\Renderer.cs" />
     <Compile Include="XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>

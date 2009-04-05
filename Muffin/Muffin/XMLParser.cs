@@ -65,7 +65,7 @@ namespace Muffin
 
                 //add the object to the array of active objects
                 Quaternion.CreateFromRotationMatrix(ref rotMat, out quat);
-                m_objects.Add(new TerrainObject(null, name, pos, quat, new Vector3(60,60,24),1.0f, (int)(pos.X/60.0f), (int)(pos.Y/60.0f)));
+                m_objects.Add(new TerrainObject(null, name, pos, quat, new Vector3(60,24,60),1.0f, (int)(pos.X/60.0f), (int)(pos.Z/60.0f)));
             } else {
                 Console.WriteLine("Bad parse input");
             }
@@ -121,7 +121,7 @@ namespace Muffin
                     && attributes.Item(2).Name.Equals("Z"))
                 {
                     X = ((float) Double.Parse(attributes.Item(0).Value) * 60.0f);
-                    Y = ((float) Double.Parse(attributes.Item(1).Value) * 24.0f);
+                    Y = ((float) Double.Parse(attributes.Item(1).Value) * 17.0f);
                     Z = ((float) Double.Parse(attributes.Item(2).Value) * 60.0f);
                     return new Vector3(X,Y,Z);
                 }
@@ -143,7 +143,7 @@ namespace Muffin
                 if (attributes.Item(0).Name.Equals("ANGLE"))
                 {
                     X = 0.0f;
-                    Y = MathHelper.ToDegrees((float)Double.Parse(attributes.Item(0).Value));
+                    Y = (float)Double.Parse(attributes.Item(0).Value);
                     Z = 0.0f;
 
                     return new Vector3(X, Y, Z);
