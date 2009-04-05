@@ -16,6 +16,7 @@ namespace Definitions
 {
     public class GameConstants
     {
+        public const string CurrentLevel = "level1";
         public const float NearClip = 1.0f;
         public const float FarClip = 2000.0f;
         public const float ViewAngle = 45.0f;

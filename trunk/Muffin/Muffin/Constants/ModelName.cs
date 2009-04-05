@@ -14,5 +14,5 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace Definitions
 {
-    public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, FORKLIFT, BOX, NONE };
+    public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, BOX, NONE };
 }
