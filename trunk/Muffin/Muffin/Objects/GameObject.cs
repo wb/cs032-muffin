@@ -91,28 +91,6 @@ namespace Definitions
             Vector3 max = _position + _dimensions;
             _boundingBox = new BoundingBox(min, max);
         }
-
-        /*
-         * This method renders the object.
-         * */
-
-        public void renderObject()
-        {
-            // Draw the model. A model can have multiple meshes, so loop.
-            foreach (ModelMesh mesh in _model.Meshes)
-            {
-                // This is where the mesh orientation is set,
-                // (Camera and Projection are set once within the main rendering class per render step)
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.World = this.worldMatrix();
-                }
-
-                // Draw the mesh, using the effects set above.
-                mesh.Draw();
-            }
-
-        }
         
         /*
          * This method returns the world matrix.  For any object
@@ -235,6 +213,11 @@ namespace Definitions
         {
             get { return modeltype; }
             set { modeltype = value; }
+        }
+
+        public Model model {
+            get { return model; }
+            set { model = value; }
         }
 
         public float mass
