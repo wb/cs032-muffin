@@ -50,6 +50,10 @@ namespace Muffin
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            _allObjects = new List<GameObject>();
+            _allTerrain = new List<TerrainObject>();
+            _allAIObjects = new List<AIObject>();
+            _allPlayers = new List<PlayerObject>();
         }
 
         /// <summary>
