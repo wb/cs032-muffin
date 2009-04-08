@@ -40,6 +40,7 @@ namespace Muffin.Components.Physics
             // TODO: Add your initialization code here
 
             base.Initialize();
+
         }
 
         /// <summary>
@@ -48,16 +49,20 @@ namespace Muffin.Components.Physics
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
+
             // apply gravity to each object
             foreach (GameObject o in _muffinGame.allObjects)
             {
                 _gravity.applyForce(o);
+
             }
 
 
             // physics processing
             foreach (GameObject o in _muffinGame.allObjects)
             {
+                // integrate first (this will set future position)
+                o.integrate(((float)gameTime.ElapsedGameTime.TotalSeconds));
 
                 Boolean collision = false;
                 // CHECK FOR COLLISIONS HERE
@@ -70,12 +75,12 @@ namespace Muffin.Components.Physics
                         // collision detection here
                         collision = o.boundingBox.Intersects(testObject.boundingBox);
 
-
                         if (collision)
                         {
+                            float amountOfBounce = 0.2f;
 
-                            Vector3 currentDistanceApart = o.position - testObject.position;
-                            Vector3 previousDistanceApart = o.previousPosition - testObject.previousPosition;
+                            Vector3 currentDistanceApart = o.futureState.position - testObject.futureState.position;
+                            Vector3 previousDistanceApart = o.currentState.position - testObject.currentState.position;
 
                             currentDistanceApart.X = Math.Abs(currentDistanceApart.X);
                             currentDistanceApart.Y = Math.Abs(currentDistanceApart.Y);
@@ -90,38 +95,29 @@ namespace Muffin.Components.Physics
 
                             if (temp.X < 0)
                             {
-                                o.velocity = new Vector3(-.5f * o.velocity.X, o.velocity.Y, o.velocity.Z);
-                                testObject.velocity = new Vector3(-.5f * testObject.velocity.X, testObject.velocity.Y, testObject.velocity.Z);
+                                o.futureState.velocity = new Vector3(-amountOfBounce * o.futureState.velocity.X, o.futureState.velocity.Y, o.futureState.velocity.Z);
+                                testObject.futureState.velocity = new Vector3(-amountOfBounce * testObject.futureState.velocity.X, testObject.futureState.velocity.Y, testObject.futureState.velocity.Z);
 
-                                o.force = new Vector3(-o.force.X, o.force.Y, o.force.Z);
-                                testObject.force = new Vector3(-testObject.force.X, testObject.force.Y, testObject.force.Z);
-
-                                o.acceleration = new Vector3(0, o.acceleration.Y, o.acceleration.Z);
-                                testObject.acceleration = new Vector3(0, testObject.acceleration.Y, testObject.acceleration.Z);
+                                o.futureState.acceleration = new Vector3(0, o.futureState.acceleration.Y, o.futureState.acceleration.Z);
+                                testObject.futureState.acceleration = new Vector3(0, testObject.futureState.acceleration.Y, testObject.futureState.acceleration.Z);
                             }
 
                             if (temp.Y < 0)
                             {
-                                o.velocity = new Vector3(o.velocity.X, -.5f * o.velocity.Y, o.velocity.Z);
-                                testObject.velocity = new Vector3(testObject.velocity.X, -.5f * testObject.velocity.Y, testObject.velocity.Z);
+                                o.futureState.velocity = new Vector3(o.futureState.velocity.X, -amountOfBounce * o.futureState.velocity.Y, o.futureState.velocity.Z);
+                                testObject.futureState.velocity = new Vector3(testObject.futureState.velocity.X, -amountOfBounce * testObject.futureState.velocity.Y, testObject.futureState.velocity.Z);
 
-                                o.force = new Vector3(o.force.X, -o.force.Y, o.force.Z);
-                                testObject.force = new Vector3(testObject.force.X, -testObject.force.Y, testObject.force.Z);
-
-                                o.acceleration = new Vector3(o.acceleration.X, 0, o.acceleration.Z);
-                                testObject.acceleration = new Vector3(testObject.acceleration.X, 0, testObject.acceleration.Z);
+                                o.futureState.acceleration = new Vector3(o.futureState.acceleration.X, 0, o.futureState.acceleration.Z);
+                                testObject.futureState.acceleration = new Vector3(testObject.futureState.acceleration.X, 0, testObject.futureState.acceleration.Z);
                             }
 
                             if (temp.Z < 0)
                             {
-                                o.velocity = new Vector3(o.velocity.X, o.velocity.Y, -.5f * o.velocity.Z);
-                                testObject.velocity = new Vector3(testObject.velocity.X, testObject.velocity.Y, -.5f * testObject.velocity.Z);
+                                o.futureState.velocity = new Vector3(o.futureState.velocity.X, o.futureState.velocity.Y, -amountOfBounce * o.futureState.velocity.Z);
+                                testObject.futureState.velocity = new Vector3(testObject.futureState.velocity.X, testObject.futureState.velocity.Y, -amountOfBounce * testObject.futureState.velocity.Z);
 
-                                o.force = new Vector3(o.force.X, o.force.Y, -o.force.Z);
-                                testObject.force = new Vector3(testObject.force.X, testObject.force.Y, -testObject.force.Z);
-
-                                o.acceleration = new Vector3(o.acceleration.X, o.acceleration.Y, 0);
-                                testObject.acceleration = new Vector3(testObject.acceleration.X, testObject.acceleration.Y, 0);
+                                o.futureState.acceleration = new Vector3(o.futureState.acceleration.X, o.futureState.acceleration.Y, 0);
+                                testObject.futureState.acceleration = new Vector3(testObject.futureState.acceleration.X, testObject.futureState.acceleration.Y, 0);
                             }
 
                             // figure out how to resolve the collision
@@ -132,9 +128,14 @@ namespace Muffin.Components.Physics
                     }
                 }
 
-
-                o.integrate((float) gameTime.ElapsedGameTime.TotalSeconds);
+                if (!collision)
+                    o.postPhysics(true);
+                else
+                    o.postPhysics(true);
             }
+
+
+
 
             base.Update(gameTime);
         }

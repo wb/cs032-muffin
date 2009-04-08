@@ -27,11 +27,11 @@ namespace Definitions
         private Material _material;
         private float _mass, _scale;
         private ModelName _modelName;
-        private Vector3 _position, _previousPosition, _velocity, _acceleration, _force, _centerOfMass, _angularVelocity, _angularAcceleration, _torque, _dimensions;
-        private Quaternion _rotation;
+        private Vector3 _force, _centerOfMass, _torque, _dimensions;
         private Matrix _intertiaTensor;
         private Boolean _locked, _active;
         private BoundingBox _boundingBox;
+        private GameObjectState _currentState, _futureState;
 
         /*
          * This is the constructor.  
@@ -39,24 +39,21 @@ namespace Definitions
 
         public GameObject(Model model, ModelType modelType, ModelName modelName, Vector3 position, Quaternion rotation, Boolean locked, Vector3 dimensions, float mass, float scale)
         {
+            // initialize the game state objects (the future one should be the current one for now)
+            _currentState = new GameObjectState(position, rotation);
+            _futureState = new GameObjectState(position, rotation);
+
             // set the values that have been passed in
             _model = model;
             _modelType = modelType;
             _modelName = modelName;
-            _position = position;
-            _rotation = rotation;
             _locked = locked;
             _dimensions = dimensions;
             _mass = mass;
             _scale = scale;
 
             //initialize rest of the parameters to their defaults
-            _velocity = new Vector3();
-            _acceleration = new Vector3();
             _force = new Vector3();
-
-            // initially, previous position should be the same as position
-            _previousPosition = _position;
 
             // calculations for center of mass
             _centerOfMass = new Vector3(dimensions.X / 2, dimensions.Y / 2, dimensions.Z / 2);
@@ -67,7 +64,6 @@ namespace Definitions
             // calculate the bounding box
             this.updateBoundingBox();
 
-            // set active to true initially
             _active = true;
         }
 
@@ -90,11 +86,11 @@ namespace Definitions
 
         public void updateBoundingBox()
         {
-            Vector3 min = _position;
-            Vector3 max = _position + _dimensions;
+            Vector3 min = _futureState.position;
+            Vector3 max = _futureState.position + _dimensions;
             _boundingBox = new BoundingBox(min, max);
         }
-        
+
         /*
          * This method returns the world matrix.  For any object
          * that extends game object, such as TerrainObject,
@@ -105,8 +101,8 @@ namespace Definitions
         public Matrix worldMatrix()
         {
             return Matrix.CreateScale(_scale) *
-                   Matrix.CreateFromQuaternion(_rotation) *
-                   Matrix.CreateTranslation(_position);
+                   Matrix.CreateFromQuaternion(_currentState.rotation) *
+                   Matrix.CreateTranslation(_currentState.position);
         }
 
         /*
@@ -129,6 +125,7 @@ namespace Definitions
 
         public void integrate(float timestep)
         {
+            prePhysics();
 
             // do the integration only if this object is not locked and is currently active
             if (!_locked && _active)
@@ -138,29 +135,28 @@ namespace Definitions
 
                 temp = Vector3.Transform(_torque, _intertiaTensor);
 
-                _angularAcceleration += temp;
+                _futureState.angularAcceleration += temp;
 
-                _angularVelocity = _angularVelocity + _angularAcceleration * timestep;
+                _futureState.angularVelocity = _futureState.angularVelocity + _futureState.angularAcceleration * timestep;
 
-                Quaternion deltaOrientation = Quaternion.CreateFromAxisAngle(Vector3.Right, _angularVelocity.X * timestep) * Quaternion.CreateFromAxisAngle(Vector3.Up, _angularVelocity.Y * timestep) * Quaternion.CreateFromAxisAngle(Vector3.Backward, _angularVelocity.Z * timestep);
+                Quaternion deltaOrientation = Quaternion.CreateFromAxisAngle(Vector3.Right, _futureState.angularVelocity.X * timestep) * Quaternion.CreateFromAxisAngle(Vector3.Up, _futureState.angularVelocity.Y * timestep) * Quaternion.CreateFromAxisAngle(Vector3.Backward, _futureState.angularVelocity.Z * timestep);
 
                 deltaOrientation.Normalize();
 
-                // _orientation *= deltaOrientation;
+                _futureState.rotation *= deltaOrientation;
 
                 // now, solve for the new position
-                _acceleration += _force / _mass;
-                _velocity = _velocity + _acceleration * timestep;
+                _futureState.acceleration += _force / _mass;
+                _futureState.velocity = _futureState.velocity + _futureState.acceleration * timestep;
 
-                _previousPosition = _position;
-
-                _position = _position + _velocity * timestep;
+                _futureState.position = _futureState.position + _futureState.velocity * timestep;
 
                 // account for air resistance, general drag, etc
-                _velocity = 0.995f * _velocity;
-                _angularVelocity = 0.995f * _angularVelocity;
+                _futureState.velocity = 0.995f * _futureState.velocity;
+                _futureState.angularVelocity = 0.995f * _futureState.angularVelocity;
 
-                this.postPhysics();
+                this.updateBoundingBox();
+
             }
         }
 
@@ -180,14 +176,16 @@ namespace Definitions
          * to zero, etc.
          * */
 
-        public void postPhysics()
+        public void postPhysics(Boolean move)
         {
             // reset the force and torque to zero
             _force = Vector3.Zero;
             _torque = Vector3.Zero;
 
-            // update the bounding box
-            this.updateBoundingBox();
+            if (move)
+                _currentState.copy(_futureState);
+            else
+                _futureState.copy(_currentState);
 
         }
 
@@ -219,7 +217,8 @@ namespace Definitions
             set { _modelType = value; }
         }
 
-        public Model model {
+        public Model model
+        {
             get { return _model; }
             set { _model = value; }
         }
@@ -232,20 +231,20 @@ namespace Definitions
 
         public Vector3 position
         {
-            get { return _position; }
-            set { _position = value; }
+            get { return _currentState.position; }
+            set { _currentState.position = value; }
         }
 
         public Vector3 velocity
         {
-            get { return _velocity; }
-            set { _velocity = value; }
+            get { return _currentState.velocity; }
+            set { _currentState.velocity = value; }
         }
 
         public Vector3 acceleration
         {
-            get { return _acceleration; }
-            set { _acceleration = value; }
+            get { return _currentState.acceleration; }
+            set { _currentState.acceleration = value; }
         }
 
         public Vector3 force
@@ -262,20 +261,20 @@ namespace Definitions
 
         public Quaternion rotation
         {
-            get { return rotation; }
-            set { _rotation = value; }
+            get { return _currentState.rotation; }
+            set { _currentState.rotation = value; }
         }
 
         public Vector3 angularVelocity
         {
-            get { return _angularVelocity; }
-            set { _angularVelocity = value; }
+            get { return _currentState.angularVelocity; }
+            set { _currentState.angularVelocity = value; }
         }
 
         public Vector3 angularAcceleration
         {
-            get { return _angularAcceleration; }
-            set { _angularAcceleration = value; }
+            get { return _currentState.angularAcceleration; }
+            set { _currentState.angularAcceleration = value; }
         }
 
         public Vector3 torque
@@ -302,20 +301,24 @@ namespace Definitions
             set { _active = value; }
         }
 
-        public Vector3 previousPosition
-        {
-            get { return _previousPosition; }
-            set { _previousPosition = value; }
-        }
-
         public float scale
         {
             get { return _scale; }
             set { _scale = value; }
         }
 
+        public GameObjectState currentState
+        {
+            get { return _currentState; }
+        }
+
+        public GameObjectState futureState
+        {
+            get { return _futureState; }
+        }
+
         #endregion
 
-        
+
     }
 }
