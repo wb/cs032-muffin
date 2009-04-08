@@ -131,7 +131,8 @@ namespace Muffin.Components.Physics
                 if (!collision)
                     o.postPhysics(true);
                 else
-                    o.postPhysics(true);
+                    o.postPhysics(true); // this would normally be set to false, but right now its set to true to allow collision resolution (above) to function.
+                                         // if this were set to false, the objects would stop moving 1 frame before they would collide with something
             }
 
 
