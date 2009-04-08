@@ -165,8 +165,27 @@ namespace Muffin
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
 
-            // add a box for testing
-            objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 300, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f));
+            #region Box Testing and Forces
+
+            /**
+             * BEGIN BOX TESTING W/FORCES
+             * */
+
+            GameObject testBox1 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 700, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
+            objs.Add(testBox1);
+            //testBox1.applyForce(new Vector3(10000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
+
+            GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(200, 700, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
+            objs.Add(testBox2);
+            //testBox2.applyForce(new Vector3(-10000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
+
+            //testBox1.applyForce(new Vector3(0.0f, 9.8f * testBox1.mass, 0.0f), new Vector3(60, 40, 30));
+
+            /**
+             * END BOX TESTING
+             * */
+
+            #endregion
 
             foreach (GameObject o in objs)
             {
