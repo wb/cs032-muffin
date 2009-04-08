@@ -66,6 +66,9 @@ namespace Definitions
 
             // calculate the bounding box
             this.updateBoundingBox();
+
+            // set active to true initially
+            _active = true;
         }
 
         /*
@@ -157,6 +160,7 @@ namespace Definitions
                 _velocity = 0.995f * _velocity;
                 _angularVelocity = 0.995f * _angularVelocity;
 
+                this.postPhysics();
             }
         }
 

@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using Definitions;
 using Muffin.Components.Renderer;
-
+using Muffin.Components.Physics;
 namespace Muffin
 {
     /// <summary>
@@ -40,6 +40,7 @@ namespace Muffin
 
         //GameComponents
         GameComponent _renderer;
+        GameComponent _physics;
 
         // Class for loading levels
         XMLParser _xmlParser;
@@ -73,6 +74,11 @@ namespace Muffin
             _renderer = new Renderer(this);
             Components.Add(_renderer);
             _renderer.UpdateOrder = 0;
+
+            _physics = new Physics(this);
+            Components.Add(_physics);
+            _physics.UpdateOrder = 1;
+
         }
 
         /// <summary>
@@ -158,7 +164,10 @@ namespace Muffin
             // Load the current level
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
-            
+
+            // add a box for testing
+            objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 300, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f));
+
             foreach (GameObject o in objs)
             {
                 if (o is TerrainObject)
