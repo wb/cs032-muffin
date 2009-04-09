@@ -49,10 +49,12 @@ namespace Muffin
         private bool _terrainChanged;
         private bool _AIChanged;
         private bool _playersChanged;
+        private bool _otherChanged;
 
         private bool _terrainChanging;
         private bool _AIChanging;
         private bool _playersChanging;
+        private bool _otherChanging;
 
         #endregion
 
@@ -89,7 +91,7 @@ namespace Muffin
         /// </summary>
         protected override void Initialize()
         {
-            _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging = false;
+            _terrainChanged = _AIChanged = _playersChanged = _otherChanged = _terrainChanging = _AIChanging = _playersChanging = _otherChanging = false;
 
             base.Initialize();
         }
@@ -121,10 +123,10 @@ namespace Muffin
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) || (this.quitGame) )
                 this.Exit();
 
-            // TODO: Add your update logic here
+            beginTick();
 
             base.Update(gameTime);
         }
@@ -207,6 +209,7 @@ namespace Muffin
             _terrainChanged = _playersChanging;
             _AIChanged = _AIChanging;
             _playersChanged = _playersChanging;
+            _otherChanged = _otherChanging;
 
             _updatingObjects = new List<GameObject>();
             _AIChanging = false;
@@ -249,6 +252,8 @@ namespace Muffin
                 _AIChanging = true;
             else if (o is PlayerObject)
                 _playersChanging = true;
+            else
+                _otherChanging = true;
         }
 
         #endregion
@@ -261,6 +266,12 @@ namespace Muffin
         public List<PlayerObject> allPlayer { get { return _allPlayers; } }
 
         public List<GameObject> updated { get { return _updatedObjects; } }
+        public bool terrainChanged { get { return _terrainChanged; } }
+        public bool AIChanged { get { return _AIChanged; } }
+        public bool playersChanged { get { return _playersChanged; } }
+        public bool otherChanged { get { return _otherChanged; } }
+
+        public bool quitGame { get; set; }
 
         #endregion
 
