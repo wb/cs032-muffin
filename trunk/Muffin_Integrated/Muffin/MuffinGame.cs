@@ -18,6 +18,8 @@ using Microsoft.Xna.Framework.Storage;
 using Definitions;
 using Muffin.Components.Renderer;
 using Muffin.Components.Physics;
+using Muffin.Components.UI;
+
 namespace Muffin
 {
     /// <summary>
@@ -39,8 +41,7 @@ namespace Muffin
         private List<GameObject> _updatingObjects;
 
         //GameComponents
-        GameComponent _renderer;
-        GameComponent _physics;
+        GameComponent _renderer, _physics, _inputManager;
 
         // Class for loading levels
         XMLParser _xmlParser;
@@ -49,12 +50,10 @@ namespace Muffin
         private bool _terrainChanged;
         private bool _AIChanged;
         private bool _playersChanged;
-        private bool _otherChanged;
 
         private bool _terrainChanging;
         private bool _AIChanging;
         private bool _playersChanging;
-        private bool _otherChanging;
 
         #endregion
 
@@ -81,6 +80,9 @@ namespace Muffin
             Components.Add(_physics);
             _physics.UpdateOrder = 1;
 
+            _inputManager = new InputManager(this);
+            Components.Add(_inputManager);
+            _inputManager.UpdateOrder = 2;
         }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace Muffin
         /// </summary>
         protected override void Initialize()
         {
-            _terrainChanged = _AIChanged = _playersChanged = _otherChanged = _terrainChanging = _AIChanging = _playersChanging = _otherChanging = false;
+            _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging = false;
 
             base.Initialize();
         }
@@ -123,10 +125,10 @@ namespace Muffin
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) || (this.quitGame) )
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            beginTick();
+            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
@@ -143,7 +145,7 @@ namespace Muffin
         }
 
         # region Game-specific methods
-        
+
         protected void LoadLevel()
         {
             // load the xml file corresponding to the current level
@@ -167,27 +169,17 @@ namespace Muffin
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
 
-            #region Box Testing and Forces
-
-            /**
-             * BEGIN BOX TESTING W/FORCES
-             * */
-
-            GameObject testBox1 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 700, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
+            // add a box for testing
+            GameObject testBox1 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
             objs.Add(testBox1);
-            //testBox1.applyForce(new Vector3(10000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
+            testBox1.applyForce(new Vector3(50000.0f, 0.0f, 50000.0f), new Vector3(30, 30, 30));
 
-            GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(200, 700, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
+            //GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(200, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
+            GameObject testBox2 = new PlayerObject(null, ModelName.BOX, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, 1.0f);
             objs.Add(testBox2);
-            //testBox2.applyForce(new Vector3(-10000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
+            testBox2.applyForce(new Vector3(-50000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
 
             //testBox1.applyForce(new Vector3(0.0f, 9.8f * testBox1.mass, 0.0f), new Vector3(60, 40, 30));
-
-            /**
-             * END BOX TESTING
-             * */
-
-            #endregion
 
             foreach (GameObject o in objs)
             {
@@ -200,8 +192,10 @@ namespace Muffin
                 else
                     _allObjects.Add(o);
             }
+
+
         }
-        
+
         // For any global game book-keeping that needs to be done at the begining of every cycle
         protected void beginTick()
         {
@@ -209,7 +203,6 @@ namespace Muffin
             _terrainChanged = _playersChanging;
             _AIChanged = _AIChanging;
             _playersChanged = _playersChanging;
-            _otherChanged = _otherChanging;
 
             _updatingObjects = new List<GameObject>();
             _AIChanging = false;
@@ -252,8 +245,6 @@ namespace Muffin
                 _AIChanging = true;
             else if (o is PlayerObject)
                 _playersChanging = true;
-            else
-                _otherChanging = true;
         }
 
         #endregion
@@ -266,12 +257,6 @@ namespace Muffin
         public List<PlayerObject> allPlayer { get { return _allPlayers; } }
 
         public List<GameObject> updated { get { return _updatedObjects; } }
-        public bool terrainChanged { get { return _terrainChanged; } }
-        public bool AIChanged { get { return _AIChanged; } }
-        public bool playersChanged { get { return _playersChanged; } }
-        public bool otherChanged { get { return _otherChanged; } }
-
-        public bool quitGame { get; set; }
 
         #endregion
 
