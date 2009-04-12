@@ -109,3 +109,4 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Mu
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\box\Wood_Cherry_Original_0.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\box\Wood_Floor_Parquet.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\box\Wood_Lumber_ButtJoined.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\box\Wood_Cherry_Original.xnb
