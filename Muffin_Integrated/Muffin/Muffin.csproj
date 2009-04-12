@@ -89,6 +89,10 @@
     <Compile Include="Components\Physics\ForceGenerator.cs" />
     <Compile Include="Components\Physics\Gravity.cs" />
     <Compile Include="Components\Physics\Physics.cs" />
+    <Compile Include="Components\UI\ButtonManager.cs" />
+    <Compile Include="Components\UI\ControllerInterface.cs" />
+    <Compile Include="Components\UI\InputManager.cs" />
+    <Compile Include="Components\UI\KeyboardInterface.cs" />
     <Compile Include="Components\UI\UI.cs" />
     <Compile Include="Constants\GameConstants.cs" />
     <Compile Include="Constants\Material.cs" />
@@ -96,6 +100,7 @@
     <Compile Include="Constants\ModelType.cs" />
     <Compile Include="Objects\AIObject.cs" />
     <Compile Include="Objects\GameObject.cs" />
+    <Compile Include="Objects\GameObjectState.cs" />
     <Compile Include="Objects\PlayerObject.cs" />
     <Compile Include="Objects\TerrainObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
