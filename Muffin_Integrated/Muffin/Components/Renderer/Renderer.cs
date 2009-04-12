@@ -99,6 +99,9 @@ namespace Muffin.Components.Renderer
             m_game = game;
             graphics = m_game.graphics;
             graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.PreferredBackBufferWidth = 1280;
+
             //enable anti-aliasing
             graphics.PreferMultiSampling = true;
             graphics.PreparingDeviceSettings +=
@@ -344,12 +347,12 @@ namespace Muffin.Components.Renderer
                 ModelDir.Normalize();
 
                 if(gstate.Buttons.A == ButtonState.Pressed && gstate.Buttons.B == ButtonState.Released){
-                    ModelPos += ((ModelDir) *.4f);
+                    //ModelPos += ((ModelDir) *.4f);
                 }
 
                 if (gstate.Buttons.B == ButtonState.Pressed && gstate.Buttons.A == ButtonState.Released)
                 {
-                    ModelPos -= ((ModelDir) * .4f);
+                    //ModelPos -= ((ModelDir) * .4f);
                 }
 
                 if(gstate.Buttons.X == ButtonState.Pressed) {
