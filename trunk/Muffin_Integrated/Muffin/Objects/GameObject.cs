@@ -22,16 +22,16 @@ namespace Definitions
          * get/set in the appropriate place at the end of this file.
          * */
 
-        private Model _model;
-        private ModelType _modelType;
-        private Material _material;
-        private float _mass, _scale;
-        private ModelName _modelName;
-        private Vector3 _force, _centerOfMass, _torque, _dimensions;
-        private Matrix _intertiaTensor;
-        private Boolean _locked, _active;
-        private BoundingBox _boundingBox;
-        private GameObjectState _currentState, _futureState;
+        protected Model _model;
+        protected ModelType _modelType;
+        protected Material _material;
+        protected float _mass, _scale;
+        protected ModelName _modelName;
+        protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove;
+        protected Matrix _intertiaTensor;
+        protected Boolean _locked, _active;
+        protected BoundingBox _boundingBox;
+        protected GameObjectState _previousState, _currentState, _futureState;
 
         /*
          * This is the constructor.  
@@ -42,6 +42,7 @@ namespace Definitions
             // initialize the game state objects (the future one should be the current one for now)
             _currentState = new GameObjectState(position, rotation);
             _futureState = new GameObjectState(position, rotation);
+            _previousState = new GameObjectState(position, rotation);
 
             // set the values that have been passed in
             _model = model;
@@ -65,6 +66,8 @@ namespace Definitions
             this.updateBoundingBox();
 
             _active = true;
+
+            _toMove = new Vector3();
         }
 
         /*
@@ -78,6 +81,7 @@ namespace Definitions
 
         public virtual void controlInput(Vector2 dir, bool jump)
         {
+
         }
 
         /*
@@ -86,9 +90,35 @@ namespace Definitions
 
         public void updateBoundingBox()
         {
-            Vector3 min = _futureState.position;
-            Vector3 max = _futureState.position + _dimensions;
+            // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
+            Vector3 min, max;
+
+            min = -0.5f * _dimensions;
+            max = 0.5f * _dimensions;
+
+            // now we need to transform these using the world matrix
+            min = Vector3.Transform(min, this.futureWorldMatrix());
+            max = Vector3.Transform(max, this.futureWorldMatrix());
+
+            // create a new bounding box
             _boundingBox = new BoundingBox(min, max);
+
+        }
+
+        public BoundingBox getCurrentBoundingBox()
+        {
+            // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
+            Vector3 min, max;
+
+            min = -0.5f * _dimensions;
+            max = 0.5f * _dimensions;
+
+            // now we need to transform these using the world matrix
+            min = Vector3.Transform(min, this.worldMatrix());
+            max = Vector3.Transform(max, this.worldMatrix());
+
+            // create a new bounding box
+            return new BoundingBox(min, max);
         }
 
         /*
@@ -106,30 +136,54 @@ namespace Definitions
         }
 
         /*
+         * This method returns the future world matrix.  It is used
+         * during collision detection, resolution, and the construction
+         * of a new bounding box.
+         * */
+
+        public Matrix futureWorldMatrix()
+        {
+            return Matrix.CreateScale(_scale) *
+                   Matrix.CreateFromQuaternion(_futureState.rotation) *
+                   Matrix.CreateTranslation(_futureState.position);
+        }
+
+        /*
          * This method is used to apply force to the object at
          * a given location.
          * */
 
         public void applyForce(Vector3 force, Vector3 location)
         {
-            // add this force on to the linear force
-            _force += force;
+            // Error Checking: make sure this force wont make the total acceleration too large
+            float acceleration = ((_currentState.acceleration * _mass + force) / mass).Length();
+            if (acceleration < GameConstants.MaxAcceleration && -acceleration > -GameConstants.MaxAcceleration)
+            {
+                // add this force on to the linear force
+                _force += force;
 
-            // the location is the location, so to find torque, find the cross product of (location - centerOfMass) and force
-            location = location - _centerOfMass;
+                // the location is the location, so to find torque, find the cross product of (location - centerOfMass) and force
+                location = location - _centerOfMass;
 
-            Vector3.Cross(location, force);
-            _torque += location;
-
+                Vector3.Cross(location, force);
+                _torque += location;
+            }
         }
 
         public void integrate(float timestep)
         {
-            prePhysics();
+
 
             // do the integration only if this object is not locked and is currently active
             if (!_locked && _active)
             {
+                // move the object
+                _futureState.position = _futureState.position + _toMove;
+                _currentState.position = _currentState.position + _toMove;
+
+                // reset the move vector
+                _toMove = Vector3.Zero;
+
                 // first, solve for the new rotational position (orientation)
                 Vector3 temp = new Vector3();
 
@@ -167,7 +221,7 @@ namespace Definitions
 
         public void prePhysics()
         {
-            // intentionally left blank for now!
+            // blank for now
         }
 
         /*
@@ -182,10 +236,18 @@ namespace Definitions
             _force = Vector3.Zero;
             _torque = Vector3.Zero;
 
+            _previousState.copy(_currentState);
+
             if (move)
+            {
+                // update the position
                 _currentState.copy(_futureState);
+            }
             else
+            {
+                // otherwise, reset the future state (we didn't move)
                 _futureState.copy(_currentState);
+            }
 
         }
 
@@ -315,6 +377,11 @@ namespace Definitions
         public GameObjectState futureState
         {
             get { return _futureState; }
+        }
+
+        public GameObjectState previousState
+        {
+            get { return _previousState; }
         }
 
         #endregion
