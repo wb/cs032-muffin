@@ -28,6 +28,17 @@ namespace Definitions
             // constructor contents here
         }
 
+        public override void controlInput(Vector2 dir, bool jump)
+        {
+            _toMove = new Vector3(dir.X, 0, dir.Y);
+
+            if (jump)
+            {
+                this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);
+            }
+
+        }
+
         #region Gets and Sets
 
         public int health
