@@ -1,2 +1,3 @@
 C:\Users\Walter\Documents\cs032-muffin\Muffin\Muffin\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Walter\Desktop\Muffin\Muffin\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\Content\obj\x86\Debug\ResolveAssemblyReference.cache
