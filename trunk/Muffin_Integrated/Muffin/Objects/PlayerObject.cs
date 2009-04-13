@@ -47,6 +47,11 @@ namespace Definitions
          * strafeValue is used for straffing
          * strafe toggles strafe mode (if using the keyboard, simply return true if either of the strafe keys are pressed).
          * jump toggles jump
+         * 
+         * An example usage of this is as follows (g is a GamePadState):
+         * 
+         * _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (g.Buttons.A == ButtonState.Pressed), (g.Buttons.X == ButtonState.Pressed));
+         * 
          * */
 
         public override void move(float upDown, float leftRight, float strafeValue, Boolean jump, Boolean strafe)
