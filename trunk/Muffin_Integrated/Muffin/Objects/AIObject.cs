@@ -11,13 +11,16 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
-
+using Muffin.Components.AI;
 
 namespace Definitions
 {
+    public enum AIState {Idle, Active};
+
     public class AIObject : GameObject
     {
         private int _health, _lives;
+        private AIState _state;
 
         /*
          * This constructor makes a few assumptions.  Namely that an AIObject is an enemy.
@@ -26,7 +29,7 @@ namespace Definitions
         public AIObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float mass, float scale) :
             base(model, ModelType.ENEMY, modelName, position, rotation, false, dimensions, mass, scale)
         {
-            // constructor contents here
+            _state = AIState.Idle;
         }
 
         public override void controlInput(Vector2 dir, bool jump)
@@ -46,6 +49,10 @@ namespace Definitions
                 this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);
             }
 
+        }
+
+        public void doAI(AI ai)
+        {
         }
 
         #region Gets and Sets

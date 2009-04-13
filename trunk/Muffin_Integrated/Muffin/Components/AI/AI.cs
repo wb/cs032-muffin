@@ -23,6 +23,7 @@ namespace Muffin.Components.AI
         private WeightedGraph<TerrainObject> m_world;
         private SortedList<float, GameObject>[,] m_grid;
         private Dictionary<GameObject, Point> m_index;
+        private List<AIObject> m_npcs;
 
         #region General External Methods
 
@@ -43,6 +44,12 @@ namespace Muffin.Components.AI
 
         }
 
+        public void registerAIObject(AIObject o)
+        {
+            if(!m_npcs.Contains(o))
+                m_npcs.Add(o);
+        }
+
         #endregion
 
         #region Internal Methods
@@ -53,6 +60,7 @@ namespace Muffin.Components.AI
             m_game = (MuffinGame)game;
             m_world = new WeightedGraph<TerrainObject>();
             m_index = new Dictionary<GameObject, Point>();
+            m_npcs = new List<AIObject>();
         }
 
         private GameObject topmostObjectGrid(int X, int Y)
@@ -171,21 +179,36 @@ namespace Muffin.Components.AI
                 if (o is AIObject || o is PlayerObject)
                     continue;
 
-                int thisX = (int)(o.position.X / 60f);
-                int thisY = (int)(o.position.Z / 60f);
                 Point oldPos;
                 if (m_index.TryGetValue(o, out oldPos))
                 {
+                    int thisX = (int)(o.position.X / 60f);
+                    int thisY = (int)(o.position.Z / 60f);
+
                     // Remove from old location
                     SortedList<float, GameObject> l = m_grid[oldPos.X, oldPos.Y];
                     l.RemoveAt(l.IndexOfValue(o));
 
-                    // Put in new location
-                    m_grid[thisX, thisY].Add(o.position.Y, o);
-                    m_index[o] = new Point(thisX, thisY);
+                    int maxX = m_grid.GetLength(0);
+                    int maxY = m_grid.GetLength(1);
+                    if (thisX >= 0 && thisX < maxX && thisY >= 0 && thisY < maxY)
+                    {
+
+                        // Put in new location
+                        m_grid[thisX, thisY].Add(o.position.Y, o);
+                        m_index[o] = new Point(thisX, thisY);
+                    }
+                    else
+                    {
+                        m_index.Remove(o);
+                    }
 
                 }
             }
+
+            // Run AI on npcs
+            foreach (AIObject npc in m_npcs)
+                npc.doAI(this);
 
             base.Update(gameTime);
         }
