@@ -93,8 +93,8 @@ namespace Muffin
 
             // help!
             _ai = new AI(this);
-            //Components.Add(_ai);
-            //_ai.UpdateOrder = 3;
+            Components.Add(_ai);
+            _ai.UpdateOrder = 3;
         }
 
         /// <summary>
