@@ -21,7 +21,7 @@ namespace Muffin.Components.UI
     class KeyboardInterface
     {
         float sensitivity;
-        int timeBeforeRepeat, timeBeforeInitialRepeat, _previousX, _previousY;
+        int timeBeforeRepeat, timeBeforeInitialRepeat, _previousX, _previousY, _previousScroll;
         GameObject _gameObject;
         ButtonManager space;
 
@@ -35,6 +35,7 @@ namespace Muffin.Components.UI
             timeBeforeRepeat = 5000;
             _previousX = Mouse.GetState().X;
             _previousY = Mouse.GetState().Y;
+            _previousScroll = Mouse.GetState().ScrollWheelValue;
             space = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
 
         }
@@ -58,9 +59,9 @@ namespace Muffin.Components.UI
                 upDownState -= 1;
 
             if (k.IsKeyDown(Keys.Q))
-                strafeState += 1;
-            if (k.IsKeyDown(Keys.E))
                 strafeState -= 1;
+            if (k.IsKeyDown(Keys.E))
+                strafeState += 1;
 
             // mouse stuff (will override input from keyboard, for stuff like rotating the character)
 
@@ -70,43 +71,25 @@ namespace Muffin.Components.UI
             int deltaY = m.Y - _previousY;
             _previousY = m.Y;
 
+            int deltaScroll = m.ScrollWheelValue - _previousScroll;
+            _previousScroll = m.ScrollWheelValue;
+
             if (m.LeftButton == ButtonState.Pressed)
-            {
                 camera.updateLookRotation((float)deltaX / -500.0f, (float)deltaY / 500.0f);
-            }
-
             if (m.RightButton == ButtonState.Pressed)
-            {
-
                 leftRightState = (float)deltaX / 5.0f;
+  
+            // control the zoom
+            camera.zoom((float)deltaScroll);
 
-            }
+
 
             // update the buttons
             space.update((k.IsKeyDown(Keys.Space) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
+            _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.Q) || k.IsKeyDown(Keys.E)));
 
-            float yaw = leftRightState * MathHelper.ToRadians(-1.0f);
-            Quaternion rot = Quaternion.CreateFromAxisAngle(Vector3.Up, yaw);
-            _gameObject.orientation *= rot;
-            Vector3 direction = Vector3.Transform(new Vector3(0.0f, 0.0f, upDownState * 2.0f), Matrix.CreateFromQuaternion(_gameObject.orientation));
-
-            Vector3 strafe;
-            // strafing
-            if (strafeState != 0)
-            {
-                strafe = Vector3.UnitZ;
-                float strafeAngle = (float)(Math.PI) / 2.0f * strafeState;
-                strafe = 2.0f * Vector3.Transform(strafe, Matrix.CreateFromQuaternion(_gameObject.orientation) * Matrix.CreateFromAxisAngle(Vector3.Up, strafeAngle));
-            }
-            else
-            {
-                strafe = Vector3.Zero;
-            }
-
-            //direction = direction + strafe;
-            _gameObject.controlInput(new Vector2(direction.X + strafe.X, direction.Z + strafe.Z), (space.getButtonState() == 1));
-
+           
 
 
         }

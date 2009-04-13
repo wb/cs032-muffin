@@ -262,7 +262,8 @@ namespace Muffin
 
         public void addUpdateObject(GameObject o)
         {
-            _updatingObjects.Add(o);
+            if(!_updatingObjects.Contains(o))
+                _updatingObjects.Add(o);
 
             if (o is TerrainObject)
                 _terrainChanging = true;

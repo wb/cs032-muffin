@@ -40,6 +40,54 @@ namespace Definitions
 
         }
 
+        /*
+         * This method takes input from the keyboard or controller and moves the model accordingly.
+         * upDown is used for moving backwards and forwards.
+         * leftRight is used for changing orientation or strafing (is strafe is true).
+         * strafeValue is used for straffing
+         * strafe toggles strafe mode (if using the keyboard, simply return true if either of the strafe keys are pressed).
+         * jump toggles jump
+         * */
+
+        public override void move(float upDown, float leftRight, float strafeValue, Boolean jump, Boolean strafe)
+        {
+            Vector3 directionVector;
+            Vector3 strafeVector;
+
+            // strafe
+            if (strafe)
+            {
+                float strafeState = (strafeValue == 0 ? 0 : 1);
+                strafeVector = Vector3.UnitZ;
+                float strafeAngle = (float)(Math.PI) / 2.0f * strafeState;
+
+                if (Math.Abs(strafeState) >= Math.Abs(upDown))
+                {
+                    strafeVector = -strafeValue * 2.0f * Vector3.Transform(strafeVector, Matrix.CreateFromQuaternion(_orientation) * Matrix.CreateFromAxisAngle(Vector3.Up, strafeAngle));
+                    directionVector = Vector3.Zero;
+                }
+                else
+                {
+                    directionVector = Vector3.Transform(new Vector3(0.0f, 0.0f, upDown * 2.0f), Matrix.CreateFromQuaternion(_orientation));
+                    strafeVector = Vector3.Zero;
+                }
+            }
+            // otherwise just move
+            else
+            {
+                float yaw = leftRight * MathHelper.ToRadians(-1.7f);
+                Quaternion rot = Quaternion.CreateFromAxisAngle(Vector3.Up, yaw);
+                _orientation *= rot;
+                directionVector = Vector3.Transform(new Vector3(0.0f, 0.0f, upDown * 2.0f), Matrix.CreateFromQuaternion(_orientation));
+
+                strafeVector = Vector3.Zero;
+            }
+
+            //direction = direction + strafe;
+            this.controlInput(new Vector2(directionVector.X + strafeVector.X, directionVector.Z + strafeVector.Z), jump);
+
+        }
+
         #region Gets and Sets
 
         public int health
