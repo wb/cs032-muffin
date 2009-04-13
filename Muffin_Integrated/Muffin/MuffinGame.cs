@@ -145,7 +145,7 @@ namespace Muffin
                 this.Exit();
 
             // TODO: Add your update logic here
-
+            Console.WriteLine(this._allPlayers.ElementAt(0).currentState.position);
             beginTick();
             base.Update(gameTime);
         }
@@ -187,21 +187,21 @@ namespace Muffin
             _xmlParser.loadLevel(objs, null);
 
             // this is the player
-            GameObject testBox1 = new PlayerObject(null, ModelName.PLAYER, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 5000.0f, 1.0f);
+            GameObject testBox1 = new PlayerObject(null, ModelName.PLAYER, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
             objs.Add(testBox1);
             testBox1.applyForce(new Vector3(-50000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
 
             // add a box for testing
-            GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, 1.0f);
+            GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale);
             objs.Add(testBox2);
             testBox2.applyForce(new Vector3(50000.0f, 0.0f, 50000.0f), new Vector3(30, 30, 30));
 
             // a heavier box
-            GameObject testBox3 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 4000.0f, 1.0f);
+            GameObject testBox3 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 4000.0f, GameConstants.GameObjectScale);
             objs.Add(testBox3);
 
             // an even heavier box
-            GameObject testBox4 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(500, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 11000.0f, 1.0f);
+            GameObject testBox4 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(500, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 11000.0f, GameConstants.GameObjectScale);
             objs.Add(testBox4);
 
             //testBox1.applyForce(new Vector3(0.0f, 9.8f * testBox1.mass, 0.0f), new Vector3(60, 40, 30));

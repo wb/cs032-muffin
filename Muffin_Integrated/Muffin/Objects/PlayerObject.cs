@@ -66,16 +66,11 @@ namespace Definitions
                 strafeVector = Vector3.UnitZ;
                 float strafeAngle = (float)(Math.PI) / 2.0f * strafeState;
 
-                if (Math.Abs(strafeState) >= Math.Abs(upDown))
-                {
-                    strafeVector = -strafeValue * 2.0f * Vector3.Transform(strafeVector, Matrix.CreateFromQuaternion(_orientation) * Matrix.CreateFromAxisAngle(Vector3.Up, strafeAngle));
-                    directionVector = Vector3.Zero;
-                }
-                else
-                {
-                    directionVector = Vector3.Transform(new Vector3(0.0f, 0.0f, upDown * 2.0f), Matrix.CreateFromQuaternion(_orientation));
-                    strafeVector = Vector3.Zero;
-                }
+
+                strafeVector = -strafeValue * 2.0f * Vector3.Transform(strafeVector, Matrix.CreateFromQuaternion(_orientation) * Matrix.CreateFromAxisAngle(Vector3.Up, strafeAngle));
+
+                directionVector = Vector3.Transform(new Vector3(0.0f, 0.0f, upDown * 2.0f), Matrix.CreateFromQuaternion(_orientation));
+
             }
             // otherwise just move
             else
@@ -91,6 +86,13 @@ namespace Definitions
             //direction = direction + strafe;
             this.controlInput(new Vector2(directionVector.X + strafeVector.X, directionVector.Z + strafeVector.Z), jump);
 
+        }
+
+        public override Matrix worldMatrix()
+        {
+            return Matrix.CreateFromQuaternion(_orientation) *
+                   Matrix.CreateTranslation(_currentState.position) *
+                   Matrix.CreateScale(_scale);
         }
 
         #region Gets and Sets

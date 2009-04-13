@@ -49,9 +49,9 @@ namespace Muffin.Components.UI
 
             // keyboard stuff
             if (k.IsKeyDown(Keys.A))
-                leftRightState -= 1;
+                strafeState -= 1;
             if (k.IsKeyDown(Keys.D))
-                leftRightState += 1;
+                strafeState += 1;
 
             if (k.IsKeyDown(Keys.W))
                 upDownState += 1;
@@ -59,9 +59,11 @@ namespace Muffin.Components.UI
                 upDownState -= 1;
 
             if (k.IsKeyDown(Keys.Q))
-                strafeState -= 1;
+            {
+                leftRightState -= 1;
+            }
             if (k.IsKeyDown(Keys.E))
-                strafeState += 1;
+                leftRightState += 1;
 
             // mouse stuff (will override input from keyboard, for stuff like rotating the character)
 
@@ -87,7 +89,8 @@ namespace Muffin.Components.UI
             // update the buttons
             space.update((k.IsKeyDown(Keys.Space) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
-            _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.Q) || k.IsKeyDown(Keys.E)));
+            // input updown state (normalized to 1), left right state (normalized to 1), strafe state (normalized to 1), jump boolean, and strafe boolean
+            _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.A) || k.IsKeyDown(Keys.D)));
 
            
 
