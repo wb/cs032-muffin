@@ -64,7 +64,12 @@ namespace Muffin.Components.UI
             thumbStickLeftY.update(g.ThumbSticks.Left.Y, gameTime.TotalGameTime.TotalMilliseconds);
             buttonA.update((g.Buttons.A == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
-           
+            if (g.Buttons.B == ButtonState.Pressed)
+            {
+                _gameObject.mass = 10000.0f;
+            }
+            else
+                _gameObject.mass = 1000.0f;
             // update the object
             _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (g.Buttons.A == ButtonState.Pressed), (g.Buttons.X == ButtonState.Pressed));
             
