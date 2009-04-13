@@ -38,9 +38,27 @@ namespace Definitions
          * as terrain never moves.
          * */
 
-        new public Matrix worldMatrix()
+        public override Matrix worldMatrix()
         {
             return _worldMatrix;
+        }
+
+        /*
+         * Same as above--there is no need to compute this, as this object can't change position.
+         * */
+
+        public override Matrix futureWorldMatrix()
+        {
+            return _worldMatrix;
+        }
+
+        /*
+         * Again, no need to recompute each time, as this game object never moves.
+         * */
+
+        public override BoundingBox getCurrentBoundingBox()
+        {
+            return _boundingBox;
         }
 
         // These represent the (x,y) location of this terrain object in the world so the AI can easily figure out
