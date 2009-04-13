@@ -201,6 +201,12 @@ namespace Muffin
             GameObject testBox4 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(500, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 11000.0f, GameConstants.GameObjectScale);
             objs.Add(testBox4);
 
+            GameObject testBox5 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 300, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
+            objs.Add(testBox5);
+
+            GameObject testBox6 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale);
+            objs.Add(testBox6);
+
             //testBox1.applyForce(new Vector3(0.0f, 9.8f * testBox1.mass, 0.0f), new Vector3(60, 40, 30));
 
             foreach (GameObject o in objs)

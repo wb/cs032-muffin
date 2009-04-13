@@ -260,8 +260,6 @@ namespace Muffin.Components.Physics
                             activeObject.currentState.position = activeObject.currentState.position - sign * activeFactor * new Vector3(0, 0, correction.Z);
                         }
 
-
-
                     }
                 }
 
