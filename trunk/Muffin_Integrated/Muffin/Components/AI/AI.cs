@@ -177,7 +177,15 @@ namespace Muffin.Components.AI
                 if (m_index.TryGetValue(o, out oldPos))
                 {
                     if (oldPos.X != thisX || oldPos.Y != thisY)
+                    {
+                        // Remove from old grid location
+                        SortedList<float, GameObject> l = m_grid[oldPos.X, oldPos.Y];
+                        l.RemoveAt(l.IndexOfValue(o));
+
+                        // Put in new location
+                        m_grid[thisX, thisY].Add(o.position.Y, o);
                         m_index[o] = new Point(thisX, thisY);
+                    }
                 }
             }
 
