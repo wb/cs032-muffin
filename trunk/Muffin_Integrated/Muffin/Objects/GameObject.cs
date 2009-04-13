@@ -119,18 +119,25 @@ namespace Definitions
 
         public BoundingBox getCurrentBoundingBox()
         {
-            // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
-            Vector3 min, max;
+            // we only need to run this code if the object isn't locked
+            if (!_locked)
+            {
+                // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
+                Vector3 min, max;
 
-            min = -0.5f * _dimensions;
-            max = 0.5f * _dimensions;
+                min = -0.5f * _dimensions;
+                max = 0.5f * _dimensions;
 
-            // now we need to transform these using the world matrix
-            min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
-            max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+                // now we need to transform these using the world matrix
+                min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+                max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
 
-            // create a new bounding box
-            return new BoundingBox(min, max);
+                // create a new bounding box
+                return new BoundingBox(min, max);
+            }
+            // otherwise we can assume the object hasn't moved and return the bounding box
+            else
+                return _boundingBox;
         }
 
         /*
