@@ -117,27 +117,22 @@ namespace Definitions
 
         }
 
-        public BoundingBox getCurrentBoundingBox()
+        public virtual BoundingBox getCurrentBoundingBox()
         {
-            // we only need to run this code if the object isn't locked
-            if (!_locked)
-            {
-                // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
-                Vector3 min, max;
 
-                min = -0.5f * _dimensions;
-                max = 0.5f * _dimensions;
+            // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
+            Vector3 min, max;
 
-                // now we need to transform these using the world matrix
-                min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
-                max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+            min = -0.5f * _dimensions;
+            max = 0.5f * _dimensions;
 
-                // create a new bounding box
-                return new BoundingBox(min, max);
-            }
-            // otherwise we can assume the object hasn't moved and return the bounding box
-            else
-                return _boundingBox;
+            // now we need to transform these using the world matrix
+            min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+            max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+
+            // create a new bounding box
+            return new BoundingBox(min, max);
+
         }
 
         /*
@@ -160,7 +155,7 @@ namespace Definitions
          * of a new bounding box.
          * */
 
-        public Matrix futureWorldMatrix()
+        public virtual Matrix futureWorldMatrix()
         {
             return Matrix.CreateFromQuaternion(_futureState.rotation) *
                    Matrix.CreateTranslation(_futureState.position) *
