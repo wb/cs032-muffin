@@ -42,9 +42,9 @@ namespace Definitions
 
         /*
          * This method takes input from the keyboard or controller and moves the model accordingly.
-         * upDown is used for moving backwards and forwards.
-         * leftRight is used for changing orientation or strafing (is strafe is true).
-         * strafeValue is used for straffing
+         * upDown is used for moving backwards and forwards. - this should be normalized to a max absolute value of 1
+         * leftRight is used for changing orientation or strafing (is strafe is true).  - this should be normalized to a max absolute value of 1
+         * strafeValue is used for straffing  - this should be normalized to a max absolute value of 1
          * strafe toggles strafe mode (if using the keyboard, simply return true if either of the strafe keys are pressed).
          * jump toggles jump
          * 
