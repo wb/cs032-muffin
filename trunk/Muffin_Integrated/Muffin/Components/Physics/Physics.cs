@@ -140,9 +140,11 @@ namespace Muffin.Components.Physics
                 }
 
                 if (!collision)
-                    activeObject.postPhysics(true);
+                {
+                    activeObject.postPhysics(true, _muffinGame);
+                }
                 else
-                    activeObject.postPhysics(false);
+                    activeObject.postPhysics(false, _muffinGame);
             }
 
             /* In addition to checking for collisions on all objects, we need to check for collisions

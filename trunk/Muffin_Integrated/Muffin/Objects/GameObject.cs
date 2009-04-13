@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using Muffin;
 
 namespace Definitions
 {
@@ -87,7 +88,14 @@ namespace Definitions
         {
 
         }
+        /*
+         * This method is used to take input and translate it into movement.
+         * */
 
+        public virtual void move(float upDown, float leftRight, float strafeValue, Boolean jump, Boolean strafe)
+        {
+
+        }
         /*
          * This method is used to update the bounding box whenever the object has moved.
          * */
@@ -223,7 +231,6 @@ namespace Definitions
                 _futureState.angularVelocity = 0.995f * _futureState.angularVelocity;
 
                 this.updateBoundingBox();
-
             }
         }
 
@@ -234,7 +241,7 @@ namespace Definitions
 
         public void prePhysics()
         {
-            // blank for now
+            _previousState.copy(_currentState);
         }
 
         /*
@@ -243,13 +250,11 @@ namespace Definitions
          * to zero, etc.
          * */
 
-        public void postPhysics(Boolean move)
+        public void postPhysics(Boolean move, MuffinGame game)
         {
             // reset the force and torque to zero
             _force = Vector3.Zero;
             _torque = Vector3.Zero;
-
-            _previousState.copy(_currentState);
 
             if (move)
             {
@@ -262,8 +267,13 @@ namespace Definitions
                 _futureState.copy(_currentState);
             }
 
+            // check to see if we've moved since the previous state
+            if (_previousState.position != _currentState.position)
+            {
+                // if so, register this object
+                game.addUpdateObject(this);
+            }
         }
-
 
         #region Gets and Sets
 
@@ -404,7 +414,6 @@ namespace Definitions
         }
 
         #endregion
-
 
     }
 }

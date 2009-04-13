@@ -26,13 +26,9 @@ namespace Muffin.Components.Renderer
         public Matrix ViewMatrix { get; set; }
         public Matrix ProjectionMatrix { get; set; }
 
-        private float aspectRatio;
-        private float current_y;
-        private float min_y = 5.0f, max_y = 70.0f;
+        private float _zoom, aspectRatio, _lookRotationX, _lookRotationY; // this is the rotation for looking around (separate from moving the object)
 
-        private float _lookRotationX, _lookRotationY; // this is the rotation for looking around (separate from moving the object)
-
-        private Vector3 _oldPosition;
+        private Vector3 _oldPosition, _relativeCameraPosition;
         private Quaternion _oldOrientation;
 
         public GameCamera(Vector3 pos, Vector3 target, float aspect_ratio)
@@ -40,13 +36,9 @@ namespace Muffin.Components.Renderer
             cameraPosition = pos;
             cameraTarget = target;
 
-            Vector3 noY = new Vector3(cameraTarget.X, 0.0f, cameraTarget.Z);
-            Vector3 temp = Vector3.Transform(cameraPosition, Matrix.CreateTranslation(-noY));
+            _relativeCameraPosition = new Vector3(0, 150, -300);
+            _zoom = 1.5f;
 
-            double radius = Math.Sqrt(Math.Pow(temp.X, 2) + Math.Pow(temp.Z, 2));
-            double distance = (cameraPosition - cameraTarget).Length();
-            current_y = MathHelper.ToDegrees((float)Math.Acos(radius / distance));
-            Console.WriteLine(current_y);
             cameraUp = Vector3.Up;
             aspectRatio = aspect_ratio;
             ViewMatrix = Matrix.Identity;
@@ -87,10 +79,16 @@ namespace Muffin.Components.Renderer
 
             // rotate the camera target by the lookRotationX amount (around the camera position)
             cameraTarget = position - cameraPosition;
-            cameraTarget = Vector3.Transform(cameraTarget, Matrix.CreateFromAxisAngle(Vector3.Right, _lookRotationY) * Matrix.CreateFromAxisAngle(Vector3.Up, _lookRotationX));
+
+            // rotate up around this axis:
+            Vector3 verticalLookRotationVector = Vector3.Right;
+            verticalLookRotationVector = Vector3.Transform(verticalLookRotationVector, Matrix.CreateFromQuaternion(orientation));
+
+            // the camera target will normally be the object, but can sometimes be elsewhere if you look around
+            cameraTarget = Vector3.Transform(cameraTarget, Matrix.CreateFromAxisAngle(verticalLookRotationVector, _lookRotationY) * Matrix.CreateFromAxisAngle(Vector3.Up, _lookRotationX));
             cameraTarget += cameraPosition;
 
-            Vector3 newCameraPosition = new Vector3(0, 300, -600);
+            Vector3 newCameraPosition = _relativeCameraPosition * _zoom;
             newCameraPosition = Vector3.Transform(newCameraPosition, Matrix.CreateFromQuaternion(orientation));
             newCameraPosition += position;
 
@@ -121,18 +119,18 @@ namespace Muffin.Components.Renderer
                 aspectRatio, GameConstants.NearClip, GameConstants.FarClip);
         }
 
-        public void setTarget(Vector3 target)
+        public void zoom(float scrollFactor)
         {
-            Vector3 relative_camera_shift = target - cameraTarget;
-            cameraPosition += relative_camera_shift;
-            cameraTarget = target;
-        }
+            float lowerBound = 0.5f;
+            float upperBound = 5.0f;
 
-        public void zoom(int scrollFactor)
-        {
-            Vector3 v = cameraTarget - cameraPosition;
-            v.Normalize();
-            cameraPosition += (((((float)scrollFactor) / 4.0f) / 10.0f) * v);
+            _zoom -= scrollFactor / 500.0f;
+
+            if (_zoom < lowerBound)
+                _zoom = lowerBound;
+            else if (_zoom > upperBound)
+                _zoom = upperBound;
+
         }
     }
 }
