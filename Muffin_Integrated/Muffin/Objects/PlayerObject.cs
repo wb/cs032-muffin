@@ -15,7 +15,6 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace Definitions
 {
-
     public class PlayerObject : GameObject
     {
         private int _health, _lives;

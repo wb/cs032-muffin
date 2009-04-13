@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
-
+using Muffin.Components.Renderer;
 
 namespace Muffin.Components.UI
 {
@@ -22,13 +22,16 @@ namespace Muffin.Components.UI
         ControllerInterface _controllerOne;
         MuffinGame _muffinGame;
         KeyboardInterface _keyboard;
+        GameCamera _camera;
 
         public InputManager(Game game)
             : base(game)
         {
             _muffinGame = (MuffinGame)game;
+
             _controllerOne = new ControllerInterface(_muffinGame.allPlayer.ElementAt(0), PlayerIndex.One);
             _keyboard = new KeyboardInterface(_muffinGame.allPlayer.ElementAt(0));
+
         }
 
         /// <summary>
@@ -37,8 +40,7 @@ namespace Muffin.Components.UI
         /// </summary>
         public override void Initialize()
         {
-            // TODO: Add your initialization code here
-
+            _camera = _muffinGame.camera;
             base.Initialize();
         }
 
@@ -53,9 +55,16 @@ namespace Muffin.Components.UI
              * the keyboard, so they must be placed second (they will only override if they
              * are turned on.  Perhaps obvious, but it was a case to consider.
              * */
-           
-            _keyboard.Update(gameTime);
-            _controllerOne.Update(gameTime);
+
+
+            if (_controllerOne.isConnected())
+            {
+                _controllerOne.Update(gameTime, _camera);
+            }
+            else
+            {
+                _keyboard.Update(gameTime, _camera);
+            }
 
             base.Update(gameTime);
         }

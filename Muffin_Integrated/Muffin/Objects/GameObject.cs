@@ -32,6 +32,7 @@ namespace Definitions
         protected Boolean _locked, _active;
         protected BoundingBox _boundingBox;
         protected GameObjectState _previousState, _currentState, _futureState;
+        protected Quaternion _orientation; // this is used for the direction an object is facing (for moving, camera, etc).
 
         /*
          * This is the constructor.  
@@ -68,6 +69,9 @@ namespace Definitions
             _active = true;
 
             _toMove = new Vector3();
+
+            // initalize the orientation
+            _orientation = Quaternion.Identity;
         }
 
         /*
@@ -128,7 +132,7 @@ namespace Definitions
          * have to be recalculated each and every timestep.
          * */
 
-        public Matrix worldMatrix()
+        public virtual Matrix worldMatrix()
         {
             return Matrix.CreateScale(_scale) *
                    Matrix.CreateFromQuaternion(_currentState.rotation) *
@@ -204,6 +208,15 @@ namespace Definitions
                 _futureState.velocity = _futureState.velocity + _futureState.acceleration * timestep;
 
                 _futureState.position = _futureState.position + _futureState.velocity * timestep;
+
+                // check for max position
+
+                if (_futureState.position.Y > GameConstants.MaxHeight)
+                {
+                    _futureState.position = new Vector3(_futureState.position.X, GameConstants.MaxHeight, _futureState.position.Z);
+                    _futureState.acceleration = new Vector3(_futureState.acceleration.X, 0, _futureState.acceleration.Z);
+                    _futureState.velocity = new Vector3(_futureState.velocity.X, 0, _futureState.velocity.Z);
+                }
 
                 // account for air resistance, general drag, etc
                 _futureState.velocity = 0.995f * _futureState.velocity;
@@ -382,6 +395,12 @@ namespace Definitions
         public GameObjectState previousState
         {
             get { return _previousState; }
+        }
+
+        public Quaternion orientation
+        {
+            get { return _orientation; }
+            set { _orientation = value; }
         }
 
         #endregion

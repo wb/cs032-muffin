@@ -55,6 +55,8 @@ namespace Muffin
         private bool _AIChanging;
         private bool _playersChanging;
 
+        private GameCamera _camera;
+
         #endregion
 
         public GraphicsDeviceManager graphics;
@@ -71,6 +73,8 @@ namespace Muffin
 
 
             LoadLevel();
+
+
 
             _renderer = new Renderer(this);
             Components.Add(_renderer);
@@ -94,6 +98,11 @@ namespace Muffin
         protected override void Initialize()
         {
             _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging = false;
+
+            // create a new camera
+            _camera = new GameCamera(24 * new Vector3(-20, 12, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
+            // and pass it to the renderer
+            ((Renderer)_renderer).SetUpCamera(_camera);
 
             base.Initialize();
         }
@@ -169,15 +178,23 @@ namespace Muffin
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
 
-            // add a box for testing
-            GameObject testBox1 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
+            // this is the player
+            GameObject testBox1 = new PlayerObject(null, ModelName.PLAYER, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 5000.0f, 1.0f);
             objs.Add(testBox1);
-            testBox1.applyForce(new Vector3(50000.0f, 0.0f, 50000.0f), new Vector3(30, 30, 30));
+            testBox1.applyForce(new Vector3(-50000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
 
-            //GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(200, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 1000.0f, 1.0f);
-            GameObject testBox2 = new PlayerObject(null, ModelName.BOX, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, 1.0f);
+            // add a box for testing
+            GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, 1.0f);
             objs.Add(testBox2);
-            testBox2.applyForce(new Vector3(-50000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
+            testBox2.applyForce(new Vector3(50000.0f, 0.0f, 50000.0f), new Vector3(30, 30, 30));
+
+            // a heavier box
+            GameObject testBox3 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 4000.0f, 1.0f);
+            objs.Add(testBox3);
+
+            // an even heavier box
+            GameObject testBox4 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(500, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 11000.0f, 1.0f);
+            objs.Add(testBox4);
 
             //testBox1.applyForce(new Vector3(0.0f, 9.8f * testBox1.mass, 0.0f), new Vector3(60, 40, 30));
 
@@ -259,6 +276,12 @@ namespace Muffin
         public List<GameObject> updated { get { return _updatedObjects; } }
 
         #endregion
+
+        public GameCamera camera
+        {
+            get { return _camera; }
+            set { _camera = value; }
+        }
 
     }
 }
