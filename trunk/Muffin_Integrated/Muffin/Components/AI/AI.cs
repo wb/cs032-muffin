@@ -186,6 +186,12 @@ namespace Muffin.Components.AI
                         m_grid[thisX, thisY].Add(o.position.Y, o);
                         m_index[o] = new Point(thisX, thisY);
                     }
+                    else
+                    {
+                        SortedList<float, GameObject> l = m_grid[oldPos.X, oldPos.Y];
+                        l.Keys[l.IndexOfValue(o)] = o.position.Y;
+                    }
+
                 }
             }
 
