@@ -77,8 +77,6 @@ namespace Muffin
 
             LoadLevel();
 
-
-
             _renderer = new Renderer(this);
             Components.Add(_renderer);
             _renderer.UpdateOrder = 0;
@@ -146,7 +144,6 @@ namespace Muffin
                 this.Exit();
 
             // TODO: Add your update logic here
-            Console.WriteLine(this._allPlayers.ElementAt(0).currentState.position);
             beginTick();
             base.Update(gameTime);
         }
