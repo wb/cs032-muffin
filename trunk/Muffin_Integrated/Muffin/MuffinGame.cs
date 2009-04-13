@@ -19,6 +19,7 @@ using Definitions;
 using Muffin.Components.Renderer;
 using Muffin.Components.Physics;
 using Muffin.Components.UI;
+using Muffin.Components.AI;
 
 namespace Muffin
 {
@@ -41,7 +42,7 @@ namespace Muffin
         private List<GameObject> _updatingObjects;
 
         //GameComponents
-        GameComponent _renderer, _physics, _inputManager;
+        GameComponent _renderer, _physics, _inputManager, _ai;
 
         // Class for loading levels
         XMLParser _xmlParser;
@@ -71,6 +72,8 @@ namespace Muffin
             _allAIObjects = new List<AIObject>();
             _allPlayers = new List<PlayerObject>();
 
+            _updatedObjects = new List<GameObject>();
+            _updatingObjects = new List<GameObject>();
 
             LoadLevel();
 
@@ -87,6 +90,10 @@ namespace Muffin
             _inputManager = new InputManager(this);
             Components.Add(_inputManager);
             _inputManager.UpdateOrder = 2;
+
+            _ai = new AI(this);
+            Components.Add(_ai);
+            _ai.UpdateOrder = 3;
         }
 
         /// <summary>
@@ -139,6 +146,7 @@ namespace Muffin
 
             // TODO: Add your update logic here
 
+            beginTick();
             base.Update(gameTime);
         }
 

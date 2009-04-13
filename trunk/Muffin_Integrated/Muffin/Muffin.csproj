@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\AI\AI.cs" />
+    <Compile Include="Components\AI\WeightedGraph.cs" />
     <Compile Include="Components\Collision\Collision.cs" />
     <Compile Include="Components\Physics\ForceGenerator.cs" />
     <Compile Include="Components\Physics\Gravity.cs" />
