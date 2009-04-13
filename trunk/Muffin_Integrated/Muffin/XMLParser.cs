@@ -65,7 +65,7 @@ namespace Muffin
 
                 //add the object to the array of active objects
                 Quaternion.CreateFromRotationMatrix(ref rotMat, out quat);
-                m_objects.Add(new TerrainObject(null, name, pos, quat, new Vector3(60,24,60),1.0f, (int)(pos.X/60.0f), (int)(pos.Z/60.0f)));
+                m_objects.Add(new TerrainObject(null, name, pos, quat, new Vector3(60,24,60),GameConstants.GameObjectScale, (int)(pos.X/60.0f), (int)(pos.Z/60.0f)));
             } else {
                 Console.WriteLine("Bad parse input");
             }

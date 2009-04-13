@@ -195,7 +195,7 @@ namespace Muffin.Components.Physics
                         correction.Z = (penetration.Z <= 0 ? penetration.Z : 0);
 
                         // multiply by a small factor to make sure it moves slightly more than it has to (this helps for rounding error reasons)
-                        correction *= 1.01f; ;
+                        correction *= 1.05f;
 
                         // now we want to correct the smallest absolute value of these
                         Vector3 tempCorrect = VectorAbs(correction);

@@ -17,12 +17,13 @@ namespace Definitions
     public class GameConstants
     {
         public const string CurrentLevel = "level_flat_small";
-        public const float NearClip = 100.0f;
-        public const float FarClip = 1500.0f;
         public const float ViewAngle = 45.0f;
         public const int MaxLights = 3;
         public const int MaxAcceleration = 2000;
         public const int MaxMoveWeightRatio = 10;
         public const int MaxHeight = 1000; // this is the max height that an object can move (jumping/flying stuff)
+        public const float GameObjectScale = 10.0f; // this is the universal scale constant for objects
+        public const float NearClip = 1000.0f;
+        public const float FarClip = 30000.0f;
     }
 }

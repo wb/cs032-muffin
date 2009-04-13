@@ -36,7 +36,7 @@ namespace Muffin.Components.Renderer
             cameraPosition = pos;
             cameraTarget = target;
 
-            _relativeCameraPosition = new Vector3(0, 150, -300);
+            _relativeCameraPosition = GameConstants.GameObjectScale * new Vector3(0, 150, -300);
             _zoom = 1.5f;
 
             cameraUp = Vector3.Up;
@@ -75,6 +75,7 @@ namespace Muffin.Components.Renderer
 
         public void Update(Vector3 position, Quaternion orientation)
         {
+            position = GameConstants.GameObjectScale * position;
             //setTarget(position);
 
             // rotate the camera target by the lookRotationX amount (around the camera position)
@@ -96,7 +97,7 @@ namespace Muffin.Components.Renderer
 
             // bleed off the look angle proportionally to how much the object is moving
             Vector3 changeInPosition = position - _oldPosition;
-            float bleedFromPosition = (100.0f - changeInPosition.Length()) / 100.0f;
+            float bleedFromPosition = (100.0f - (changeInPosition.Length() / GameConstants.GameObjectScale)) / 100.0f;
 
 
             // bleed off the look angle proportionally to how much the object is rotation
@@ -121,7 +122,7 @@ namespace Muffin.Components.Renderer
 
         public void zoom(float scrollFactor)
         {
-            float lowerBound = 0.5f;
+            float lowerBound = 0.8f;
             float upperBound = 5.0f;
 
             _zoom -= scrollFactor / 500.0f;

@@ -109,8 +109,8 @@ namespace Definitions
             max = 0.5f * _dimensions;
 
             // now we need to transform these using the world matrix
-            min = Vector3.Transform(min, this.futureWorldMatrix());
-            max = Vector3.Transform(max, this.futureWorldMatrix());
+            min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_futureState.rotation) * Matrix.CreateTranslation(_futureState.position));
+            max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_futureState.rotation) * Matrix.CreateTranslation(_futureState.position));
 
             // create a new bounding box
             _boundingBox = new BoundingBox(min, max);
@@ -126,8 +126,8 @@ namespace Definitions
             max = 0.5f * _dimensions;
 
             // now we need to transform these using the world matrix
-            min = Vector3.Transform(min, this.worldMatrix());
-            max = Vector3.Transform(max, this.worldMatrix());
+            min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+            max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
 
             // create a new bounding box
             return new BoundingBox(min, max);
@@ -142,9 +142,9 @@ namespace Definitions
 
         public virtual Matrix worldMatrix()
         {
-            return Matrix.CreateScale(_scale) *
-                   Matrix.CreateFromQuaternion(_currentState.rotation) *
-                   Matrix.CreateTranslation(_currentState.position);
+            return Matrix.CreateFromQuaternion(_currentState.rotation) *
+                   Matrix.CreateTranslation(_currentState.position) *
+                   Matrix.CreateScale(_scale);
         }
 
         /*
@@ -155,9 +155,9 @@ namespace Definitions
 
         public Matrix futureWorldMatrix()
         {
-            return Matrix.CreateScale(_scale) *
-                   Matrix.CreateFromQuaternion(_futureState.rotation) *
-                   Matrix.CreateTranslation(_futureState.position);
+            return Matrix.CreateFromQuaternion(_futureState.rotation) *
+                   Matrix.CreateTranslation(_futureState.position) *
+                   Matrix.CreateScale(_scale);
         }
 
         /*
