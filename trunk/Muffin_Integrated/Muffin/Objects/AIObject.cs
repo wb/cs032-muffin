@@ -18,6 +18,7 @@ namespace Definitions
     public class AIObject : GameObject
     {
         private int _health, _lives;
+
         /*
          * This constructor makes a few assumptions.  Namely that an AIObject is an enemy.
          * */

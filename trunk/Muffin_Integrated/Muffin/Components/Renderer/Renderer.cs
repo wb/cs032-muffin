@@ -46,37 +46,23 @@ namespace Muffin.Components.Renderer
             public static int SizeInBytes = sizeof(float) * (3 + 2 + 3);
         }
 
+
         MuffinGame m_game;
         GraphicsDeviceManager graphics;
         GraphicsDevice device;
         SpriteBatch spriteBatch;
         Effect effect;
-        VertexBuffer vertexBuffer;
-        VertexDeclaration vertexDeclaration;
 
         GameCamera camera;
         MouseHandler m_mouse;
 
-        Texture2D brickTexture;
         Texture2D spotlightTexture;
-        Texture2D[] carTexture;
-        Texture2D[] lampTexture;
-        Texture2D[] shipTexture;  
-        Texture2D[] forkLiftTexture;
+
 
         List<GameObject> m_objects;
         List<Model> m_models;
         List<Texture2D[]> m_model_textures;
-        XMLParser m_parser;
 
-        Model carModel;
-        Model lampModel;
-        Model shipModel;
-        Model forkLiftModel;
-        Matrix forkTransform;
-        Boolean forkMoving = false;
-        float forkVelocity = 0.0f;
-        float forkHeight = 0.0f;
 
         //light data
         Matrix[] LightViewProjectionMatrix = new Matrix[3];
@@ -93,7 +79,8 @@ namespace Muffin.Components.Renderer
 
         bool isLoaded = false, isInit = false;
 
-        public Renderer(MuffinGame game) : base(game)
+        public Renderer(MuffinGame game)
+            : base(game)
         {
             //renderer settings
             m_game = game;
@@ -113,6 +100,7 @@ namespace Muffin.Components.Renderer
             m_model_textures = new List<Texture2D[]>();
             game.IsMouseVisible = true;
         }
+
 
         void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
         {
@@ -198,7 +186,8 @@ namespace Muffin.Components.Renderer
             int quality = 0;
 
             //for multiple shadowmaps
-            for(int i = 0; i < GameConstants.MaxLights; i++) {
+            for (int i = 0; i < GameConstants.MaxLights; i++)
+            {
                 renderTarget[i] = new RenderTarget2D(device, width, height, 1, format, type, quality);
             }
             shadowDSB = new DepthStencilBuffer(graphics.GraphicsDevice, width, height, dFormat, type, quality);
@@ -216,9 +205,13 @@ namespace Muffin.Components.Renderer
             m_model_textures.Add(terrain);
             m_models.Add(LoadModel("box", out terrain));
             m_model_textures.Add(terrain);
+            m_models.Add(LoadModel("player", out terrain));
+            m_model_textures.Add(terrain);
 
-            foreach(GameObject o in m_objects) {
-                switch(o.modelName){
+            foreach (GameObject o in m_objects)
+            {
+                switch (o.modelName)
+                {
                     case ModelName.BOX:
                         o.model = m_models.ElementAt((int)ModelName.BOX);
                         break;
@@ -234,23 +227,30 @@ namespace Muffin.Components.Renderer
                     case ModelName.WEDGE:
                         o.model = m_models.ElementAt((int)ModelName.WEDGE);
                         break;
-                    case ModelName.NONE: default:
+                    case ModelName.PLAYER:
+                        o.model = m_models.ElementAt((int)ModelName.PLAYER);
                         break;
+                    case ModelName.NONE:
+                    default:
+                        break;
+
                 }
             }
 
-            SetUpCamera();
+            //SetUpCamera();
             SetUpLights();
 
             isLoaded = true;
         }
 
-        private void SetUpCamera()
+        public void SetUpCamera(GameCamera cam)
         {
-            camera = new GameCamera(12*new Vector3(-20, 12, -20), new Vector3(0, 0, 0), device.Viewport.AspectRatio);
+            camera = cam;
+            //camera = new GameCamera(24*new Vector3(-20, 12, -20), new Vector3(0, 0, 0), device.Viewport.AspectRatio);
         }
 
-        private void SetUpLights() {
+        private void SetUpLights()
+        {
             LightPos[0] = new Vector3(-20, 20, 20);
             LightPos[1] = new Vector3(20, 20, -20);
             LightPos[2] = new Vector3(-30, 45, 0);
@@ -292,39 +292,10 @@ namespace Muffin.Components.Renderer
             }
         }
 
-        GamePadState gstate;
 
-        private void UpdateCamera() {
-            m_mouse.updateHandler(Mouse.GetState());
-
-            float xRot = MathHelper.ToRadians((float)m_mouse.getNetY()) / 4.0f;
-            float yRot = MathHelper.ToRadians((float)m_mouse.getNetX()) / 4.0f;
-
-            Vector3 cameraRotationMouse;
-            Vector3 cameraRotationController;
-
-            int scrollValue = m_mouse.getNetScroll();
-            camera.zoom(scrollValue);
-
-            if (m_mouse.shouldRotate())
-                cameraRotationMouse = new Vector3(xRot, yRot, 0.0f);
-            else
-                cameraRotationMouse = Vector3.Zero;
-
-            float yRot2 = MathHelper.ToRadians(gstate.ThumbSticks.Right.X * 1.0f);
-            float xRot2 = -MathHelper.ToRadians(gstate.ThumbSticks.Right.Y * 1.0f);
-
-            int scrollValue1 = -(int)(gstate.Triggers.Left * 10);
-            int scrollValue2 = (int)(gstate.Triggers.Right * 10);
-
-            camera.zoom(scrollValue1);
-            camera.zoom(scrollValue2);
-
-            cameraRotationController = new Vector3(xRot2, yRot2, 0.0f);
-
-            camera.setTarget(ModelPos);
-            camera.Update(cameraRotationController);
-            camera.Update(cameraRotationMouse);
+        private void UpdateCamera()
+        {
+            camera.Update(m_game.allPlayer.ElementAt(0).position, m_game.allPlayer.ElementAt(0).orientation);
         }
 
         /// <summary>
@@ -334,62 +305,14 @@ namespace Muffin.Components.Renderer
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            if(!isLoaded) {
+            if (!isLoaded)
+            {
                 return;
             }
-            
-            gstate = GamePad.GetState(PlayerIndex.One);
-            if(gstate.IsConnected){
 
-                float netRotY = -gstate.ThumbSticks.Left.X * .02f;
-                ModelRot *= Matrix.CreateFromYawPitchRoll(netRotY, 0.0f, 0.0f);
-                ModelDir = Vector3.Transform(ModelDir, Matrix.CreateFromYawPitchRoll(netRotY, 0.0f, 0.0f));
-                ModelDir.Normalize();
-
-                if(gstate.Buttons.A == ButtonState.Pressed && gstate.Buttons.B == ButtonState.Released){
-                    //ModelPos += ((ModelDir) *.4f);
-                }
-
-                if (gstate.Buttons.B == ButtonState.Pressed && gstate.Buttons.A == ButtonState.Released)
-                {
-                    //ModelPos -= ((ModelDir) * .4f);
-                }
-
-                if(gstate.Buttons.X == ButtonState.Pressed) {
-
-                    if(!forkMoving) {
-                        forkMoving = true;
-                        if(forkHeight == 0.0f) {
-                           // Console.WriteLine("Moving up");
-                            forkVelocity = 15.0f;
-                        } else {
-                            forkVelocity = -15.0f;
-                           // Console.WriteLine("Moving down");
-                        }
-                    }
-                }
-
-                if(forkMoving) {
-                    forkHeight = forkHeight + forkVelocity * gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
-
-                    if(forkHeight >= 100.0f) {
-                        forkHeight = 100.0f;
-                        forkVelocity = 0.0f;
-                        forkMoving = false;
-                    } else if(forkHeight <= 0.0f) {
-                        forkHeight = 0.0f;
-                        forkVelocity = 0.0f;
-                        forkMoving = false;
-                    }
-
-                    forkLiftModel.Bones["vorken"].Transform = Matrix.CreateTranslation(0.0f, 0.0f, forkHeight) * forkTransform;
-                }
-                
-            }
-            // TODO: Add your update logic here
             UpdateCamera();
             UpdateLights();
-            
+
             base.Update(gameTime);
         }
 
@@ -397,16 +320,19 @@ namespace Muffin.Components.Renderer
         Vector3 ModelDir = new Vector3(0, 0, 1);
         Matrix ModelRot = Matrix.CreateFromYawPitchRoll(3.0f * MathHelper.Pi / 2.0f, 0.0f, 0.0f);
 
-        public override void Draw (GameTime gameTime) {
+        public override void Draw(GameTime gameTime)
+        {
 
-            if (!isLoaded) {
+            if (!isLoaded)
+            {
                 return;
             }
 
             //set DSB to the shadow DSB
             device.DepthStencilBuffer = shadowDSB;
 
-            for(int i = 0; i < GameConstants.MaxLights; i++) {
+            for (int i = 0; i < GameConstants.MaxLights; i++)
+            {
                 device.SetRenderTarget(0, renderTarget[i]);
                 device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
                 DrawAll("ShadowMap", i);
@@ -414,7 +340,8 @@ namespace Muffin.Components.Renderer
 
             device.SetRenderTarget(0, null);
 
-            for(int i = 0; i < GameConstants.MaxLights; i++) {
+            for (int i = 0; i < GameConstants.MaxLights; i++)
+            {
                 shadowMap[i] = renderTarget[i].GetTexture();
             }
 
@@ -432,7 +359,8 @@ namespace Muffin.Components.Renderer
             device.RenderState.CullMode = CullMode.CullCounterClockwiseFace;
             device.RenderState.AlphaBlendEnable = false;
 
-            foreach (GameObject o in m_objects) {
+            foreach (GameObject o in m_objects)
+            {
                 Matrix worldMatrix = o.worldMatrix();
                 DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique, index);
             }
