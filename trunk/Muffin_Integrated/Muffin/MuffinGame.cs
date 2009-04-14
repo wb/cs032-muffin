@@ -41,6 +41,10 @@ namespace Muffin
         // Stuff that is being updated in the current cycle
         private List<GameObject> _updatingObjects;
 
+        // Objects that are being removed from the world
+        private List<GameObject> _removedObjects;
+        private List<GameObject> _removingObjects;
+
         //GameComponents
         GameComponent _renderer, _physics, _inputManager, _ai;
 
@@ -51,10 +55,12 @@ namespace Muffin
         private bool _terrainChanged;
         private bool _AIChanged;
         private bool _playersChanged;
+        private bool _objectsRemoved;
 
         private bool _terrainChanging;
         private bool _AIChanging;
         private bool _playersChanging;
+        private bool _objectsRemoving;
 
         private GameCamera _camera;
 
@@ -74,6 +80,9 @@ namespace Muffin
 
             _updatedObjects = new List<GameObject>();
             _updatingObjects = new List<GameObject>();
+
+            _removedObjects = new List<GameObject>();
+            _removingObjects = new List<GameObject>();
 
             LoadLevel();
 
@@ -102,7 +111,8 @@ namespace Muffin
         /// </summary>
         protected override void Initialize()
         {
-            _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging = false;
+            _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging = 
+                _objectsRemoved = _objectsRemoving = false;
 
             // create a new camera
             _camera = new GameCamera(24 * new Vector3(-20, 12, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
@@ -232,6 +242,10 @@ namespace Muffin
             _AIChanged = _AIChanging;
             _playersChanged = _playersChanging;
 
+            _removedObjects = _removingObjects;
+            _objectsRemoved = _objectsRemoving;
+            _removingObjects = new List<GameObject>();
+
             _updatingObjects = new List<GameObject>();
             _AIChanging = false;
             _playersChanging = false;
@@ -244,6 +258,12 @@ namespace Muffin
 
         // You must call one of these if it is necessary to add any objects to the game
         // DO NOT ADD DIRECTLY TO THE PUBLIC LISTS
+
+        // Note: only call this for objects that are NOT of a specific subtype
+        public void addGenericObject(GameObject o)
+        {
+            _allObjects.Add(o);
+        }
 
         public void addTerrainObject(TerrainObject o)
         {
@@ -276,6 +296,24 @@ namespace Muffin
                 _playersChanging = true;
         }
 
+        // Removes the given object from the world
+        public void removeObject(GameObject o)
+        {
+            if (_allObjects.Contains(o))
+            {
+                _objectsRemoving = true;
+                _removingObjects.Add(o);
+
+                _allObjects.Remove(o);
+                if (o is TerrainObject)
+                    _allTerrain.Remove((TerrainObject)o);
+                else if (o is PlayerObject)
+                    _allPlayers.Remove((PlayerObject)o);
+                else if (o is AIObject)
+                    _allAIObjects.Remove((AIObject)o);
+            }
+        }
+
         #endregion
 
         #region Gets and sets
@@ -286,6 +324,7 @@ namespace Muffin
         public List<PlayerObject> allPlayer { get { return _allPlayers; } }
 
         public List<GameObject> updated { get { return _updatedObjects; } }
+        public List<GameObject> removed { get { return _removedObjects; } }
 
         #endregion
 
