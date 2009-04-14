@@ -55,6 +55,8 @@ namespace Definitions
             _mass = mass;
             _scale = scale;
 
+
+
             //initialize rest of the parameters to their defaults
             _force = new Vector3();
 
@@ -106,12 +108,17 @@ namespace Definitions
             min = -0.5f * _dimensions;
             max = 0.5f * _dimensions;
 
+            Matrix transform = Matrix.CreateFromQuaternion(_futureState.rotation) * Matrix.CreateTranslation(_futureState.position);
             // now we need to transform these using the world matrix
-            min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_futureState.rotation) * Matrix.CreateTranslation(_futureState.position));
-            max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_futureState.rotation) * Matrix.CreateTranslation(_futureState.position));
+            min = Vector3.Transform(min, transform);
+            max = Vector3.Transform(max, transform);
 
             // create a new bounding box
             _boundingBox = new OrientedBoundingBox(min, max);
+
+           // updateWorldVertices(transform);
+
+
 
         }
 
@@ -123,13 +130,16 @@ namespace Definitions
 
             min = -0.5f * _dimensions;
             max = 0.5f * _dimensions;
-
+            Matrix transform = Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position);
             // now we need to transform these using the world matrix
-            min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
-            max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+            min = Vector3.Transform(min, transform);
+            max = Vector3.Transform(max, transform);
 
+           // updateWorldVertices(transform);
             // create a new bounding box
+
             return new OrientedBoundingBox(min, max);
+            //return new OrientedBoundingBox(min, max);
 
         }
 
@@ -274,6 +284,7 @@ namespace Definitions
                 game.addUpdateObject(this);
             }
         }
+
 
         #region Gets and Sets
 

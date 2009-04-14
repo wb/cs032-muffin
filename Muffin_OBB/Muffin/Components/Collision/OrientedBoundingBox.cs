@@ -221,6 +221,7 @@ namespace Muffin.Components.Collision
         {
             _center = (_min + _max) * 0.5f;
             _extents = (_max - _min) * 0.5f;
+            _extents = new Vector3(Math.Abs(_extents.X), Math.Abs(_extents.Y), Math.Abs(_extents.Z));
         }
 
         //======================================================================
