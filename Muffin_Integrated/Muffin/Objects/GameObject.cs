@@ -145,8 +145,8 @@ namespace Definitions
         public virtual Matrix worldMatrix()
         {
             return Matrix.CreateFromQuaternion(_currentState.rotation) *
-                   Matrix.CreateTranslation(_currentState.position) *
-                   Matrix.CreateScale(_scale);
+                   Matrix.CreateScale(_scale) *
+                   Matrix.CreateTranslation(_currentState.position * _scale);
         }
 
         /*
@@ -158,8 +158,8 @@ namespace Definitions
         public virtual Matrix futureWorldMatrix()
         {
             return Matrix.CreateFromQuaternion(_futureState.rotation) *
-                   Matrix.CreateTranslation(_futureState.position) *
-                   Matrix.CreateScale(_scale);
+                   Matrix.CreateScale(_scale) *
+                   Matrix.CreateTranslation(_futureState.position * _scale);
         }
 
         /*
