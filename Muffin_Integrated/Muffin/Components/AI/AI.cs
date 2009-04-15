@@ -23,7 +23,6 @@ namespace Muffin.Components.AI
         private WeightedGraph<TerrainObject> m_world;
         private SortedList<float, GameObject>[,] m_grid;
         private Dictionary<GameObject, Point> m_index;
-        private List<AIObject> m_npcs;
 
         #region General External Methods
 
@@ -44,12 +43,6 @@ namespace Muffin.Components.AI
 
         }
 
-        public void registerAIObject(AIObject o)
-        {
-            if(!m_npcs.Contains(o))
-                m_npcs.Add(o);
-        }
-
         #endregion
 
         #region Internal Methods
@@ -60,7 +53,6 @@ namespace Muffin.Components.AI
             m_game = (MuffinGame)game;
             m_world = new WeightedGraph<TerrainObject>();
             m_index = new Dictionary<GameObject, Point>();
-            m_npcs = new List<AIObject>();
         }
 
         private GameObject topmostObjectGrid(int X, int Y)
@@ -157,8 +149,16 @@ namespace Muffin.Components.AI
                                 TerrainObject o2 = topmostTerrainGrid(x2, y2);
                                 if (o2 != null)
                                 {
-                                    // TODO: Make this weight actually mean something...
-                                    m_world.SetEdge(o1, o2, 1);
+                                    // Make sure this edge is valid
+                                    // Right now the AI can't jump, so any sudden upward gradient is impassable
+                                    // Falling down is ok, to a point...
+                                    // TODO: How to tell ramps apart from non-ramps simply?
+                                    int dist = (int)Math.Floor(o1.position.Y - o2.position.Y);
+                                    if (dist >= 0 && dist < GameConstants.MaxFallDistance)
+                                    {
+                                        // Currently the difference in height (to the nearest int) is the weight
+                                        m_world.SetEdge(o1, o2, dist);
+                                    }
                                 }
                             }
                 }
@@ -173,6 +173,22 @@ namespace Muffin.Components.AI
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
+            // Remove all objects from the grid that are gone
+            foreach (GameObject o in m_game.removed)
+            {
+                if (o is AIObject || o is PlayerObject)
+                    continue;
+
+                Point pos;
+                if (m_index.TryGetValue(o, out pos))
+                {
+                    SortedList<float, GameObject> l = m_grid[pos.X, pos.Y];
+                    l.RemoveAt(l.IndexOfValue(o));
+                    m_index.Remove(o);
+                }
+
+            }
+
             // Update grid based on objects that have moved
             foreach (GameObject o in m_game.updated)
             {
@@ -189,17 +205,18 @@ namespace Muffin.Components.AI
                     SortedList<float, GameObject> l = m_grid[oldPos.X, oldPos.Y];
                     l.RemoveAt(l.IndexOfValue(o));
 
+                    // Make sure the object hasn't moved off the edge of the world
                     int maxX = m_grid.GetLength(0);
                     int maxY = m_grid.GetLength(1);
                     if (thisX >= 0 && thisX < maxX && thisY >= 0 && thisY < maxY)
                     {
-
-                        // Put in new location
+                        // if not, put in new location
                         m_grid[thisX, thisY].Add(o.position.Y, o);
                         m_index[o] = new Point(thisX, thisY);
                     }
                     else
                     {
+                        // Otherwise get rid of it completely
                         m_index.Remove(o);
                     }
 
@@ -207,7 +224,7 @@ namespace Muffin.Components.AI
             }
 
             // Run AI on npcs
-            foreach (AIObject npc in m_npcs)
+            foreach (AIObject npc in m_game.allAI)
                 npc.doAI(this);
 
             base.Update(gameTime);

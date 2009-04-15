@@ -25,5 +25,8 @@ namespace Definitions
         public const float GameObjectScale = 10.0f; // this is the universal scale constant for objects
         public const float NearClip = 1000.0f;
         public const float FarClip = 30000.0f;
+
+        // AI Constants
+        public const float MaxFallDistance = 60;
     }
 }

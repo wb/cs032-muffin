@@ -22,6 +22,8 @@ namespace Definitions
         private int _health, _lives;
         private AIState _state;
 
+        private List<Vector3> _path;
+
         /*
          * This constructor makes a few assumptions.  Namely that an AIObject is an enemy.
          * */
@@ -30,6 +32,7 @@ namespace Definitions
             base(model, ModelType.ENEMY, modelName, position, rotation, false, dimensions, mass, scale)
         {
             _state = AIState.Idle;
+            _path = new List<Vector3>();
         }
 
         public override void controlInput(Vector2 dir, bool jump)
@@ -51,8 +54,28 @@ namespace Definitions
 
         }
 
+        private void setDirection()
+        {
+            if (_path.Count > 0)
+            {
+                Vector3 curDest = _path[0];
+                Vector3 direction = curDest - position;
+                direction.Y = 0;
+                if (direction.Length() < 1)
+                {
+                    _path.RemoveAt(0);
+                }
+                else
+                {
+                    direction.Normalize();
+                    controlInput(new Vector2(direction.X, direction.Z), false);
+                }
+            }
+        }
+
         public void doAI(AI ai)
         {
+            setDirection();
         }
 
         #region Gets and Sets
@@ -68,6 +91,8 @@ namespace Definitions
             get { return _lives; }
             set { _lives = value; }
         }
+
+        public List<Vector3> dest { get { return _path; } }
 
         #endregion
     }
