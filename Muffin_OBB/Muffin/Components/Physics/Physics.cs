@@ -78,9 +78,10 @@ namespace Muffin.Components.Physics
                     if (activeObject != passiveObject)
                     {
                         // get the bounding boxes
-                        OrientedBoundingBox activeBoundingBox = activeObject.boundingBox;
-                        OrientedBoundingBox passiveBoundingBox = passiveObject.boundingBox;
-
+//                        OrientedBoundingBox activeBoundingBox = activeObject.boundingBox;
+ //                       OrientedBoundingBox passiveBoundingBox = passiveObject.boundingBox;
+                        OBB activeBoundingBox = activeObject.boundingBoxTest;
+                        OBB passiveBoundingBox = passiveObject.boundingBoxTest;
                         // check to see if these two boxes are colliding
                         collision = activeBoundingBox.Intersects(passiveBoundingBox);
 
@@ -164,23 +165,32 @@ namespace Muffin.Components.Physics
                     if (activeObject == passiveObject)
                         continue;
 
-                    OrientedBoundingBox activeBoundingBox = activeObject.getCurrentBoundingBox();
-                    OrientedBoundingBox passiveBoundingBox = passiveObject.getCurrentBoundingBox();
+//                    OrientedBoundingBox activeBoundingBox = activeObject.getCurrentBoundingBox();
+//                    OrientedBoundingBox passiveBoundingBox = passiveObject.getCurrentBoundingBox();
+
+                    OBB activeBoundingBox = activeObject.getCurrentBoundingBoxTest();
+                    OBB passiveBoundingBox = passiveObject.getCurrentBoundingBoxTest();
 
                     // check to see if the bounding boxes are intersecting
                     if (activeBoundingBox.Intersects(passiveBoundingBox))
                     {
 
                         // compute the centers of these bounding boxes
-                        Vector3 activeBoundingBoxCenter = (activeBoundingBox.Min + activeBoundingBox.Max) / 2.0f;
-                        Vector3 passiveBoundingBoxCenter = (passiveBoundingBox.Min + passiveBoundingBox.Max) / 2.0f;
+//                        Vector3 activeBoundingBoxCenter = (activeBoundingBox.Min + activeBoundingBox.Max) / 2.0f;
+//                        Vector3 passiveBoundingBoxCenter = (passiveBoundingBox.Min + passiveBoundingBox.Max) / 2.0f;
+
+                        Vector3 activeBoundingBoxCenter = activeBoundingBox.Center;
+                        Vector3 passiveBoundingBoxCenter = passiveBoundingBox.Center;
 
                         // relative positions (for determining which side of passiveBoundingBox activeBoundingBox is on
                         Vector3 relativePositions = activeBoundingBoxCenter - passiveBoundingBoxCenter;
 
                         // compute their edge lengths
-                        Vector3 activeBoundingBoxEdgeLengths = activeBoundingBox.Max - activeBoundingBox.Min;
-                        Vector3 passiveBoundingBoxEdgeLengths = passiveBoundingBox.Max - passiveBoundingBox.Min;
+//                        Vector3 activeBoundingBoxEdgeLengths = activeBoundingBox.Max - activeBoundingBox.Min;
+//                        Vector3 passiveBoundingBoxEdgeLengths = passiveBoundingBox.Max - passiveBoundingBox.Min;
+
+                        Vector3 activeBoundingBoxEdgeLengths = activeBoundingBox.Bounds * 2.0f;
+                        Vector3 passiveBoundingBoxEdgeLengths = passiveBoundingBox.Bounds * 2.0f;
 
                         // now compute the distance between them
                         Vector3 distanceBetween = VectorAbs(activeBoundingBoxCenter - passiveBoundingBoxCenter);

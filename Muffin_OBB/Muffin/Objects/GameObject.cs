@@ -33,6 +33,7 @@ namespace Definitions
         protected Matrix _intertiaTensor;
         protected Boolean _locked, _active;
         protected OrientedBoundingBox _boundingBox;
+        protected OBB _boundingBoxTest;
         protected GameObjectState _previousState, _currentState, _futureState;
 
         /*
@@ -108,16 +109,15 @@ namespace Definitions
             min = -0.5f * _dimensions;
             max = 0.5f * _dimensions;
 
-            Matrix transform = Matrix.CreateFromQuaternion(_futureState.rotation) * Matrix.CreateTranslation(_futureState.position);
+            Matrix transform = Matrix.CreateTranslation(_futureState.position);
             // now we need to transform these using the world matrix
             min = Vector3.Transform(min, transform);
             max = Vector3.Transform(max, transform);
 
             // create a new bounding box
             _boundingBox = new OrientedBoundingBox(min, max);
-
            // updateWorldVertices(transform);
-
+            _boundingBoxTest = new OBB((min + max) * 0.5f, _dimensions * 0.5f, Matrix.CreateFromQuaternion(_futureState.rotation));
 
 
         }
@@ -142,6 +142,28 @@ namespace Definitions
             //return new OrientedBoundingBox(min, max);
 
         }
+
+        public virtual OBB getCurrentBoundingBoxTest()
+        {
+
+            // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
+            Vector3 min, max;
+
+            min = -0.5f * _dimensions;
+            max = 0.5f * _dimensions;
+            Matrix transform =  Matrix.CreateTranslation(_currentState.position);
+            // now we need to transform these using the world matrix
+            min = Vector3.Transform(min, transform);
+            max = Vector3.Transform(max, transform);
+
+           // updateWorldVertices(transform);
+            // create a new bounding box
+
+            return new OBB((min+max)*0.5f,_dimensions*0.5f,Matrix.CreateFromQuaternion(_currentState.rotation));
+            //return new OrientedBoundingBox(min, max);
+
+        }
+
 
         /*
          * This method returns the world matrix.  For any object
@@ -294,6 +316,12 @@ namespace Definitions
          * Follow the naming scheme below by using the variable name without
          * the preceeding underscore.
          * */
+
+        public OBB boundingBoxTest
+        {
+            get { return _boundingBoxTest; }
+            set { _boundingBoxTest = value; }
+        }
 
         public OrientedBoundingBox boundingBox
         {
