@@ -115,7 +115,7 @@ namespace Muffin
                 _objectsRemoved = _objectsRemoving = false;
 
             // create a new camera
-            _camera = new GameCamera(24 * new Vector3(-20, 12, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
+            _camera = new GameCamera(24 * new Vector3(-20, 40, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
             // and pass it to the renderer
             ((Renderer)_renderer).SetUpCamera(_camera);
 
