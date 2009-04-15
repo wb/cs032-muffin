@@ -46,38 +46,58 @@ namespace Muffin.Components.Renderer
             public static int SizeInBytes = sizeof(float) * (3 + 2 + 3);
         }
 
+        //light data
+        struct Light
+        {
+            public Matrix LightViewProjectionMatrix;
+            public Vector3 LightPos;
+            public Vector3 LightDir;
+            public float LightIntensity;
+
+            public float ConeAngle;
+            public float ConeDecay;
+        }
+
+        public float Ambient;
+        public float Specular;
+        public float Shininess;
 
         MuffinGame m_game;
         GraphicsDeviceManager graphics;
         GraphicsDevice device;
         SpriteBatch spriteBatch;
-        Effect effect;
+
+        /// deferred rendering varaibles
+        Effect deferredLighting;
+        Effect deferredShading;
+        Effect deferredCombined;
+        Effect deferredShadow;
+
+        VertexPositionTexture[] quadVertices;
 
         GameCamera camera;
         MouseHandler m_mouse;
-
         Texture2D spotlightTexture;
-
 
         List<GameObject> m_objects;
         List<Model> m_models;
         List<Texture2D[]> m_model_textures;
 
+        Light[] m_lights;
+        Matrix viewProjection;
+        Matrix viewProjectionInverse;
 
-        //light data
-        Matrix[] LightViewProjectionMatrix = new Matrix[3];
-        Vector3[] LightPos = new Vector3[3];
-        float[] LightIntensity = new float[3];
-        float Ambient;
-        float Specular;
-        float Shininess;
-
-        RenderTarget2D[] renderTarget = new RenderTarget2D[3];
+        RenderTarget2D[] deferredRenderTarget = new RenderTarget2D[3];
+        Texture2D[] deferredRenderMap = new Texture2D[3];
+        RenderTarget2D deferredShadingTarget;
+        RenderTarget2D deferredShadowTarget;
+        Texture2D deferredShadingMap;
+        Texture2D deferredShadowMap;
+        Texture2D blackTexture;
         DepthStencilBuffer shadowDSB;
         DepthStencilBuffer standardDSB;
-        Texture2D[] shadowMap = new Texture2D[3];
 
-        bool isLoaded = false, isInit = false;
+        bool isLoaded = false;
 
         public Renderer(MuffinGame game)
             : base(game)
@@ -86,13 +106,10 @@ namespace Muffin.Components.Renderer
             m_game = game;
             graphics = m_game.graphics;
             graphics.IsFullScreen = false;
-            graphics.PreferredBackBufferHeight = 800;
-            graphics.PreferredBackBufferWidth = 1280;
-
             //enable anti-aliasing
-            graphics.PreferMultiSampling = true;
-            graphics.PreparingDeviceSettings +=
-                new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
+            //graphics.PreferMultiSampling = true;
+            //graphics.PreparingDeviceSettings +=
+            //    new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
             //mouse handler
             m_mouse = new MouseHandler(Mouse.GetState());
             m_models = new List<Model>();
@@ -100,7 +117,6 @@ namespace Muffin.Components.Renderer
             m_model_textures = new List<Texture2D[]>();
             game.IsMouseVisible = true;
         }
-
 
         void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
         {
@@ -137,7 +153,8 @@ namespace Muffin.Components.Renderer
         /// </summary>
         public override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            //load 2D quad to render 3D scene to a texture
+            InitQuad();
             base.Initialize();
         }
 
@@ -157,7 +174,7 @@ namespace Muffin.Components.Renderer
             //set meshPart.Effect to custom hardware shader
             foreach (ModelMesh mesh in newModel.Meshes)
                 foreach (ModelMeshPart meshPart in mesh.MeshParts)
-                    meshPart.Effect = effect.Clone(device);
+                    meshPart.Effect = deferredLighting.Clone(device);
 
             return newModel;
         }
@@ -169,10 +186,14 @@ namespace Muffin.Components.Renderer
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = m_game.spriteBatch;
             device = graphics.GraphicsDevice;
-            //load effect
-            effect = m_game.Content.Load<Effect>("Effects/RenderEffect");
+            spriteBatch = new SpriteBatch(device);
+            //load effects for rendering
+            deferredShadow = m_game.Content.Load<Effect>("Effects/RenderEffect");
+            deferredLighting = m_game.Content.Load<Effect>("Effects/DeferredLighting");
+            deferredShading = m_game.Content.Load<Effect>("Effects/DeferredShading");
+            deferredCombined = m_game.Content.Load<Effect>("Effects/DeferredCombinedEffect");
+
             //load textures
             spotlightTexture = m_game.Content.Load<Texture2D>("Textures/spotlight");
             //load models
@@ -180,33 +201,41 @@ namespace Muffin.Components.Renderer
             PresentationParameters pp = device.PresentationParameters;
             SurfaceFormat format = device.PresentationParameters.BackBufferFormat;
             DepthFormat dFormat = device.DepthStencilBuffer.Format;
-            MultiSampleType type = MultiSampleType.FourSamples;
+            //MultiSampleType type = MultiSampleType.FourSamples;
             int height = graphics.PreferredBackBufferHeight;
             int width = graphics.PreferredBackBufferWidth;
-            int quality = 0;
+            //int quality = 0;
 
-            //for multiple shadowmaps
-            for (int i = 0; i < GameConstants.MaxLights; i++)
-            {
-                renderTarget[i] = new RenderTarget2D(device, width, height, 1, format, type, quality);
-            }
-            shadowDSB = new DepthStencilBuffer(graphics.GraphicsDevice, width, height, dFormat, type, quality);
+            //color
+            deferredRenderTarget[0] = new RenderTarget2D(device, width, height, 1, SurfaceFormat.Color);
+            //normaal
+            deferredRenderTarget[1] = new RenderTarget2D(device, width, height, 1, SurfaceFormat.Color);
+            //depth
+            deferredRenderTarget[2] = new RenderTarget2D(device, width, height, 1, SurfaceFormat.Single);
+            //shading (for lights)
+            deferredShadingTarget = new RenderTarget2D(device, width, height, 1, format);
+            //shadows
+            deferredShadowTarget = new RenderTarget2D(device, width, height, 1, SurfaceFormat.Single);
+
+            blackTexture = new Texture2D(device, width, height, 1, TextureUsage.None, SurfaceFormat.Color);
+
+            shadowDSB = new DepthStencilBuffer(graphics.GraphicsDevice, width, height, dFormat);
             //save pointer to default DSB                                               
             standardDSB = device.DepthStencilBuffer;
 
-            Texture2D[] terrain;
-            m_models.Add(LoadModel("flat", out terrain));
-            m_model_textures.Add(terrain);
-            m_models.Add(LoadModel("wedge", out terrain));
-            m_model_textures.Add(terrain);
-            m_models.Add(LoadModel("corner", out terrain));
-            m_model_textures.Add(terrain);
-            m_models.Add(LoadModel("inverted_corner", out terrain));
-            m_model_textures.Add(terrain);
-            m_models.Add(LoadModel("box", out terrain));
-            m_model_textures.Add(terrain);
-            m_models.Add(LoadModel("player", out terrain));
-            m_model_textures.Add(terrain);
+            Texture2D[] modelTexture;
+            m_models.Add(LoadModel("flat", out modelTexture));
+            m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("wedge", out modelTexture));
+            m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("corner", out modelTexture));
+            m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("inverted_corner", out modelTexture));
+            m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("box", out modelTexture));
+            m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("player", out modelTexture));
+            m_model_textures.Add(modelTexture);
 
             foreach (GameObject o in m_objects)
             {
@@ -233,7 +262,6 @@ namespace Muffin.Components.Renderer
                     case ModelName.NONE:
                     default:
                         break;
-
                 }
             }
 
@@ -243,31 +271,63 @@ namespace Muffin.Components.Renderer
             isLoaded = true;
         }
 
-        public void SetUpCamera(GameCamera cam)
+        private void InitQuad()
         {
-            camera = cam;
-            //camera = new GameCamera(24*new Vector3(-20, 12, -20), new Vector3(0, 0, 0), device.Viewport.AspectRatio);
+            quadVertices = new VertexPositionTexture[4];
+            quadVertices[0] = new VertexPositionTexture(new Vector3(-1, 1, 0.0f), new Vector2(0, 0));
+            quadVertices[1] = new VertexPositionTexture(new Vector3(1, 1, 0.0f), new Vector2(1, 0));
+            quadVertices[2] = new VertexPositionTexture(new Vector3(-1, -1, 0.0f), new Vector2(0, 1));
+            quadVertices[3] = new VertexPositionTexture(new Vector3(1, -1, 0.0f), new Vector2(1, 1));
         }
+
+        public void SetUpCamera(GameCamera c)
+        {
+            
+            camera = c;
+            //camera = new GameCamera(100 * new Vector3(-20, 40, -20), new Vector3(1000, 200, 1000), device.Viewport.AspectRatio);
+        }
+
+        Vector3 look = new Vector3(1000, 200, 1000);
+        Vector3 lightloc = 20 * new Vector3(-20, 150, -20);
 
         private void SetUpLights()
         {
-            LightPos[0] = new Vector3(-20, 20, 20);
-            LightPos[1] = new Vector3(20, 20, -20);
-            LightPos[2] = new Vector3(-30, 45, 0);
-            LightIntensity[0] = 2.0f;
-            LightIntensity[1] = 2.0f;
-            LightIntensity[2] = 2.0f;
+            m_lights = new Light[3];
+
+            m_lights[0].LightPos = lightloc;
+            m_lights[1].LightPos = new Vector3(400, 300, 400);
+            m_lights[2].LightPos = new Vector3(-30, 50, 0);
+
+            m_lights[0].LightDir = new Vector3(20 + look.X, -20 + look.Y, -20 + look.Z);
+            m_lights[1].LightDir = new Vector3(2, -1, 2);
+            m_lights[2].LightDir = new Vector3(30 + look.X, -45 + look.Y, -20 + look.Z);
+
+            m_lights[0].LightIntensity = 1.0f;
+            m_lights[1].LightIntensity = 1.0f;
+            m_lights[2].LightIntensity = 0.0f;
+
+            m_lights[0].ConeAngle = 40.0f;
+            m_lights[1].ConeAngle = 60.0f;
+            m_lights[2].ConeAngle = 20.0f;
+
+            m_lights[0].ConeDecay = 0.0f;
+            m_lights[1].ConeDecay = 0.0f;
+            m_lights[2].ConeDecay = 0.6f;
+
             Ambient = 0.2f;
             Specular = 0.54f;
             Shininess = 18.0f;
 
             for (int i = 0; i < GameConstants.MaxLights; i++)
             {
-                Matrix LightView = Matrix.CreateLookAt(LightPos[i], new Vector3(-3, -4, -5), new Vector3(0, 1, 0));
-                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, device.Viewport.AspectRatio, 2.0f, 2000f);
+                Matrix LightView = Matrix.CreateLookAt(m_lights[i].LightPos, look, Vector3.Up);
+                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, device.Viewport.AspectRatio, GameConstants.NearClip, GameConstants.FarClip);
                 //matrix used in calculating shadow maps
-                LightViewProjectionMatrix[i] = LightView * LightProjection;
+                m_lights[i].LightViewProjectionMatrix = LightView * LightProjection;
             }
+
+            viewProjection = camera.ViewMatrix * camera.ProjectionMatrix;
+            viewProjectionInverse = Matrix.Invert(viewProjection);
         }
 
         /// <summary>
@@ -279,23 +339,107 @@ namespace Muffin.Components.Renderer
             // TODO: Unload any non ContentManager content here
         }
 
-        Vector3 look = new Vector3(15, 15, 15);
+
         private void UpdateLights()
         {
+            viewProjection = camera.ViewMatrix * camera.ProjectionMatrix;
+            viewProjectionInverse = Matrix.Invert(viewProjection);
+
+            KeyboardState state = Keyboard.GetState();
+
+            bool hit = false;
+            bool hit2 = false;
+
+            if (state.IsKeyDown(Keys.R))
+            {
+                lightloc.X += 10;
+                hit = true;
+            }
+            if (state.IsKeyDown(Keys.T))
+            {
+                lightloc.Y += 10;
+                hit = true;
+            }
+            if (state.IsKeyDown(Keys.Y))
+            {
+                lightloc.Z += 10;
+                hit = true;
+            }
+            if (state.IsKeyDown(Keys.F))
+            {
+                lightloc.X -= 10;
+                hit = true;
+            }
+            if (state.IsKeyDown(Keys.G))
+            {
+                lightloc.Y -= 10;
+                hit = true;
+            }
+            if (state.IsKeyDown(Keys.H))
+            {
+                lightloc.Z -= 10;
+                hit = true;
+            }
+
+            m_lights[0].LightPos = lightloc;
+
+            if (hit)
+            {
+                Console.WriteLine("Light Position: " + lightloc);
+            }
+
+
+            if (state.IsKeyDown(Keys.U))
+            {
+                look.X += 10;
+                hit2 = true;
+            }
+            if (state.IsKeyDown(Keys.I))
+            {
+                look.Y += 10;
+                hit2 = true;
+            }
+            if (state.IsKeyDown(Keys.O))
+            {
+                look.Z += 10;
+                hit2 = true;
+            }
+            if (state.IsKeyDown(Keys.J))
+            {
+                look.X -= 10;
+                hit2 = true;
+            }
+            if (state.IsKeyDown(Keys.K))
+            {
+                look.Y -= 10;
+                hit2 = true;
+            }
+            if (state.IsKeyDown(Keys.L))
+            {
+                look.Z -= 10;
+                hit2 = true;
+            }
 
             for (int i = 0; i < GameConstants.MaxLights; i++)
             {
-                Matrix LightView = Matrix.CreateLookAt(LightPos[i], ModelPos, new Vector3(0, 1, 0));
-                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, device.Viewport.AspectRatio, 2.0f, 2000f);
+                Matrix LightView = Matrix.CreateLookAt(m_lights[i].LightPos, look, Vector3.Up);
+                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, device.Viewport.AspectRatio, GameConstants.NearClip, GameConstants.FarClip);
                 //matrix used in calculating shadow maps
-                LightViewProjectionMatrix[i] = LightView * LightProjection;
+                m_lights[i].LightViewProjectionMatrix = LightView * LightProjection;
+            }
+
+            if (hit2)
+            {
+                Console.WriteLine("Light Target: " + look);
             }
         }
 
+        GamePadState gstate;
 
         private void UpdateCamera()
         {
             camera.Update(m_game.allPlayer.ElementAt(0).position, m_game.allPlayer.ElementAt(0).orientation);
+            //Console.WriteLine(m_game.allPlayer.ElementAt(0).rotation);
         }
 
         /// <summary>
@@ -310,92 +454,170 @@ namespace Muffin.Components.Renderer
                 return;
             }
 
+            // TODO: Add your update logic here
             UpdateCamera();
             UpdateLights();
 
             base.Update(gameTime);
         }
 
-        Vector3 ModelPos = new Vector3(100, 100, 100);
-        Vector3 ModelDir = new Vector3(0, 0, 1);
-        Matrix ModelRot = Matrix.CreateFromYawPitchRoll(3.0f * MathHelper.Pi / 2.0f, 0.0f, 0.0f);
+        private void renderDeferredMaps()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                device.SetRenderTarget(i, deferredRenderTarget[i]);
+            }
+
+            device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
+            switchEffect(deferredLighting);
+
+            DrawAll("MultipleTargets");
+
+            for (int i = 0; i < 3; i++)
+            {
+                device.SetRenderTarget(i, null);
+                deferredRenderMap[i] = deferredRenderTarget[i].GetTexture();
+            }
+        }
+
+        private void renderShadow(Light light)
+        {
+            device.SetRenderTarget(0, deferredShadowTarget);
+
+            device.Clear(Color.White);
+
+            deferredShadow.CurrentTechnique = deferredShadow.Techniques["ShadowMap"];
+            deferredShadow.Parameters["xLightViewProjection"].SetValue(light.LightViewProjectionMatrix);
+
+            switchEffect(deferredShadow);
+            DrawAll("ShadowMap");
+
+            device.SetRenderTarget(0, null);
+            deferredShadowMap = deferredShadowTarget.GetTexture();
+        }
+
+        private void renderLight(Light light)
+        {
+            device.SetRenderTarget(0, deferredShadingTarget);
+
+            deferredShading.CurrentTechnique = deferredShading.Techniques["DeferredShading"];
+            deferredShading.Parameters["xShadingMap"].SetValue(deferredShadingMap);
+            deferredShading.Parameters["xNormalMap"].SetValue(deferredRenderMap[1]);
+            deferredShading.Parameters["xDepthMap"].SetValue(deferredRenderMap[2]);
+            deferredShading.Parameters["xShadowMap"].SetValue(deferredShadowMap);
+            deferredShading.Parameters["xLightPos"].SetValue(light.LightPos);
+            deferredShading.Parameters["xLightIntensity"].SetValue(light.LightIntensity);
+            deferredShading.Parameters["xConeDirection"].SetValue(light.LightDir);
+            deferredShading.Parameters["xConeAngle"].SetValue(light.ConeAngle);
+            deferredShading.Parameters["xConeDecay"].SetValue(light.ConeDecay);
+
+            deferredShading.Parameters["xViewProjectionInverse"].SetValue(viewProjectionInverse);
+            deferredShading.Parameters["xLightViewProjection"].SetValue(light.LightViewProjectionMatrix);
+
+            deferredShading.Begin();
+            foreach (EffectPass pass in deferredShading.CurrentTechnique.Passes)
+            {
+                pass.Begin();
+                device.VertexDeclaration = new VertexDeclaration(device, VertexPositionTexture.VertexElements);
+                device.DrawUserPrimitives<VertexPositionTexture>(PrimitiveType.TriangleStrip, quadVertices, 0, 2);
+                pass.End();
+            }
+            deferredShading.End();
+
+            device.SetRenderTarget(0, null);
+            deferredShadingMap = deferredShadingTarget.GetTexture();
+        }
+
+        private Texture2D getShadingMap()
+        {
+
+            deferredShadingMap = blackTexture;
+
+            for (int i = 0; i < GameConstants.MaxLights; i++)
+            {
+                renderShadow(m_lights[i]);
+                renderLight(m_lights[i]);
+            }
+
+            return deferredShadingTarget.GetTexture();
+            //return blackTexture;
+        }
+
+        private void renderCombinedEffects()
+        {
+            deferredCombined.CurrentTechnique = deferredCombined.Techniques["DeferredCombined"];
+            deferredCombined.Parameters["xColorMap"].SetValue(deferredRenderMap[0]);
+            deferredCombined.Parameters["xShadingMap"].SetValue(deferredShadingMap);
+            deferredCombined.Parameters["xAmbient"].SetValue(Ambient);
+
+            deferredCombined.Begin();
+            foreach (EffectPass pass in deferredCombined.CurrentTechnique.Passes)
+            {
+                pass.Begin();
+                device.VertexDeclaration = new VertexDeclaration(device, VertexPositionTexture.VertexElements);
+                device.DrawUserPrimitives<VertexPositionTexture>(PrimitiveType.TriangleStrip, quadVertices, 0, 2);
+                pass.End();
+            }
+            deferredCombined.End();
+        }
+
+        private void switchEffect(Effect effect)
+        {
+            foreach (Model m in m_models)
+                foreach (ModelMesh mesh in m.Meshes)
+                    foreach (ModelMeshPart meshPart in mesh.MeshParts)
+                        meshPart.Effect = effect.Clone(device);
+        }
 
         public override void Draw(GameTime gameTime)
         {
-
             if (!isLoaded)
             {
                 return;
             }
+            //switch effect for models
+            //render color map, normal map, and depth map of scene
+            renderDeferredMaps();
 
-            //set DSB to the shadow DSB
-            device.DepthStencilBuffer = shadowDSB;
+            PresentationParameters pp = device.PresentationParameters;
+            //Texture2D tex = m_game.Content.Load<Texture2D>("Models\\flat\\Vegetation_Grass_Artificial");
 
-            for (int i = 0; i < GameConstants.MaxLights; i++)
-            {
-                device.SetRenderTarget(0, renderTarget[i]);
-                device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
-                DrawAll("ShadowMap", i);
-            }
+            //spriteBatch.Begin();
+            //spriteBatch.Draw(deferredRenderMap[1], new Rectangle(0,0, pp.BackBufferWidth, pp.BackBufferHeight), Color.White);
+            //spriteBatch.End();
 
-            device.SetRenderTarget(0, null);
+            //render lighting contributions from lights in the scene
+            deferredShadingMap = getShadingMap();
 
-            for (int i = 0; i < GameConstants.MaxLights; i++)
-            {
-                shadowMap[i] = renderTarget[i].GetTexture();
-            }
-
-            //render the scene using shadowMap
-            device.DepthStencilBuffer = standardDSB;
-            device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1.0f, 0);
-            DrawAll("ShadowedScene", 0);
+            renderCombinedEffects();
 
             base.Draw(gameTime);
         }
 
-        private void DrawAll(String technique, int index)
+        private void DrawAll(String technique)
         {
-            device.RenderState.DepthBufferEnable = true;
-            device.RenderState.CullMode = CullMode.CullCounterClockwiseFace;
-            device.RenderState.AlphaBlendEnable = false;
-
             foreach (GameObject o in m_objects)
             {
                 Matrix worldMatrix = o.worldMatrix();
-                DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique, index);
+                DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique);
             }
-            Matrix forklift1Matrix = Matrix.CreateScale(.045f) * ModelRot * Matrix.CreateTranslation(ModelPos);
-            //DrawModel(m_models.ElementAt((int)ModelName.BOX), forkLiftTexture, forklift1Matrix, technique, index);
         }
 
-        private void DrawModel(Model model, Texture2D[] textures, Matrix wMatrix, string technique, int index)
+        private void DrawModel(Model model, Texture2D[] textures, Matrix wMatrix, string technique)
         {
             Matrix[] modelTransforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(modelTransforms);
             int i = 0;
+
             foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (Effect currentEffect in mesh.Effects)
                 {
                     Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
-
                     currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
-                    currentEffect.Parameters["num_lights"].SetValue(GameConstants.MaxLights);
-                    currentEffect.Parameters["current_light"].SetValue(index);
                     currentEffect.Parameters["xCameraViewProjection"].SetValue(camera.ViewMatrix * camera.ProjectionMatrix);
-                    currentEffect.Parameters["xLightViewProjection"].SetValue(LightViewProjectionMatrix);
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currentEffect.Parameters["xTexture"].SetValue(textures[i++]);
-                    currentEffect.Parameters["xSpotlight"].SetValue(spotlightTexture);
-                    currentEffect.Parameters["xShadowMap1"].SetValue(shadowMap[0]);
-                    currentEffect.Parameters["xShadowMap2"].SetValue(shadowMap[1]);
-                    currentEffect.Parameters["xShadowMap3"].SetValue(shadowMap[2]);
-                    currentEffect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
-                    currentEffect.Parameters["xLightPos"].SetValue(LightPos);
-                    currentEffect.Parameters["xLightIntensity"].SetValue(LightIntensity);
-                    currentEffect.Parameters["xSpecular"].SetValue(Specular);
-                    currentEffect.Parameters["xShininess"].SetValue(Shininess);
-                    currentEffect.Parameters["xAmbient"].SetValue(Ambient);
                 }
                 mesh.Draw();
             }

@@ -116,3 +116,7 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Re
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Muffin.exe
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Muffin.pdb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\DeferredCombinedEffect.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\DeferredLighting.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\DeferredShading.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\Bitmap1.xnb
