@@ -24,6 +24,8 @@ namespace Muffin.Components.AI
         private SortedList<float, GameObject>[,] m_grid;
         private Dictionary<GameObject, Point> m_index;
 
+        public MuffinGame game { get { return m_game; } }
+
         #region General External Methods
 
         public GameObject topmostObject(float X, float Y)
