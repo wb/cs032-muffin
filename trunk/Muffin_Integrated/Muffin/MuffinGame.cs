@@ -199,10 +199,17 @@ namespace Muffin
             testBox1.applyForce(new Vector3(-50000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
 
             // Adda an AI object for testing
-            GameObject testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
+            GameObject testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 10000.0f, GameConstants.GameObjectScale);
             objs.Add(testAI);
-            ((AIObject)testAI).dest.Add(new Vector3(300, 0, 500));
-            ((AIObject)testAI).dest.Add(new Vector3(300, 0, 550));
+
+            testAI = new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 9000.0f, GameConstants.GameObjectScale);
+            objs.Add(testAI);
+
+            testAI = new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 8000.0f, GameConstants.GameObjectScale);
+            objs.Add(testAI);
+
+            testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 5000.0f, GameConstants.GameObjectScale);
+            objs.Add(testAI);
 
             // add a box for testing
             GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale);

@@ -16,7 +16,7 @@ namespace Definitions
 {
     public class GameConstants
     {
-        public const string CurrentLevel = "level_flat_small";
+        public const string CurrentLevel = "level_flat";
         public const float ViewAngle = 45.0f;
         public const int MaxLights = 1;
         public const int MaxAcceleration = 2000;

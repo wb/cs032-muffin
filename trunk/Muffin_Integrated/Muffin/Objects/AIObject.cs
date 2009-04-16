@@ -73,8 +73,13 @@ namespace Definitions
             }
         }
 
-        public void doAI(AI ai)
+        public void doAI(AI a)
         {
+            // Dumb AI, tries to reach the player
+
+            _path.Clear();
+            _path.Add(a.game.allPlayer[0].position);
+
             setDirection();
         }
 
