@@ -47,7 +47,7 @@ namespace Definitions
            
             // this should work, as long as AI is not being tracked by the camera
             _orientation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
-
+            //_orientation = Quaternion.Slerp(_orientation, Quaternion.CreateFromAxisAngle(Vector3.Up, angle),0.01f);
             if (jump)
             {
                 this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);

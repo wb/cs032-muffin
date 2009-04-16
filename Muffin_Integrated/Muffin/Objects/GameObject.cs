@@ -191,13 +191,7 @@ namespace Definitions
             // do the integration only if this object is not locked and is currently active
             if (!_locked && _active)
             {
-                // move the object
-                _futureState.position = _futureState.position + _toMove;
-                _currentState.position = _currentState.position + _toMove;
-
-                // reset the move vector
-                _toMove = Vector3.Zero;
-
+  
                 // first, solve for the new rotational position (orientation)
                 Vector3 temp = new Vector3();
 
@@ -275,6 +269,13 @@ namespace Definitions
                 // if so, register this object
                 game.addUpdateObject(this);
             }
+
+            // move the object
+            _futureState.position = _futureState.position + _toMove; // this line stops physics from working
+            _currentState.position = _currentState.position + _toMove;
+
+            // reset the move vector
+            _toMove = Vector3.Zero;
         }
 
         #region Gets and Sets

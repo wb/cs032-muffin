@@ -195,7 +195,7 @@ namespace Muffin.Components.Physics
                         correction.Z = (penetration.Z <= 0 ? penetration.Z : 0);
 
                         // multiply by a small factor to make sure it moves slightly more than it has to (this helps for rounding error reasons)
-                        correction *= 1.05f;
+                        correction *= 1.25f;
 
                         // now we want to correct the smallest absolute value of these
                         Vector3 tempCorrect = VectorAbs(correction);
@@ -242,8 +242,19 @@ namespace Muffin.Components.Physics
                         // if y is the smallest, fix it in the y direction
                         else if (tempCorrect.Y < tempCorrect.X && tempCorrect.Y < tempCorrect.Z)
                         {
-                            // problems with this, so nothing for now  
-                            Console.WriteLine("Y");
+                            // whichever one is higher moves.  the other stays still
+                            if (relativePositions.Y > 0)
+                            {
+                                // if the active object is higher, move it
+                                activeObject.futureState.position = activeObject.futureState.position - new Vector3(0, correction.Y, 0);
+                                activeObject.currentState.position = activeObject.currentState.position - new Vector3(0, correction.Y, 0);
+                            }
+                            // otherwise the passive object is higher, so move it
+                            else
+                            {
+                                passiveObject.futureState.position = passiveObject.futureState.position - new Vector3(0, correction.Y, 0);
+                                passiveObject.currentState.position = passiveObject.currentState.position - new Vector3(0, correction.Y, 0);
+                            }
                         }
                         // otherwise, fix it in the z direction
                         else if (tempCorrect.Z < tempCorrect.X && tempCorrect.Z < tempCorrect.Y)
