@@ -44,7 +44,7 @@ namespace Definitions
             if (float.IsNaN(angle))
                 angle = 0;
 
-            Console.WriteLine(angle);
+           
             // this should work, as long as AI is not being tracked by the camera
             _orientation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
 
