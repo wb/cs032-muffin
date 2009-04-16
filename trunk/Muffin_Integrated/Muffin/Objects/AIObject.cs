@@ -40,18 +40,26 @@ namespace Definitions
             _toMove = new Vector3(dir.X, 0, dir.Y);
 
             // for effect, update the orientation of the object to reflect where it is moving
-            float angle = (float)Math.Atan(dir.Y / dir.X);
+            float angle = -(float)Math.Atan(dir.Y / dir.X);
             if (float.IsNaN(angle))
                 angle = 0;
 
+            Console.WriteLine(angle);
             // this should work, as long as AI is not being tracked by the camera
-            //_orientation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
+            _orientation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
 
             if (jump)
             {
                 this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);
             }
 
+        }
+
+        public override Matrix worldMatrix()
+        {
+            return Matrix.CreateFromQuaternion(_orientation) *
+                   Matrix.CreateTranslation(_currentState.position) *
+                   Matrix.CreateScale(_scale);
         }
 
         private void setDirection()
