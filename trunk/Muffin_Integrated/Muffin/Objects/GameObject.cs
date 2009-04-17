@@ -28,7 +28,7 @@ namespace Definitions
         protected Material _material;
         protected float _mass, _scale;
         protected ModelName _modelName;
-        protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove;
+        protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove, _previousToMove;
         protected Matrix _intertiaTensor;
         protected Boolean _locked, _active;
         protected BoundingBox _boundingBox;
@@ -70,6 +70,7 @@ namespace Definitions
             _active = true;
 
             _toMove = new Vector3();
+            _previousToMove = _toMove;
 
             // initalize the orientation
             _orientation = Quaternion.Identity;
@@ -277,9 +278,20 @@ namespace Definitions
                 game.addUpdateObject(this);
             }
 
+            _toMove *= 1.5f;
+
+            
+            // this is friction
+            float friction = 0.95f;
+
+            Vector3 adjustedMove = friction * _previousToMove + (1.0f - friction) * _toMove;
+
             // move the object
-            _futureState.position = _futureState.position + _toMove; // this line stops physics from working
-            _currentState.position = _currentState.position + _toMove;
+            _futureState.position = _futureState.position + adjustedMove; // this line stops physics from working
+            _currentState.position = _currentState.position + adjustedMove;
+
+            // save this to the previous move state
+            _previousToMove = adjustedMove;
 
             // reset the move vector
             _toMove = Vector3.Zero;

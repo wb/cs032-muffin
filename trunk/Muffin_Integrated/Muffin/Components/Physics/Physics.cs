@@ -237,9 +237,16 @@ namespace Muffin.Components.Physics
                             passiveObject.futureState.position = passiveObject.futureState.position + sign * passiveFactor * new Vector3(correction.X, 0, 0);
                             passiveObject.currentState.position = passiveObject.currentState.position + sign * passiveFactor * new Vector3(correction.X, 0, 0);
 
+                            // attempt at friction
+                            //passiveObject.controlInput(100 * sign * passiveFactor * new Vector2(correction.X, 0), false);
+
                             // move the active object
                             activeObject.futureState.position = activeObject.futureState.position - sign * activeFactor * new Vector3(correction.X, 0, 0);
                             activeObject.currentState.position = activeObject.currentState.position - sign * activeFactor * new Vector3(correction.X, 0, 0);
+
+                            // attempt at friction
+                            //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(correction.X, 0), false);
+
                         }
                         // if y is the smallest, fix it in the y direction
                         else if (tempCorrect.Y < tempCorrect.X && tempCorrect.Y < tempCorrect.Z)
@@ -269,9 +276,15 @@ namespace Muffin.Components.Physics
                             passiveObject.futureState.position = passiveObject.futureState.position + sign * passiveFactor * new Vector3(0, 0, correction.Z);
                             passiveObject.currentState.position = passiveObject.currentState.position + sign * passiveFactor * new Vector3(0, 0, correction.Z);
 
+                            // attempt at friction
+                            //passiveObject.controlInput(100 * sign * passiveFactor * new Vector2(0, correction.Z), false);
+                            
                             // move the active object
                             activeObject.futureState.position = activeObject.futureState.position - sign * activeFactor * new Vector3(0, 0, correction.Z);
                             activeObject.currentState.position = activeObject.currentState.position - sign * activeFactor * new Vector3(0, 0, correction.Z);
+
+                            // attempt at friction
+                            //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(0, correction.Z), false);
                         }
 
                     }
