@@ -195,7 +195,11 @@ namespace Muffin.Components.Physics
                         correction.Z = (penetration.Z <= 0 ? penetration.Z : 0);
 
                         // multiply by a small factor to make sure it moves slightly more than it has to to avoid incorrectly resolving a collision
-                        correction *= 1.25f;
+
+                        if (activeObject.modelName == ModelName.PLAYER || passiveObject.modelName == ModelName.PLAYER)
+                            correction *= 1.35f;
+                        else
+                            correction *= 1.25f;
 
                         // now we want to correct the smallest absolute value of these
                         Vector3 tempCorrect = VectorAbs(correction);
