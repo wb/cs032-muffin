@@ -28,7 +28,7 @@ namespace Definitions
         protected Material _material;
         protected float _mass, _scale;
         protected ModelName _modelName;
-        protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove, _previousToMove;
+        protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove, _previousToMove, _moveVector;
         protected Matrix _intertiaTensor;
         protected Boolean _locked, _active;
         protected BoundingBox _boundingBox;
@@ -241,9 +241,22 @@ namespace Definitions
             // update the bounding box if we've moved (during collision resolution)
             if (!_locked)
             {
+                // get the move vector -- cap it for safety
+                _moveVector = _currentState.position - _previousState.position;
+                float length, maxSpeed = 1.0f;
+                if ((length = _moveVector.Length()) > maxSpeed)
+                {
+                    _moveVector *= (maxSpeed / length);
+                }
+
+                // update bounding box if needed
                 if (_previousState.position != _currentState.position)
                     this.updateBoundingBox();
-                _previousState.copy(_currentState); 
+
+                // copy the current state to previous state
+                _previousState.copy(_currentState);
+
+                
             }
               
         }
@@ -262,6 +275,7 @@ namespace Definitions
 
             if (move)
             {
+                
                 // update the position
                 _currentState.copy(_futureState);
             }
@@ -278,14 +292,27 @@ namespace Definitions
                 game.addUpdateObject(this);
             }
 
-            _toMove *= 1.5f;
+            
 
             
             // this is friction
-            float friction = 0.95f;
+            
+            Vector3 adjustedMove;
 
-            Vector3 adjustedMove = friction * _previousToMove + (1.0f - friction) * _toMove;
-
+            if (_modelType == ModelType.ENEMY || _modelType == ModelType.HUMAN)
+            {
+                float friction = 0.97f;
+                _toMove *= 1.5f;
+                adjustedMove = friction * _previousToMove + (1.0f - friction) * _toMove;
+            }
+            else
+            {
+                float friction = 0.991f;
+                //_toMove *= 50.0f;
+                adjustedMove = friction * (new Vector3(_moveVector.X, 0, _moveVector.Z)) + (1.0f - friction) * _toMove;
+            }
+            
+            
             // move the object
             _futureState.position = _futureState.position + adjustedMove; // this line stops physics from working
             _currentState.position = _currentState.position + adjustedMove;
@@ -433,6 +460,12 @@ namespace Definitions
         {
             get { return _orientation; }
             set { _orientation = value; }
+        }
+
+        public Vector3 moveVector
+        {
+            get { return _moveVector; }
+            set { _moveVector = value; }
         }
 
         #endregion

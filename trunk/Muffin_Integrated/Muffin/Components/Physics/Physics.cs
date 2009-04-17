@@ -247,6 +247,7 @@ namespace Muffin.Components.Physics
                             // attempt at friction
                             //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(correction.X, 0), false);
 
+
                         }
                         // if y is the smallest, fix it in the y direction
                         else if (tempCorrect.Y < tempCorrect.X && tempCorrect.Y < tempCorrect.Z)
@@ -285,6 +286,8 @@ namespace Muffin.Components.Physics
 
                             // attempt at friction
                             //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(0, correction.Z), false);
+
+                            
                         }
 
                     }
