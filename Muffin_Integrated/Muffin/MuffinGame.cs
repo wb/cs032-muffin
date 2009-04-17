@@ -210,7 +210,7 @@ namespace Muffin
 
             testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 5000.0f, GameConstants.GameObjectScale);
             objs.Add(testAI);
-
+           
             // add a box for testing
             GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale);
             objs.Add(testBox2);
@@ -345,6 +345,16 @@ namespace Muffin
         {
             get { return _camera; }
             set { _camera = value; }
+        }
+
+        public GameObject topmostObject(int X, int Y)
+        {
+            return ((AI)_ai).topmostObject(X, Y);
+        }
+
+        public TerrainObject topmostTerrain(int X, int Y)
+        {
+            return ((AI) _ai).topmostTerrain(X,Y);
         }
 
     }

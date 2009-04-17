@@ -23,8 +23,8 @@ namespace Definitions
         public const int MaxMoveWeightRatio = 10;
         public const int MaxHeight = 1000; // this is the max height that an object can move (jumping/flying stuff)
         public const float GameObjectScale = 10.0f; // this is the universal scale constant for objects
-        public const float NearClip = 1500.0f;
-        public const float FarClip = 20000.0f;
+        public const float NearClip = 1000.0f;
+        public const float FarClip = 40000.0f;
 
         // AI Constants
         public const float MaxFallDistance = 60;
