@@ -106,10 +106,6 @@ namespace Muffin
             Components.Add(_ai);
             _ai.UpdateOrder = 3;
 
-            _menu = new Menu(this);
-            Components.Add(_menu);
-            _menu.UpdateOrder = 4;
-
             _paused = false;
         }
 
