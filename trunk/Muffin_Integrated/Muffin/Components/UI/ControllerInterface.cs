@@ -23,14 +23,16 @@ namespace Muffin.Components.UI
         int timeBeforeInitialRepeat;
         PlayerIndex _playerIndex;
         GameObject _gameObject;
+        MuffinGame _muffinGame;
 
 
-        ButtonManager thumbStickLeftX, thumbStickLeftY, buttonA, buttonY;
+        ButtonManager thumbStickLeftX, thumbStickLeftY, buttonA, buttonY, buttonStart;
 
-        public ControllerInterface(GameObject gameObject, PlayerIndex playerIndex)
+        public ControllerInterface(GameObject gameObject, PlayerIndex playerIndex, MuffinGame game)
         {
             _gameObject = gameObject;
             _playerIndex = playerIndex;
+            _muffinGame = game;
 
             // set some default values
             sensitivity = 0.50f;
@@ -43,6 +45,7 @@ namespace Muffin.Components.UI
             buttonA = new ButtonManager(sensitivity, 100, 400);
             buttonY = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue); // this button can never repeat while held down
 
+            buttonStart = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue); // this button also never repeats
         }
 
         public Boolean isConnected()
@@ -67,10 +70,18 @@ namespace Muffin.Components.UI
             thumbStickLeftY.update(g.ThumbSticks.Left.Y, gameTime.TotalGameTime.TotalMilliseconds);
             buttonA.update((g.Buttons.A == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             buttonY.update((g.Buttons.Y == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
+            buttonStart.update((g.Buttons.Start == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
-            // update the object
-            _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (g.Buttons.A == ButtonState.Pressed), (g.Buttons.X == ButtonState.Pressed));
+            // update the object if we aren't paused
+            if (!_muffinGame.paused)
+                _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (g.Buttons.A == ButtonState.Pressed), (g.Buttons.X == ButtonState.Pressed));
 
+            
+
+            // pause if we must pause
+            if (buttonStart.getButtonState() == 1)
+                _muffinGame.paused = !_muffinGame.paused;
+            
         }
     }
 }

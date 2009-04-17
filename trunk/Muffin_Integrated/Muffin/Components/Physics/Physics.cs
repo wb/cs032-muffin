@@ -40,6 +40,11 @@ namespace Muffin.Components.Physics
 
         public override void Update(GameTime gameTime)
         {
+            // if paused, return
+            if (_muffinGame.paused)
+                return;
+
+
             // print out approximate FPS
             //Console.WriteLine(1000.0f / gameTime.ElapsedGameTime.Milliseconds);
 

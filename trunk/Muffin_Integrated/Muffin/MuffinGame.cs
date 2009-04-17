@@ -68,6 +68,7 @@ namespace Muffin
 
         public GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
+        private Boolean _paused;
 
         public MuffinGame()
         {
@@ -101,6 +102,8 @@ namespace Muffin
             _ai = new AI(this);
             Components.Add(_ai);
             _ai.UpdateOrder = 3;
+
+            _paused = false;
         }
 
         /// <summary>
@@ -355,6 +358,20 @@ namespace Muffin
         public TerrainObject topmostTerrain(int X, int Y)
         {
             return ((AI) _ai).topmostTerrain(X,Y);
+        }
+
+        public Boolean paused
+        {
+            get { return _paused; }
+            set
+            {
+                _paused = value;
+
+                if (_paused)
+                    Console.WriteLine("Paused! - Show Menu");
+                else
+                    Console.WriteLine("Unpaused! - Hide Menu");
+            }
         }
 
     }
