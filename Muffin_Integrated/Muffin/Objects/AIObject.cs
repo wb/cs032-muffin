@@ -58,8 +58,8 @@ namespace Definitions
         public override Matrix worldMatrix()
         {
             return Matrix.CreateFromQuaternion(_orientation) *
-                   Matrix.CreateTranslation(_currentState.position) *
-                   Matrix.CreateScale(_scale);
+                   Matrix.CreateScale(_scale) *
+                   Matrix.CreateTranslation(_futureState.position * _scale);
         }
 
         private void setDirection()
