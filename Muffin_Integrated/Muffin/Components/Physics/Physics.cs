@@ -194,7 +194,7 @@ namespace Muffin.Components.Physics
                         correction.Y = (penetration.Y < 0 ? penetration.Y : 0);
                         correction.Z = (penetration.Z <= 0 ? penetration.Z : 0);
 
-                        // multiply by a small factor to make sure it moves slightly more than it has to (this helps for rounding error reasons)
+                        // multiply by a small factor to make sure it moves slightly more than it has to to avoid incorrectly resolving a collision
                         correction *= 1.25f;
 
                         // now we want to correct the smallest absolute value of these
@@ -205,8 +205,6 @@ namespace Muffin.Components.Physics
                         /*
                          * This code uses the relative weight of the two objects to determine how much to move them.
                          * */
-
-
 
                         float totalMass = (passiveObject.mass + activeObject.mass);
                         float passiveFactor, activeFactor;
@@ -219,7 +217,7 @@ namespace Muffin.Components.Physics
                         }
                         else
                         {
-                            // FIX THIS !!!
+                            // move it relative to weights
                             passiveFactor = activeObject.mass / totalMass;
                             activeFactor = passiveObject.mass / totalMass;
                         }
@@ -242,6 +240,7 @@ namespace Muffin.Components.Physics
                         // if y is the smallest, fix it in the y direction
                         else if (tempCorrect.Y < tempCorrect.X && tempCorrect.Y < tempCorrect.Z)
                         {
+                            
                             // whichever one is higher moves.  the other stays still
                             if (relativePositions.Y > 0)
                             {

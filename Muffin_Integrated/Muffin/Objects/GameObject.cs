@@ -191,7 +191,7 @@ namespace Definitions
             // do the integration only if this object is not locked and is currently active
             if (!_locked && _active)
             {
-  
+
                 // first, solve for the new rotational position (orientation)
                 Vector3 temp = new Vector3();
 
@@ -237,7 +237,13 @@ namespace Definitions
 
         public void prePhysics()
         {
-            _previousState.copy(_currentState);
+            // update the bounding box if we've moved (during collision resolution)
+            if (!_locked)
+            {
+                if (_previousState.position != _currentState.position)
+                    this.updateBoundingBox();
+            }
+            _previousState.copy(_currentState);   
         }
 
         /*
