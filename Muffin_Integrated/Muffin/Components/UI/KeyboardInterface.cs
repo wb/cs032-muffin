@@ -23,12 +23,13 @@ namespace Muffin.Components.UI
         float sensitivity;
         int timeBeforeRepeat, timeBeforeInitialRepeat, _previousX, _previousY, _previousScroll;
         GameObject _gameObject;
-        ButtonManager space;
+        ButtonManager space, escape;
+        MuffinGame _muffinGame;
 
-        public KeyboardInterface(GameObject gameObject)
+        public KeyboardInterface(GameObject gameObject, MuffinGame game)
         {
             _gameObject = gameObject;
-
+            _muffinGame = game;
             // set some default values
             sensitivity = 0.50f;
             timeBeforeInitialRepeat = 100;
@@ -37,6 +38,7 @@ namespace Muffin.Components.UI
             _previousY = Mouse.GetState().Y;
             _previousScroll = Mouse.GetState().ScrollWheelValue;
             space = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
+            escape = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
 
         }
 
@@ -88,10 +90,15 @@ namespace Muffin.Components.UI
 
             // update the buttons
             space.update((k.IsKeyDown(Keys.Space) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
+            escape.update((k.IsKeyDown(Keys.Escape) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
             // input updown state (normalized to 1), left right state (normalized to 1), strafe state (normalized to 1), jump boolean, and strafe boolean
-            _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.A) || k.IsKeyDown(Keys.D)));
+            if(!_muffinGame.paused)
+                _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.A) || k.IsKeyDown(Keys.D)));
 
+            // pause if we must pause
+            if (escape.getButtonState() == 1)
+                _muffinGame.paused = !_muffinGame.paused;
            
 
 

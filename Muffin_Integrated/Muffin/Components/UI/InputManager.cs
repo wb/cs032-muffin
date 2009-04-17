@@ -29,8 +29,8 @@ namespace Muffin.Components.UI
         {
             _muffinGame = (MuffinGame)game;
 
-            _controllerOne = new ControllerInterface(_muffinGame.allPlayer.ElementAt(0), PlayerIndex.One);
-            _keyboard = new KeyboardInterface(_muffinGame.allPlayer.ElementAt(0));
+            _controllerOne = new ControllerInterface(_muffinGame.allPlayer.ElementAt(0), PlayerIndex.One, _muffinGame);
+            _keyboard = new KeyboardInterface(_muffinGame.allPlayer.ElementAt(0), _muffinGame);
 
         }
 
