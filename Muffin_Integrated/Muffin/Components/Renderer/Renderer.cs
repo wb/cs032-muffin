@@ -106,6 +106,8 @@ namespace Muffin.Components.Renderer
             m_game = game;
             graphics = m_game.graphics;
             graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.PreferredBackBufferWidth = 1280;
             //enable anti-aliasing
             //graphics.PreferMultiSampling = true;
             //graphics.PreparingDeviceSettings +=
