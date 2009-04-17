@@ -242,8 +242,9 @@ namespace Definitions
             {
                 if (_previousState.position != _currentState.position)
                     this.updateBoundingBox();
+                _previousState.copy(_currentState); 
             }
-            _previousState.copy(_currentState);   
+              
         }
 
         /*
