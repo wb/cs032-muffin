@@ -46,10 +46,13 @@ namespace Muffin
         private List<GameObject> _removingObjects;
 
         //GameComponents
-        GameComponent _renderer, _physics, _inputManager, _ai;
+        GameComponent _renderer, _physics, _inputManager, _ai, _menu;
 
         // Class for loading levels
         XMLParser _xmlParser;
+
+        // for pausing
+        private Boolean _paused;
 
         // Flags for what's in _updatedObjects  (so you don't have to search it for specific types of objects)
         private bool _terrainChanged;
@@ -68,7 +71,7 @@ namespace Muffin
 
         public GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
-        private Boolean _paused;
+        
 
         public MuffinGame()
         {
@@ -102,6 +105,10 @@ namespace Muffin
             _ai = new AI(this);
             Components.Add(_ai);
             _ai.UpdateOrder = 3;
+
+            _menu = new Menu(this);
+            Components.Add(_menu);
+            _menu.UpdateOrder = 4;
 
             _paused = false;
         }

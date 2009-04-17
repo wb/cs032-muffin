@@ -74,10 +74,12 @@ namespace Muffin.Components.Renderer
         Effect deferredShadow;
 
         VertexPositionTexture[] quadVertices;
+        VertexPositionTexture[] menuVertices;
 
         GameCamera camera;
         MouseHandler m_mouse;
         Texture2D spotlightTexture;
+        Texture2D tex;
 
         List<GameObject> m_objects;
         List<Model> m_models;
@@ -196,7 +198,10 @@ namespace Muffin.Components.Renderer
             deferredShading = m_game.Content.Load<Effect>("Effects/DeferredShading");
             deferredCombined = m_game.Content.Load<Effect>("Effects/DeferredCombinedEffect");
 
+
+
             //load textures
+            tex = m_game.Content.Load<Texture2D>("Textures\\muffin");
             spotlightTexture = m_game.Content.Load<Texture2D>("Textures/spotlight");
             //load models
             //DepthStencil Buffer and Corresponding RenderTarget for shadowMap
@@ -280,6 +285,12 @@ namespace Muffin.Components.Renderer
             quadVertices[1] = new VertexPositionTexture(new Vector3(1, 1, 0.0f), new Vector2(1, 0));
             quadVertices[2] = new VertexPositionTexture(new Vector3(-1, -1, 0.0f), new Vector2(0, 1));
             quadVertices[3] = new VertexPositionTexture(new Vector3(1, -1, 0.0f), new Vector2(1, 1));
+
+            menuVertices = new VertexPositionTexture[4];
+            menuVertices[0] = new VertexPositionTexture(new Vector3(-0.25f, 0.25f, 0.0f), new Vector2(0, 0));
+            menuVertices[1] = new VertexPositionTexture(new Vector3(0.25f, 0.25f, 0.0f), new Vector2(1, 0));
+            menuVertices[2] = new VertexPositionTexture(new Vector3(-0.25f, -0.25f, 0.0f), new Vector2(0, 1));
+            menuVertices[3] = new VertexPositionTexture(new Vector3(0.25f, -0.25f, 0.0f), new Vector2(1, 1));
         }
 
         public void SetUpCamera(GameCamera c)
@@ -551,7 +562,7 @@ namespace Muffin.Components.Renderer
             deferredCombined.Parameters["xColorMap"].SetValue(deferredRenderMap[0]);
             deferredCombined.Parameters["xShadingMap"].SetValue(deferredShadingMap);
             deferredCombined.Parameters["xAmbient"].SetValue(Ambient);
-
+            
             deferredCombined.Begin();
             foreach (EffectPass pass in deferredCombined.CurrentTechnique.Passes)
             {
@@ -582,17 +593,31 @@ namespace Muffin.Components.Renderer
             renderDeferredMaps();
 
             PresentationParameters pp = device.PresentationParameters;
-            //Texture2D tex = m_game.Content.Load<Texture2D>("Models\\flat\\Vegetation_Grass_Artificial");
-
+            
             //spriteBatch.Begin();
             //spriteBatch.Draw(deferredRenderMap[1], new Rectangle(0,0, pp.BackBufferWidth, pp.BackBufferHeight), Color.White);
             //spriteBatch.End();
 
             //render lighting contributions from lights in the scene
             deferredShadingMap = getShadingMap();
-
+            
             renderCombinedEffects();
 
+            if (m_game.paused)
+            {
+                deferredCombined.CurrentTechnique = deferredCombined.Techniques["TextureDraw"];
+                deferredCombined.Parameters["xTexture"].SetValue(tex);
+
+                deferredCombined.Begin();
+                foreach (EffectPass pass in deferredCombined.CurrentTechnique.Passes)
+                {
+                    pass.Begin();
+                    device.VertexDeclaration = new VertexDeclaration(device, VertexPositionTexture.VertexElements);
+                    device.DrawUserPrimitives<VertexPositionTexture>(PrimitiveType.TriangleStrip, menuVertices, 0, 2);
+                    pass.End();
+                }
+                deferredCombined.End();
+            }
             base.Draw(gameTime);
         }
 
