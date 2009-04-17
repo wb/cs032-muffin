@@ -94,6 +94,7 @@
     <Compile Include="Components\UI\ControllerInterface.cs" />
     <Compile Include="Components\UI\InputManager.cs" />
     <Compile Include="Components\UI\KeyboardInterface.cs" />
+    <Compile Include="Components\UI\Menu.cs" />
     <Compile Include="Components\UI\UI.cs" />
     <Compile Include="Constants\GameConstants.cs" />
     <Compile Include="Constants\Material.cs" />
