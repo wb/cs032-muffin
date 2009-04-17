@@ -568,7 +568,7 @@ namespace Muffin.Components.Renderer
             foreach (Model m in m_models)
                 foreach (ModelMesh mesh in m.Meshes)
                     foreach (ModelMeshPart meshPart in mesh.MeshParts)
-                        meshPart.Effect = effect.Clone(device);
+                        meshPart.Effect = effect;
         }
 
         public override void Draw(GameTime gameTime)
