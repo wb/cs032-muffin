@@ -307,7 +307,7 @@ namespace Definitions
             }
             else
             {
-                float friction = 0.991f;
+                float friction = 0.98f;
                 //_toMove *= 50.0f;
                 adjustedMove = friction * (new Vector3(_moveVector.X, 0, _moveVector.Z)) + (1.0f - friction) * _toMove;
             }
