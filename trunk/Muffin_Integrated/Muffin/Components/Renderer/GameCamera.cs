@@ -33,6 +33,8 @@ namespace Muffin.Components.Renderer
 
         private Boolean _lookMode;
 
+        private int _lookModeCount = 0;
+
         public GameCamera(Vector3 pos, Vector3 target, float aspect_ratio)
         {
             cameraPosition = pos;
@@ -56,10 +58,28 @@ namespace Muffin.Components.Renderer
 
         public void updateLookRotation(float deltaRotationX, float deltaRotationY)
         {
+            
+            if (Math.Abs(deltaRotationX) > 0.0f)
+            {
+                _lookMode = true;
+                _lookModeCount = 0;
+
+                if (Math.Abs(deltaRotationX) < 0.01f)
+                    deltaRotationX = 0.0f;
+            }
+            else
+            {
+                _lookModeCount++;
+
+                if (_lookModeCount > 45)
+                    _lookMode = false;
+            }
+
+            Console.WriteLine(deltaRotationX);
             _lookRotationX -= 2.0f * deltaRotationX;
             _lookRotationY -= 2.0f * deltaRotationY;
 
-            float pi = (float) Math.PI;
+            float pi = (float)Math.PI;
 
             // this code will cause a wrap-around to occur at larger angles, so that the camera
             // always travels the minimum distance back to the objects orientation
@@ -67,7 +87,7 @@ namespace Muffin.Components.Renderer
                 _lookRotationX -= 2.0f * pi;
             else if (_lookRotationX < -pi)
                 _lookRotationX += 2.0f * pi;
-
+            
         }
 
         public void Update(Vector3 position, Quaternion orientation)
@@ -95,6 +115,10 @@ namespace Muffin.Components.Renderer
             // calculate total beled
             float totalBleed = bleedFromPosition * bleedFromOrientation;
 
+            if (totalBleed > 0)
+            {
+                totalBleed = (float)Math.Sqrt(totalBleed);
+            }
             // bleed them off if X is the reset camera button was pressed
 
             if (!_lookMode)
@@ -134,8 +158,8 @@ namespace Muffin.Components.Renderer
 
         public void lookMode(Boolean change)
         {
-            if (change)
-                _lookMode = !_lookMode;
+            /*if (change)
+                _lookMode = !_lookMode;*/
         }
     }
 }
