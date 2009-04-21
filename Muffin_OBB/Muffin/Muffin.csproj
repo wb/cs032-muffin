@@ -86,6 +86,8 @@
   <ItemGroup>
     <Compile Include="Components\AI\AI.cs" />
     <Compile Include="Components\AI\WeightedGraph.cs" />
+    <Compile Include="Components\Collision\CollisionSet.cs" />
+    <Compile Include="Components\Collision\Grid.cs" />
     <Compile Include="Components\Collision\OBBtest.cs" />
     <Compile Include="Components\Collision\Collision.cs" />
     <Compile Include="Components\Collision\OrientedBoundingBox.cs" />

@@ -35,7 +35,7 @@ namespace Definitions
         protected OrientedBoundingBox _boundingBox;
         protected OBB _boundingBoxTest;
         protected GameObjectState _previousState, _currentState, _futureState;
-
+        protected Vector3 _index;
         /*
          * This is the constructor.  
          * */
@@ -316,6 +316,11 @@ namespace Definitions
          * Follow the naming scheme below by using the variable name without
          * the preceeding underscore.
          * */
+        public Vector3 index
+        {
+            get { return _index; }
+            set { _index = value; }
+        }
 
         public OBB boundingBoxTest
         {
