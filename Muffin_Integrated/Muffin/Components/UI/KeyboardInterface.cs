@@ -78,8 +78,12 @@ namespace Muffin.Components.UI
             int deltaScroll = m.ScrollWheelValue - _previousScroll;
             _previousScroll = m.ScrollWheelValue;
 
+            // this is weird, but is used to make it so that if the user clicks but doesn't drag, the camera will hold its angle
             if (m.LeftButton == ButtonState.Pressed)
-                camera.updateLookRotation((float)deltaX / -500.0f, (float)deltaY / 500.0f);
+                camera.updateLookRotation(((deltaX != 0) ? (float)deltaX / -500.0f : 0.000001f), (float)deltaY / 500.0f);
+            else
+                camera.updateLookRotation(0, 0);
+
             if (m.RightButton == ButtonState.Pressed)
                 leftRightState = (float)deltaX / 5.0f;
   
