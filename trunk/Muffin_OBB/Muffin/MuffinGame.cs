@@ -20,6 +20,7 @@ using Muffin.Components.Renderer;
 using Muffin.Components.Physics;
 using Muffin.Components.UI;
 using Muffin.Components.AI;
+using Muffin.Components.Collision;
 
 namespace Muffin
 {
@@ -41,8 +42,11 @@ namespace Muffin
         // Stuff that is being updated in the current cycle
         private List<GameObject> _updatingObjects;
 
+        //grid
+        private Grid _grid;
+
         //GameComponents
-        GameComponent _renderer, _physics, _inputManager, _ai;
+        GameComponent _renderer, _physics, _inputManager, _ai, _collision;
 
         // Class for loading levels
         XMLParser _xmlParser;
@@ -65,6 +69,8 @@ namespace Muffin
 
         public MuffinGame()
         {
+            _grid = new Grid(new Vector3(-100, -100, -100), new Vector3(1000, 1000, 1000));
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             _allObjects = new List<GameObject>();
@@ -81,17 +87,21 @@ namespace Muffin
             Components.Add(_renderer);
             _renderer.UpdateOrder = 0;
 
+            _collision = new CollisionSet(this);
+            Components.Add(_collision);
+            _collision.UpdateOrder = 1;
+
             _physics = new Physics(this);
             Components.Add(_physics);
-            _physics.UpdateOrder = 1;
+            _physics.UpdateOrder = 2;
 
             _inputManager = new InputManager(this);
             Components.Add(_inputManager);
-            _inputManager.UpdateOrder = 2;
+            _inputManager.UpdateOrder = 3;
 
             _ai = new AI(this);
             Components.Add(_ai);
-            _ai.UpdateOrder = 3;
+            _ai.UpdateOrder = 4;
         }
 
         /// <summary>
@@ -280,6 +290,11 @@ namespace Muffin
 
         #region Gets and sets
 
+        public Grid grid 
+        { 
+            get { return _grid; }
+            set { _grid = value; }
+        }
         public List<GameObject> allObjects { get { return _allObjects; } }
         public List<TerrainObject> allTerrain { get { return _allTerrain; } }
         public List<AIObject> allAI { get { return _allAIObjects; } }
