@@ -53,6 +53,11 @@ namespace Muffin.Components.UI
             return GamePad.GetState(_playerIndex).IsConnected;
         }
 
+        public void setPlayerToControl(GameObject player)
+        {
+            _gameObject = player;
+        }
+
         public void Update(GameTime gameTime, GameCamera camera)
         {
             // get the state of the controller
@@ -77,6 +82,9 @@ namespace Muffin.Components.UI
                 _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (g.Buttons.A == ButtonState.Pressed), (g.Buttons.X == ButtonState.Pressed));
 
             
+            // test load next level
+            if (buttonY.getButtonState() == 1)
+                _muffinGame.levelCompleted();
 
             // pause if we must pause
             if (buttonStart.getButtonState() == 1)

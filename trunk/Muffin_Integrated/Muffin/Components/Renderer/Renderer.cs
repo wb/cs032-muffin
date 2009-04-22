@@ -179,7 +179,7 @@ namespace Muffin.Components.Renderer
             foreach (ModelMesh mesh in newModel.Meshes)
                 foreach (ModelMeshPart meshPart in mesh.MeshParts)
                     meshPart.Effect = deferredLighting.Clone(device);
-
+            
             return newModel;
         }
 
@@ -244,6 +244,16 @@ namespace Muffin.Components.Renderer
             m_models.Add(LoadModel("player", out modelTexture));
             m_model_textures.Add(modelTexture);
 
+            setModels();
+
+            //SetUpCamera();
+            SetUpLights();
+
+            isLoaded = true;
+        }
+
+        public void setModels()
+        {
             foreach (GameObject o in m_objects)
             {
                 switch (o.modelName)
@@ -271,13 +281,7 @@ namespace Muffin.Components.Renderer
                         break;
                 }
             }
-
-            //SetUpCamera();
-            SetUpLights();
-
-            isLoaded = true;
         }
-
         private void InitQuad()
         {
             quadVertices = new VertexPositionTexture[4];
@@ -451,7 +455,7 @@ namespace Muffin.Components.Renderer
 
         private void UpdateCamera()
         {
-            camera.Update(m_game.allPlayer.ElementAt(0).position, m_game.allPlayer.ElementAt(0).orientation);
+            camera.Update();
             //Console.WriteLine(m_game.allPlayer.ElementAt(0).rotation);
         }
 
@@ -625,6 +629,9 @@ namespace Muffin.Components.Renderer
         {
             foreach (GameObject o in m_objects)
             {
+                if (o == null)
+                    continue;
+
                 Matrix worldMatrix = o.worldMatrix();
                 DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique);
             }
@@ -632,6 +639,9 @@ namespace Muffin.Components.Renderer
 
         private void DrawModel(Model model, Texture2D[] textures, Matrix wMatrix, string technique)
         {
+            if (model == null)
+                return;
+
             Matrix[] modelTransforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(modelTransforms);
             int i = 0;

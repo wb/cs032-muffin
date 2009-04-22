@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using Muffin.Components.Renderer;
+using Definitions;
 
 namespace Muffin.Components.UI
 {
@@ -42,6 +43,12 @@ namespace Muffin.Components.UI
         {
             _camera = _muffinGame.camera;
             base.Initialize();
+        }
+
+        public void setPlayerToControl(GameObject player)
+        {
+            _controllerOne.setPlayerToControl(player);
+            _keyboard.setPlayerToControl(player);
         }
 
         /// <summary>

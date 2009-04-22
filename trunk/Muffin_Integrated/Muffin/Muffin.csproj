@@ -102,6 +102,7 @@
     <Compile Include="Objects\AIObject.cs" />
     <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Objects\GameObjectState.cs" />
+    <Compile Include="Objects\LevelObject.cs" />
     <Compile Include="Objects\PlayerObject.cs" />
     <Compile Include="Objects\TerrainObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
