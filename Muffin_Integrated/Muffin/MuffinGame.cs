@@ -20,6 +20,7 @@ using Muffin.Components.Renderer;
 using Muffin.Components.Physics;
 using Muffin.Components.UI;
 using Muffin.Components.AI;
+using Muffin.Objects;
 
 namespace Muffin
 {
@@ -45,14 +46,19 @@ namespace Muffin
         private List<GameObject> _removedObjects;
         private List<GameObject> _removingObjects;
 
+        // Level stuff
+        private List<LevelObject> _levels;
+        private int _currentLevel = 0;
+
         //GameComponents
         GameComponent _renderer, _physics, _inputManager, _ai, _menu;
 
         // Class for loading levels
         XMLParser _xmlParser;
 
-        // for pausing
+        // for pausing/game over
         private Boolean _paused;
+        private Boolean _gameOver;
 
         // Flags for what's in _updatedObjects  (so you don't have to search it for specific types of objects)
         private bool _terrainChanged;
@@ -88,6 +94,13 @@ namespace Muffin
             _removedObjects = new List<GameObject>();
             _removingObjects = new List<GameObject>();
 
+            // create some levels
+            _levels = new List<LevelObject>();
+            _levels.Add(new LevelObject("level_flat"));
+            _levels.Add(new LevelObject("level_tall"));
+            _levels.Add(new LevelObject("level_terrain"));
+            _levels.Add(new LevelObject("level1"));
+
             LoadLevel();
 
             _renderer = new Renderer(this);
@@ -107,6 +120,10 @@ namespace Muffin
             _ai.UpdateOrder = 3;
 
             _paused = false;
+            _gameOver = false;
+
+
+            
         }
 
         /// <summary>
@@ -121,7 +138,7 @@ namespace Muffin
                 _objectsRemoved = _objectsRemoving = false;
 
             // create a new camera
-            _camera = new GameCamera(24 * new Vector3(-20, 40, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
+            _camera = new GameCamera(_allPlayers.ElementAt(0), 24 * new Vector3(-20, 40, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
             // and pass it to the renderer
             ((Renderer)_renderer).SetUpCamera(_camera);
 
@@ -178,17 +195,8 @@ namespace Muffin
 
         protected void LoadLevel()
         {
-            // load the xml file corresponding to the current level
-            if (File.Exists("Content\\Levels\\" + GameConstants.CurrentLevel + ".xml"))
-            {
-                XmlDocument document = new XmlDocument();
-                document.Load("Content\\Levels\\" + GameConstants.CurrentLevel + ".xml");
-                _xmlParser = new XMLParser(document);
-            }
-            else
-            {
-                Console.WriteLine("The file " + "Content\\Levels\\" + GameConstants.CurrentLevel + ".xml" + " was not found");
-            }
+            // load the current level
+            _xmlParser = new XMLParser(currentLevel().levelFile);
 
             _allObjects.Clear();
             _allTerrain.Clear();
@@ -375,6 +383,42 @@ namespace Muffin
                 else
                     Console.WriteLine("Unpaused! - Hide Menu");
             }
+        }
+
+        /*
+         * This method returns the current level.
+         * */
+        public LevelObject currentLevel()
+        {
+            return _levels.ElementAt(_currentLevel);
+        }
+
+        /*
+         * This method should be called when a level is completed.  It will
+         * either load the next level or run game over if all levels were
+         * completed.
+         * */
+
+        public void levelCompleted()
+        {
+            // check if the game is over
+            if (_currentLevel + 1 >= _levels.Count())
+            {
+                _paused = true;
+                _gameOver = true;
+                Console.WriteLine("Game Over!");
+            }
+            else
+            {
+                // increment the current level
+                _currentLevel++;
+                // load this level
+                LoadLevel();
+                ((Renderer)_renderer).setModels();
+                _camera.setPlayerToFollow(_allPlayers.ElementAt(0));
+                ((InputManager)_inputManager).setPlayerToControl(_allPlayers.ElementAt(0));
+            }
+            
         }
 
     }

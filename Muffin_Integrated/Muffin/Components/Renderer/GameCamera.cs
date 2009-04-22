@@ -17,6 +17,8 @@ namespace Muffin.Components.Renderer
 {
     public class GameCamera
     {
+        private GameObject _modelToFollow;
+
         public Vector3 cameraPosition { get; set; }
         public Vector3 cameraTarget { get; set; }
         public Vector3 cameraUp { get; set; }
@@ -35,8 +37,10 @@ namespace Muffin.Components.Renderer
 
         private int _lookModeCount = 0;
 
-        public GameCamera(Vector3 pos, Vector3 target, float aspect_ratio)
+        public GameCamera(GameObject modelToFollow, Vector3 pos, Vector3 target, float aspect_ratio)
         {
+            _modelToFollow = modelToFollow;
+
             cameraPosition = pos;
             cameraTarget = target;
 
@@ -75,7 +79,6 @@ namespace Muffin.Components.Renderer
                     _lookMode = false;
             }
 
-            Console.WriteLine(deltaRotationX);
             _lookRotationX -= 2.0f * deltaRotationX;
             _lookRotationY -= 2.0f * deltaRotationY;
 
@@ -90,8 +93,16 @@ namespace Muffin.Components.Renderer
             
         }
 
-        public void Update(Vector3 position, Quaternion orientation)
+        public void setPlayerToFollow(GameObject player)
         {
+            _modelToFollow = player;
+        }
+
+        public void Update()
+        {
+            Vector3 position = _modelToFollow.position;
+            Quaternion orientation = _modelToFollow.orientation;
+
             position = GameConstants.GameObjectScale * position;
 
             // rotate the camera target by the lookRotationX amount (around the camera position)
