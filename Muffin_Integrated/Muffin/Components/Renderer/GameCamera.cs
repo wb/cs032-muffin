@@ -96,6 +96,8 @@ namespace Muffin.Components.Renderer
         public void setPlayerToFollow(GameObject player)
         {
             _modelToFollow = player;
+            cameraPosition = 24 * new Vector3(-20, 40, -20);
+            cameraTarget = new Vector3(0, 0, 0);
         }
 
         public void Update()
