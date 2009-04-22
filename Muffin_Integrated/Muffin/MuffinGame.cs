@@ -404,7 +404,6 @@ namespace Muffin
             // check if the game is over
             if (_currentLevel + 1 >= _levels.Count())
             {
-                _paused = true;
                 _gameOver = true;
                 Console.WriteLine("Game Over!");
             }
