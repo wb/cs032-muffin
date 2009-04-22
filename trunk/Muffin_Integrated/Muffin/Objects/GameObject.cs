@@ -236,7 +236,7 @@ namespace Definitions
          * before the actual calculations take place.
          * */
 
-        public void prePhysics()
+        public void prePhysics(MuffinGame game)
         {
             // update the bounding box if we've moved (during collision resolution)
             if (!_locked)
@@ -249,9 +249,12 @@ namespace Definitions
                     _moveVector *= (maxSpeed / length);
                 }
 
-                // update bounding box if needed
+                // update bounding box if needed (and alert donnie)
                 if (_previousState.position != _currentState.position)
+                {
+                    game.addUpdateObject(this);
                     this.updateBoundingBox();
+                }
 
                 // copy the current state to previous state
                 _previousState.copy(_currentState);
@@ -285,16 +288,6 @@ namespace Definitions
                 _futureState.copy(_currentState);
             }
 
-            // check to see if we've moved since the previous state
-            if (_previousState.position != _currentState.position)
-            {
-                // if so, register this object
-                game.addUpdateObject(this);
-            }
-
-            
-
-            
             // this is friction
             
             Vector3 adjustedMove;
@@ -322,6 +315,8 @@ namespace Definitions
 
             // reset the move vector
             _toMove = Vector3.Zero;
+
+           
         }
 
         #region Gets and Sets
