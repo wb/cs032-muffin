@@ -52,7 +52,7 @@ namespace Muffin.Components.Physics
             foreach (GameObject activeObject in _muffinGame.allObjects)
             {
                 _gravity.applyForce(activeObject);
-                activeObject.prePhysics();
+                activeObject.prePhysics(_muffinGame);
             }
 
 
@@ -67,8 +67,6 @@ namespace Muffin.Components.Physics
                 // only check active objects
                 if (activeObject.locked)
                     continue;
-
-
 
                 // integrate first (this will set future position)
                 activeObject.integrate(((float)gameTime.ElapsedGameTime.TotalSeconds));
