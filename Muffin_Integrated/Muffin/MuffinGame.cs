@@ -113,7 +113,7 @@ namespace Muffin
             Components.Add(_inputManager);
             _inputManager.UpdateOrder = 1;
 
-            _menuComponent = new MenuComponent(this, (InputManager) _inputManager);
+            _menuComponent = new MenuComponent(this, Content);
             Components.Add(_menuComponent);
             _menuComponent.UpdateOrder = 2;
 
@@ -200,8 +200,26 @@ namespace Muffin
                 levelCompleted();
             }
 
-            float angle = MathHelper.ToDegrees((float)gameTime.TotalGameTime.Milliseconds / 7000.0f);
+            // rotate the star
+            float angle = MathHelper.ToDegrees((float)gameTime.TotalGameTime.Milliseconds / 5000.0f);
             getCurrentLevel().goal.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
+
+            
+            // check to see if the player has died
+            if (_allPlayers.ElementAt(0).toBeRemoved)
+            {
+                Console.WriteLine("You died.");
+                //_gameOver = true; // this will triger the game over menu
+                //this.paused = true;
+                
+            }
+
+            // iterate over all objects and remove objects that have fallen off map
+            foreach (GameObject o in _updatedObjects)
+            {
+                if (o.toBeRemoved && !(o is PlayerObject))
+                    this.removeObject(o);
+            }
 
             base.Update(gameTime);
         }
@@ -243,7 +261,7 @@ namespace Muffin
             Random random = new Random();
 
             // this is the level goal
-            GameObject goal = new GameObject(null, ModelType.OBJECT, ModelName.STAR, new Vector3(random.Next(0, 1000), random.Next(24, 200), random.Next(0, 1000)), Quaternion.Identity, true, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
+            GameObject goal = new GameObject(null, ModelType.OBJECT, ModelName.STAR, new Vector3(random.Next(0, 1000), random.Next(60, 200), random.Next(0, 1000)), Quaternion.Identity, true, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
             objs.Add(goal);
             getLevel(level).goal = goal;
 
@@ -254,16 +272,16 @@ namespace Muffin
 
             // Adda an AI object for testing
             GameObject testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 10000.0f, GameConstants.GameObjectScale);
-            objs.Add(testAI);
+            //objs.Add(testAI);
 
             testAI = new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 9000.0f, GameConstants.GameObjectScale);
-            objs.Add(testAI);
+            //objs.Add(testAI);
 
             testAI = new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 8000.0f, GameConstants.GameObjectScale);
-            objs.Add(testAI);
+            //objs.Add(testAI);
 
             testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 5000.0f, GameConstants.GameObjectScale);
-            objs.Add(testAI);
+            //objs.Add(testAI);
            
             // add a box for testing
             GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale);
@@ -421,6 +439,16 @@ namespace Muffin
             {
                 _paused = value;
 
+                // show game over menu if they died
+                if (_gameOver && _paused)
+                {
+                    ((MenuComponent)_menuComponent).showGameOverMenu(true);
+                    return;
+                }
+                // hide it if they didn't
+                ((MenuComponent)_menuComponent).showGameOverMenu(false);
+
+                // show pause menu when appropriate
                 if (_paused)
                     ((MenuComponent)_menuComponent).showPauseMenu(true);
                 else
@@ -472,12 +500,21 @@ namespace Muffin
                 // increment the current level
                 _currentLevel++;
                 // load this level
-                LoadLevel(_currentLevel);
-                ((Renderer)_renderer).setModels();
-                _camera.setPlayerToFollow(_allPlayers.ElementAt(0));
-                ((InputManager)_inputManager).setPlayerToControl(_allPlayers.ElementAt(0));
+                LoadLevelIndex(_currentLevel);
             }
             
+        }
+
+        /*
+         * Wraps up a few methods needed to load a level after the intial level load.
+         * */
+
+        public void LoadLevelIndex(int index)
+        {
+            LoadLevel(index);
+            ((Renderer)_renderer).setModels();
+            _camera.setPlayerToFollow(_allPlayers.ElementAt(0));
+            ((InputManager)_inputManager).setPlayerToControl(_allPlayers.ElementAt(0));
         }
 
     }

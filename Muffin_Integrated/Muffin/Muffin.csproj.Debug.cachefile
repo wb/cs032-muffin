@@ -54,6 +54,8 @@ Content\Textures\pauseMenuSaveSelected.xnb
 Content\Models\star.xnb
 Content\Models\star\Metal_Corrogated_Shiny.xnb
 Content\Models\star\Metal_Corrogated_Shiny_0.xnb
+Content\Audio\likeit.xnb
+Content\Audio\select.xnb
 Content\Levels\level1.xml
 Content\Levels\level2.xml
 Content\Levels\level_flat.xml

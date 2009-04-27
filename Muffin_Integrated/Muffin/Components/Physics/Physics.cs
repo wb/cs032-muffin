@@ -55,6 +55,7 @@ namespace Muffin.Components.Physics
             // apply gravity to each object
             foreach (GameObject activeObject in _muffinGame.allObjects)
             {
+
                 _gravity.applyForce(activeObject);
                 activeObject.prePhysics(_muffinGame);
             }

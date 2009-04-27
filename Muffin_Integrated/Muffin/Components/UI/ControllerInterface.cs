@@ -93,7 +93,7 @@ namespace Muffin.Components.UI
                 _muffinGame.paused = !_muffinGame.paused;
 
             // input for menus
-            _muffinGame.menuInput(-thumbStickRightY.getButtonState(), buttonA.getButtonState() == 1 ? true : false);
+            _muffinGame.menuInput(-thumbStickLeftY.getButtonState(), buttonA.getButtonState() == 1 ? true : false);
             
         }
     }
