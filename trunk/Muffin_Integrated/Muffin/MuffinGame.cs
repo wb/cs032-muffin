@@ -51,7 +51,7 @@ namespace Muffin
         private int _currentLevel = 0;
 
         //GameComponents
-        GameComponent _renderer, _physics, _inputManager, _ai, _menu;
+        GameComponent _renderer, _physics, _inputManager, _ai, _menuComponent;
 
         // Class for loading levels
         XMLParser _xmlParser;
@@ -72,6 +72,8 @@ namespace Muffin
         private bool _objectsRemoving;
 
         private GameCamera _camera;
+
+        private Effect textureDraw;
 
         #endregion
 
@@ -101,23 +103,29 @@ namespace Muffin
             _levels.Add(new LevelObject("level_terrain"));
             _levels.Add(new LevelObject("level1"));
 
-            LoadLevel();
+            LoadLevel(0);
 
             _renderer = new Renderer(this);
             Components.Add(_renderer);
             _renderer.UpdateOrder = 0;
 
-            _physics = new Physics(this);
-            Components.Add(_physics);
-            _physics.UpdateOrder = 1;
-
             _inputManager = new InputManager(this);
             Components.Add(_inputManager);
-            _inputManager.UpdateOrder = 2;
+            _inputManager.UpdateOrder = 1;
+
+            _menuComponent = new MenuComponent(this, (InputManager) _inputManager);
+            Components.Add(_menuComponent);
+            _menuComponent.UpdateOrder = 2;
+
+            _physics = new Physics(this);
+            Components.Add(_physics);
+            _physics.UpdateOrder = 3;
 
             _ai = new AI(this);
             Components.Add(_ai);
-            _ai.UpdateOrder = 3;
+            _ai.UpdateOrder = 4;
+
+            
 
             _paused = false;
             _gameOver = false;
@@ -153,6 +161,7 @@ namespace Muffin
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            textureDraw = Content.Load<Effect>("Effects/TextureDraw");
         }
 
         /// <summary>
@@ -186,17 +195,24 @@ namespace Muffin
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            // TODO: Add your drawing code here
+            //! note there should only be one call to spritebatch begin and end for the entire menu drawing.
+            //multiple draw calls can be made within here.
+            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
+            //DrawTextures here
+
+            //spriteBatch.Draw(tex, rect, Color.White);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
         # region Game-specific methods
 
-        protected void LoadLevel()
+        protected void LoadLevel(int level)
         {
             // load the current level
-            _xmlParser = new XMLParser(currentLevel().levelFile);
+            _xmlParser = new XMLParser(getLevel(level).levelFile);
 
             _allObjects.Clear();
             _allTerrain.Clear();
@@ -371,6 +387,9 @@ namespace Muffin
             return ((AI) _ai).topmostTerrain(X,Y);
         }
 
+        /*
+         * This sets pause for the game.
+         * */
         public Boolean paused
         {
             get { return _paused; }
@@ -379,18 +398,27 @@ namespace Muffin
                 _paused = value;
 
                 if (_paused)
-                    Console.WriteLine("Paused! - Show Menu");
+                    ((MenuComponent)_menuComponent).showPauseMenu(true);
                 else
-                    Console.WriteLine("Unpaused! - Hide Menu");
+                    ((MenuComponent)_menuComponent).showPauseMenu(false);
             }
+        }
+
+        /*
+         * This passes input to the menus.
+         * */
+
+        public void menuInput(int direction, Boolean select)
+        {
+            ((MenuComponent)_menuComponent).menuInput(direction, select);
         }
 
         /*
          * This method returns the current level.
          * */
-        public LevelObject currentLevel()
+        public LevelObject getLevel(int level)
         {
-            return _levels.ElementAt(_currentLevel);
+            return _levels.ElementAt(level);
         }
 
         /*
@@ -412,7 +440,7 @@ namespace Muffin
                 // increment the current level
                 _currentLevel++;
                 // load this level
-                LoadLevel();
+                LoadLevel(_currentLevel);
                 ((Renderer)_renderer).setModels();
                 _camera.setPlayerToFollow(_allPlayers.ElementAt(0));
                 ((InputManager)_inputManager).setPlayerToControl(_allPlayers.ElementAt(0));

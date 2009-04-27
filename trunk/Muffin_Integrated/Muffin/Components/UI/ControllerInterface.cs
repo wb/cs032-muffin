@@ -26,7 +26,7 @@ namespace Muffin.Components.UI
         MuffinGame _muffinGame;
 
 
-        ButtonManager thumbStickLeftX, thumbStickLeftY, buttonA, buttonY, buttonStart;
+        ButtonManager thumbStickLeftX, thumbStickLeftY, buttonA, buttonY, buttonStart, thumbStickRightY;
 
         public ControllerInterface(GameObject gameObject, PlayerIndex playerIndex, MuffinGame game)
         {
@@ -42,6 +42,7 @@ namespace Muffin.Components.UI
             // instantiate our buttons
             thumbStickLeftX = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
             thumbStickLeftY = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
+            thumbStickRightY = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
             buttonA = new ButtonManager(sensitivity, 100, 400);
             buttonY = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue); // this button can never repeat while held down
 
@@ -73,13 +74,14 @@ namespace Muffin.Components.UI
             // update the left thumbsticks
             thumbStickLeftX.update(g.ThumbSticks.Left.X, gameTime.TotalGameTime.TotalMilliseconds);
             thumbStickLeftY.update(g.ThumbSticks.Left.Y, gameTime.TotalGameTime.TotalMilliseconds);
+            thumbStickRightY.update(g.ThumbSticks.Right.Y, gameTime.TotalGameTime.TotalMilliseconds);
             buttonA.update((g.Buttons.A == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             buttonY.update((g.Buttons.Y == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             buttonStart.update((g.Buttons.Start == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
             // update the object if we aren't paused
             if (!_muffinGame.paused)
-                _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (g.Buttons.A == ButtonState.Pressed), (g.Buttons.X == ButtonState.Pressed));
+                _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (buttonA.getButtonState() == 1 ? true : false), (g.Buttons.X == ButtonState.Pressed));
 
             
             // test load next level
@@ -89,6 +91,9 @@ namespace Muffin.Components.UI
             // pause if we must pause
             if (buttonStart.getButtonState() == 1)
                 _muffinGame.paused = !_muffinGame.paused;
+
+            // input for menus
+            _muffinGame.menuInput(-thumbStickRightY.getButtonState(), buttonA.getButtonState() == 1 ? true : false);
             
         }
     }
