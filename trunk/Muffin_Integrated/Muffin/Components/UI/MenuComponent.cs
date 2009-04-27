@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 
-
 namespace Muffin.Components.UI
 {
     /*
@@ -21,6 +20,16 @@ namespace Muffin.Components.UI
 
     public delegate void menuCallback();
 
+    /*
+     * Enums for indexing sound clips.
+     * */
+
+    public enum SoundClip : int
+    {
+        CHANGE = 0,
+        SELECT = 1
+    }
+
     /// <summary>
     /// This is a game component that implements IUpdateable.
     /// </summary>
@@ -28,15 +37,17 @@ namespace Muffin.Components.UI
     {
         private MuffinGame _muffinGame;
         private SpriteBatch _spriteBatch;
-        private MenuObject _pauseMenu, _mainMenu;
-        private InputManager _inputManager;
+        private MenuObject _pauseMenu, _mainMenu, _gameOverMenu;
+        private ContentManager _content;
 
-        public MenuComponent(Game game, InputManager inputManager)
+        
+
+        public MenuComponent(Game game, ContentManager content)
             : base(game)
         {
             
             _muffinGame = (MuffinGame)game;
-            _inputManager = inputManager;
+            _content = content;
             
             
         }
@@ -50,20 +61,26 @@ namespace Muffin.Components.UI
             // make a new spritebatch
             _spriteBatch = new SpriteBatch(_muffinGame.GraphicsDevice);
 
-            // make our menus (content added below)
-            _pauseMenu = new MenuObject(_spriteBatch, _muffinGame);
-            _mainMenu = new MenuObject(_spriteBatch, _muffinGame);
-
+           
+            
             base.Initialize();
         }
+
+        List<SoundEffect> _soundEffects;
 
         protected override void LoadContent()
         {
 
-            double height = _muffinGame.graphics.PreferredBackBufferHeight;
-            double width = _muffinGame.graphics.PreferredBackBufferWidth;
-            
-            // load all of the images for the menu
+    
+            // load the sounds
+            _soundEffects = new List<SoundEffect>();
+            _soundEffects.Add(_content.Load<SoundEffect>("Audio\\likeit"));
+            _soundEffects.Add(_content.Load<SoundEffect>("Audio\\select"));
+
+            // make our menus (content added below)
+            _pauseMenu = new MenuObject(_spriteBatch, _muffinGame, _soundEffects);
+
+            // load all of the images for the menu as menu items
             _pauseMenu.addItem("pauseMenuBackground", new Rectangle(738, 147, 444, 907), false, null);
             _pauseMenu.addItem("pauseMenuSave", new Rectangle(765, 210, 750, 70), true, new menuCallback(save));
             _pauseMenu.addItem("pauseMenuLoad", new Rectangle(770, 300, 769, 90), true, new menuCallback(load));
@@ -72,7 +89,12 @@ namespace Muffin.Components.UI
             _pauseMenu.addItem("pauseMenuQuit", new Rectangle(765, 600, 1089, 109), true, new menuCallback(quit));
             _pauseMenu.addItem("pauseMenuResume", new Rectangle(770, 720, 959, 70), true, new menuCallback(resume));
 
-            
+            // main menu
+            _mainMenu = new MenuObject(_spriteBatch, _muffinGame, _soundEffects);
+           
+            // game over menu
+            _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame, _soundEffects);
+
             base.LoadContent();
         }
 
@@ -95,6 +117,7 @@ namespace Muffin.Components.UI
         {
             Console.WriteLine("Loading would be implemented here.");
             _muffinGame.levelCompleted();
+            _soundEffects.ElementAt((int) SoundClip.SELECT).Play();
         }
 
         public void options()
@@ -136,6 +159,11 @@ namespace Muffin.Components.UI
         public void showPauseMenu(Boolean show)
         {
             _pauseMenu.hidden = !show;
+        }
+
+        public void showGameOverMenu(Boolean show)
+        {
+            _gameOverMenu.hidden = !show;
         }
 
         /*

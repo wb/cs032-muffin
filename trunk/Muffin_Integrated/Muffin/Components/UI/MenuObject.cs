@@ -33,8 +33,9 @@ namespace Muffin.Components.UI
         private Boolean _hidden;
         private MuffinGame _muffinGame;
         private int _currentItemIndex;
+        private List<SoundEffect> _soundEffects;
 
-        public MenuObject(SpriteBatch spriteBatch, MuffinGame game)
+        public MenuObject(SpriteBatch spriteBatch, MuffinGame game, List<SoundEffect> soundEffects)
         {
             _spriteBatch = spriteBatch;
             _items = new List<MenuItem>();
@@ -42,6 +43,7 @@ namespace Muffin.Components.UI
             _hidden = true;
             _muffinGame = game;
             _currentItemIndex = 0;
+            _soundEffects = soundEffects;
         }
 
         /*
@@ -91,13 +93,24 @@ namespace Muffin.Components.UI
             get { return _hidden; }
             set
             {
+                // play a sound when the menu is shown or hidden
+                if(value != _hidden)
+                    _soundEffects.ElementAt((int)SoundClip.SELECT).Play();
+
                 _hidden = value;
                 if (_hidden == true)
                 {
-                    // reset the menu so it starts on the first item next time
-                    _selectableItems.ElementAt(_currentItemIndex).setSelected(false);
-                    _currentItemIndex = 0;
-                    _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
+                    if (_selectableItems.Count() > 0)
+                    {
+                        // reset the menu so it starts on the first item next time
+                        _selectableItems.ElementAt(_currentItemIndex).setSelected(false);
+                        _currentItemIndex = 0;
+                        _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
+                    }
+                }
+                else
+                {
+                    
                 }
             }
         }
@@ -107,11 +120,15 @@ namespace Muffin.Components.UI
          * */
 
         public void menuInput(int direction, Boolean select)
-        {
+        {   
+
             // only move if it isn't hidden and we aren't selecting
             if (!hidden && !select)
             {
-                // make sure our input is -1, 0, or 1
+                if (direction == 0)
+                    return;
+
+                // make sure our input is -1 or 1
                 if (direction > 0)
                     direction = 1;
                 if (direction < 0)
@@ -129,13 +146,15 @@ namespace Muffin.Components.UI
 
                 // select current item
                 _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
+
+                // play the sound
+                _soundEffects.ElementAt((int)SoundClip.CHANGE).Play();
             }
             // if the user selects something, perform the callback
             else if (!hidden && select)
             {
                 _selectableItems.ElementAt(_currentItemIndex).executeCallback();
-
-                
+           
             }
         }
 

@@ -30,7 +30,7 @@ namespace Definitions
         protected ModelName _modelName;
         protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove, _previousToMove, _moveVector;
         protected Matrix _intertiaTensor;
-        protected Boolean _locked, _active;
+        protected Boolean _locked, _active, _toBeRemoved;
         protected BoundingBox _boundingBox;
         protected GameObjectState _previousState, _currentState, _futureState;
         protected Quaternion _orientation; // this is used for the direction an object is facing (for moving, camera, etc).
@@ -74,6 +74,8 @@ namespace Definitions
 
             // initalize the orientation
             _orientation = Quaternion.Identity;
+
+            _toBeRemoved = false;
         }
 
         /*
@@ -223,6 +225,19 @@ namespace Definitions
                     _futureState.velocity = new Vector3(_futureState.velocity.X, 0, _futureState.velocity.Z);
                 }
 
+                // check for min position
+
+                if (_futureState.position.Y < GameConstants.MinHeight)
+                {
+                    _toBeRemoved = true;
+
+                    _futureState.position = new Vector3(_futureState.position.X, GameConstants.MinHeight, _futureState.position.Z);
+                    _futureState.acceleration = new Vector3(_futureState.acceleration.X, 0, _futureState.acceleration.Z);
+                    _futureState.velocity = new Vector3(_futureState.velocity.X, 0, _futureState.velocity.Z);
+
+                  
+                }
+
                 // account for air resistance, general drag, etc
                 _futureState.velocity = 0.995f * _futureState.velocity;
                 _futureState.angularVelocity = 0.995f * _futureState.angularVelocity;
@@ -259,7 +274,7 @@ namespace Definitions
                 // copy the current state to previous state
                 _previousState.copy(_currentState);
 
-                
+               
             }
               
         }
@@ -461,6 +476,11 @@ namespace Definitions
         {
             get { return _moveVector; }
             set { _moveVector = value; }
+        }
+
+        public Boolean toBeRemoved
+        {
+            get { return _toBeRemoved; }
         }
 
         #endregion
