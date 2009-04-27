@@ -30,13 +30,16 @@ namespace Muffin.Components.UI
         private Texture2D _textureSelected;
         private Boolean _selected;
         private menuCallback _callback;
+        private Vector2 _shadowOffset;
 
         public SelectableMenuItem(String name, Rectangle rectangle, MuffinGame game, menuCallback callback)
             : base(name, rectangle, game)
         {    
             _textureSelected = game.Content.Load<Texture2D>("Textures\\" + name + "Selected");
             _callback = callback;
-
+            float xRatio = game.graphics.PreferredBackBufferHeight / 1920.0f;
+            float yRatio = game.graphics.PreferredBackBufferWidth / 1200.0f;
+            _shadowOffset = new Vector2((int)Math.Round(xRatio * 7.5), (int)Math.Round(yRatio * 7.5));
         }
 
         public void setSelected(Boolean selected)
@@ -61,7 +64,7 @@ namespace Muffin.Components.UI
             if (!_selected)
                 return base.currentRectangle();
 
-            return new Rectangle(_rectangle.X + 5, _rectangle.Y - 5, _rectangle.Width, _rectangle.Height);
+            return new Rectangle(_rectangle.X + (int)_shadowOffset.X, _rectangle.Y - (int)_shadowOffset.Y, _rectangle.Width, _rectangle.Height);
         }
         /*
          * This method executes the callback, only if this button is selected
