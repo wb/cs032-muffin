@@ -36,6 +36,7 @@ namespace Definitions
             if (jump)
             {
                 this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);
+
             }
 
         }

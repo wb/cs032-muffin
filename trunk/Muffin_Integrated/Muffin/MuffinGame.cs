@@ -186,6 +186,23 @@ namespace Muffin
 
             // TODO: Add your update logic here
             beginTick();
+
+            // check to see if this level has been completed
+            int xDifference = 70;
+            int yDifference = 70;
+            int zDifference = 70;
+
+            Vector3 playerPosition = _allPlayers.ElementAt(0).position;
+            Vector3 goalPosition = getCurrentLevel().goal.position;
+
+            if (Math.Abs(playerPosition.X - goalPosition.X) < xDifference && Math.Abs(playerPosition.Y - goalPosition.Y) < yDifference && Math.Abs(playerPosition.Z - goalPosition.Z) < zDifference)
+            {
+                levelCompleted();
+            }
+
+            float angle = (float)gameTime.TotalGameTime.Milliseconds / 350.0f;
+            //getCurrentLevel().goal.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
+
             base.Update(gameTime);
         }
 
@@ -222,6 +239,13 @@ namespace Muffin
             // Load the current level
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
+
+            Random random = new Random();
+
+            // this is the level goal
+            GameObject goal = new GameObject(null, ModelType.OBJECT, ModelName.STAR, new Vector3(random.Next(0, 1000), random.Next(24, 200), random.Next(0, 1000)), Quaternion.Identity, true, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
+            objs.Add(goal);
+            getLevel(level).goal = goal;
 
             // this is the player
             GameObject testBox1 = new PlayerObject(null, ModelName.PLAYER, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
@@ -414,13 +438,21 @@ namespace Muffin
         }
 
         /*
-         * This method returns the current level.
+         * This method returns a level given the level number
          * */
         public LevelObject getLevel(int level)
         {
             return _levels.ElementAt(level);
         }
 
+        /*
+         * This method returns the current level.
+         * */
+        
+        public LevelObject getCurrentLevel()
+        {
+            return getLevel(_currentLevel);
+        }
         /*
          * This method should be called when a level is completed.  It will
          * either load the next level or run game over if all levels were

@@ -40,6 +40,10 @@ namespace Muffin.Components.Physics
 
         public override void Update(GameTime gameTime)
         {
+            // spin the star!
+
+
+
             // if paused, return
             if (_muffinGame.paused)
                 return;
@@ -159,8 +163,9 @@ namespace Muffin.Components.Physics
             // first, check all human players
             foreach (GameObject activeObject in _muffinGame.allObjects)
             {
-                if (activeObject.modelType == ModelType.TERRAIN)
+                if (activeObject.locked)
                     continue;
+
                 foreach (GameObject passiveObject in _muffinGame.allObjects)
                 {
                     if (activeObject == passiveObject)
@@ -216,8 +221,8 @@ namespace Muffin.Components.Physics
                         float totalMass = (passiveObject.mass + activeObject.mass);
                         float passiveFactor, activeFactor;
 
-                        // if its too heavy, don't move it at all
-                        if (passiveObject.mass > activeObject.mass * GameConstants.MaxMoveWeightRatio)
+                        // if its too heavy, don't move it at all (or if the other object is locked)
+                        if (passiveObject.mass > activeObject.mass * GameConstants.MaxMoveWeightRatio || passiveObject.locked)
                         {
                             passiveFactor = 0.0f;
                             activeFactor = 1.0f;

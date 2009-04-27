@@ -244,6 +244,8 @@ namespace Muffin.Components.Renderer
             m_model_textures.Add(modelTexture);
             m_models.Add(LoadModel("player", out modelTexture));
             m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("star", out modelTexture));
+            m_model_textures.Add(modelTexture);
 
             setModels();
 
@@ -276,6 +278,9 @@ namespace Muffin.Components.Renderer
                         break;
                     case ModelName.PLAYER:
                         o.model = m_models.ElementAt((int)ModelName.PLAYER);
+                        break;
+                    case ModelName.STAR:
+                        o.model = m_models.ElementAt((int)ModelName.STAR);
                         break;
                     case ModelName.NONE:
                     default:

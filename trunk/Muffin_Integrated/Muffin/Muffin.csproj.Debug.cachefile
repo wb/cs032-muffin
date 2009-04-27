@@ -51,6 +51,9 @@ Content\Textures\pauseMenuResume.xnb
 Content\Textures\pauseMenuResumeSelected.xnb
 Content\Textures\pauseMenuSave.xnb
 Content\Textures\pauseMenuSaveSelected.xnb
+Content\Models\star.xnb
+Content\Models\star\Metal_Corrogated_Shiny.xnb
+Content\Models\star\Metal_Corrogated_Shiny_0.xnb
 Content\Levels\level1.xml
 Content\Levels\level2.xml
 Content\Levels\level_flat.xml
