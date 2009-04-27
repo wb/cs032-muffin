@@ -23,7 +23,7 @@ namespace Muffin.Components.UI
         float sensitivity;
         int timeBeforeRepeat, timeBeforeInitialRepeat, _previousX, _previousY, _previousScroll;
         GameObject _gameObject;
-        ButtonManager space, escape, lkey;
+        public ButtonManager space, escape, lkey, leftRightArrows, upDownArrows, enter;
         MuffinGame _muffinGame;
 
         public KeyboardInterface(GameObject gameObject, MuffinGame game)
@@ -40,6 +40,9 @@ namespace Muffin.Components.UI
             space = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
             escape = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
             lkey = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
+            leftRightArrows = new ButtonManager(sensitivity, 100, 400);
+            upDownArrows = new ButtonManager(sensitivity, 100, 400);
+            enter = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
 
         }
 
@@ -102,19 +105,24 @@ namespace Muffin.Components.UI
             space.update((k.IsKeyDown(Keys.Space) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             escape.update((k.IsKeyDown(Keys.Escape) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             lkey.update((k.IsKeyDown(Keys.L) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
+            leftRightArrows.update((k.IsKeyDown(Keys.Left) ? -1 : 0) + (k.IsKeyDown(Keys.Right) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
+            upDownArrows.update((k.IsKeyDown(Keys.Up) ? -1 : 0) + (k.IsKeyDown(Keys.Down) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
+            enter.update((k.IsKeyDown(Keys.Enter) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
             // input updown state (normalized to 1), left right state (normalized to 1), strafe state (normalized to 1), jump boolean, and strafe boolean
             if(!_muffinGame.paused)
                 _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.A) || k.IsKeyDown(Keys.D)));
 
-            // pause if we must pause
-            if (escape.getButtonState() == 1)
-                _muffinGame.paused = !_muffinGame.paused;
-           
             // testing for next level
             if (lkey.getButtonState() == 1)
                 _muffinGame.levelCompleted();
 
+            // pause if we must pause
+            if (escape.getButtonState() == 1)
+                _muffinGame.paused = !_muffinGame.paused;
+
+            // input for menus
+            _muffinGame.menuInput(upDownArrows.getButtonState(), (enter.getButtonState() == 1) ? true : false);
         }
     }
 }

@@ -95,6 +95,7 @@ namespace Muffin.Components.Renderer
         RenderTarget2D deferredShadowTarget;
         Texture2D deferredShadingMap;
         Texture2D deferredShadowMap;
+        Texture2D deferredFinalTexture;
         Texture2D blackTexture;
         DepthStencilBuffer shadowDSB;
         DepthStencilBuffer standardDSB;
@@ -201,7 +202,7 @@ namespace Muffin.Components.Renderer
 
 
             //load textures
-            tex = m_game.Content.Load<Texture2D>("Textures\\muffin");
+            
             spotlightTexture = m_game.Content.Load<Texture2D>("Textures/spotlight");
             //load models
             //DepthStencil Buffer and Corresponding RenderTarget for shadowMap
@@ -289,7 +290,7 @@ namespace Muffin.Components.Renderer
             quadVertices[1] = new VertexPositionTexture(new Vector3(1, 1, 0.0f), new Vector2(1, 0));
             quadVertices[2] = new VertexPositionTexture(new Vector3(-1, -1, 0.0f), new Vector2(0, 1));
             quadVertices[3] = new VertexPositionTexture(new Vector3(1, -1, 0.0f), new Vector2(1, 1));
-
+            
             menuVertices = new VertexPositionTexture[4];
             menuVertices[0] = new VertexPositionTexture(new Vector3(-0.25f, 0.25f, 0.0f), new Vector2(0, 0));
             menuVertices[1] = new VertexPositionTexture(new Vector3(0.25f, 0.25f, 0.0f), new Vector2(1, 0));
@@ -562,6 +563,7 @@ namespace Muffin.Components.Renderer
 
         private void renderCombinedEffects()
         {
+            device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
             deferredCombined.CurrentTechnique = deferredCombined.Techniques["DeferredCombined"];
             deferredCombined.Parameters["xColorMap"].SetValue(deferredRenderMap[0]);
             deferredCombined.Parameters["xShadingMap"].SetValue(deferredShadingMap);
@@ -595,33 +597,16 @@ namespace Muffin.Components.Renderer
             //switch effect for models
             //render color map, normal map, and depth map of scene
             renderDeferredMaps();
-
+            
+            
             PresentationParameters pp = device.PresentationParameters;
             
-            //spriteBatch.Begin();
-            //spriteBatch.Draw(deferredRenderMap[1], new Rectangle(0,0, pp.BackBufferWidth, pp.BackBufferHeight), Color.White);
-            //spriteBatch.End();
-
             //render lighting contributions from lights in the scene
             deferredShadingMap = getShadingMap();
-            
             renderCombinedEffects();
 
-            if (m_game.paused)
-            {
-                deferredCombined.CurrentTechnique = deferredCombined.Techniques["TextureDraw"];
-                deferredCombined.Parameters["xTexture"].SetValue(tex);
+            
 
-                deferredCombined.Begin();
-                foreach (EffectPass pass in deferredCombined.CurrentTechnique.Passes)
-                {
-                    pass.Begin();
-                    device.VertexDeclaration = new VertexDeclaration(device, VertexPositionTexture.VertexElements);
-                    device.DrawUserPrimitives<VertexPositionTexture>(PrimitiveType.TriangleStrip, menuVertices, 0, 2);
-                    pass.End();
-                }
-                deferredCombined.End();
-            }
             base.Draw(gameTime);
         }
 
