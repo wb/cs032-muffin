@@ -56,6 +56,13 @@ namespace Muffin.Components.UI
                 return _textureSelected;
         }
 
+        public override Rectangle currentRectangle()
+        {
+            if (!_selected)
+                return base.currentRectangle();
+
+            return new Rectangle(_rectangle.X + 5, _rectangle.Y - 5, _rectangle.Width, _rectangle.Height);
+        }
         /*
          * This method executes the callback, only if this button is selected
          * and there is a non null callback.
