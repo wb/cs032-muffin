@@ -140,3 +140,6 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Co
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\pauseMenuResumeSelected.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\pauseMenuSave.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\pauseMenuSaveSelected.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\star.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\star\Metal_Corrogated_Shiny.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\star\Metal_Corrogated_Shiny_0.xnb

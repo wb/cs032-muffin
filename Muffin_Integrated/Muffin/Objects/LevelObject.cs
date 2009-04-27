@@ -30,7 +30,7 @@ namespace Muffin.Objects
 
     public class LevelObject
     {
-        private Vector3 _goalPosition; // this is the position in the level that the player is trying to reach
+        private GameObject _goal;
         private float _ceiling, _floor; // these are the max and min height of the level (players cant go above or below this level)
         private XmlDocument _levelFile; // this is the file containing the definition for this level
 
@@ -68,10 +68,10 @@ namespace Muffin.Objects
             set { _floor = value; }
         }
 
-        public Vector3 goalPosition
+        public GameObject goal
         {
-            get { return _goalPosition; }
-            set { _goalPosition = value; }
+            get { return _goal; }
+            set { _goal = value; }
         }
     }
 }
