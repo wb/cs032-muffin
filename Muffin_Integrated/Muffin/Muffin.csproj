@@ -95,7 +95,6 @@
     <Compile Include="Components\UI\MenuItem.cs" />
     <Compile Include="Components\UI\SelectableMenuItem.cs" />
     <Compile Include="Components\UI\MenuObject.cs" />
-    <Compile Include="Components\UI\UiObject.cs" />
     <Compile Include="Components\UI\ControllerInterface.cs" />
     <Compile Include="Components\UI\InputManager.cs" />
     <Compile Include="Components\UI\KeyboardInterface.cs" />
