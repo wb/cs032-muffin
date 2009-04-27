@@ -200,8 +200,8 @@ namespace Muffin
                 levelCompleted();
             }
 
-            float angle = (float)gameTime.TotalGameTime.Milliseconds / 350.0f;
-            //getCurrentLevel().goal.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
+            float angle = MathHelper.ToDegrees((float)gameTime.TotalGameTime.Milliseconds / 7000.0f);
+            getCurrentLevel().goal.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
 
             base.Update(gameTime);
         }
