@@ -79,7 +79,8 @@ namespace Muffin
 
         public GraphicsDeviceManager graphics;
         public SpriteBatch spriteBatch;
-        
+
+        private SoundManager _soundManager;
 
         public MuffinGame()
         {
@@ -160,7 +161,20 @@ namespace Muffin
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             textureDraw = Content.Load<Effect>("Effects/TextureDraw");
+
+            // create a new sound manager
+            _soundManager = new SoundManager(this);
+
+            // load in the clips we need to use
+            _soundManager.registerSoundClip("select", "select");
+            _soundManager.registerSoundClip("jump", "jump");
+            _soundManager.registerSoundClip("menublip", "likeit");
+            _soundManager.registerSoundClip("die", "death");
+            _soundManager.registerSoundClip("level_complete", "levelcompleted");
+            _soundManager.registerSoundClip("health_gain", "healthboost");
         }
+
+       
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -197,6 +211,7 @@ namespace Muffin
 
             if (Math.Abs(playerPosition.X - goalPosition.X) < xDifference && Math.Abs(playerPosition.Y - goalPosition.Y) < yDifference && Math.Abs(playerPosition.Z - goalPosition.Z) < zDifference)
             {
+                this.playSoundClip("level_complete");
                 levelCompleted();
             }
 
@@ -208,6 +223,7 @@ namespace Muffin
             if (_allPlayers.ElementAt(0).toBeRemoved)
             {
                 Console.WriteLine("You died.");
+
                 //_gameOver = true; // this will triger the game over menu
                 //this.paused = true;
                 
@@ -514,6 +530,15 @@ namespace Muffin
             ((Renderer)_renderer).setModels();
             _camera.setPlayerToFollow(_allPlayers.ElementAt(0));
             ((InputManager)_inputManager).setPlayerToControl(_allPlayers.ElementAt(0));
+        }
+
+        /*
+         * This is used to play a sound clip that the sound manager contains.
+         * */
+
+        public void playSoundClip(String name)
+        {
+            _soundManager.playSound(name);
         }
 
     }

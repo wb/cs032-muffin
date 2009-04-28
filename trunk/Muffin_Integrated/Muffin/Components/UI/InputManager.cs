@@ -30,6 +30,8 @@ namespace Muffin.Components.UI
         {
             _muffinGame = (MuffinGame)game;
 
+       
+            // set up the controllers/keyboards
             _controllerOne = new ControllerInterface(_muffinGame.allPlayer.ElementAt(0), PlayerIndex.One, _muffinGame);
             _keyboard = new KeyboardInterface(_muffinGame.allPlayer.ElementAt(0), _muffinGame);
 
