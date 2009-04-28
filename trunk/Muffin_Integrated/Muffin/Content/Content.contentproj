@@ -240,6 +240,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Courier New.spritefont">
+      <Name>Courier New</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Levels\level_empty_spaces.xml">
       <Name>level_empty_spaces</Name>
       <Importer>XmlImporter</Importer>
@@ -376,6 +381,11 @@
       <Name>mainMenu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\healthBar.png">
+      <Name>healthBar</Name>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v3.0\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
