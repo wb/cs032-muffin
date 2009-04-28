@@ -72,9 +72,7 @@ C:\Users\Walter\Desktop\Muffin\Muffin\obj\x86\Debug\ResolveAssemblyReference.cac
 C:\Users\Walter\Desktop\Muffin\Muffin\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Walter\Desktop\Muffin\Muffin\obj\x86\Debug\Muffin.exe
 C:\Users\Walter\Desktop\Muffin\Muffin\obj\x86\Debug\Muffin.pdb
-C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\effects.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\RenderEffect.xnb
-C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\simpleEffect.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\box.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\corner.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\flat.xnb
@@ -119,13 +117,11 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Mu
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\DeferredCombinedEffect.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\DeferredLighting.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\DeferredShading.xnb
-C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\Bitmap1.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_maze.xml
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_terrain.xml
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_huge.xml
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\muffin.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_empty_spaces.xml
-C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Effects\TextureDraw.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\muffin_transparent.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\pauseMenuBackground.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\pauseMenuLoad.xnb
@@ -229,3 +225,4 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Co
 \\win.cs.brown.edu\dfs\home\kyanagaw\WinData\Desktop\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\mainMenu.xnb
 \\win.cs.brown.edu\dfs\home\kyanagaw\WinData\Desktop\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\healthBar.xnb
 \\win.cs.brown.edu\dfs\home\kyanagaw\WinData\Desktop\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Courier New.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Textures\mainMenu.xnb

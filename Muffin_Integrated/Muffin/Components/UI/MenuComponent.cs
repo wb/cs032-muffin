@@ -87,7 +87,7 @@ namespace Muffin.Components.UI
 
             // load main menu components
             _mainMenu.addItem("mainMenu", new Rectangle(0, 0, 1920, 1200), false, null);
-            _mainMenu.addItem("healthBar", new Rectangle(1250, 40, 300, 50), false, null);
+            //_mainMenu.addItem("healthBar", new Rectangle(1250, 40, 300, 50), false, null);
            
             // game over menu
             _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame);
@@ -140,7 +140,7 @@ namespace Muffin.Components.UI
             _pauseMenu.draw();
             _mainMenu.draw();
             //this.decrementHealth();
-            this.drawTime(gameTime);
+            //this.drawTime(gameTime);
             _spriteBatch.End();
         }
 

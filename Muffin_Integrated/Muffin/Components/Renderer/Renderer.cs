@@ -642,10 +642,10 @@ namespace Muffin.Components.Renderer
             
             renderCombinedEffects();
             //for debugging
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
+            /*spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
             spriteBatch.Draw(deferredShadowMap, new Rectangle(0, 0, 400, 300), Color.White);
             spriteBatch.End();
-
+            */
             base.Draw(gameTime);
         }
 

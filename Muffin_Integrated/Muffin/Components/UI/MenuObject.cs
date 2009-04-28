@@ -133,17 +133,20 @@ namespace Muffin.Components.UI
                     direction = -1;
 
                 // deselect the current item
-                _selectableItems.ElementAt(_currentItemIndex).setSelected(false);
+                if(_currentItemIndex <_selectableItems.Count())
+                    _selectableItems.ElementAt(_currentItemIndex).setSelected(false);
 
                 // update current item
-                _currentItemIndex = (_currentItemIndex + direction) % _selectableItems.Count();
+                if (_currentItemIndex < _selectableItems.Count())
+                    _currentItemIndex = (_currentItemIndex + direction) % _selectableItems.Count();
 
                 // force it to be positive
                 if (_currentItemIndex < 0)
                     _currentItemIndex += _selectableItems.Count();
 
                 // select current item
-                _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
+                if (_currentItemIndex < _selectableItems.Count())
+                    _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
 
                 // play the sound
                 _muffinGame.playSoundClip("menublip");
@@ -151,7 +154,8 @@ namespace Muffin.Components.UI
             // if the user selects something, perform the callback
             else if (!hidden && select)
             {
-                _selectableItems.ElementAt(_currentItemIndex).executeCallback();
+                if (_currentItemIndex < _selectableItems.Count())
+                    _selectableItems.ElementAt(_currentItemIndex).executeCallback();
            
             }
         }
