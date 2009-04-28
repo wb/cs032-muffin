@@ -37,7 +37,7 @@ namespace Muffin.Components.UI
             _previousX = Mouse.GetState().X;
             _previousY = Mouse.GetState().Y;
             _previousScroll = Mouse.GetState().ScrollWheelValue;
-            space = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
+            space = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
             escape = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
             lkey = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
             leftRightArrows = new ButtonManager(sensitivity, 100, 400);

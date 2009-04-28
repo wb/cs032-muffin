@@ -37,7 +37,20 @@ namespace Definitions
             if (jump && _jumpCount < 2)
             {
                 _jumpCount++;
-                this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);
+
+                // clear any previous force in the y direction
+                _force.Y = 0;
+
+                // set acceleration to 0 in the y direction
+                currentState.acceleration = new Vector3(currentState.acceleration.X, 0, currentState.acceleration.Z);
+                futureState.acceleration = new Vector3(futureState.acceleration.X, 0, futureState.acceleration.Z);
+
+                // set velocity to a given amount
+                float amount = 200;
+                currentState.velocity = new Vector3(currentState.velocity.X, amount, currentState.velocity.Z);
+                futureState.velocity = new Vector3(futureState.velocity.X, amount, currentState.velocity.Z);
+
+                this.applyForce(new Vector3(0.0f, 1000.0f * _mass, 0.0f), _dimensions / 2.0f);
 
             }
 

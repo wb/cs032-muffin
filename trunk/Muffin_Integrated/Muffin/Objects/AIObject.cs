@@ -33,6 +33,8 @@ namespace Definitions
         {
             _state = AIState.Idle;
             _path = new List<Vector3>();
+
+            _jumpCount = 0;
         }
 
         public override void controlInput(Vector2 dir, bool jump)
@@ -48,9 +50,24 @@ namespace Definitions
             // this should work, as long as AI is not being tracked by the camera
             _orientation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
             //_orientation = Quaternion.Slerp(_orientation, Quaternion.CreateFromAxisAngle(Vector3.Up, angle),0.01f);
-            if (jump)
+            if (jump && _jumpCount < 2)
             {
-                this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);
+                _jumpCount++;
+
+                // clear any previous force in the y direction
+                _force.Y = 0;
+
+                // set acceleration to 0 in the y direction
+                currentState.acceleration = new Vector3(currentState.acceleration.X, 0, currentState.acceleration.Z);
+                futureState.acceleration = new Vector3(futureState.acceleration.X, 0, futureState.acceleration.Z);
+
+                // set velocity to a given amount
+                float amount = 200;
+                currentState.velocity = new Vector3(currentState.velocity.X, amount, currentState.velocity.Z);
+                futureState.velocity = new Vector3(futureState.velocity.X, amount, currentState.velocity.Z);
+
+                this.applyForce(new Vector3(0.0f, 1000.0f * _mass, 0.0f), _dimensions / 2.0f);
+
             }
 
         }
