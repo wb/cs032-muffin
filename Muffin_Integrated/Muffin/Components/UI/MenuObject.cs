@@ -92,7 +92,7 @@ namespace Muffin.Components.UI
             set
             {
                 // play a sound when the menu is shown or hidden
-                if (value != _hidden)
+                if (value != _hidden && _selectableItems.Count() > 0)
                     _muffinGame.playSoundClip("select");
 
                 _hidden = value;
@@ -149,7 +149,8 @@ namespace Muffin.Components.UI
                     _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
 
                 // play the sound
-                _muffinGame.playSoundClip("menublip");
+                if(_selectableItems.Count() > 0)
+                    _muffinGame.playSoundClip("menublip");
             }
             // if the user selects something, perform the callback
             else if (!hidden && select)
