@@ -140,7 +140,7 @@ namespace Muffin.Components.UI
             _pauseMenu.draw();
             _mainMenu.draw();
             //this.decrementHealth();
-            //this.drawTime(gameTime);
+            this.drawTime(gameTime);
             _spriteBatch.End();
         }
 
@@ -152,7 +152,7 @@ namespace Muffin.Components.UI
             _muffinGame.GraphicsDevice.Viewport.Height / 2);
             Vector2 FontOrigin = Font1.MeasureString(output) / 2;
             // Draw the string
-            _spriteBatch.DrawString(Font1, output, new Vector2(1180, 70), Color.White,
+            _spriteBatch.DrawString(Font1, output, new Vector2(1350, 70), Color.White,
                 0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
         }
 
