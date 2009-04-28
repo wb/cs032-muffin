@@ -221,10 +221,10 @@ namespace Muffin
             // check to see if the player has died
             if (_allPlayers.ElementAt(0).toBeRemoved)
             {
-                Console.WriteLine("You died.");
-
-                //_gameOver = true; // this will triger the game over menu
-                //this.paused = true;
+                // force retry of level
+                Console.WriteLine("You died! Retrying level.");
+                this.playSoundClip("die");
+                this.retryLevel();
                 
             }
 
@@ -517,6 +517,15 @@ namespace Muffin
                 LoadLevelIndex(_currentLevel);
             }
             
+        }
+
+        /*
+         * This retries the current level.
+         * */
+
+        public void retryLevel()
+        {
+            LoadLevelIndex(_currentLevel);
         }
 
         /*
