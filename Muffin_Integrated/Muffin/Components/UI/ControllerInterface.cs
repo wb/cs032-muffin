@@ -47,7 +47,7 @@ namespace Muffin.Components.UI
             thumbStickLeftX = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
             thumbStickLeftY = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
             thumbStickRightY = new ButtonManager(sensitivity, timeBeforeRepeat, timeBeforeInitialRepeat);
-            buttonA = new ButtonManager(sensitivity, 100, 400);
+            buttonA = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue);
             buttonY = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue); // this button can never repeat while held down
 
             buttonStart = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue); // this button also never repeats
