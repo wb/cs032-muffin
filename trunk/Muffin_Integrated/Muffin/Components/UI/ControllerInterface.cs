@@ -30,9 +30,13 @@ namespace Muffin.Components.UI
 
         public ControllerInterface(GameObject gameObject, PlayerIndex playerIndex, MuffinGame game)
         {
+
+
             _gameObject = gameObject;
             _playerIndex = playerIndex;
             _muffinGame = game;
+
+            
 
             // set some default values
             sensitivity = 0.50f;
@@ -83,6 +87,7 @@ namespace Muffin.Components.UI
             if (!_muffinGame.paused)
                 _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (buttonA.getButtonState() == 1 ? true : false), (g.Buttons.X == ButtonState.Pressed));
 
+            
             
             // test load next level
             if (buttonY.getButtonState() == 1)

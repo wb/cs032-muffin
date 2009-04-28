@@ -113,7 +113,7 @@ namespace Muffin
             Components.Add(_inputManager);
             _inputManager.UpdateOrder = 1;
 
-            _menuComponent = new MenuComponent(this, Content);
+            _menuComponent = new MenuComponent(this);
             Components.Add(_menuComponent);
             _menuComponent.UpdateOrder = 2;
 
@@ -124,8 +124,6 @@ namespace Muffin
             _ai = new AI(this);
             Components.Add(_ai);
             _ai.UpdateOrder = 4;
-
-            
 
             _paused = false;
             _gameOver = false;
@@ -173,6 +171,8 @@ namespace Muffin
             // TODO: Unload any non ContentManager content here
         }
 
+
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -201,9 +201,8 @@ namespace Muffin
             }
 
             // rotate the star
-            float angle = MathHelper.ToDegrees((float)gameTime.TotalGameTime.Milliseconds / 5000.0f);
+            float angle = MathHelper.ToRadians((float)gameTime.TotalGameTime.TotalMilliseconds / 5.0f);
             getCurrentLevel().goal.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
-
             
             // check to see if the player has died
             if (_allPlayers.ElementAt(0).toBeRemoved)
@@ -272,16 +271,16 @@ namespace Muffin
 
             // Adda an AI object for testing
             GameObject testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 10000.0f, GameConstants.GameObjectScale);
-            //objs.Add(testAI);
+            objs.Add(testAI);
 
             testAI = new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 9000.0f, GameConstants.GameObjectScale);
-            //objs.Add(testAI);
+            objs.Add(testAI);
 
             testAI = new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 8000.0f, GameConstants.GameObjectScale);
-            //objs.Add(testAI);
+            objs.Add(testAI);
 
             testAI = new AIObject(null, ModelName.BOX, new Vector3(100, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 5000.0f, GameConstants.GameObjectScale);
-            //objs.Add(testAI);
+            objs.Add(testAI);
            
             // add a box for testing
             GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale);

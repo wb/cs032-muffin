@@ -27,6 +27,8 @@ namespace Definitions
         public const float NearClip = 1000.0f;
         public const float FarClip = 60000.0f;
 
+        public const bool FULL_SCREEN_ENABLED = false;
+
         // AI Constants
         public const float MaxFallDistance = 60;
     }

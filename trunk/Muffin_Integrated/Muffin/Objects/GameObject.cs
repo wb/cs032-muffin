@@ -34,6 +34,7 @@ namespace Definitions
         protected BoundingBox _boundingBox;
         protected GameObjectState _previousState, _currentState, _futureState;
         protected Quaternion _orientation; // this is used for the direction an object is facing (for moving, camera, etc).
+        protected int _jumpCount;
 
         /*
          * This is the constructor.  
@@ -310,7 +311,7 @@ namespace Definitions
             if (_modelType == ModelType.ENEMY || _modelType == ModelType.HUMAN)
             {
                 float friction = 0.97f;
-                _toMove *= 1.5f;
+                _toMove *= 3.5f;
                 adjustedMove = friction * _previousToMove + (1.0f - friction) * _toMove;
             }
             else
@@ -481,6 +482,12 @@ namespace Definitions
         public Boolean toBeRemoved
         {
             get { return _toBeRemoved; }
+        }
+
+        public int jumpCount
+        {
+            get { return _jumpCount; }
+            set { _jumpCount = value; }
         }
 
         #endregion

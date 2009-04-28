@@ -38,16 +38,14 @@ namespace Muffin.Components.UI
         private MuffinGame _muffinGame;
         private SpriteBatch _spriteBatch;
         private MenuObject _pauseMenu, _mainMenu, _gameOverMenu;
-        private ContentManager _content;
 
         
 
-        public MenuComponent(Game game, ContentManager content)
+        public MenuComponent(Game game)
             : base(game)
         {
             
             _muffinGame = (MuffinGame)game;
-            _content = content;
             
             
         }
@@ -74,8 +72,8 @@ namespace Muffin.Components.UI
     
             // load the sounds
             _soundEffects = new List<SoundEffect>();
-            _soundEffects.Add(_content.Load<SoundEffect>("Audio\\likeit"));
-            _soundEffects.Add(_content.Load<SoundEffect>("Audio\\select"));
+            _soundEffects.Add(_muffinGame.Content.Load<SoundEffect>("Audio\\likeit"));
+            _soundEffects.Add(_muffinGame.Content.Load<SoundEffect>("Audio\\select"));
 
             // make our menus (content added below)
             _pauseMenu = new MenuObject(_spriteBatch, _muffinGame, _soundEffects);
