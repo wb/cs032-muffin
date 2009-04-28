@@ -160,7 +160,6 @@ namespace Muffin
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            textureDraw = Content.Load<Effect>("Effects/TextureDraw");
 
             // create a new sound manager
             _soundManager = new SoundManager(this);

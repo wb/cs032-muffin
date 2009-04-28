@@ -2,6 +2,9 @@ float4x4 xLightViewProjection;
 float4x4 xCameraViewProjection;
 float4x4 xWorld;
 
+float3 xCameraPos;
+float3 xLightPos;
+
 Texture xTexture;
 
 struct SMapVertexToPixel
@@ -30,7 +33,7 @@ SMapVertexToPixel ShadowMapVertexShader( float4 inPos : POSITION0,
 SMapPixelToFrame ShadowMapPixelShader(SMapVertexToPixel PSIn) : COLOR0
 {
 	SMapPixelToFrame Output = (SMapPixelToFrame)0;            
-    Output.Color = PSIn.ScreenPos.z/PSIn.ScreenPos.w;
+    Output.Color.r = PSIn.ScreenPos.z/PSIn.ScreenPos.w;
 
     return Output;
 }

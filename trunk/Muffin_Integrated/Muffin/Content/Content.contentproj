@@ -35,18 +35,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\effects.fx">
-      <Name>effects</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
     <Compile Include="Effects\RenderEffect.fx">
       <Name>RenderEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Effects\simpleEffect.fx">
-      <Name>simpleEffect</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
@@ -219,13 +209,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\Bitmap1.bmp">
-      <Name>Bitmap1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Levels\level_maze.xml">
       <Name>level_maze</Name>
       <Importer>XmlImporter</Importer>
@@ -257,11 +240,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Effects\TextureDraw.fx">
-      <Name>TextureDraw</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
     <Compile Include="Courier New.spritefont">
       <Name>Courier New</Name>
       <Importer>FontDescriptionImporter</Importer>

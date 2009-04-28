@@ -4,10 +4,12 @@ Texture xMenuTexture;
 Texture xSceneTexture;
 Texture xColorMap;
 Texture xShadingMap;
+Texture xNormalMap;
 
 sampler SceneTextureSampler = sampler_state { texture = <xSceneTexture> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
 sampler MenuTextureSampler = sampler_state { texture = <xMenuTexture> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
 sampler ColorMapSampler = sampler_state { texture = <xColorMap> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
+sampler NormalMapSampler = sampler_state { texture = <xNormalMap> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
 sampler ShadingMapSampler = sampler_state { texture = <xShadingMap> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
 
 struct VertexToPixel {
@@ -24,7 +26,10 @@ VertexToPixel VertexShaderFunction (float4 inPos		: POSITION0,
 {
 	VertexToPixel Output = (VertexToPixel)0;
 	
-	Output.Position = inPos;						
+	Output.Position.x = inPos.x;						
+	Output.Position.y = inPos.y;
+	Output.Position.z = 0.0f;
+	Output.Position.w = 1.0f;						
 	Output.TexCoords = inTexCoords;
 	
 	return Output;
@@ -35,12 +40,17 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0 {
 	
 	float4 color = tex2D(ColorMapSampler, inVS.TexCoords);
 	float shading = tex2D(ShadingMapSampler, inVS.TexCoords);
-	if(xAmbient + shading > 1.0f) {
-		Output.Color = color;
+	
+	float specular = tex2D(NormalMapSampler, inVS.TexCoords).a;
+	float specularIntensity = 0.70f * pow(specular, 24.0f);
+	
+	
+	if(xAmbient + shading * 0.75 + specularIntensity >= 1.0f) {
+		Output.Color.rgb = color;
 	} else {
-		Output.Color = color * (xAmbient + shading);
+		Output.Color.rgb = color * (xAmbient + shading * 0.75f + specularIntensity);
 	}
-		
+	
 	return Output;
 }
 
