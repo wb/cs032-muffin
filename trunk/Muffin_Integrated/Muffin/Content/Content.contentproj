@@ -240,11 +240,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Courier New.spritefont">
-      <Name>Courier New</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
     <None Include="Levels\level_empty_spaces.xml">
       <Name>level_empty_spaces</Name>
       <Importer>XmlImporter</Importer>
@@ -379,13 +374,6 @@
   <ItemGroup>
     <Compile Include="Textures\mainMenu.png">
       <Name>mainMenu</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Textures\healthBar.png">
-      <Name>healthBar</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

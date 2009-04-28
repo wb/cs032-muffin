@@ -1,10 +1,7 @@
-Content\Effects\effects.xnb
 Content\Effects\RenderEffect.xnb
-Content\Effects\simpleEffect.xnb
 Content\Effects\DeferredCombinedEffect.xnb
 Content\Effects\DeferredLighting.xnb
 Content\Effects\DeferredShading.xnb
-Content\Effects\TextureDraw.xnb
 Content\Models\box.xnb
 Content\Models\corner.xnb
 Content\Models\flat.xnb
@@ -26,7 +23,6 @@ Content\Textures\spotlight.xnb
 Content\Textures\spotlight2.xnb
 Content\Models\box\Wood_Cherry_Original.xnb
 Content\Models\player\Metal_Steel_Textured_White.xnb
-Content\Effects\Bitmap1.xnb
 Content\Textures\muffin.xnb
 Content\Textures\muffin_transparent.xnb
 Content\Textures\pauseMenuBackground.xnb
@@ -61,8 +57,6 @@ Content\Models\wedge\Vegetation_Grass_Artificial_0.xnb
 Content\Models\player\Metal_Steel_Textured_White_0.xnb
 Content\Models\star\Metal_Corrogated_Shiny_0.xnb
 Content\Textures\mainMenu.xnb
-Content\Textures\healthBar.xnb
-Content\Courier New.xnb
 Content\Levels\level1.xml
 Content\Levels\level2.xml
 Content\Levels\level_flat.xml
