@@ -18,7 +18,7 @@ namespace Definitions
     public class PlayerObject : GameObject
     {
         private int _health, _lives;
-
+        
         /*
          * This constructor makes a few assumptions about a PlayerObject - namely that it is of ModelType human.
          * */
@@ -26,15 +26,17 @@ namespace Definitions
         public PlayerObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float mass, float scale) :
             base(model, ModelType.HUMAN, modelName, position, rotation, false, dimensions, mass, scale)
         {
-            // constructor contents here
+            // they aren't jumping! duh
+            _jumpCount = 0;
         }
 
         public override void controlInput(Vector2 dir, bool jump)
         {
             _toMove = new Vector3(dir.X, 0, dir.Y);
 
-            if (jump)
+            if (jump && _jumpCount < 2)
             {
+                _jumpCount++;
                 this.applyForce(new Vector3(0.0f, 1500.0f * _mass, 0.0f), _dimensions / 2.0f);
 
             }

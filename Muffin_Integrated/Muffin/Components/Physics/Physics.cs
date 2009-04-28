@@ -94,6 +94,9 @@ namespace Muffin.Components.Physics
 
                         if (collision)
                         {
+
+                            activeObject.jumpCount = 0;
+
                             // change how much bounce collisions give
                             float amountOfBounce = 0.2f;
 
