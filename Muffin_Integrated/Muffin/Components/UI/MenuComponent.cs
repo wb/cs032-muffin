@@ -83,6 +83,11 @@ namespace Muffin.Components.UI
 
             // main menu
             _mainMenu = new MenuObject(_spriteBatch, _muffinGame);
+            _mainMenu.hidden = false;
+
+            // load main menu components
+            _mainMenu.addItem("mainMenu", new Rectangle(0, 0, 1920, 1200), false, null);
+            _mainMenu.addItem("healthBar", new Rectangle(1250, 40, 300, 50), false, null);
            
             // game over menu
             _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame);
@@ -133,7 +138,29 @@ namespace Muffin.Components.UI
         {
             _spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
             _pauseMenu.draw();
+            _mainMenu.draw();
+            //this.decrementHealth();
+            this.drawTime(gameTime);
             _spriteBatch.End();
+        }
+
+        public void drawTime(GameTime gameTime)
+        {
+            string output = gameTime.TotalGameTime.Seconds.ToString();
+            SpriteFont Font1 = _muffinGame.Content.Load<SpriteFont>("Courier New");
+            Vector2 FontPos = new Vector2(_muffinGame.GraphicsDevice.Viewport.Width / 2,
+            _muffinGame.GraphicsDevice.Viewport.Height / 2);
+            Vector2 FontOrigin = Font1.MeasureString(output) / 2;
+            // Draw the string
+            _spriteBatch.DrawString(Font1, output, new Vector2(1180, 70), Color.White,
+                0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+        }
+
+        int counter = 200;
+        public void decrementHealth()
+        {
+            counter--;
+            //_mainMenu.addItem("healthBar", new Rectangle(set dimensions), false, null);
         }
 
         /// <summary>
