@@ -29,10 +29,20 @@ namespace Muffin.Components.UI
     {
         protected Texture2D _texture;
         protected Rectangle _rectangle;
+        protected Boolean _error;
 
         public MenuItem(String name, Rectangle rectangle, MuffinGame game)
         {
-            _texture = game.Content.Load<Texture2D>("Textures\\" + name);
+            try
+            {
+                _texture = game.Content.Load<Texture2D>("Textures\\" + name);
+                _error = false;
+            }
+            catch
+            {
+                _error = true;
+                Console.WriteLine("Error loading menu texture: " + name);
+            }
             _rectangle = rectangle;
         }
 
@@ -49,6 +59,11 @@ namespace Muffin.Components.UI
         public virtual Rectangle currentRectangle()
         {
             return _rectangle;
+        }
+
+        public Boolean error
+        {
+            get { return _error; }
         }
     }
 }

@@ -63,15 +63,26 @@ namespace Muffin.Components.UI
             if (selectable)
             {
                 SelectableMenuItem menuItem = new SelectableMenuItem(name, adjustedRectangle, _muffinGame, callback);
-                _items.Add(menuItem);
-                _selectableItems.Add(menuItem);
+                if (!menuItem.error)
+                {
+                    _items.Add(menuItem);
+                    _selectableItems.Add(menuItem);
 
-                // if this is the first item, select it initially
-                if (_selectableItems.Count() == 1)
-                    _selectableItems.ElementAt(0).setSelected(true);
+
+                    // if this is the first item, select it initially
+                    if (_selectableItems.Count() == 1)
+                        _selectableItems.ElementAt(0).setSelected(true);
+                }
             }
             else
-                _items.Add(new MenuItem(name, adjustedRectangle, _muffinGame));
+            {
+                MenuItem menuItem = new MenuItem(name, adjustedRectangle, _muffinGame);
+
+                if (!menuItem.error)
+                {
+                    _items.Add(menuItem);
+                }
+            }
         }
 
         public void draw()
