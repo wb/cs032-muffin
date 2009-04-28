@@ -64,19 +64,13 @@ namespace Muffin.Components.UI
             base.Initialize();
         }
 
-        List<SoundEffect> _soundEffects;
-
         protected override void LoadContent()
         {
 
     
-            // load the sounds
-            _soundEffects = new List<SoundEffect>();
-            _soundEffects.Add(_muffinGame.Content.Load<SoundEffect>("Audio\\likeit"));
-            _soundEffects.Add(_muffinGame.Content.Load<SoundEffect>("Audio\\select"));
 
             // make our menus (content added below)
-            _pauseMenu = new MenuObject(_spriteBatch, _muffinGame, _soundEffects);
+            _pauseMenu = new MenuObject(_spriteBatch, _muffinGame);
 
             // load all of the images for the menu as menu items
             _pauseMenu.addItem("pauseMenuBackground", new Rectangle(738, 147, 444, 907), false, null);
@@ -88,10 +82,10 @@ namespace Muffin.Components.UI
             _pauseMenu.addItem("pauseMenuResume", new Rectangle(770, 720, 959, 70), true, new menuCallback(resume));
 
             // main menu
-            _mainMenu = new MenuObject(_spriteBatch, _muffinGame, _soundEffects);
+            _mainMenu = new MenuObject(_spriteBatch, _muffinGame);
            
             // game over menu
-            _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame, _soundEffects);
+            _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame);
 
             base.LoadContent();
         }
@@ -115,7 +109,7 @@ namespace Muffin.Components.UI
         {
             Console.WriteLine("Loading would be implemented here.");
             _muffinGame.levelCompleted();
-            _soundEffects.ElementAt((int) SoundClip.SELECT).Play();
+            _muffinGame.playSoundClip("select");
         }
 
         public void options()

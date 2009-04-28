@@ -51,6 +51,7 @@ namespace Muffin.Components.UI
             buttonY = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue); // this button can never repeat while held down
 
             buttonStart = new ButtonManager(sensitivity, int.MaxValue, int.MaxValue); // this button also never repeats
+
         }
 
         public Boolean isConnected()
@@ -83,10 +84,17 @@ namespace Muffin.Components.UI
             buttonY.update((g.Buttons.Y == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             buttonStart.update((g.Buttons.Start == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
+            
+
             // update the object if we aren't paused
             if (!_muffinGame.paused)
-                _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (buttonA.getButtonState() == 1 ? true : false), (g.Buttons.X == ButtonState.Pressed));
+            {
+                // if we are jumping, play sounds
+                if (_gameObject.jumpCount < 2 && (buttonA.getButtonState() == 1))
+                    _muffinGame.playSoundClip("jump");
 
+                _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (buttonA.getButtonState() == 1 ? true : false), (g.Buttons.X == ButtonState.Pressed));
+            }
             
             
             // test load next level

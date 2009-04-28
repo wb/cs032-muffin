@@ -109,9 +109,15 @@ namespace Muffin.Components.UI
             upDownArrows.update((k.IsKeyDown(Keys.Up) ? -1 : 0) + (k.IsKeyDown(Keys.Down) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             enter.update((k.IsKeyDown(Keys.Enter) ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
+            // if we are jumping, play sounds
+            if (_gameObject.jumpCount < 2 && (space.getButtonState() == 1))
+                _muffinGame.playSoundClip("jump");
+
             // input updown state (normalized to 1), left right state (normalized to 1), strafe state (normalized to 1), jump boolean, and strafe boolean
             if(!_muffinGame.paused)
                 _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.A) || k.IsKeyDown(Keys.D)));
+
+            
 
             // testing for next level
             if (lkey.getButtonState() == 1)

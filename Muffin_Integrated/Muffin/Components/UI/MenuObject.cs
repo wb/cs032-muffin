@@ -33,9 +33,8 @@ namespace Muffin.Components.UI
         private Boolean _hidden;
         private MuffinGame _muffinGame;
         private int _currentItemIndex;
-        private List<SoundEffect> _soundEffects;
 
-        public MenuObject(SpriteBatch spriteBatch, MuffinGame game, List<SoundEffect> soundEffects)
+        public MenuObject(SpriteBatch spriteBatch, MuffinGame game)
         {
             _spriteBatch = spriteBatch;
             _items = new List<MenuItem>();
@@ -43,7 +42,6 @@ namespace Muffin.Components.UI
             _hidden = true;
             _muffinGame = game;
             _currentItemIndex = 0;
-            _soundEffects = soundEffects;
         }
 
         /*
@@ -94,8 +92,8 @@ namespace Muffin.Components.UI
             set
             {
                 // play a sound when the menu is shown or hidden
-                if(value != _hidden)
-                    _soundEffects.ElementAt((int)SoundClip.SELECT).Play();
+                if (value != _hidden)
+                    _muffinGame.playSoundClip("select");
 
                 _hidden = value;
                 if (_hidden == true)
@@ -148,7 +146,7 @@ namespace Muffin.Components.UI
                 _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
 
                 // play the sound
-                _soundEffects.ElementAt((int)SoundClip.CHANGE).Play();
+                _muffinGame.playSoundClip("menublip");
             }
             // if the user selects something, perform the callback
             else if (!hidden && select)

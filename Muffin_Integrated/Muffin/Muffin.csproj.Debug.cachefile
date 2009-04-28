@@ -57,6 +57,9 @@ Content\Models\star\Metal_Corrogated_Shiny_0.xnb
 Content\Audio\likeit.xnb
 Content\Audio\select.xnb
 Content\Audio\jump.xnb
+Content\Audio\death.xnb
+Content\Audio\healthboost.xnb
+Content\Audio\levelcompleted.xnb
 Content\Levels\level1.xml
 Content\Levels\level2.xml
 Content\Levels\level_flat.xml
