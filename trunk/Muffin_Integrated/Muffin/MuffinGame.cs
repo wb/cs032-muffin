@@ -538,6 +538,7 @@ namespace Muffin
 
         public void playSoundClip(String name)
         {
+            if (_soundManager != null)
             _soundManager.playSound(name);
         }
 
