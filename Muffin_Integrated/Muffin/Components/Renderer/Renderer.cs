@@ -46,16 +46,20 @@ namespace Muffin.Components.Renderer
             public static int SizeInBytes = sizeof(float) * (3 + 2 + 3);
         }
 
+        public enum LightType { POINT, DIRECTIONAL };
+
         //light data
         struct Light
         {
             public Matrix LightViewProjectionMatrix;
+            public Matrix InvViewMatrix;
             public Vector3 LightPos;
             public Vector3 LightDir;
             public float LightIntensity;
 
             public float ConeAngle;
             public float ConeDecay;
+            public LightType Type;
         }
 
         public float Ambient;
@@ -74,7 +78,6 @@ namespace Muffin.Components.Renderer
         Effect deferredShadow;
 
         VertexPositionTexture[] quadVertices;
-        VertexPositionTexture[] menuVertices;
 
         GameCamera camera;
         MouseHandler m_mouse;
@@ -95,7 +98,6 @@ namespace Muffin.Components.Renderer
         RenderTarget2D deferredShadowTarget;
         Texture2D deferredShadingMap;
         Texture2D deferredShadowMap;
-        Texture2D deferredFinalTexture;
         Texture2D blackTexture;
         DepthStencilBuffer shadowDSB;
         DepthStencilBuffer standardDSB;
@@ -108,15 +110,15 @@ namespace Muffin.Components.Renderer
             //renderer settings
             m_game = game;
             graphics = m_game.graphics;
-            graphics.IsFullScreen = GameConstants.FULL_SCREEN_ENABLED;
-            graphics.PreferredBackBufferHeight = 800;
-            graphics.PreferredBackBufferWidth = 1280;
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferHeight = 900;
+            graphics.PreferredBackBufferWidth = 1440;
             //enable anti-aliasing
             //graphics.PreferMultiSampling = true;
             //graphics.PreparingDeviceSettings +=
             //    new EventHandler<PreparingDeviceSettingsEventArgs>(graphics_PreparingDeviceSettings);
             //mouse handler
-            m_mouse = new MouseHandler(Mouse.GetState());
+            //m_mouse = new MouseHandler(Mouse.GetState());
             m_models = new List<Model>();
             m_objects = m_game.allObjects;
             m_model_textures = new List<Texture2D[]>();
@@ -180,7 +182,7 @@ namespace Muffin.Components.Renderer
             foreach (ModelMesh mesh in newModel.Meshes)
                 foreach (ModelMeshPart meshPart in mesh.MeshParts)
                     meshPart.Effect = deferredLighting.Clone(device);
-            
+
             return newModel;
         }
 
@@ -199,11 +201,6 @@ namespace Muffin.Components.Renderer
             deferredShading = m_game.Content.Load<Effect>("Effects/DeferredShading");
             deferredCombined = m_game.Content.Load<Effect>("Effects/DeferredCombinedEffect");
 
-
-
-            //load textures
-            
-            spotlightTexture = m_game.Content.Load<Texture2D>("Textures/spotlight");
             //load models
             //DepthStencil Buffer and Corresponding RenderTarget for shadowMap
             PresentationParameters pp = device.PresentationParameters;
@@ -248,7 +245,6 @@ namespace Muffin.Components.Renderer
             m_model_textures.Add(modelTexture);
 
             setModels();
-
             //SetUpCamera();
             SetUpLights();
 
@@ -288,19 +284,14 @@ namespace Muffin.Components.Renderer
                 }
             }
         }
+
         private void InitQuad()
         {
             quadVertices = new VertexPositionTexture[4];
-            quadVertices[0] = new VertexPositionTexture(new Vector3(-1, 1, 0.0f), new Vector2(0, 0));
-            quadVertices[1] = new VertexPositionTexture(new Vector3(1, 1, 0.0f), new Vector2(1, 0));
-            quadVertices[2] = new VertexPositionTexture(new Vector3(-1, -1, 0.0f), new Vector2(0, 1));
-            quadVertices[3] = new VertexPositionTexture(new Vector3(1, -1, 0.0f), new Vector2(1, 1));
-            
-            menuVertices = new VertexPositionTexture[4];
-            menuVertices[0] = new VertexPositionTexture(new Vector3(-0.25f, 0.25f, 0.0f), new Vector2(0, 0));
-            menuVertices[1] = new VertexPositionTexture(new Vector3(0.25f, 0.25f, 0.0f), new Vector2(1, 0));
-            menuVertices[2] = new VertexPositionTexture(new Vector3(-0.25f, -0.25f, 0.0f), new Vector2(0, 1));
-            menuVertices[3] = new VertexPositionTexture(new Vector3(0.25f, -0.25f, 0.0f), new Vector2(1, 1));
+            quadVertices[0] = new VertexPositionTexture(new Vector3(-1, 1, 0), new Vector2(0, 0));
+            quadVertices[1] = new VertexPositionTexture(new Vector3(1, 1, 1), new Vector2(1, 0));
+            quadVertices[2] = new VertexPositionTexture(new Vector3(-1, -1, 3), new Vector2(0, 1));
+            quadVertices[3] = new VertexPositionTexture(new Vector3(1, -1, 2), new Vector2(1, 1));
         }
 
         public void SetUpCamera(GameCamera c)
@@ -310,8 +301,10 @@ namespace Muffin.Components.Renderer
             //camera = new GameCamera(100 * new Vector3(-20, 40, -20), new Vector3(1000, 200, 1000), device.Viewport.AspectRatio);
         }
 
-        Vector3 look = new Vector3(1000, 200, 1000);
-        Vector3 lightloc = 20 * new Vector3(-20, 150, -20);
+        Vector3 look = new Vector3(0.1f, -6.88f, 3.20f);
+        Vector3 lightloc = new Vector3(4910, 12120, -1230);
+        float NEAR_CLIP = 9000.0f;
+        float FAR_CLIP = 17200.0f;
 
         private void SetUpLights()
         {
@@ -325,7 +318,7 @@ namespace Muffin.Components.Renderer
             m_lights[1].LightDir = new Vector3(2, -1, 2);
             m_lights[2].LightDir = new Vector3(30 + look.X, -45 + look.Y, -20 + look.Z);
 
-            m_lights[0].LightIntensity = 1.0f;
+            m_lights[0].LightIntensity = 0.7f;
             m_lights[1].LightIntensity = 1.0f;
             m_lights[2].LightIntensity = 0.0f;
 
@@ -337,14 +330,14 @@ namespace Muffin.Components.Renderer
             m_lights[1].ConeDecay = 0.0f;
             m_lights[2].ConeDecay = 0.6f;
 
-            Ambient = 0.2f;
+            Ambient = 0.3f;
             Specular = 0.54f;
             Shininess = 18.0f;
 
             for (int i = 0; i < GameConstants.MaxLights; i++)
             {
-                Matrix LightView = Matrix.CreateLookAt(m_lights[i].LightPos, look, Vector3.Up);
-                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, device.Viewport.AspectRatio, GameConstants.NearClip, GameConstants.FarClip);
+                Matrix LightView = Matrix.CreateLookAt(m_lights[i].LightPos, m_lights[i].LightPos + look, Vector3.Up);
+                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, device.Viewport.AspectRatio, NEAR_CLIP, FAR_CLIP);
                 //matrix used in calculating shadow maps
                 m_lights[i].LightViewProjectionMatrix = LightView * LightProjection;
             }
@@ -372,7 +365,8 @@ namespace Muffin.Components.Renderer
 
             bool hit = false;
             bool hit2 = false;
-
+            bool hit3 = false;
+            /*
             if (state.IsKeyDown(Keys.R))
             {
                 lightloc.X += 10;
@@ -414,39 +408,63 @@ namespace Muffin.Components.Renderer
 
             if (state.IsKeyDown(Keys.U))
             {
-                look.X += 10;
+                look.X += 0.10f;
                 hit2 = true;
             }
             if (state.IsKeyDown(Keys.I))
             {
-                look.Y += 10;
+                look.Y += 0.10f;
                 hit2 = true;
             }
             if (state.IsKeyDown(Keys.O))
             {
-                look.Z += 10;
+                look.Z += 0.10f;
                 hit2 = true;
             }
             if (state.IsKeyDown(Keys.J))
             {
-                look.X -= 10;
+                look.X -= 0.10f;
                 hit2 = true;
             }
             if (state.IsKeyDown(Keys.K))
             {
-                look.Y -= 10;
+                look.Y -= 0.10f;
                 hit2 = true;
             }
             if (state.IsKeyDown(Keys.L))
             {
-                look.Z -= 10;
+                look.Z -= 0.10f;
                 hit2 = true;
+            }
+
+            if (state.IsKeyDown(Keys.V))
+            {
+                NEAR_CLIP += 100.0f;
+                hit3 = true;
+            }
+
+            if (state.IsKeyDown(Keys.B))
+            {
+                NEAR_CLIP -= 100.0f;
+                hit3 = true;
+            }
+
+            if (state.IsKeyDown(Keys.N))
+            {
+                FAR_CLIP += 100.0f;
+                hit3 = true;
+            }
+
+            if (state.IsKeyDown(Keys.M))
+            {
+                FAR_CLIP -= 100.0f;
+                hit3 = true;
             }
 
             for (int i = 0; i < GameConstants.MaxLights; i++)
             {
-                Matrix LightView = Matrix.CreateLookAt(m_lights[i].LightPos, look, Vector3.Up);
-                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, device.Viewport.AspectRatio, GameConstants.NearClip, GameConstants.FarClip);
+                Matrix LightView = Matrix.CreateLookAt(m_lights[i].LightPos, m_lights[i].LightPos + look, Vector3.Up);
+                Matrix LightProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, device.Viewport.AspectRatio, NEAR_CLIP, FAR_CLIP);
                 //matrix used in calculating shadow maps
                 m_lights[i].LightViewProjectionMatrix = LightView * LightProjection;
             }
@@ -455,6 +473,12 @@ namespace Muffin.Components.Renderer
             {
                 Console.WriteLine("Light Target: " + look);
             }
+
+            if (hit3) 
+            {
+                Console.WriteLine("NEAR: " + NEAR_CLIP + " FAR: " + FAR_CLIP);
+            }
+             */
         }
 
         GamePadState gstate;
@@ -529,6 +553,7 @@ namespace Muffin.Components.Renderer
             deferredShading.Parameters["xDepthMap"].SetValue(deferredRenderMap[2]);
             deferredShading.Parameters["xShadowMap"].SetValue(deferredShadowMap);
             deferredShading.Parameters["xLightPos"].SetValue(light.LightPos);
+            deferredShading.Parameters["xLightDir"].SetValue(dir);
             deferredShading.Parameters["xLightIntensity"].SetValue(light.LightIntensity);
             deferredShading.Parameters["xConeDirection"].SetValue(light.LightDir);
             deferredShading.Parameters["xConeAngle"].SetValue(light.ConeAngle);
@@ -555,22 +580,26 @@ namespace Muffin.Components.Renderer
         {
 
             deferredShadingMap = blackTexture;
-
+           
             for (int i = 0; i < GameConstants.MaxLights; i++)
             {
+               // calculateFrustum(m_lights[i]);
                 renderShadow(m_lights[i]);
                 renderLight(m_lights[i]);
             }
 
+            
+
             return deferredShadingTarget.GetTexture();
+
             //return blackTexture;
         }
 
         private void renderCombinedEffects()
         {
-            device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
             deferredCombined.CurrentTechnique = deferredCombined.Techniques["DeferredCombined"];
             deferredCombined.Parameters["xColorMap"].SetValue(deferredRenderMap[0]);
+            deferredCombined.Parameters["xNormalMap"].SetValue(deferredRenderMap[1]);
             deferredCombined.Parameters["xShadingMap"].SetValue(deferredShadingMap);
             deferredCombined.Parameters["xAmbient"].SetValue(Ambient);
             
@@ -599,18 +628,23 @@ namespace Muffin.Components.Renderer
             {
                 return;
             }
+
+            //Console.WriteLine(camera.cameraPosition);
+
             //switch effect for models
             //render color map, normal map, and depth map of scene
             renderDeferredMaps();
-            
-            
+
             PresentationParameters pp = device.PresentationParameters;
             
             //render lighting contributions from lights in the scene
             deferredShadingMap = getShadingMap();
-            renderCombinedEffects();
-
             
+            renderCombinedEffects();
+            //for debugging
+            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
+            spriteBatch.Draw(deferredShadowMap, new Rectangle(0, 0, 400, 300), Color.White);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
@@ -619,30 +653,28 @@ namespace Muffin.Components.Renderer
         {
             foreach (GameObject o in m_objects)
             {
-                if (o == null)
-                    continue;
-
                 Matrix worldMatrix = o.worldMatrix();
                 DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique);
             }
         }
 
+        Vector3 dir = new Vector3(1, -1, 1);
+
         private void DrawModel(Model model, Texture2D[] textures, Matrix wMatrix, string technique)
         {
-            if (model == null)
-                return;
-
             Matrix[] modelTransforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(modelTransforms);
             int i = 0;
-
+            
             foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (Effect currentEffect in mesh.Effects)
                 {
                     Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
                     currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
-                    currentEffect.Parameters["xCameraViewProjection"].SetValue(camera.ViewMatrix * camera.ProjectionMatrix);
+                    currentEffect.Parameters["xCameraViewProjection"].SetValue(viewProjection);
+                    currentEffect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
+                    currentEffect.Parameters["xLightPos"].SetValue(m_lights[0].LightPos);
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currentEffect.Parameters["xTexture"].SetValue(textures[i++]);
                 }

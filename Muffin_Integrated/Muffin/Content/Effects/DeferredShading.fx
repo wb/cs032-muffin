@@ -8,7 +8,7 @@ Texture xShadowMap;
 Texture xShadingMap;
 
 float3 xCameraPos;
-
+float3 xLightDir;
 float3 xLightPos;
 float xLightIntensity;
 float3 xConeDirection;
@@ -19,14 +19,14 @@ float xSpecular;
 float xShininess;
 float xAmbient;
 
-sampler NormalMapSampler = sampler_state { texture = <xNormalMap> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
-sampler DepthMapSampler = sampler_state { texture = <xDepthMap> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
+sampler NormalMapSampler = sampler_state { texture = <xNormalMap> ; magfilter = POINT; minfilter = POINT; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
+sampler DepthMapSampler = sampler_state { texture = <xDepthMap> ; magfilter = POINT; minfilter = POINT; mipfilter=none; AddressU = mirror; AddressV = mirror;};
 sampler ShadowMapSampler = sampler_state { texture = <xShadowMap> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = CLAMP; AddressV = CLAMP;};
 sampler ShadingMapSampler = sampler_state { texture = <xShadingMap> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = mirror; AddressV = mirror;};
 
 struct VertexToPixel {
-	float4 Position		: POSITION;
-	float2 TexCoords	: TEXCOORD0;
+	float4 Position				  : POSITION;
+	float2 TexCoords			  : TEXCOORD0;
 };
 
 struct PixelToFrame {
@@ -38,9 +38,11 @@ VertexToPixel VertexShaderFunction (float4 inPos		: POSITION0,
 {
 	VertexToPixel Output = (VertexToPixel)0;
 	
-	Output.Position = inPos;						
+	Output.Position.x = inPos.x;						
+	Output.Position.y = inPos.y;
+	Output.Position.z = 0.0f;
+	Output.Position.w = 1.0f;						
 	Output.TexCoords = inTexCoords;
-	
 	return Output;
 }
 
@@ -72,11 +74,11 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0 {
 	lightSamplePos.y = (-lightScreenPos.y / 2.0f + 0.5f);
 	
 	float realDistance = lightScreenPos.z;
-	float distanceInShadowMap = tex2D(ShadowMapSampler, lightSamplePos);
+	float distanceInShadowMap = tex2D(ShadowMapSampler, lightSamplePos).r;
 	
 	float shading = 0;
 	
-	if(!(distanceInShadowMap <= realDistance - 1.0f/100.0f)) {
+	if(!(distanceInShadowMap <= realDistance  - 0.01f)) {
 		float3 lightDirection = normalize(worldPos - xLightPos);
 		//float coneDot = dot(lightDirection, normalize(xConeDirection));
 		
@@ -84,7 +86,7 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0 {
 		//float attenuation = pow(coneDot, xConeDecay);
 		shading = dot(normal, -lightDirection);
 		shading = shading * xLightIntensity;	
-		
+		//shading = shading * xLightIntensity;	
 		//if(coneDot >= xConeAngle) {
 		//	float attenuation = pow(coneDot, xConeDecay);
 			
