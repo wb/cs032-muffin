@@ -255,8 +255,6 @@ namespace Muffin
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
             //DrawTextures here
 
-            //spriteBatch.Draw(tex, rect, Color.White);
-
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -467,7 +465,6 @@ namespace Muffin
         {
             if (_levelCompleteMenu || _levelFailedMenu || _gameOverMenu)
                 return;
-
 
             _pauseMenu = !_pauseMenu;
             _paused = _pauseMenu;
