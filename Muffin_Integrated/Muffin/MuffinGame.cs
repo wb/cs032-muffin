@@ -73,6 +73,8 @@ namespace Muffin
 
         private GameCamera _camera;
 
+        private Boolean _pauseMenu = false, _levelCompleteMenu = false, _gameOverMenu = false, _levelFailedMenu = false;
+
         private Effect textureDraw;
 
         #endregion
@@ -209,24 +211,15 @@ namespace Muffin
             Vector3 goalPosition = getCurrentLevel().goal.position;
 
             if (Math.Abs(playerPosition.X - goalPosition.X) < xDifference && Math.Abs(playerPosition.Y - goalPosition.Y) < yDifference && Math.Abs(playerPosition.Z - goalPosition.Z) < zDifference)
-            {
-                this.playSoundClip("level_complete");
-                levelCompleted();
-            }
+                this.displayLevelComplete(true);
 
             // rotate the star
             float angle = MathHelper.ToRadians((float)gameTime.TotalGameTime.TotalMilliseconds / 5.0f);
             getCurrentLevel().goal.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
-            
-            // check to see if the player has died
+
+            // check to see if the player has died and restart the level if so
             if (_allPlayers.ElementAt(0).toBeRemoved)
-            {
-                // force retry of level
-                Console.WriteLine("You died! Retrying level.");
-                this.playSoundClip("die");
-                this.retryLevel();
-                
-            }
+                this.displayLevelFailed(true);
 
             // iterate over all objects and remove objects that have fallen off map
             foreach (GameObject o in _updatedObjects)
@@ -449,26 +442,85 @@ namespace Muffin
         public Boolean paused
         {
             get { return _paused; }
-            set
-            {
-                _paused = value;
-
-                // show game over menu if they died
-                if (_gameOver && _paused)
-                {
-                    ((MenuComponent)_menuComponent).showGameOverMenu(true);
-                    return;
-                }
-                // hide it if they didn't
-                ((MenuComponent)_menuComponent).showGameOverMenu(false);
-
-                // show pause menu when appropriate
-                if (_paused)
-                    ((MenuComponent)_menuComponent).showPauseMenu(true);
-                else
-                    ((MenuComponent)_menuComponent).showPauseMenu(false);
-            }
+            set { _paused = value; }
         }
+
+        #region menu controls
+
+        /*
+         * This method shows the pause menu.
+         * */
+        public void togglePauseMenu()
+        {
+            Console.WriteLine("here");
+            _pauseMenu = !_pauseMenu;
+            _paused = _pauseMenu;
+            ((MenuComponent)_menuComponent).showPauseMenu(_pauseMenu);
+
+        }
+
+        /*
+         * This method shows the level completed menu.
+         * */
+
+        public void displayLevelComplete(Boolean show)
+        {
+            if (show && !_levelCompleteMenu)
+            {
+
+                this.playSoundClip("level_complete");
+                _levelCompleteMenu = true;
+                ((MenuComponent)_menuComponent).showLevelCompleteMenu(true);
+                _paused = true;
+
+            }
+            else if (!show && _levelCompleteMenu)
+            {
+
+                levelCompleted();
+                _paused = false;
+                _levelCompleteMenu = false;
+                ((MenuComponent)_menuComponent).showLevelCompleteMenu(false);
+            }
+
+        }
+
+        /*
+         * This method shows the game over screen (you beat the game)
+         * */
+
+        public void displayGameOver(Boolean show)
+        {
+            _paused = show;
+            ((MenuComponent)_menuComponent).showGameOverMenu(show);
+        }
+
+        /*
+         * This menu shows the level failed (you died) menu.
+         * */
+
+        public void displayLevelFailed(Boolean show)
+        {
+
+            // if we are hiding it, then retry this level
+            if (!show && _levelFailedMenu)
+            {
+                this.retryLevel();
+                _levelFailedMenu = false;
+                ((MenuComponent)_menuComponent).showLevelFailedMenu(false);
+                _paused = false;
+            }
+            else if(show && !_levelFailedMenu)
+            {
+                Console.WriteLine("You died! Retrying level.");
+                this.playSoundClip("die");
+                _levelFailedMenu = true;
+                ((MenuComponent)_menuComponent).showLevelFailedMenu(true);
+                _paused = true;
+            }
+
+        }
+        #endregion
 
         /*
          * This passes input to the menus.

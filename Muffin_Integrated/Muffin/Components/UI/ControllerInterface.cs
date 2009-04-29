@@ -36,7 +36,7 @@ namespace Muffin.Components.UI
             _playerIndex = playerIndex;
             _muffinGame = game;
 
-            
+
 
             // set some default values
             sensitivity = 0.50f;
@@ -84,7 +84,7 @@ namespace Muffin.Components.UI
             buttonY.update((g.Buttons.Y == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
             buttonStart.update((g.Buttons.Start == ButtonState.Pressed ? 1 : 0), gameTime.TotalGameTime.TotalMilliseconds);
 
-            
+
 
             // update the object if we aren't paused
             if (!_muffinGame.paused)
@@ -95,19 +95,19 @@ namespace Muffin.Components.UI
 
                 _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (buttonA.getButtonState() == 1 ? true : false), (g.Buttons.X == ButtonState.Pressed));
             }
-            
-            
+
+
             // test load next level
             if (buttonY.getButtonState() == 1)
                 _muffinGame.levelCompleted();
 
             // pause if we must pause
             if (buttonStart.getButtonState() == 1)
-                _muffinGame.paused = !_muffinGame.paused;
+                _muffinGame.togglePauseMenu();
 
             // input for menus
             _muffinGame.menuInput(-thumbStickLeftY.getButtonState(), buttonA.getButtonState() == 1 ? true : false);
-            
+
         }
     }
 }
