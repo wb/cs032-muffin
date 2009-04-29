@@ -83,7 +83,7 @@ namespace Muffin.Components.UI
 
             // game over menu
             _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame);
-
+            _gameOverMenu.addItem("levelCompletedMenu/next", new Rectangle(727, 459, 467, 282), true, new menuCallback(gameOver));
 
             // level completed menu
 
@@ -151,6 +151,12 @@ namespace Muffin.Components.UI
         public void quit()
         {
             Environment.Exit(0);
+        }
+
+        public void gameOver()
+        {
+            _muffinGame.newGame();
+            _muffinGame.displayGameOver(false);
         }
 
         #endregion
