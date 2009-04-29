@@ -83,6 +83,8 @@ Content\Textures\gameOverMenu\congratsSelected.xnb
 Content\Models\coin.xnb
 Content\Models\coin\Metal_Aluminum_Anodized.xnb
 Content\Models\coin\Metal_Aluminum_Anodized_0.xnb
+Content\Audio\coin.xnb
+Content\Audio\star_born.xnb
 Content\Audio\background.wma
 Content\Levels\level1.xml
 Content\Levels\level2.xml

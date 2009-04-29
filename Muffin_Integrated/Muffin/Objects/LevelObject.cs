@@ -30,7 +30,7 @@ namespace Muffin.Objects
 
     public class LevelObject
     {
-        private GameObject _goal;
+        private CollectableObject _goal;
         private float _ceiling, _floor; // these are the max and min height of the level (players cant go above or below this level)
         private XmlDocument _levelFile; // this is the file containing the definition for this level
 
@@ -68,7 +68,7 @@ namespace Muffin.Objects
             set { _floor = value; }
         }
 
-        public GameObject goal
+        public CollectableObject goal
         {
             get { return _goal; }
             set { _goal = value; }

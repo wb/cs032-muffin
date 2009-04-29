@@ -17,7 +17,7 @@ namespace Definitions
 {
     public class PlayerObject : GameObject
     {
-        private int _health, _lives;
+        private int _health, _lives, _coinCount;
         
         /*
          * This constructor makes a few assumptions about a PlayerObject - namely that it is of ModelType human.
@@ -28,6 +28,9 @@ namespace Definitions
         {
             // they aren't jumping! duh
             _jumpCount = 0;
+
+            // no coins
+            _coinCount = 0;
         }
 
         public override void controlInput(Vector2 dir, bool jump)
@@ -123,6 +126,20 @@ namespace Definitions
         {
             get { return _lives; }
             set { _lives = value; }
+        }
+
+        // call this when a coin is collected
+
+        public void coinCollected()
+        {
+            _coinCount++;
+           
+        }
+
+        // call this to return coin count
+        public int coinCount
+        {
+            get { return _coinCount; }
         }
 
         #endregion
