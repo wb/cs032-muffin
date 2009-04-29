@@ -99,3 +99,5 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Co
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\coin.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\coin\Metal_Aluminum_Anodized.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\coin\Metal_Aluminum_Anodized_0.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Audio\coin.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Audio\star_born.xnb
