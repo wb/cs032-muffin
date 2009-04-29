@@ -69,8 +69,8 @@ namespace Muffin.Components.Physics
 
             foreach (GameObject activeObject in _muffinGame.allObjects)
             {
-                // only check active objects
-                if (activeObject.locked)
+                // only check active objects (not locked, not collectable)
+                if (activeObject.locked || activeObject is CollectableObject)
                     continue;
 
                 // integrate first (this will set future position)
@@ -82,7 +82,7 @@ namespace Muffin.Components.Physics
                 foreach (GameObject passiveObject in _muffinGame.allObjects)
                 {
                     // don't check this object against itself
-                    if (activeObject != passiveObject)
+                    if (activeObject != passiveObject && !(passiveObject is CollectableObject))
                     {
                         // get the bounding boxes
                         BoundingBox activeBoundingBox = activeObject.boundingBox;
@@ -167,12 +167,13 @@ namespace Muffin.Components.Physics
             // first, check all human players
             foreach (GameObject activeObject in _muffinGame.allObjects)
             {
-                if (activeObject.locked)
+                // skip locked and collectable objects
+                if (activeObject.locked || activeObject is CollectableObject)
                     continue;
 
                 foreach (GameObject passiveObject in _muffinGame.allObjects)
                 {
-                    if (activeObject == passiveObject)
+                    if (activeObject == passiveObject || passiveObject is CollectableObject)
                         continue;
 
                     BoundingBox activeBoundingBox = activeObject.getCurrentBoundingBox();
