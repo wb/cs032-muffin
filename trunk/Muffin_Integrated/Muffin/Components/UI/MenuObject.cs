@@ -173,7 +173,7 @@ namespace Muffin.Components.UI
                     _selectableItems.ElementAt(_currentItemIndex).setSelected(true);
 
                 // play the sound
-                if(_selectableItems.Count() > 0)
+                if(_selectableItems.Count() > 1)
                     _muffinGame.playSoundClip("menublip");
             }
             // if the user selects something, perform the callback

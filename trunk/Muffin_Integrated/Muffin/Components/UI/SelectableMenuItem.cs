@@ -42,7 +42,7 @@ namespace Muffin.Components.UI
             }
             catch
             {
-                Console.WriteLine("The menu texture: " + name + " was not found.");
+                Console.WriteLine("The menu texture: " + name + "Selected was not found.");
                 _error = true;
             }
             _callback = callback;
