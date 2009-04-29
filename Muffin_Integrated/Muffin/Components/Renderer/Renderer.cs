@@ -218,7 +218,7 @@ namespace Muffin.Components.Renderer
             //depth
             deferredRenderTarget[2] = new RenderTarget2D(device, width, height, 1, SurfaceFormat.Single);
             //shading (for lights)
-            deferredShadingTarget = new RenderTarget2D(device, width, height, 1, format);
+            deferredShadingTarget = new RenderTarget2D(device, width, height, 1, SurfaceFormat.Color);
             //shadows
             deferredShadowTarget = new RenderTarget2D(device, width, height, 1, SurfaceFormat.Single);
 
@@ -558,6 +558,7 @@ namespace Muffin.Components.Renderer
             deferredShading.Parameters["xConeDirection"].SetValue(light.LightDir);
             deferredShading.Parameters["xConeAngle"].SetValue(light.ConeAngle);
             deferredShading.Parameters["xConeDecay"].SetValue(light.ConeDecay);
+            deferredShading.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
 
             deferredShading.Parameters["xViewProjectionInverse"].SetValue(viewProjectionInverse);
             deferredShading.Parameters["xLightViewProjection"].SetValue(light.LightViewProjectionMatrix);
@@ -671,6 +672,7 @@ namespace Muffin.Components.Renderer
                 foreach (Effect currentEffect in mesh.Effects)
                 {
                     Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
+                    Matrix worldMatrixInv = Matrix.Invert(worldMatrix);
                     currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
                     currentEffect.Parameters["xCameraViewProjection"].SetValue(viewProjection);
                     currentEffect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
