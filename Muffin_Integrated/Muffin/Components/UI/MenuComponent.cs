@@ -147,6 +147,7 @@ namespace Muffin.Components.UI
         public void main()
         {
             Console.WriteLine("Main would be implemented here.");
+            this.quit();
         }
 
         public void quit()
