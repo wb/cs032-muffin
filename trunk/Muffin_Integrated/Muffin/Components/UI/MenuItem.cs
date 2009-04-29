@@ -61,6 +61,11 @@ namespace Muffin.Components.UI
             return _rectangle;
         }
 
+        public virtual void setRectangle(Rectangle rect)
+        {
+            _rectangle = rect;
+        }
+
         public Boolean error
         {
             get { return _error; }
