@@ -178,6 +178,8 @@ namespace Muffin
             // play background music
             MediaPlayer.Play(Content.Load<Song>("Audio\\background"));
             MediaPlayer.IsRepeating = true;
+
+            
         }
 
        
@@ -203,7 +205,7 @@ namespace Muffin
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-
+                
             // TODO: Add your update logic here
             beginTick();
 
