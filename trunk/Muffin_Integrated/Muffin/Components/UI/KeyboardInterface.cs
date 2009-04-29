@@ -95,7 +95,7 @@ namespace Muffin.Components.UI
 
             if (m.RightButton == ButtonState.Pressed)
                 leftRightState = (float)deltaX / 5.0f;
-  
+
             // control the zoom
             camera.zoom((float)deltaScroll);
 
@@ -114,10 +114,10 @@ namespace Muffin.Components.UI
                 _muffinGame.playSoundClip("jump");
 
             // input updown state (normalized to 1), left right state (normalized to 1), strafe state (normalized to 1), jump boolean, and strafe boolean
-            if(!_muffinGame.paused)
+            if (!_muffinGame.paused)
                 _gameObject.move(upDownState, leftRightState, strafeState, (space.getButtonState() == 1), (k.IsKeyDown(Keys.A) || k.IsKeyDown(Keys.D)));
 
-            
+
 
             // testing for next level
             if (lkey.getButtonState() == 1)
@@ -125,7 +125,7 @@ namespace Muffin.Components.UI
 
             // pause if we must pause
             if (escape.getButtonState() == 1)
-                _muffinGame.paused = !_muffinGame.paused;
+                _muffinGame.togglePauseMenu();
 
             // input for menus
             _muffinGame.menuInput(upDownArrows.getButtonState(), (enter.getButtonState() == 1) ? true : false);

@@ -37,7 +37,7 @@ namespace Muffin.Components.UI
     {
         private MuffinGame _muffinGame;
         private SpriteBatch _spriteBatch;
-        private MenuObject _pauseMenu, _mainMenu, _gameOverMenu;
+        private MenuObject _pauseMenu, _mainMenu, _gameOverMenu, _levelCompleteMenu, _levelFailedMenu;
 
         
 
@@ -66,20 +66,12 @@ namespace Muffin.Components.UI
 
         protected override void LoadContent()
         {
-
-    
-
             // make our menus (content added below)
             _pauseMenu = new MenuObject(_spriteBatch, _muffinGame);
-
-            // load all of the images for the menu as menu items
-            _pauseMenu.addItem("pauseMenuBackground", new Rectangle(738, 147, 444, 907), false, null);
-            _pauseMenu.addItem("pauseMenuSave", new Rectangle(765, 210, 750, 70), true, new menuCallback(save));
-            _pauseMenu.addItem("pauseMenuLoad", new Rectangle(770, 300, 769, 90), true, new menuCallback(load));
-            _pauseMenu.addItem("pauseMenuOptions", new Rectangle(765, 400, 1118, 109), true, new menuCallback(options));
-            _pauseMenu.addItem("pauseMenuMain", new Rectangle(770, 500, 818, 91), true, new menuCallback(main));
-            _pauseMenu.addItem("pauseMenuQuit", new Rectangle(765, 600, 1089, 109), true, new menuCallback(quit));
-            _pauseMenu.addItem("pauseMenuResume", new Rectangle(770, 720, 959, 70), true, new menuCallback(resume));
+            _pauseMenu.addItem("pauseMenu/pauseMenuBackground", new Rectangle(652, 370, 615, 459), false, null);
+            _pauseMenu.addItem("pauseMenu/restart", new Rectangle(652, 370, 615, 459), true, new menuCallback(restart));
+            _pauseMenu.addItem("pauseMenu/mainPause", new Rectangle(652, 370, 615, 459), true, new menuCallback(main));
+            _pauseMenu.addItem("pauseMenu/resume", new Rectangle(652, 370, 615, 459), true, new menuCallback(resume));
 
             // main menu
             _mainMenu = new MenuObject(_spriteBatch, _muffinGame);
@@ -88,10 +80,25 @@ namespace Muffin.Components.UI
             // load main menu components
             _mainMenu.addItem("mainMenu", new Rectangle(0, 0, 1920, 1200), false, null);
             _mainMenu.addItem("healthBar", new Rectangle(1250, 40, 300, 50), false, null);
-           
+
             // game over menu
             _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame);
 
+
+            // level completed menu
+
+            _levelCompleteMenu = new MenuObject(_spriteBatch, _muffinGame);
+            _levelCompleteMenu.addItem("levelCompletedMenu/complete", new Rectangle(727, 459, 467, 282), false, null);
+            _levelCompleteMenu.addItem("levelCompletedMenu/next", new Rectangle(727, 459, 467, 282), true, new menuCallback(nextLevel));
+            _levelCompleteMenu.addItem("levelCompletedMenu/mainComplete", new Rectangle(727, 459, 467, 282), true, new menuCallback(main));
+
+
+
+            // level failed menu
+            _levelFailedMenu = new MenuObject(_spriteBatch, _muffinGame);
+            _levelFailedMenu.addItem("levelFailedMenu/death", new Rectangle(727, 462, 465, 276), false, null);
+            _levelFailedMenu.addItem("levelFailedMenu/retry", new Rectangle(727, 462, 465, 276), true, new menuCallback(retry));
+            _levelFailedMenu.addItem("levelFailedMenu/mainDeath", new Rectangle(727, 462, 465, 276), true, new menuCallback(main));
             base.LoadContent();
         }
 
@@ -100,26 +107,40 @@ namespace Muffin.Components.UI
          * These methods are all of the callbacks for menu items.
          * */
 
+        /*
+         * This is used for level complted.
+         * */
+
+        public void nextLevel()
+        {
+            _muffinGame.displayLevelComplete(false);
+            
+        }
+        /*
+         * This is used for the pause menu.
+         * */
+        public void restart()
+        {
+            _muffinGame.retryLevel();
+            _muffinGame.togglePauseMenu();
+        }
+        /*
+         * This is used at the end of failing a level.
+         * */
+
+        public void retry()
+        {
+            _muffinGame.retryLevel();
+            _muffinGame.displayLevelFailed(false);
+
+        }
+        /*
+         * This is used to resume from pause.
+         * */
+
         public void resume()
         {
-            _muffinGame.paused = false;
-        }
-
-        public void save()
-        {
-            Console.WriteLine("Saving would be implemented here.");
-        }
-
-        public void load()
-        {
-            Console.WriteLine("Loading would be implemented here.");
-            _muffinGame.levelCompleted();
-            _muffinGame.playSoundClip("select");
-        }
-
-        public void options()
-        {
-            Console.WriteLine("Options would be implemented here.");
+            _muffinGame.togglePauseMenu();
         }
 
         public void main()
@@ -129,7 +150,7 @@ namespace Muffin.Components.UI
 
         public void quit()
         {
-            Environment.Exit(0);   
+            Environment.Exit(0);
         }
 
         #endregion
@@ -139,6 +160,9 @@ namespace Muffin.Components.UI
             _spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
             _pauseMenu.draw();
             _mainMenu.draw();
+            _gameOverMenu.draw();
+            _levelCompleteMenu.draw();
+            _levelFailedMenu.draw();
             //this.decrementHealth();
             this.drawTime(gameTime);
             _spriteBatch.End();
@@ -185,6 +209,18 @@ namespace Muffin.Components.UI
             _gameOverMenu.hidden = !show;
         }
 
+        public void showLevelCompleteMenu(Boolean show)
+        {
+
+            _levelCompleteMenu.hidden = !show;
+
+        }
+
+        public void showLevelFailedMenu(Boolean show)
+        {
+            _levelFailedMenu.hidden = !show;
+        }
+
         /*
          * This method passes input to the menus.  Input will only be handled if the menu
          * is active, so there is no need to do any checking.
@@ -194,6 +230,9 @@ namespace Muffin.Components.UI
         {
             _pauseMenu.menuInput(direction, select);
             _mainMenu.menuInput(direction, select);
+            _gameOverMenu.menuInput(direction, select);
+            _levelCompleteMenu.menuInput(direction, select);
+            _levelFailedMenu.menuInput(direction, select);
         }
 
         

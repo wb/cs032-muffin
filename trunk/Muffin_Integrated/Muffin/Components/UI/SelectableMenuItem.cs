@@ -35,15 +35,23 @@ namespace Muffin.Components.UI
 
         public SelectableMenuItem(String name, Rectangle rectangle, MuffinGame game, menuCallback callback)
             : base(name, rectangle, game)
-        {    
-            _textureSelected = game.Content.Load<Texture2D>("Textures\\" + name + "Selected");
+        {
+            try
+            {
+                _textureSelected = game.Content.Load<Texture2D>("Textures\\" + name + "Selected");
+            }
+            catch
+            {
+                Console.WriteLine("The menu texture: " + name + " was not found.");
+                _error = true;
+            }
             _callback = callback;
             float xRatio = game.graphics.PreferredBackBufferHeight / 1920.0f;
             float yRatio = game.graphics.PreferredBackBufferWidth / 1200.0f;
             _shadowOffset = new Vector2((int)Math.Round(xRatio * 7.5), (int)Math.Round(yRatio * 7.5));
 
-            
-            
+
+
         }
 
         public void setSelected(Boolean selected)
