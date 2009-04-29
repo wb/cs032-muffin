@@ -33,6 +33,51 @@ struct PixelToFrame {
 	float4 Color		: COLOR0;
 };
 
+// Calculates the shadow term using PCF soft-shadowing
+float CalcShadowTermSoftPCF(float fLightDepth, float2 vShadowTexCoord, int iSqrtSamples)
+{
+	float fShadowTerm = 0.0f;  
+		
+	float fRadius = (iSqrtSamples - 1.0f) / 2;
+	float fWeightAccum = 0.0f;
+	
+	for (float y = -fRadius; y <= fRadius; y++)
+	{
+		for (float x = -fRadius; x <= fRadius; x++)
+		{
+			float2 vOffset = 0;
+			vOffset = float2(x, y);				
+			vOffset.x /= 1440.0f;
+			vOffset.y /= 900.0f;
+			float2 vSamplePoint = vShadowTexCoord + vOffset;			
+			float fDepth = tex2D(ShadowMapSampler, vSamplePoint).x;
+			float fSample = (fLightDepth <= fDepth + 0.01f);
+			
+			// Edge tap smoothing
+			float xWeight = 1;
+			float yWeight = 1;
+			
+			if (x == -fRadius)
+				xWeight = 1 - frac(vShadowTexCoord.x * 1440.0f);
+			else if (x == fRadius)
+				xWeight = frac(vShadowTexCoord.x * 1440.0f);
+				
+			if (y == -fRadius)
+				yWeight = 1 - frac(vShadowTexCoord.y * 900.0f);
+			else if (y == fRadius)
+				yWeight = frac(vShadowTexCoord.y * 900.0f);
+				
+			fShadowTerm += fSample * xWeight * yWeight;
+			fWeightAccum = xWeight * yWeight;
+		}											
+	}		
+	
+	fShadowTerm /= (iSqrtSamples * iSqrtSamples);
+	fShadowTerm *= 1.55f;	
+	
+	return fShadowTerm;
+}
+
 VertexToPixel VertexShaderFunction (float4 inPos		: POSITION0,
 									float2 inTexCoords  : TEXCOORD0) 
 {
@@ -78,25 +123,17 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0 {
 	
 	float shading = 0;
 	
-	if(!(distanceInShadowMap <= realDistance  - 0.01f)) {
-		float3 lightDirection = normalize(worldPos - xLightPos);
-		//float coneDot = dot(lightDirection, normalize(xConeDirection));
-		
-		
-		//float attenuation = pow(coneDot, xConeDecay);
-		shading = dot(normal, -lightDirection);
-		shading = shading * xLightIntensity;	
-		//shading = shading * xLightIntensity;	
-		//if(coneDot >= xConeAngle) {
-		//	float attenuation = pow(coneDot, xConeDecay);
-			
-		//	shading = dot(normal, -lightDirection);
-		//	shading = shading * xLightIntensity * attenuation;	
-		//}
-	} 
+	float3 lightDirection = normalize(worldPos - xLightPos);
+	shading = dot(normal, -lightDirection);
+	shading = shading * xLightIntensity;	
+
+	float3 eyeDir = normalize(xCameraPos - worldPos);
+	float3 reflection = reflect(-lightDirection, normal);
+	Output.Color.b = saturate(dot(reflection, -eyeDir));
 	
 	float4 previous = tex2D(ShadingMapSampler, inVS.TexCoords);
-	Output.Color = shading + previous;
+	Output.Color.r = shading + previous;
+	Output.Color.a = CalcShadowTermSoftPCF(realDistance, lightSamplePos, 4);
 	//Output.Color = tex2D(ShadowMapSampler, inVS.TexCoords);
 	return Output;
 }
