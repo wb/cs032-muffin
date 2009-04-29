@@ -80,6 +80,9 @@ Content\Audio\background.xnb
 Content\Textures\gameOverMenu\congrats.xnb
 Content\Textures\gameOverMenu\win.xnb
 Content\Textures\gameOverMenu\congratsSelected.xnb
+Content\Models\coin.xnb
+Content\Models\coin\Metal_Aluminum_Anodized.xnb
+Content\Models\coin\Metal_Aluminum_Anodized_0.xnb
 Content\Audio\background.wma
 Content\Levels\level1.xml
 Content\Levels\level2.xml

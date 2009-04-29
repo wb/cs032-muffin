@@ -244,6 +244,8 @@ namespace Muffin.Components.Renderer
             m_model_textures.Add(modelTexture);
             m_models.Add(LoadModel("star", out modelTexture));
             m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("coin", out modelTexture));
+            m_model_textures.Add(modelTexture);
 
             setModels();
             //SetUpCamera();
@@ -279,6 +281,9 @@ namespace Muffin.Components.Renderer
                         break;
                     case ModelName.STAR:
                         o.model = m_models.ElementAt((int)ModelName.STAR);
+                        break;
+                    case ModelName.COIN:
+                        o.model = m_models.ElementAt((int)ModelName.COIN);
                         break;
                     case ModelName.NONE:
                     default:

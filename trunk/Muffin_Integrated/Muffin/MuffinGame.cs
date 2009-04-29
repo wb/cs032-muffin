@@ -84,6 +84,7 @@ namespace Muffin
 
         private SoundManager _soundManager;
 
+        private List<GameObject> _coins;
         public MuffinGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -107,6 +108,7 @@ namespace Muffin
             _levels.Add(new LevelObject("level1"));
             _levels.Add(new LevelObject("level_empty_spaces"));
 
+            _coins = new List<GameObject>();
             LoadLevel(0);
 
             _renderer = new Renderer(this);
@@ -132,9 +134,12 @@ namespace Muffin
             _paused = false;
             _gameOver = false;
 
-
+            
+       
             
         }
+
+        
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -178,8 +183,7 @@ namespace Muffin
             // play background music
             MediaPlayer.Play(Content.Load<Song>("Audio\\background"));
             MediaPlayer.IsRepeating = true;
-
-            
+                        
         }
 
        
@@ -230,6 +234,13 @@ namespace Muffin
             float angle = MathHelper.ToRadians((float)gameTime.TotalGameTime.TotalMilliseconds / 5.0f);
             getCurrentLevel().goal.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
 
+            
+
+            foreach (GameObject coin in _coins)
+            {
+                coin.rotation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle);
+            }
+
             // check to see if the player has died and restart the level if so
             if (_allPlayers.ElementAt(0).toBeRemoved)
                 this.displayLevelFailed(true);
@@ -261,7 +272,7 @@ namespace Muffin
         }
 
         # region Game-specific methods
-
+        
         protected void LoadLevel(int level)
         {
             // load the current level
@@ -278,6 +289,18 @@ namespace Muffin
 
             Random random = new Random();
 
+            /*
+             * Testing coins.
+             * */
+
+            
+
+            for (int i = 0; i < 12; i++)
+            {
+                GameObject coin = new GameObject(null, ModelType.OBJECT, ModelName.COIN, new Vector3(random.Next(0, 1200), random.Next(50,60), random.Next(0, 1200)), Quaternion.Identity, true, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
+                //objs.Add(coin);
+                _coins.Add(coin);
+            }
             // this is the level goal
             GameObject goal = new GameObject(null, ModelType.OBJECT, ModelName.STAR, new Vector3(random.Next(0, 1000), random.Next(60, 200), random.Next(0, 1000)), Quaternion.Identity, true, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
             objs.Add(goal);

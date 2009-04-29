@@ -251,6 +251,11 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="Models\coin.fbx">
+      <Name>coin</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <Compile Include="Models\star.fbx">
       <Name>star</Name>
       <Importer>FbxImporter</Importer>
@@ -501,6 +506,13 @@
   <ItemGroup>
     <Compile Include="Textures\gameOverMenu\congratsSelected.png">
       <Name>congratsSelected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\coin\Metal_Aluminum_Anodized.jpg">
+      <Name>Metal_Aluminum_Anodized</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
