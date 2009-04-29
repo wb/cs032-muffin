@@ -132,12 +132,7 @@ namespace Muffin
             _paused = false;
             _gameOver = false;
 
-            
-       
-            
-        }
-
-        
+        }        
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -298,7 +293,7 @@ namespace Muffin
                 int x = (int) random.Next(0, maxX);
                 int z = (int) random.Next(0, maxZ);
                 int y = 60;
-                objs.Add(new CollectableObject(ModelName.COIN, new CollectionCallback(coinCollected), player, 30.0f, new Vector3(x, y, z), new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
+                objs.Add(new CollectableObject(ModelName.COIN, new CollectionCallback(coinCollected), player, 40.0f, new Vector3(x, y, z), new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
             }
             // create a new goal
             int xPosition = (int)random.Next(0, maxX);
@@ -660,7 +655,7 @@ namespace Muffin
         {
             this.getPlayer().coinCollected();
             this.playSoundClip("coinCollected");
-            Console.WriteLine("You have collected " + this.getPlayer().coinCount + " coins!");
+            Console.WriteLine("You have collected " + this.getPlayer().coinCount + " of 12 coins!");
 
             // set jump count to 0 (for some fun levels where coins can bridge you across
             this.getPlayer().jumpCount = 0;
