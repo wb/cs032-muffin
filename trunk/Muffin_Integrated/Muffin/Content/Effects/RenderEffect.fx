@@ -1,6 +1,7 @@
 float4x4 xLightViewProjection;
 float4x4 xCameraViewProjection;
 float4x4 xWorld;
+float4x4 xWorldInv;
 
 float3 xCameraPos;
 float3 xLightPos;

@@ -6,6 +6,7 @@ int current_light;
 float4x4 xCameraViewProjection;
 float4x4 xWorld;
 
+
 Texture xTexture;
 //Texture xSpotlight;
 //Texture xShadowMap1;
@@ -28,7 +29,6 @@ struct VertexToPixel {
 	float3 Normal		: TEXCOORD0;
 	float4 ScreenPos	: TEXCOORD1;
 	float2 TexCoords	: TEXCOORD2;
-	float4 WorldPos		: TEXCOORD3;
 };
 
 struct PixelToFrame {
@@ -50,7 +50,6 @@ VertexToPixel VertexShaderFunction (float4 inPos		: POSITION0,
 	float3 normal_world = mul(inNormal, normal_world_matrix);
 	Output.Normal = normalize(normal_world);
 	
-	Output.WorldPos  = mul (float4(inPos.xyz, 1.0f), xWorld);
 	Output.ScreenPos = Output.Position;
 	Output.TexCoords = inTexCoords;									
 	
@@ -60,13 +59,9 @@ VertexToPixel VertexShaderFunction (float4 inPos		: POSITION0,
 PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0{
 	PixelToFrame Output = (PixelToFrame)0;
 	
-	float3 lightDirection = normalize(inVS.WorldPos - xLightPos);
-	float3 eyeDir = normalize(xCameraPos - inVS.WorldPos);
-	float3 reflection = reflect(-lightDirection, inVS.Normal);
 	//diffuse lighting
 	Output.Color.rgb = tex2D(TextureSampler, inVS.TexCoords);
-	//specular lighting
-	Output.Normal.w = saturate(dot(reflection, eyeDir));
+	
 	//transform form [-1,1] to [0,1]
 	Output.Normal.xyz =  inVS.Normal/2.0f + 0.5f;
 	

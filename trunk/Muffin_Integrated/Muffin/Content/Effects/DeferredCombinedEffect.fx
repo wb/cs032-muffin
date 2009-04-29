@@ -39,16 +39,17 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0 {
 	PixelToFrame Output = (PixelToFrame)0;
 	
 	float4 color = tex2D(ColorMapSampler, inVS.TexCoords);
-	float shading = tex2D(ShadingMapSampler, inVS.TexCoords);
+	float shading = tex2D(ShadingMapSampler, inVS.TexCoords).r;
+	float shadow = tex2D(ShadingMapSampler, inVS.TexCoords).a;
 	
-	float specular = tex2D(NormalMapSampler, inVS.TexCoords).a;
+	float specular = tex2D(ShadingMapSampler, inVS.TexCoords).b;
 	float specularIntensity = 0.70f * pow(specular, 24.0f);
 	
 	
-	if(xAmbient + shading * 0.75 + specularIntensity >= 1.0f) {
+	if(xAmbient + shadow * shading * 0.75 + specularIntensity >= 1.0f) {
 		Output.Color.rgb = color;
 	} else {
-		Output.Color.rgb = color * (xAmbient + shading * 0.75f + specularIntensity);
+		Output.Color.rgb = color * (xAmbient + shadow * shading * 0.75f + specularIntensity);
 	}
 	
 	return Output;
