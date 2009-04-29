@@ -23,7 +23,7 @@ namespace Definitions
     class CollectableObject : GameObject
     {
         public CollectableObject(Model model, ModelName modelName, Vector3 position, Quaternion rotation, Vector3 dimensions, float mass, float scale) :
-            base(model, ModelType.COLLECTABLE, modelName, position, rotation, false, dimensions, mass, scale)
+            base(model, ModelType.COLLECTABLE, modelName, position, rotation, true, dimensions, mass, scale)
         {
             
         }

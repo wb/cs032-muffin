@@ -105,6 +105,7 @@
     <Compile Include="Constants\ModelName.cs" />
     <Compile Include="Constants\ModelType.cs" />
     <Compile Include="Objects\AIObject.cs" />
+    <Compile Include="Objects\CollectableObject.cs" />
     <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Objects\GameObjectState.cs" />
     <Compile Include="Objects\LevelObject.cs" />

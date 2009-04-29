@@ -14,5 +14,5 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace Definitions
 {
-    public enum ModelType { TERRAIN, ENEMY, OBJECT, HUMAN };
+    public enum ModelType { TERRAIN, ENEMY, OBJECT, HUMAN, COLLECTABLE };
 }

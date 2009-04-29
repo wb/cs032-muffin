@@ -297,8 +297,8 @@ namespace Muffin
 
             for (int i = 0; i < 12; i++)
             {
-                GameObject coin = new GameObject(null, ModelType.OBJECT, ModelName.COIN, new Vector3(random.Next(0, 1200), random.Next(50,60), random.Next(0, 1200)), Quaternion.Identity, true, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
-                //objs.Add(coin);
+                GameObject coin = new CollectableObject(null, ModelName.COIN, new Vector3(random.Next(0, 1200), random.Next(50,60), random.Next(0, 1200)), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
+                objs.Add(coin);
                 _coins.Add(coin);
             }
             // this is the level goal
