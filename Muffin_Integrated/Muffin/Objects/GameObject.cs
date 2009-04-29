@@ -311,7 +311,7 @@ namespace Definitions
             if (_modelType == ModelType.ENEMY || _modelType == ModelType.HUMAN)
             {
                 float friction = 0.97f;
-                _toMove *= 2.5f;
+                _toMove *= 3.0f;
                 adjustedMove = friction * _previousToMove + (1.0f - friction) * _toMove;
             }
             else

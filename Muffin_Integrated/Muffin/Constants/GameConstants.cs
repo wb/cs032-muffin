@@ -16,7 +16,6 @@ namespace Definitions
 {
     public class GameConstants
     {
-        public const string CurrentLevel = "level_flat";
         public const float ViewAngle = 45.0f;
         public const int MaxLights = 1;
         public const int MaxAcceleration = 2000;
@@ -28,6 +27,8 @@ namespace Definitions
         public const float FarClip = 60000.0f;
 
         public const bool FULL_SCREEN_ENABLED = false;
+        public const int SCREEN_WIDTH = 1280;
+        public const int SCREEN_HEIGHT = 800;
 
         // AI Constants
         public const float MaxFallDistance = 60;
