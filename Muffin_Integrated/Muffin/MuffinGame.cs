@@ -452,7 +452,10 @@ namespace Muffin
          * */
         public void togglePauseMenu()
         {
-            Console.WriteLine("here");
+            if (_levelCompleteMenu || _levelFailedMenu || _gameOverMenu)
+                return;
+
+
             _pauseMenu = !_pauseMenu;
             _paused = _pauseMenu;
             ((MenuComponent)_menuComponent).showPauseMenu(_pauseMenu);
@@ -491,8 +494,20 @@ namespace Muffin
 
         public void displayGameOver(Boolean show)
         {
-            _paused = show;
-            ((MenuComponent)_menuComponent).showGameOverMenu(show);
+            if (show && !_gameOverMenu)
+            {
+                _paused = true;
+                _gameOver = true;
+                ((MenuComponent)_menuComponent).showGameOverMenu(true);
+                _gameOverMenu = !_gameOverMenu;
+            }
+            else if (!show && _gameOverMenu)
+            {
+                _paused = false;
+                _gameOver = false;
+                ((MenuComponent)_menuComponent).showGameOverMenu(false);
+                _gameOverMenu = !_gameOverMenu;
+            }
         }
 
         /*
@@ -557,10 +572,7 @@ namespace Muffin
         {
             // check if the game is over
             if (_currentLevel + 1 >= _levels.Count())
-            {
-                _gameOver = true;
-                Console.WriteLine("Game Over!");
-            }
+                this.displayGameOver(true);
             else
             {
                 // increment the current level
@@ -590,6 +602,12 @@ namespace Muffin
             ((Renderer)_renderer).setModels();
             _camera.setPlayerToFollow(_allPlayers.ElementAt(0));
             ((InputManager)_inputManager).setPlayerToControl(_allPlayers.ElementAt(0));
+        }
+
+        public void newGame()
+        {
+            _currentLevel = 0;
+            this.retryLevel();
         }
 
         /*
