@@ -102,6 +102,7 @@ namespace Muffin.Components.Renderer
         DepthStencilBuffer shadowDSB;
         DepthStencilBuffer standardDSB;
 
+        Matrix handle_original;
         bool isLoaded = false;
 
         public Renderer(MuffinGame game)
@@ -110,9 +111,9 @@ namespace Muffin.Components.Renderer
             //renderer settings
             m_game = game;
             graphics = m_game.graphics;
-            graphics.IsFullScreen = false;
-            graphics.PreferredBackBufferHeight = 900;
-            graphics.PreferredBackBufferWidth = 1440;
+            graphics.IsFullScreen = GameConstants.FULL_SCREEN_ENABLED;
+            graphics.PreferredBackBufferHeight = GameConstants.SCREEN_HEIGHT;
+            graphics.PreferredBackBufferWidth = GameConstants.SCREEN_WIDTH;
             //enable anti-aliasing
             //graphics.PreferMultiSampling = true;
             //graphics.PreparingDeviceSettings +=
@@ -274,6 +275,7 @@ namespace Muffin.Components.Renderer
                         break;
                     case ModelName.PLAYER:
                         o.model = m_models.ElementAt((int)ModelName.PLAYER);
+                        //handle_original = o.model.Bones[19].Transform;
                         break;
                     case ModelName.STAR:
                         o.model = m_models.ElementAt((int)ModelName.STAR);
@@ -655,17 +657,68 @@ namespace Muffin.Components.Renderer
             foreach (GameObject o in m_objects)
             {
                 Matrix worldMatrix = o.worldMatrix();
-                DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique);
+                if (o is PlayerObject)
+                {
+                    DrawPlayer(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique);
+                }
+                else
+                {
+                    DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique);
+                }
             }
         }
-
+        
         Vector3 dir = new Vector3(1, -1, 1);
+        float handleRot = 0.0f;
+        
+        private void DrawPlayer(Model model, Texture2D[] textures, Matrix wMatrix, string technique)
+        {
+            Matrix[] modelTransforms = new Matrix[model.Bones.Count];
+            Matrix[] origTransforms = new Matrix[model.Bones.Count];
+            model.CopyBoneTransformsTo(origTransforms);
+
+            int i = 0;
+
+            //Console.WriteLine("start");
+            //for (int j = 0; j < model.Bones.Count; j++)
+            //{
+                //Console.WriteLine(j + " " + model.Bones[j].Name);
+            //}
+
+            handleRot += MathHelper.ToRadians(2.0f);
+            Vector3 trans = handle_original.Translation;
+
+            int num = 19;
+            if (num <= model.Bones.Count)
+            {
+                model.Bones[19].Transform = Matrix.CreateFromYawPitchRoll(0, 0, handleRot) * origTransforms[19];
+            }
+
+            model.CopyAbsoluteBoneTransformsTo(modelTransforms);
+
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (Effect currentEffect in mesh.Effects)
+                {
+                    Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
+                    Matrix worldMatrixInv = Matrix.Invert(worldMatrix);
+                    currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
+                    currentEffect.Parameters["xCameraViewProjection"].SetValue(viewProjection);
+                    currentEffect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
+                    currentEffect.Parameters["xLightPos"].SetValue(m_lights[0].LightPos);
+                    currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
+                    currentEffect.Parameters["xTexture"].SetValue(textures[i++]);
+                }
+                mesh.Draw();
+            }
+        }
 
         private void DrawModel(Model model, Texture2D[] textures, Matrix wMatrix, string technique)
         {
             Matrix[] modelTransforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(modelTransforms);
             int i = 0;
+
             
             foreach (ModelMesh mesh in model.Meshes)
             {

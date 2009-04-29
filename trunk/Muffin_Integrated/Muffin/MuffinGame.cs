@@ -105,6 +105,7 @@ namespace Muffin
             _levels.Add(new LevelObject("level_tall"));
             _levels.Add(new LevelObject("level_terrain"));
             _levels.Add(new LevelObject("level1"));
+            _levels.Add(new LevelObject("level_empty_spaces"));
 
             LoadLevel(0);
 
