@@ -84,7 +84,7 @@ namespace Muffin.Components.UI
             // game over menu
             _gameOverMenu = new MenuObject(_spriteBatch, _muffinGame);
             _gameOverMenu.addItem("gameOverMenu/win", new Rectangle(526, 517, 868, 166), false, null);
-            _gameOverMenu.addItem("gameOverMenu/congrats", new Rectangle(526, 527, 868, 166), true, new menuCallback(gameOver));
+            _gameOverMenu.addItem("gameOverMenu/congrats", new Rectangle(520, 527, 868, 166), true, new menuCallback(gameOver));
 
             // level completed menu
 
