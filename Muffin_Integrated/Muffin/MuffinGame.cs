@@ -104,9 +104,7 @@ namespace Muffin
             // create some levels
             _levels = new List<LevelObject>();
             _levels.Add(new LevelObject("level_flat"));
-            _levels.Add(new LevelObject("level_tall"));
-            _levels.Add(new LevelObject("level_terrain"));
-            _levels.Add(new LevelObject("level1"));
+            _levels.Add(new LevelObject("level_flat_small"));
             _levels.Add(new LevelObject("level_empty_spaces"));
 
             LoadLevel(0);
@@ -278,6 +276,15 @@ namespace Muffin
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
 
+            // find largest x and z coordinates
+            int maxX = 0, maxZ = 0;
+            foreach (GameObject o in objs)
+            {
+                if (o.position.X > maxX)
+                    maxX = (int) o.position.X;
+                if (o.position.Z > maxZ)
+                    maxZ = (int) o.position.Z;
+            }
             Random random = new Random();
 
             // player
@@ -287,10 +294,16 @@ namespace Muffin
 
             // coins
             for (int i = 0; i < 12; i++)
-                objs.Add(new CollectableObject(ModelName.COIN, new CollectionCallback(coinCollected), player, 30.0f, new Vector3(random.Next(0, 1200), random.Next(50, 60), random.Next(0, 1200)), new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
-
+            {
+                int x = (int) random.Next(0, maxX);
+                int z = (int) random.Next(0, maxZ);
+                int y = 60;
+                objs.Add(new CollectableObject(ModelName.COIN, new CollectionCallback(coinCollected), player, 30.0f, new Vector3(x, y, z), new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
+            }
             // create a new goal
-            GameObject goal = new CollectableObject(ModelName.STAR, new CollectionCallback(starCollected), player, 30.0f, new Vector3(random.Next(0, 1000), random.Next(60, 200), random.Next(0, 1000)), new Vector3(60, 60, 60), GameConstants.GameObjectScale, true);
+            int xPosition = (int)random.Next(0, maxX);
+            int zPosition = (int)random.Next(0, maxZ);
+            GameObject goal = new CollectableObject(ModelName.STAR, new CollectionCallback(starCollected), player, 30.0f, new Vector3(xPosition, random.Next(60, 200), zPosition), new Vector3(60, 60, 60), GameConstants.GameObjectScale, true);
             objs.Add(goal);
             getLevel(level).goal = (goal as CollectableObject);
 
