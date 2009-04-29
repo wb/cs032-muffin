@@ -34,6 +34,7 @@ namespace Muffin.Components.UI
         private MuffinGame _muffinGame;
         private int _currentItemIndex;
         private int _ignoreInputCount = 0;
+        private MenuItem _healthBar;
 
         public MenuObject(SpriteBatch spriteBatch, MuffinGame game)
         {
@@ -59,7 +60,7 @@ namespace Muffin.Components.UI
             double ratioWidth = width / 1920;
             double ratioHeight = height / 1200;
 
-            Rectangle adjustedRectangle = new Rectangle((int)Math.Round(((double)rectangle.X) * ratioWidth), (int)Math.Round(((double)rectangle.Y) * ratioHeight), (int)Math.Round(((double)rectangle.Width) * ratioWidth), (int)Math.Round(((double)rectangle.Height) * ratioHeight));
+            Rectangle adjustedRectangle = this.getAdjustedRectangle(rectangle);
 
             if (selectable)
             {
@@ -86,6 +87,34 @@ namespace Muffin.Components.UI
             }
         }
 
+        //scales down the given rectangle according to the screen size and returns the adjusted rectangle
+        public Rectangle getAdjustedRectangle(Rectangle rectangle)
+        {
+            double width = _muffinGame.graphics.PreferredBackBufferWidth;
+            double height = _muffinGame.graphics.PreferredBackBufferHeight;
+
+            double ratioWidth = width / 1920;
+            double ratioHeight = height / 1200;
+
+            return new Rectangle((int)Math.Round(((double)rectangle.X) * ratioWidth), (int)Math.Round(((double)rectangle.Y) * ratioHeight), (int)Math.Round(((double)rectangle.Width) * ratioWidth), (int)Math.Round(((double)rectangle.Height) * ratioHeight));
+        }
+
+        public void addHealthBar(String name, Rectangle rectangle, Boolean selectable, menuCallback callback)
+        {
+            Rectangle adjustedRectangle = this.getAdjustedRectangle(rectangle);
+            _healthBar = new MenuItem(name, adjustedRectangle, _muffinGame);
+            if (!_healthBar.error)
+            {
+                _items.Add(_healthBar);
+            }
+        }
+
+        public void setHealthBar(Rectangle rectangle)
+        {
+            Rectangle adjustedRectangle = getAdjustedRectangle(rectangle);
+            _healthBar.setRectangle(adjustedRectangle);
+        }
+
         public void draw()
         {
             if (!_hidden)
@@ -95,7 +124,12 @@ namespace Muffin.Components.UI
                     _spriteBatch.Draw(item.currentTexture(), item.currentRectangle(), Color.White);
                 }
             }
+        }
 
+        public void decrementHealth(int width)
+        {
+            Rectangle currentRectangle = _healthBar.currentRectangle();
+            _healthBar.setRectangle(this.getAdjustedRectangle(new Rectangle(1250, 40, width, 50)));
         }
 
         public Boolean hidden
