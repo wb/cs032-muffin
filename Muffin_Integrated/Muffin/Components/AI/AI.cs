@@ -113,7 +113,7 @@ namespace Muffin.Components.AI
             foreach (GameObject o in m_game.allObjects)
             {
                 // Add all objects except AIObjects and PlayerObjects to the grid
-                if (!(o is AIObject || o is PlayerObject))
+                if (!(o is AIObject || o is PlayerObject || o is CollectableObject))
                 {
                     int gridX, gridY;
                     if (o is TerrainObject)
