@@ -211,7 +211,13 @@ namespace Muffin
             Vector3 goalPosition = getCurrentLevel().goal.position;
 
             if (Math.Abs(playerPosition.X - goalPosition.X) < xDifference && Math.Abs(playerPosition.Y - goalPosition.Y) < yDifference && Math.Abs(playerPosition.Z - goalPosition.Z) < zDifference)
-                this.displayLevelComplete(true);
+            {
+                // if the game isn't over, display level complete
+                if (_currentLevel + 1 < _levels.Count())
+                    this.displayLevelComplete(true);
+                else
+                    this.displayGameOver(true);
+            }
 
             // rotate the star
             float angle = MathHelper.ToRadians((float)gameTime.TotalGameTime.TotalMilliseconds / 5.0f);
