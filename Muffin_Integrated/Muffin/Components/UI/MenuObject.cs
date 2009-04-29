@@ -33,6 +33,7 @@ namespace Muffin.Components.UI
         private Boolean _hidden;
         private MuffinGame _muffinGame;
         private int _currentItemIndex;
+        private int _ignoreInputCount = 0;
 
         public MenuObject(SpriteBatch spriteBatch, MuffinGame game)
         {
@@ -102,6 +103,11 @@ namespace Muffin.Components.UI
             get { return _hidden; }
             set
             {
+                if (_hidden && !value)
+                {
+                    if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y != 0)
+                        _ignoreInputCount = 0;
+                }
                 // play a sound when the menu is shown or hidden
                 if (value != _hidden && _selectableItems.Count() > 0)
                     _muffinGame.playSoundClip("select");
@@ -111,6 +117,7 @@ namespace Muffin.Components.UI
                 {
                     if (_selectableItems.Count() > 0)
                     {
+                        
                         // reset the menu so it starts on the first item next time
                         _selectableItems.ElementAt(_currentItemIndex).setSelected(false);
                         _currentItemIndex = 0;
@@ -129,8 +136,14 @@ namespace Muffin.Components.UI
          * */
 
         public void menuInput(int direction, Boolean select)
-        {   
+        {
+            if (GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y == 0)
+                _ignoreInputCount = 60;
 
+            // this ensures input wont be taken too soon after the player opens the menu
+            _ignoreInputCount++;
+            if (_ignoreInputCount < 60)
+                return;
             // only move if it isn't hidden and we aren't selecting
             if (!hidden && !select)
             {
