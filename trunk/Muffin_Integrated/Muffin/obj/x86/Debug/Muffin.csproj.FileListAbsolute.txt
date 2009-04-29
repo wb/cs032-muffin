@@ -91,3 +91,5 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Re
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Muffin.exe
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Muffin.pdb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Audio\background.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Audio\background.wma

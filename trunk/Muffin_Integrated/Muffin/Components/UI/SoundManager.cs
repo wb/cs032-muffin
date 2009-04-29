@@ -48,14 +48,22 @@ namespace Muffin.Components.UI
                 _soundclips.Add(name, clip);
             }
         }
-
         public SoundEffectInstance playSound(String name)
+        {
+            return this.playSound(name, 0.5f);
+        }
+
+        public SoundEffectInstance playSound(String name, float volume)
         {
             if (_soundclips.ContainsKey(name))
             {
                 SoundEffect audioclip;
-                if(_soundclips.TryGetValue(name, out audioclip))
-                    return audioclip.Play();
+                if (_soundclips.TryGetValue(name, out audioclip))
+                {
+                    SoundEffectInstance instance = audioclip.Play();
+                    instance.Volume = volume;
+                    return instance;
+                }
                 
             }
             return null;

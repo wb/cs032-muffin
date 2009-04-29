@@ -174,6 +174,10 @@ namespace Muffin
             _soundManager.registerSoundClip("die", "death");
             _soundManager.registerSoundClip("level_complete", "levelcompleted");
             _soundManager.registerSoundClip("health_gain", "healthboost");
+
+            // play background music
+            MediaPlayer.Play(Content.Load<Song>("Audio\\background"));
+            MediaPlayer.IsRepeating = true;
         }
 
        
