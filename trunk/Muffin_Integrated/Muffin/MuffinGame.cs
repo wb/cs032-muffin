@@ -153,7 +153,7 @@ namespace Muffin
                 _objectsRemoved = _objectsRemoving = false;
 
             // create a new camera
-            _camera = new GameCamera(_allPlayers.ElementAt(0), 24 * new Vector3(-20, 40, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
+            _camera = new GameCamera(this.getPlayer(), 24 * new Vector3(-20, 40, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
             // and pass it to the renderer
             ((Renderer)_renderer).SetUpCamera(_camera);
 
@@ -223,7 +223,7 @@ namespace Muffin
             }
 
             // only show the star when all 12 coins have been collected
-            if (_allPlayers.ElementAt(0).coinCount == 12)
+            if (this.getPlayer().coinCount == 12)
             {
                 if (getCurrentLevel().goal.hidden == true)
                 {
@@ -233,7 +233,7 @@ namespace Muffin
             }
 
             // check to see if the player has died and restart the level if so
-            if (_allPlayers.ElementAt(0).toBeRemoved)
+            if (this.getPlayer().toBeRemoved)
                 this.displayLevelFailed(true);
 
             // iterate over all objects and remove objects that have fallen off map
@@ -617,8 +617,8 @@ namespace Muffin
         {
             LoadLevel(index);
             ((Renderer)_renderer).setModels();
-            _camera.setPlayerToFollow(_allPlayers.ElementAt(0));
-            ((InputManager)_inputManager).setPlayerToControl(_allPlayers.ElementAt(0));
+            _camera.setPlayerToFollow(this.getPlayer());
+            ((InputManager)_inputManager).setPlayerToControl(this.getPlayer());
         }
 
         public void newGame()
@@ -645,9 +645,12 @@ namespace Muffin
         // function called when a coin is collected
         public void coinCollected()
         {
-            _allPlayers.ElementAt(0).coinCollected();
+            this.getPlayer().coinCollected();
             this.playSoundClip("coinCollected");
-            Console.WriteLine("You have collected " + _allPlayers.ElementAt(0).coinCount + " coins!");
+            Console.WriteLine("You have collected " + this.getPlayer().coinCount + " coins!");
+
+            // set jump count to 0 (for some fun levels where coins can bridge you across
+            this.getPlayer().jumpCount = 0;
 
         }
 
@@ -660,5 +663,11 @@ namespace Muffin
                 this.displayGameOver(true);
         }
         #endregion
+
+        // gets the player. we can change this later, but it works for now
+        public PlayerObject getPlayer()
+        {
+            return _allPlayers.ElementAt(0);
+        }
     }
 }
