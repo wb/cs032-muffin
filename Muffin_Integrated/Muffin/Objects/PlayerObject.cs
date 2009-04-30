@@ -53,7 +53,7 @@ namespace Definitions
                 currentState.velocity = new Vector3(currentState.velocity.X, amount, currentState.velocity.Z);
                 futureState.velocity = new Vector3(futureState.velocity.X, amount, currentState.velocity.Z);
 
-                this.applyForce(new Vector3(0.0f, 1000.0f * _mass, 0.0f), _dimensions / 2.0f);
+                this.applyForce(new Vector3(0.0f, 500.0f * _mass, 0.0f), _dimensions / 2.0f);
 
             }
 

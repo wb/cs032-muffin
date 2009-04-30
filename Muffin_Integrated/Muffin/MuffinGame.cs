@@ -623,6 +623,7 @@ namespace Muffin
 
         public void LoadLevelIndex(int index)
         {
+            _numberOfCoins = 0;
             LoadLevel(index);
             ((Renderer)_renderer).setModels();
             _camera.setPlayerToFollow(this.getPlayer());
@@ -655,7 +656,7 @@ namespace Muffin
         {
             this.getPlayer().coinCollected();
             this.playSoundClip("coinCollected");
-            Console.WriteLine("You have collected " + this.getPlayer().coinCount + " of 12 coins!");
+            Console.WriteLine("You have collected " + this.getPlayer().coinCount + " of " + _numberOfCoins + " coins!");
 
             // set jump count to 0 (for some fun levels where coins can bridge you across
             this.getPlayer().jumpCount = 0;
