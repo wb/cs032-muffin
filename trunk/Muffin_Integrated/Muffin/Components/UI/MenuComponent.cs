@@ -75,7 +75,7 @@ namespace Muffin.Components.UI
 
             // main menu
             _mainMenu = new MenuObject(_spriteBatch, _muffinGame);
-            _mainMenu.hidden = false;
+            //_mainMenu.hidden = false;
 
             // load main menu components
             _mainMenu.addItem("mainMenu", new Rectangle(0, 0, 1920, 1200), false, null);
