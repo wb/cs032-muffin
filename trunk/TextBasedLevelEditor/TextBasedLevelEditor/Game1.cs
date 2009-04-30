@@ -48,6 +48,7 @@ namespace TextBasedLevelEditor
         private Menu _menu;
         private KeyboardHandler _keyboardHandler;
         private XMLSave _xml;
+        private _3DPreview _preview, _previewCut;
 
         protected override void Initialize()
         {
@@ -60,6 +61,8 @@ namespace TextBasedLevelEditor
             _menu = new Menu(700, 0, this);
             _keyboardHandler = new KeyboardHandler();
             _xml = new XMLSave();
+            _preview = new _3DPreview(this, 900, 500);
+            _previewCut = new _3DPreview(this, 900, 200);
 
             base.Initialize();
         }
@@ -142,6 +145,8 @@ namespace TextBasedLevelEditor
             _level.drawLayer(_currentLayer, _spriteBatch);
             _selectedObject.draw(_spriteBatch);
             _menu.draw(_spriteBatch);
+            _preview.draw(_level, _spriteBatch);
+            _previewCut.draw(_level, _spriteBatch, _currentLayer + 1);
             _spriteBatch.End();
             base.Draw(gameTime);
         }

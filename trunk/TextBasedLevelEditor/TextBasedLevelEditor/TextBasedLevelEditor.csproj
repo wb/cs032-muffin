@@ -84,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3DPreview.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Input Handling\KeyboardHandler.cs" />
     <Compile Include="Input Handling\Menu.cs" />
