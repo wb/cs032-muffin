@@ -84,3 +84,6 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Co
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\ai\Asphalt_New_0.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\grass\Groundcover_Sand_Smooth_0.xnb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\grass\Vegetation_Grass_Artificial_0.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\ai\Asphalt_New.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\grass\Groundcover_Sand_Smooth.xnb
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Models\grass\Vegetation_Grass_Artificial.xnb

@@ -68,6 +68,9 @@ Content\Models\grass.xnb
 Content\Models\ai\Asphalt_New_0.xnb
 Content\Models\grass\Groundcover_Sand_Smooth_0.xnb
 Content\Models\grass\Vegetation_Grass_Artificial_0.xnb
+Content\Models\ai\Asphalt_New.xnb
+Content\Models\grass\Groundcover_Sand_Smooth.xnb
+Content\Models\grass\Vegetation_Grass_Artificial.xnb
 Content\Audio\background.wma
 Content\Levels\level1.xml
 Content\Levels\level2.xml
