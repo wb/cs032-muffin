@@ -110,7 +110,7 @@ namespace Muffin
                 {
                     String s = x.Attributes.Item(0).Value;
 
-                    if (s.Equals("flat") || s.Equals("grass"))
+                    if (s.Equals("grass"))
                     {
                         return ModelName.GRASS;
                     }
