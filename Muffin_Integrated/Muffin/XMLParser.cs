@@ -51,7 +51,7 @@ namespace Muffin
             {
                 XmlNodeList children = x.ChildNodes;
 
-                if (children.Count != 3)
+                if (children.Count != 4)
                 {
                     Console.WriteLine("Bad Parsing!!!");
                     throw new Exception();
@@ -59,7 +59,8 @@ namespace Muffin
 
                 ModelName name = parseName(children.Item(0));
                 Vector3 pos = parsePosition(children.Item(1));
-                Vector3 rot = parseRotation(children.Item(2));
+                //Vector3 dimensions = parseDimensions(children.Item(2));
+                Vector3 rot = parseRotation(children.Item(3));
                 Boolean locked = false;
                 Quaternion quat = new Quaternion();
                 Matrix rotMat = Matrix.CreateFromYawPitchRoll(rot.Y, rot.X, rot.Z);
@@ -106,21 +107,29 @@ namespace Muffin
                 {
                     String s = x.Attributes.Item(0).Value;
 
-                    if (s.Equals("flat"))
+                    if (s.Equals("flat") || s.Equals("grass"))
                     {
                         return ModelName.GRASS;
                     }
-                    else if (s.Equals("wedge"))
+                    else if (s.Equals("ai"))
                     {
-                        return ModelName.GRASS;
+                        return ModelName.AI;
                     }
-                    else if (s.Equals("corner"))
+                    else if (s.Equals("box"))
                     {
-                        return ModelName.GRASS;
+                        return ModelName.BOX;
                     }
-                    else if (s.Equals("inverted_corner"))
+                    else if (s.Equals("coin"))
                     {
-                        return ModelName.GRASS;
+                        return ModelName.COIN;
+                    }
+                    else if (s.Equals("player"))
+                    {
+                        return ModelName.PLAYER;
+                    }
+                    else if (s.Equals("star"))
+                    {
+                        return ModelName.STAR;
                     }
                     else if (s.Equals("blank"))
                     {
@@ -151,9 +160,9 @@ namespace Muffin
                     && attributes.Item(1).Name.Equals("Y")
                     && attributes.Item(2).Name.Equals("Z"))
                 {
-                    X = ((float)Double.Parse(attributes.Item(0).Value) * 60.0f);
-                    Y = ((float)Double.Parse(attributes.Item(1).Value) * 17.0f);
-                    Z = ((float)Double.Parse(attributes.Item(2).Value) * 60.0f);
+                    X = ((float)Double.Parse(attributes.Item(0).Value));
+                    Y = ((float)Double.Parse(attributes.Item(1).Value));
+                    Z = ((float)Double.Parse(attributes.Item(2).Value));
                     return new Vector3(X, Y, Z);
                 }
                 else

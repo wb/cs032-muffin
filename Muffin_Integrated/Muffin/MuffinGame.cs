@@ -103,10 +103,8 @@ namespace Muffin
 
             // create some levels
             _levels = new List<LevelObject>();
-            _levels.Add(new LevelObject("level_flat"));
-            _levels.Add(new LevelObject("level_flat_small"));
-            _levels.Add(new LevelObject("level_empty_spaces"));
-
+            _levels.Add(new LevelObject("level_new_player_small"));
+            _levels.Add(new LevelObject("level_new_player_ai"));
             LoadLevel(0);
 
             _renderer = new Renderer(this);
@@ -208,11 +206,11 @@ namespace Muffin
             // TODO: Add your update logic here
             beginTick();
 
-            // loop through all coins
-            foreach (CollectableObject coin in _allCollectables)
+            // loop through all collectables
+            foreach (CollectableObject o in _allCollectables)
             {
-                coin.updateOrientation(gameTime);
-                coin.checkForCollection(this);
+                o.updateOrientation(gameTime);
+                o.checkForCollection(this);
             }
 
             // only show the star when all 12 coins have been collected
@@ -284,9 +282,11 @@ namespace Muffin
 
             // player
             GameObject player = new PlayerObject(null, ModelName.PLAYER, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
-            objs.Add(player);
+            //objs.Add(player);
             player.applyForce(new Vector3(-50000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
 
+            #region testing objects
+            /*
             // coins
             for (int i = 0; i < 12; i++)
             {
@@ -318,7 +318,8 @@ namespace Muffin
             objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(500, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 11000.0f, GameConstants.GameObjectScale));
             objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 300, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale));
             objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale));
-
+            */
+            #endregion
             foreach (GameObject o in objs)
             {
                 if (o is TerrainObject)
@@ -675,6 +676,11 @@ namespace Muffin
         // gets the player. we can change this later, but it works for now
         public PlayerObject getPlayer()
         {
+            if (_allPlayers.Count() == 0)
+            {
+                Console.WriteLine("Error: Level must include a player.");
+                Environment.Exit(1);
+            }
             return _allPlayers.ElementAt(0);
         }
     }
