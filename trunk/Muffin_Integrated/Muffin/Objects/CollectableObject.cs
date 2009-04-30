@@ -56,7 +56,7 @@ namespace Definitions
 
                 if (modelName == ModelName.STAR)
                 {
-                    float test = (float) Math.Sin(angle) * 2.0f + 8.0f;
+                    float test = (float) Math.Sin(angle * 1.2f) * 1.5f + 8.0f;
                     this.scale = test;
                 }
             }
