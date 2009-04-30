@@ -35,7 +35,7 @@ namespace Definitions
             base(null, ModelType.COLLECTABLE, modelName, position, Quaternion.Identity, true, dimensions, 1000.0f, scale)
         {
             // create a random rotation offset
-            _rotationOffset = (float) random.NextDouble() * 0.5f * (float) Math.PI;
+            _rotationOffset = 0.0f;// (float)random.NextDouble() * 0.5f * (float)Math.PI;
 
             // set the callback and the collection object
             _callback = callback;

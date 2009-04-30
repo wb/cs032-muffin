@@ -174,6 +174,11 @@ namespace Muffin.Components.Renderer
             /*if (change)
                 _lookMode = !_lookMode;*/
         }
+
+        public float getZoom()
+        {
+            return _zoom;
+        }
     }
 }
 
