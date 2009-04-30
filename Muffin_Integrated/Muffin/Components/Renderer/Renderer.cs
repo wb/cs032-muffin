@@ -230,21 +230,17 @@ namespace Muffin.Components.Renderer
             standardDSB = device.DepthStencilBuffer;
 
             Texture2D[] modelTexture;
-            m_models.Add(LoadModel("flat", out modelTexture));
-            m_model_textures.Add(modelTexture);
-            m_models.Add(LoadModel("wedge", out modelTexture));
-            m_model_textures.Add(modelTexture);
-            m_models.Add(LoadModel("corner", out modelTexture));
-            m_model_textures.Add(modelTexture);
-            m_models.Add(LoadModel("inverted_corner", out modelTexture));
+            m_models.Add(LoadModel("ai", out modelTexture));
             m_model_textures.Add(modelTexture);
             m_models.Add(LoadModel("box", out modelTexture));
+            m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("coin", out modelTexture));
+            m_model_textures.Add(modelTexture);
+            m_models.Add(LoadModel("grass", out modelTexture));
             m_model_textures.Add(modelTexture);
             m_models.Add(LoadModel("player", out modelTexture));
             m_model_textures.Add(modelTexture);
             m_models.Add(LoadModel("star", out modelTexture));
-            m_model_textures.Add(modelTexture);
-            m_models.Add(LoadModel("coin", out modelTexture));
             m_model_textures.Add(modelTexture);
 
             setModels();
@@ -260,30 +256,23 @@ namespace Muffin.Components.Renderer
             {
                 switch (o.modelName)
                 {
+                    case ModelName.AI:
+                        o.model = m_models.ElementAt((int)ModelName.AI);
+                        break;
                     case ModelName.BOX:
                         o.model = m_models.ElementAt((int)ModelName.BOX);
                         break;
-                    case ModelName.CORNER:
-                        o.model = m_models.ElementAt((int)ModelName.CORNER);
+                    case ModelName.COIN:
+                        o.model = m_models.ElementAt((int)ModelName.COIN);
                         break;
-                    case ModelName.FLAT:
-                        o.model = m_models.ElementAt((int)ModelName.FLAT);
-                        break;
-                    case ModelName.INVERTED_CORNER:
-                        o.model = m_models.ElementAt((int)ModelName.INVERTED_CORNER);
-                        break;
-                    case ModelName.WEDGE:
-                        o.model = m_models.ElementAt((int)ModelName.WEDGE);
+                    case ModelName.GRASS:
+                        o.model = m_models.ElementAt((int)ModelName.GRASS);
                         break;
                     case ModelName.PLAYER:
                         o.model = m_models.ElementAt((int)ModelName.PLAYER);
-                        //handle_original = o.model.Bones[19].Transform;
                         break;
                     case ModelName.STAR:
                         o.model = m_models.ElementAt((int)ModelName.STAR);
-                        break;
-                    case ModelName.COIN:
-                        o.model = m_models.ElementAt((int)ModelName.COIN);
                         break;
                     case ModelName.NONE:
                     default:
