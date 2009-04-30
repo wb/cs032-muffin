@@ -24,7 +24,7 @@ namespace Definitions
         public const int MinHeight = -200; // this is the floor of the game.  you will die if you hit this
         public const float GameObjectScale = 10.0f; // this is the universal scale constant for objects
         public const float NearClip = 1000.0f;
-        public const float FarClip = 60000.0f;
+        public const float FarClip = 100000.0f;
 
         public const bool FULL_SCREEN_ENABLED = false;
         public const int SCREEN_WIDTH = 1280;
