@@ -150,7 +150,7 @@ namespace Definitions
         {
             return Matrix.CreateFromQuaternion(_currentState.rotation) *
                    Matrix.CreateScale(_scale) *
-                   Matrix.CreateTranslation(_currentState.position * _scale);
+                   Matrix.CreateTranslation(_currentState.position * GameConstants.GameObjectScale);
         }
 
         /*
@@ -163,7 +163,7 @@ namespace Definitions
         {
             return Matrix.CreateFromQuaternion(_futureState.rotation) *
                    Matrix.CreateScale(_scale) *
-                   Matrix.CreateTranslation(_futureState.position * _scale);
+                   Matrix.CreateTranslation(_futureState.position * GameConstants.GameObjectScale);
         }
 
         /*
@@ -310,7 +310,7 @@ namespace Definitions
 
             if (_modelType == ModelType.ENEMY || _modelType == ModelType.HUMAN)
             {
-                float friction = 0.97f;
+                float friction = 0.95f;
                 _toMove *= 3.0f;
                 adjustedMove = friction * _previousToMove + (1.0f - friction) * _toMove;
             }

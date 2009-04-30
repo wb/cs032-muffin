@@ -76,7 +76,7 @@ namespace Definitions
         {
             return Matrix.CreateFromQuaternion(_orientation) *
                    Matrix.CreateScale(_scale) *
-                   Matrix.CreateTranslation(_futureState.position * _scale);
+                   Matrix.CreateTranslation(_currentState.position * GameConstants.GameObjectScale);
         }
 
         private void setDirection()
