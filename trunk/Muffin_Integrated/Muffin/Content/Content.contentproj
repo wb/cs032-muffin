@@ -570,11 +570,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levels\level_kevin1.xml">
+    <None Include="Levels\level_kevin1.xml">
       <Name>level_kevin1</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v3.0\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
