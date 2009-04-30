@@ -27,13 +27,13 @@ namespace Muffin
             m_root = doc.DocumentElement;
         }
 
-        public void loadLevel(List<GameObject> m_objects, List<Model> m_models) 
+        public void loadLevel(List<GameObject> m_objects, List<Model> m_models)
         {
             //Console.WriteLine("Name is: "  + m_root.Name + "| YES!");
             //m_read.Read();
             //Console.WriteLine("Name 2 is: " + m_read.Name);
 
-            if(m_root.Name.Equals("LEVEL")) 
+            if (m_root.Name.Equals("LEVEL"))
             {
                 Console.WriteLine("Loading level...");
                 XmlNodeList children = m_root.ChildNodes;
@@ -56,20 +56,44 @@ namespace Muffin
                     Console.WriteLine("Bad Parsing!!!");
                     throw new Exception();
                 }
-                   
+
                 ModelName name = parseName(children.Item(0));
                 Vector3 pos = parsePosition(children.Item(1));
                 Vector3 rot = parseRotation(children.Item(2));
+                Boolean locked = false;
                 Quaternion quat = new Quaternion();
-                Matrix rotMat = Matrix.CreateFromYawPitchRoll(rot.Y,rot.X,rot.Z);
+                Matrix rotMat = Matrix.CreateFromYawPitchRoll(rot.Y, rot.X, rot.Z);
 
                 //add the object to the array of active objects
                 Quaternion.CreateFromRotationMatrix(ref rotMat, out quat);
 
-                // don't add objects of type none
-                if (name != ModelName.NONE)
-                    m_objects.Add(new TerrainObject(null, name, pos, quat, new Vector3(60,24,60),GameConstants.GameObjectScale, (int)(pos.X/60.0f), (int)(pos.Z/60.0f)));
-            } else {
+                if (name == ModelName.AI)
+                {
+                    m_objects.Add(new AIObject(null, name, pos, quat, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale));
+                }
+                else if (name == ModelName.BOX)
+                {
+                    m_objects.Add(new GameObject(null, ModelType.OBJECT, name, pos, quat, locked, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale));
+                }
+                else if (name == ModelName.COIN)
+                {
+                    
+                }
+                else if (name == ModelName.GRASS)
+                {
+                    m_objects.Add(new TerrainObject(null, name, pos, quat, new Vector3(60, 30, 60), GameConstants.GameObjectScale, (int)(pos.X / 60.0f), (int)(pos.Z / 60.0f)));
+                }
+                else if (name == ModelName.PLAYER)
+                {
+                    m_objects.Add(new PlayerObject(null, name, pos, quat, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale));
+                }
+                else if (name == ModelName.STAR)
+                {
+                }
+
+            }
+            else
+            {
                 Console.WriteLine("Bad parse input");
             }
         }
@@ -127,10 +151,10 @@ namespace Muffin
                     && attributes.Item(1).Name.Equals("Y")
                     && attributes.Item(2).Name.Equals("Z"))
                 {
-                    X = ((float) Double.Parse(attributes.Item(0).Value) * 60.0f);
-                    Y = ((float) Double.Parse(attributes.Item(1).Value) * 17.0f);
-                    Z = ((float) Double.Parse(attributes.Item(2).Value) * 60.0f);
-                    return new Vector3(X,Y,Z);
+                    X = ((float)Double.Parse(attributes.Item(0).Value) * 60.0f);
+                    Y = ((float)Double.Parse(attributes.Item(1).Value) * 17.0f);
+                    Z = ((float)Double.Parse(attributes.Item(2).Value) * 60.0f);
+                    return new Vector3(X, Y, Z);
                 }
                 else
                 {
