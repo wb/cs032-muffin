@@ -76,7 +76,7 @@ namespace Muffin
                 }
                 else if (name == ModelName.BOX)
                 {
-                    m_objects.Add(new GameObject(null, ModelType.OBJECT, name, pos, quat, locked, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale));
+                    m_objects.Add(new GameObject(null, ModelType.OBJECT, name, pos, quat, locked, new Vector3(55, 55, 55), 1000.0f, GameConstants.GameObjectScale * 55.0f/60.0f));
                 }
                 else if (name == ModelName.COIN)
                 {
