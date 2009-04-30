@@ -105,7 +105,7 @@ namespace Muffin
 
             // create some levels
             _levels = new List<LevelObject>();
-            _levels.Add(new LevelObject("level_new_player_small"));
+            _levels.Add(new LevelObject("level"));
             _levels.Add(new LevelObject("level_new_player_ai"));
             _levels.Add(new LevelObject("level_new_player_ai_coins_star"));
             LoadLevel(0);
