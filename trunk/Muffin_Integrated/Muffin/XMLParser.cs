@@ -84,19 +84,19 @@ namespace Muffin
 
                     if (s.Equals("flat"))
                     {
-                        return ModelName.FLAT;
+                        return ModelName.GRASS;
                     }
                     else if (s.Equals("wedge"))
                     {
-                        return ModelName.WEDGE;
+                        return ModelName.GRASS;
                     }
                     else if (s.Equals("corner"))
                     {
-                        return ModelName.CORNER;
+                        return ModelName.GRASS;
                     }
                     else if (s.Equals("inverted_corner"))
                     {
-                        return ModelName.INVERTED_CORNER;
+                        return ModelName.GRASS;
                     }
                     else if (s.Equals("blank"))
                     {

@@ -47,86 +47,6 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
-    <Compile Include="Models\corner.fbx">
-      <Name>corner</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\flat.fbx">
-      <Name>flat</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\inverted_corner.fbx">
-      <Name>inverted_corner</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\wedge.fbx">
-      <Name>wedge</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\box\Wood_Floor_Parquet.jpg">
-      <Name>Wood_Floor_Parquet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\box\Wood_Lumber_ButtJoined.jpg">
-      <Name>Wood_Lumber_ButtJoined</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\corner\Groundcover_Sand_Smooth.jpg">
-      <Name>Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\corner\Vegetation_Grass_Artificial.jpg">
-      <Name>Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\flat\Groundcover_Sand_Smooth.jpg">
-      <Name>Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\flat\Vegetation_Grass_Artificial.jpg">
-      <Name>Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\inverted_corner\Groundcover_Sand_Smooth.jpg">
-      <Name>Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\inverted_corner\Vegetation_Grass_Artificial.jpg">
-      <Name>Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Models\wedge\Groundcover_Sand_Smooth.jpg">
-      <Name>Groundcover_Sand_Smooth</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Models\wedge\Vegetation_Grass_Artificial.jpg">
-      <Name>Vegetation_Grass_Artificial</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Levels\level1.xml">
@@ -251,6 +171,16 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Compile Include="Models\ai.fbx">
+      <Name>ai</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Models\grass.fbx">
+      <Name>grass</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <Compile Include="Models\coin.fbx">
       <Name>coin</Name>
       <Importer>FbxImporter</Importer>

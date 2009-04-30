@@ -14,5 +14,5 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace Definitions
 {
-    public enum ModelName { FLAT, WEDGE, CORNER, INVERTED_CORNER, BOX, PLAYER, STAR, COIN, NONE };
+    public enum ModelName { AI, BOX, COIN, GRASS, PLAYER, STAR, NONE };
 }
