@@ -290,21 +290,16 @@ namespace Muffin
             }
 
             // now that we have added everything to the correct list, we must give coins and stars their
-            // collection object (the object that can collect them)
+            // collection object (the object that can collect them) and count total number of coins
 
-            foreach (GameObject o in objs)
+            foreach (CollectableObject o in _allCollectables)
             {
-                if (o is CollectableObject)
-                {
-                    (o as CollectableObject).collectionObject = this.getPlayer();
-                    if ((o as CollectableObject).modelName == ModelName.COIN)
-                        _numberOfCoins++;
-                    else if ((o as CollectableObject).modelName == ModelName.STAR)
-                        this.getCurrentLevel().goal = o as CollectableObject;
-                }
+                o.collectionObject = this.getPlayer();
+                if (o.modelName == ModelName.COIN)
+                    _numberOfCoins++;
+                else if (o.modelName == ModelName.STAR)
+                    this.getCurrentLevel().goal = o; 
             }
-
-
         }
 
         // For any global game book-keeping that needs to be done at the begining of every cycle
