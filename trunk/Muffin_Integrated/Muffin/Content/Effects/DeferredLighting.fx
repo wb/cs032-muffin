@@ -16,6 +16,9 @@ Texture xTexture;
 float3 xCameraPos;
 float3 xLightDir;
 float3 xLightPos;
+
+bool xEnableLighting;
+
 //float xLightIntensity[3];
 
 //float xSpecular;
@@ -29,12 +32,17 @@ struct VertexToPixel {
 	float3 Normal		: TEXCOORD0;
 	float4 ScreenPos	: TEXCOORD1;
 	float2 TexCoords	: TEXCOORD2;
+	float4 ObjectPos	: TEXCOORD3;
 };
 
 struct PixelToFrame {
 	float4 Color		: COLOR0;
 	float4 Normal		: COLOR1;
 	float4 Depth		: COLOR2;
+};
+
+struct PixelToFrame2 {
+	float4 Color		: COLOR0;
 };
 
 VertexToPixel VertexShaderFunction (float4 inPos		: POSITION0,
@@ -51,7 +59,8 @@ VertexToPixel VertexShaderFunction (float4 inPos		: POSITION0,
 	Output.Normal = normalize(normal_world);
 	
 	Output.ScreenPos = Output.Position;
-	Output.TexCoords = inTexCoords;									
+	Output.TexCoords = inTexCoords;		
+	Output.ObjectPos = inPos;							
 	
 	return Output;
 }
@@ -66,6 +75,18 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0{
 	Output.Normal.xyz =  inVS.Normal/2.0f + 0.5f;
 	
 	Output.Depth = inVS.ScreenPos.z/inVS.ScreenPos.w;
+	
+	if(!xEnableLighting) {
+		Output.Depth = -1.0f;   
+
+		float4 topColor = float4(0.3f, 0.3f, 0.9f, 1);    
+		float4 bottomColor = 1;    
+	    
+		float4 baseColor = lerp(bottomColor, topColor, saturate((inVS.ObjectPos.y)/0.6f));
+		float4 cloudValue = tex2D(TextureSampler, inVS.TexCoords).r;
+	    
+		Output.Color = lerp(baseColor,1, cloudValue);       
+	}
 	
 	return Output;
 }

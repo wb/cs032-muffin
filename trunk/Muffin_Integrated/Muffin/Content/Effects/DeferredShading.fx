@@ -100,42 +100,51 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0 {
 	
 	float depth = tex2D(DepthMapSampler, inVS.TexCoords).r;
 	
-	float4 screenPos;
-	screenPos.x = inVS.TexCoords.x * 2.0f - 1.0f;
-	screenPos.y = -(inVS.TexCoords.y * 2.0f - 1.0f);
-	screenPos.z = depth;
-	screenPos.w = 1.0f;
+	if(depth < 0) {
+		Output.Color.b = 0.0f;
+		Output.Color.r = 1.0f;
+		Output.Color.a = 0.75f;
+		return Output;
+	} else {
 	
-	float4 worldPos = mul(screenPos, xViewProjectionInverse);
-	worldPos /= worldPos.w;
-	
-	//find screen position
-	float4 lightScreenPos = mul(worldPos, xLightViewProjection);
-	lightScreenPos /= lightScreenPos.w;
-	
-	//convert so that screen position can be looked up in shadow map
-	float2 lightSamplePos;
-	lightSamplePos.x = (lightScreenPos.x / 2.0f) + 0.5f;
-	lightSamplePos.y = (-lightScreenPos.y / 2.0f + 0.5f);
-	
-	float realDistance = lightScreenPos.z;
-	float distanceInShadowMap = tex2D(ShadowMapSampler, lightSamplePos).r;
-	
-	float shading = 0;
-	
-	float3 lightDirection = normalize(worldPos - xLightPos);
-	shading = dot(normal, -lightDirection);
-	shading = shading * xLightIntensity;	
+		float4 screenPos;
+		screenPos.x = inVS.TexCoords.x * 2.0f - 1.0f;
+		screenPos.y = -(inVS.TexCoords.y * 2.0f - 1.0f);
+		screenPos.z = depth;
+		screenPos.w = 1.0f;
+		
+		float4 worldPos = mul(screenPos, xViewProjectionInverse);
+		worldPos /= worldPos.w;
+		
+		//find screen position
+		float4 lightScreenPos = mul(worldPos, xLightViewProjection);
+		lightScreenPos /= lightScreenPos.w;
+		
+		//convert so that screen position can be looked up in shadow map
+		float2 lightSamplePos;
+		lightSamplePos.x = (lightScreenPos.x / 2.0f) + 0.5f;
+		lightSamplePos.y = (-lightScreenPos.y / 2.0f + 0.5f);
+		
+		float realDistance = lightScreenPos.z;
+		float distanceInShadowMap = tex2D(ShadowMapSampler, lightSamplePos).r;
 
-	float3 eyeDir = normalize(xCameraPos - worldPos);
-	float3 reflection = reflect(-lightDirection, normal);
-	Output.Color.b = saturate(dot(reflection, -eyeDir));
-	
-	float4 previous = tex2D(ShadingMapSampler, inVS.TexCoords);
-	Output.Color.r = shading + previous;
-	Output.Color.a = CalcShadowTermSoftPCF(realDistance, lightSamplePos, 4);
-	//Output.Color = tex2D(ShadowMapSampler, inVS.TexCoords);
-	return Output;
+		float shading = 0;
+		
+		float3 lightDirection = normalize(worldPos - xLightPos);
+		shading = dot(normal, -lightDirection);
+		shading = shading * xLightIntensity;	
+
+		float3 eyeDir = normalize(xCameraPos - worldPos);
+		float3 reflection = reflect(-lightDirection, normal);
+		Output.Color.b = saturate(dot(reflection, -eyeDir));
+		
+		float4 previous = tex2D(ShadingMapSampler, inVS.TexCoords);
+		Output.Color.r = shading + previous;
+		Output.Color.a = CalcShadowTermSoftPCF(realDistance, lightSamplePos, 4);
+		//Output.Color = tex2D(ShadowMapSampler, inVS.TexCoords);
+
+		return Output;
+	}
 }
 
 technique DeferredShading
