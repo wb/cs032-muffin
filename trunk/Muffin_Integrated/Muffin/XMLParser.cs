@@ -80,7 +80,7 @@ namespace Muffin
                 }
                 else if (name == ModelName.COIN)
                 {
-                    m_objects.Add(new CollectableObject(name, new CollectionCallback(_muffinGame.coinCollected), null, 40.0f, pos, new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
+                    m_objects.Add(new CollectableObject(name, new CollectionCallback(_muffinGame.coinCollected), null, 40.0f, pos + new Vector3(0,30.0f, 0), new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
                 }
                 else if (name == ModelName.GRASS)
                 {
@@ -92,7 +92,7 @@ namespace Muffin
                 }
                 else if (name == ModelName.STAR)
                 {
-                    m_objects.Add(new CollectableObject(name, new CollectionCallback(_muffinGame.starCollected), null, 40.0f, pos, new Vector3(60, 60, 60), GameConstants.GameObjectScale, true));
+                    m_objects.Add(new CollectableObject(name, new CollectionCallback(_muffinGame.starCollected), null, 40.0f, pos + new Vector3(0,100.0f,0), new Vector3(60, 60, 60), GameConstants.GameObjectScale, true));
                 }
 
             }
