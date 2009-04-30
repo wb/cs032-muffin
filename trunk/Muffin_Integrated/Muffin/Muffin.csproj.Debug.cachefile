@@ -81,3 +81,7 @@ Content\Levels\level_maze.xml
 Content\Levels\level_terrain.xml
 Content\Levels\level_huge.xml
 Content\Levels\level_empty_spaces.xml
+Content\Levels\level_new_small.xml
+Content\Levels\level_new_empty.xml
+Content\Levels\level_new_player_small.xml
+Content\Levels\level_new_player_ai.xml
