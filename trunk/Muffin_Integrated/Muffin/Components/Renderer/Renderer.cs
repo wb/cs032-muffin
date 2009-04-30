@@ -101,6 +101,9 @@ namespace Muffin.Components.Renderer
         Texture2D blackTexture;
         DepthStencilBuffer shadowDSB;
         DepthStencilBuffer standardDSB;
+        
+        Model skyDome;
+        Texture2D skyTexture;
 
         Matrix handle_original;
         bool isLoaded = false;
@@ -242,6 +245,9 @@ namespace Muffin.Components.Renderer
             m_model_textures.Add(modelTexture);
             m_models.Add(LoadModel("star", out modelTexture));
             m_model_textures.Add(modelTexture);
+
+            skyDome = LoadModel("dome", out modelTexture);
+            skyTexture = m_game.Content.Load<Texture2D>("Textures\\cloudMap");
 
             setModels();
             //SetUpCamera();
@@ -580,16 +586,10 @@ namespace Muffin.Components.Renderer
            
             for (int i = 0; i < GameConstants.MaxLights; i++)
             {
-               // calculateFrustum(m_lights[i]);
                 renderShadow(m_lights[i]);
                 renderLight(m_lights[i]);
             }
-
-            
-
             return deferredShadingTarget.GetTexture();
-
-            //return blackTexture;
         }
 
         private void renderCombinedEffects()
@@ -617,6 +617,10 @@ namespace Muffin.Components.Renderer
                 foreach (ModelMesh mesh in m.Meshes)
                     foreach (ModelMeshPart meshPart in mesh.MeshParts)
                         meshPart.Effect = effect;
+
+            foreach (ModelMesh mesh in skyDome.Meshes)
+                foreach (ModelMeshPart meshPart in mesh.MeshParts)
+                    meshPart.Effect = effect;
         }
 
         public override void Draw(GameTime gameTime)
@@ -660,8 +664,35 @@ namespace Muffin.Components.Renderer
                     DrawModel(o.model, m_model_textures.ElementAt((int)o.modelName), worldMatrix, technique);
                 }
             }
+
+            DrawSkyDome(technique);
         }
         
+
+        private void DrawSkyDome(string technique) {
+            device.RenderState.DepthBufferWriteEnable = false;
+
+            Matrix[] modelTransforms = new Matrix[skyDome.Bones.Count];
+            skyDome.CopyAbsoluteBoneTransformsTo(modelTransforms);
+
+            Matrix wMatrix = Matrix.CreateFromYawPitchRoll(0,0,MathHelper.Pi) * Matrix.CreateTranslation(0, 0.2f, 0) * Matrix.CreateScale(100000) * Matrix.CreateTranslation(camera.cameraPosition);
+            foreach (ModelMesh mesh in skyDome.Meshes)
+            {
+                foreach (Effect currentEffect in mesh.Effects)
+                {
+                    Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
+                    deferredLighting.CurrentTechnique = currentEffect.Techniques[technique];
+                    deferredLighting.Parameters["xWorld"].SetValue(worldMatrix);
+                    deferredLighting.Parameters["xCameraViewProjection"].SetValue(viewProjection);
+                    deferredLighting.Parameters["xTexture"].SetValue(skyTexture);
+                    deferredLighting.Parameters["xEnableLighting"].SetValue(false);
+                }
+                mesh.Draw();
+            }
+            device.RenderState.DepthBufferWriteEnable = true;
+        }
+
+
         Vector3 dir = new Vector3(1, -1, 1);
         float handleRot = 0.0f;
         
@@ -702,6 +733,7 @@ namespace Muffin.Components.Renderer
                     currentEffect.Parameters["xLightPos"].SetValue(m_lights[0].LightPos);
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currentEffect.Parameters["xTexture"].SetValue(textures[i++]);
+                    deferredLighting.Parameters["xEnableLighting"].SetValue(true);
                 }
                 mesh.Draw();
             }
@@ -726,6 +758,7 @@ namespace Muffin.Components.Renderer
                     currentEffect.Parameters["xLightPos"].SetValue(m_lights[0].LightPos);
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currentEffect.Parameters["xTexture"].SetValue(textures[i++]);
+                    deferredLighting.Parameters["xEnableLighting"].SetValue(true);
                 }
                 mesh.Draw();
             }
