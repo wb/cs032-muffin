@@ -88,7 +88,7 @@ namespace Muffin
                 }
                 else if (name == ModelName.PLAYER)
                 {
-                    m_objects.Add(new PlayerObject(null, name, pos, quat, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale));
+                    m_objects.Add(new PlayerObject(null, name, pos, quat, new Vector3(45, 45, 45), 1000.0f, 7.5f));
                 }
                 else if (name == ModelName.STAR)
                 {

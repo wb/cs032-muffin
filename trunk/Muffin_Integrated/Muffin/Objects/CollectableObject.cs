@@ -53,6 +53,12 @@ namespace Definitions
             {
                 float angle = MathHelper.ToRadians((float)gameTime.TotalGameTime.TotalMilliseconds / 5.0f);
                 _orientation = Quaternion.CreateFromAxisAngle(Vector3.Up, angle + _rotationOffset);
+
+                if (modelName == ModelName.STAR)
+                {
+                    float test = (float) Math.Sin(angle) * 2.0f + 8.0f;
+                    this.scale = test;
+                }
             }
         }
 
@@ -66,13 +72,13 @@ namespace Definitions
             {
                 return Matrix.CreateFromQuaternion(_orientation) *
                        Matrix.CreateScale(_scale) *
-                       Matrix.CreateTranslation(_futureState.position * _scale);
+                       Matrix.CreateTranslation(_currentState.position * GameConstants.GameObjectScale);
             }
             else
             {
                 return Matrix.CreateFromQuaternion(_orientation) *
                        Matrix.CreateScale(0.0f) *
-                       Matrix.CreateTranslation(_futureState.position * 0.0f);
+                       Matrix.CreateTranslation(_currentState.position * 0.0f);
             }
         }
 
