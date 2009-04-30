@@ -50,7 +50,9 @@ namespace Muffin.Components.UI
         }
         public SoundEffectInstance playSound(String name)
         {
-            return this.playSound(name, 0.5f);
+            // just for fun, the zoom level effects the volume
+            float volume = 1.0f / (float) Math.Sqrt(_game.camera.getZoom()) - 0.1f;
+            return this.playSound(name, volume / 1.5f);
         }
 
         public SoundEffectInstance playSound(String name, float volume)

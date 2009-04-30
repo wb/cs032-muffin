@@ -108,6 +108,7 @@ namespace Muffin
             _levels.Add(new LevelObject("level"));
             _levels.Add(new LevelObject("level_new_player_ai_coins_star"));
             _levels.Add(new LevelObject("level_new_tall"));
+            _levels.Add(new LevelObject("kevins_test_levely_thing"));
             
             
             LoadLevel(0);
@@ -274,48 +275,8 @@ namespace Muffin
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
 
-            
-            
-            #region testing objects
-            /*
-            // coins
-            for (int i = 0; i < 12; i++)
-            {
-                int x = (int) random.Next(0, maxX);
-                int z = (int) random.Next(0, maxZ);
-                int y = 60;
-                objs.Add(new CollectableObject(ModelName.COIN, new CollectionCallback(coinCollected), player, 40.0f, new Vector3(x, y, z), new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
-            }
-            // create a new goal
-            int xPosition = (int)random.Next(0, maxX);
-            int zPosition = (int)random.Next(0, maxZ);
-            GameObject goal = new CollectableObject(ModelName.STAR, new CollectionCallback(starCollected), player, 30.0f, new Vector3(xPosition, random.Next(60, 200), zPosition), new Vector3(60, 60, 60), GameConstants.GameObjectScale, true);
-            objs.Add(goal);
-            getLevel(level).goal = (goal as CollectableObject);
-
-            // ai objects
-            objs.Add(new AIObject(null, ModelName.BOX, new Vector3(100, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 10000.0f, GameConstants.GameObjectScale));
-            objs.Add(new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 9000.0f, GameConstants.GameObjectScale));
-            objs.Add(new AIObject(null, ModelName.BOX, new Vector3(1000, 300, 100), Quaternion.Identity, new Vector3(60, 60, 60), 8000.0f, GameConstants.GameObjectScale));
-            objs.Add(new AIObject(null, ModelName.BOX, new Vector3(100, 300, 1000), Quaternion.Identity, new Vector3(60, 60, 60), 5000.0f, GameConstants.GameObjectScale));
-           
-            // add a box for testing
-            GameObject testBox2 = new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(100, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale);
-            objs.Add(testBox2);
-            testBox2.applyForce(new Vector3(50000.0f, 0.0f, 50000.0f), new Vector3(30, 30, 30));
-
-            // four more boxes of varying masses
-            objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 400, 100), Quaternion.Identity, false, new Vector3(60, 60, 60), 4000.0f, GameConstants.GameObjectScale));
-            objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(500, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 11000.0f, GameConstants.GameObjectScale));
-            objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 300, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale));
-            objs.Add(new GameObject(null, ModelType.OBJECT, ModelName.BOX, new Vector3(300, 400, 500), Quaternion.Identity, false, new Vector3(60, 60, 60), 2000.0f, GameConstants.GameObjectScale));
-            */
-            #endregion
             foreach (GameObject o in objs)
             {
-               
-                
-
                 if (o is TerrainObject)
                     addTerrainObject(o as TerrainObject);
                 else if (o is AIObject)
@@ -323,16 +284,24 @@ namespace Muffin
                 else if (o is PlayerObject)
                     addPlayerObject(o as PlayerObject);
                 else if (o is CollectableObject)
-                {
                     addCollectableObject(o as CollectableObject);
+                else
+                    _allObjects.Add(o);
+            }
+
+            // now that we have added everything to the correct list, we must give coins and stars their
+            // collection object (the object that can collect them)
+
+            foreach (GameObject o in objs)
+            {
+                if (o is CollectableObject)
+                {
                     (o as CollectableObject).collectionObject = this.getPlayer();
                     if ((o as CollectableObject).modelName == ModelName.COIN)
                         _numberOfCoins++;
                     else if ((o as CollectableObject).modelName == ModelName.STAR)
                         this.getCurrentLevel().goal = o as CollectableObject;
                 }
-                else
-                    _allObjects.Add(o);
             }
 
 
@@ -681,7 +650,8 @@ namespace Muffin
             if (_allPlayers.Count() == 0)
             {
                 Console.WriteLine("Error: Level must include a player.");
-                Environment.Exit(1);
+                //Environment.Exit(1);
+                return null;
             }
             return _allPlayers.ElementAt(0);
         }

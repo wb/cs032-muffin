@@ -48,7 +48,7 @@ namespace Muffin.Components.UI
             _callback = callback;
             float xRatio = game.graphics.PreferredBackBufferHeight / 1920.0f;
             float yRatio = game.graphics.PreferredBackBufferWidth / 1200.0f;
-            _shadowOffset = new Vector2((int)Math.Round(xRatio * 7.5), (int)Math.Round(yRatio * 7.5));
+            _shadowOffset = new Vector2((int)Math.Round(xRatio * 12.5), (int)Math.Round(yRatio * 6.5));
 
 
 
