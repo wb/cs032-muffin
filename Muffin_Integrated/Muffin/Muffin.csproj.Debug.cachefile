@@ -71,6 +71,10 @@ Content\Models\grass\Groundcover_Sand_Smooth_0.xnb
 Content\Models\grass\Vegetation_Grass_Artificial_0.xnb
 Content\Models\coin\Metal_Aluminum_Anodized_0.xnb
 Content\Models\star\Metal_Corrogated_Shiny_0.xnb
+Content\Models\cloudMap.xnb
+Content\Textures\cloudMap.xnb
+Content\Models\dome.xnb
+Content\Models\cloudMap_0.xnb
 Content\Audio\background.wma
 Content\Levels\level1.xml
 Content\Levels\level2.xml

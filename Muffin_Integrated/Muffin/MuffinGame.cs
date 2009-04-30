@@ -270,6 +270,7 @@ namespace Muffin
             _allTerrain.Clear();
             _allAIObjects.Clear();
             _allPlayers.Clear();
+            _allCollectables.Clear();
 
             // Load the current level
             List<GameObject> objs = new List<GameObject>();
@@ -291,7 +292,7 @@ namespace Muffin
 
             // now that we have added everything to the correct list, we must give coins and stars their
             // collection object (the object that can collect them) and count total number of coins
-
+            _numberOfCoins = 0;
             foreach (CollectableObject o in _allCollectables)
             {
                 o.collectionObject = this.getPlayer();
