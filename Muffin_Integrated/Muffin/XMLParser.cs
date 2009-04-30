@@ -20,11 +20,13 @@ namespace Muffin
     {
         XmlDocument m_doc;
         XmlElement m_root;
+        MuffinGame _muffinGame;
 
-        public XMLParser(XmlDocument doc)
+        public XMLParser(XmlDocument doc, MuffinGame game)
         {
             m_doc = doc;
             m_root = doc.DocumentElement;
+            _muffinGame = game;
         }
 
         public void loadLevel(List<GameObject> m_objects, List<Model> m_models)
@@ -78,7 +80,7 @@ namespace Muffin
                 }
                 else if (name == ModelName.COIN)
                 {
-                    
+                    m_objects.Add(new CollectableObject(name, new CollectionCallback(_muffinGame.coinCollected), null, 40.0f, pos, new Vector3(60, 60, 60), GameConstants.GameObjectScale, false));
                 }
                 else if (name == ModelName.GRASS)
                 {
@@ -90,6 +92,7 @@ namespace Muffin
                 }
                 else if (name == ModelName.STAR)
                 {
+                    m_objects.Add(new CollectableObject(name, new CollectionCallback(_muffinGame.starCollected), null, 40.0f, pos, new Vector3(60, 60, 60), GameConstants.GameObjectScale, true));
                 }
 
             }
