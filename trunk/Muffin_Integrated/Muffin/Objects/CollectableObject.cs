@@ -84,7 +84,7 @@ namespace Definitions
         public void checkForCollection(MuffinGame game)
         {
             // make sure this function only gets called once (and doesnt get called if it is hidden)
-            if (_toBeRemoved || _hidden)
+            if (_toBeRemoved || _hidden || _collectionObject == null)
                 return;
 
             // if its within range
@@ -111,6 +111,12 @@ namespace Definitions
         {
             get { return _hidden; }
             set { _hidden = value; }
+        }
+
+        public GameObject collectionObject
+        {
+            get { return _collectionObject; }
+            set { _collectionObject = value; }
         }
     }
 }

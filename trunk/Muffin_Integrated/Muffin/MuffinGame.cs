@@ -78,6 +78,8 @@ namespace Muffin
 
         private Effect textureDraw;
 
+        private int _numberOfCoins = 0;
+
         #endregion
 
         public GraphicsDeviceManager graphics;
@@ -105,6 +107,7 @@ namespace Muffin
             _levels = new List<LevelObject>();
             _levels.Add(new LevelObject("level_new_player_small"));
             _levels.Add(new LevelObject("level_new_player_ai"));
+            _levels.Add(new LevelObject("level_new_player_ai_coins_star"));
             LoadLevel(0);
 
             _renderer = new Renderer(this);
@@ -213,8 +216,8 @@ namespace Muffin
                 o.checkForCollection(this);
             }
 
-            // only show the star when all 12 coins have been collected
-            if (this.getPlayer().coinCount == 12)
+            // only show the star when all coins have been collected
+            if (this.getPlayer().coinCount == _numberOfCoins && _numberOfCoins > 0)
             {
                 if (getCurrentLevel().goal.hidden == true)
                 {
@@ -258,7 +261,7 @@ namespace Muffin
         protected void LoadLevel(int level)
         {
             // load the current level
-            _xmlParser = new XMLParser(getLevel(level).levelFile);
+            _xmlParser = new XMLParser(getLevel(level).levelFile, this);
 
             _allObjects.Clear();
             _allTerrain.Clear();
@@ -269,22 +272,8 @@ namespace Muffin
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
 
-            // find largest x and z coordinates
-            int maxX = 0, maxZ = 0;
-            foreach (GameObject o in objs)
-            {
-                if (o.position.X > maxX)
-                    maxX = (int) o.position.X;
-                if (o.position.Z > maxZ)
-                    maxZ = (int) o.position.Z;
-            }
-            Random random = new Random();
-
-            // player
-            GameObject player = new PlayerObject(null, ModelName.PLAYER, new Vector3(200, 400, 100), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale);
-            //objs.Add(player);
-            player.applyForce(new Vector3(-50000.0f, 0.0f, 0.0f), new Vector3(30, 30, 30));
-
+            
+            
             #region testing objects
             /*
             // coins
@@ -322,6 +311,9 @@ namespace Muffin
             #endregion
             foreach (GameObject o in objs)
             {
+               
+                
+
                 if (o is TerrainObject)
                     addTerrainObject(o as TerrainObject);
                 else if (o is AIObject)
@@ -329,7 +321,14 @@ namespace Muffin
                 else if (o is PlayerObject)
                     addPlayerObject(o as PlayerObject);
                 else if (o is CollectableObject)
+                {
                     addCollectableObject(o as CollectableObject);
+                    (o as CollectableObject).collectionObject = this.getPlayer();
+                    if ((o as CollectableObject).modelName == ModelName.COIN)
+                        _numberOfCoins++;
+                    else if ((o as CollectableObject).modelName == ModelName.STAR)
+                        this.getCurrentLevel().goal = o as CollectableObject;
+                }
                 else
                     _allObjects.Add(o);
             }
