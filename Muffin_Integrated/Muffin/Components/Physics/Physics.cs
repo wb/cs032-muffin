@@ -176,13 +176,12 @@ namespace Muffin.Components.Physics
                     if (activeObject == passiveObject || passiveObject is CollectableObject)
                         continue;
 
-                    BoundingBox activeBoundingBox = activeObject.getCurrentBoundingBox();
+                    BoundingBox activeBoundingBox = activeObject.getCurrentBoundingBoxEnlarged();
                     BoundingBox passiveBoundingBox = passiveObject.getCurrentBoundingBox();
-
+                    
                     // check to see if the bounding boxes are intersecting
                     if (activeBoundingBox.Intersects(passiveBoundingBox))
                     {
-
                         // compute the centers of these bounding boxes
                         Vector3 activeBoundingBoxCenter = (activeBoundingBox.Min + activeBoundingBox.Max) / 2.0f;
                         Vector3 passiveBoundingBoxCenter = (passiveBoundingBox.Min + passiveBoundingBox.Max) / 2.0f;

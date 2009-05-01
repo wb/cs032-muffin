@@ -128,7 +128,7 @@ namespace Muffin.Components.UI
                 _muffinGame.togglePauseMenu();
 
             // input for menus
-            _muffinGame.menuInput(upDownArrows.getButtonState(), (enter.getButtonState() == 1) ? true : false);
+            _muffinGame.menuInput(upDownArrows.getButtonState(), (((enter.getButtonState() == 1) ? true : false)) || ((space.getButtonState() == 1) ? true : false));
         }
     }
 }
