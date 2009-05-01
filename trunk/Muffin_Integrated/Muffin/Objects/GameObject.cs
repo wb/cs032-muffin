@@ -140,6 +140,32 @@ namespace Definitions
         }
 
         /*
+         * This method is used to correct for small errors in the bounding box and is used
+         * for all active objects during interpenetration resolution.  The problem we were 
+         * having was that bounding boxes that are simply touching aren't, according to XNA,
+         * colliding.  This allows for touching to be considered as colliding by enlarging this
+         * bounding box slightly.
+         * */
+
+        public virtual BoundingBox getCurrentBoundingBoxEnlarged()
+        {
+            // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
+            Vector3 min, max;
+
+            float scaleFactor = 1.005f;
+
+            min = -0.5f * _dimensions * scaleFactor;
+            max = 0.5f * _dimensions * scaleFactor;
+
+            // now we need to transform these using the world matrix
+            min = Vector3.Transform(min, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+            max = Vector3.Transform(max, Matrix.CreateFromQuaternion(_currentState.rotation) * Matrix.CreateTranslation(_currentState.position));
+
+            // create a new bounding box
+            return new BoundingBox(min, max);
+        }
+
+        /*
          * This method returns the world matrix.  For any object
          * that extends game object, such as TerrainObject,
          * worldMatrix will be stored so that it does not
@@ -227,12 +253,13 @@ namespace Definitions
                 }
 
                 // check for min position
+                float minPosition = (this is PlayerObject ? GameConstants.MinHeightPlayer : GameConstants.MinHeightObject);
 
-                if (_futureState.position.Y < GameConstants.MinHeight)
+                if (_futureState.position.Y < minPosition)
                 {
                     _toBeRemoved = true;
 
-                    _futureState.position = new Vector3(_futureState.position.X, GameConstants.MinHeight, _futureState.position.Z);
+                    _futureState.position = new Vector3(_futureState.position.X, minPosition, _futureState.position.Z);
                     _futureState.acceleration = new Vector3(_futureState.acceleration.X, 0, _futureState.acceleration.Z);
                     _futureState.velocity = new Vector3(_futureState.velocity.X, 0, _futureState.velocity.Z);
 

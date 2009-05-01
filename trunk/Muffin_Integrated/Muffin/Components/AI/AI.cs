@@ -213,9 +213,11 @@ namespace Muffin.Components.AI
                     if (thisX >= 0 && thisX < maxX && thisY >= 0 && thisY < maxY)
                     {
                         // if not, put in new location
-                        //FIX
+                        //FIX: THIS IS CAUSING ERRORS QUITE OFTEN NOW
+
                         m_grid[thisX, thisY].Add(o.position.Y, o);
                         m_index[o] = new Point(thisX, thisY);
+
                     }
                     else
                     {
