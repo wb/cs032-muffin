@@ -86,6 +86,7 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0{
 		float4 cloudValue = tex2D(TextureSampler, inVS.TexCoords).r;
 	    
 		Output.Color = lerp(baseColor,1, cloudValue);       
+		//Output.Color = tex2D(TextureSampler, inVS.TexCoords);
 	}
 	
 	return Output;

@@ -119,7 +119,7 @@ namespace Muffin
             _renderer = new Renderer(this);
             Components.Add(_renderer);
             _renderer.UpdateOrder = 0;
-
+            
             _inputManager = new InputManager(this);
             Components.Add(_inputManager);
             _inputManager.UpdateOrder = 1;
