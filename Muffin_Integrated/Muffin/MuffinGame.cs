@@ -278,7 +278,7 @@ namespace Muffin
             // Load the current level
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
-
+            
             foreach (GameObject o in objs)
             {
                 if (o is TerrainObject)

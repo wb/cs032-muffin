@@ -22,7 +22,7 @@ namespace Definitions
         public const int MaxMoveWeightRatio = 10;
         public const int MaxHeight = 1000; // this is the max height that an object can move (jumping/flying stuff)
         public const int MinHeightPlayer = -400; // this is the floor of the game.  you will die if you hit this
-        public const int MinHeightObject = -1000; // make this far enough so you cant see the boxes disappearing 
+        public const int MinHeightObject = -2000; // make this far enough so you cant see the boxes disappearing 
         public const float GameObjectScale = 10.0f; // this is the universal scale constant for objects
         public const float NearClip = 1000.0f;
         public const float FarClip = 100000.0f;

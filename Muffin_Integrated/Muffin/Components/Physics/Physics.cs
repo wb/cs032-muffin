@@ -116,7 +116,47 @@ namespace Muffin.Components.Physics
                             // tune the sensitivity of collisions here
                             float collisionEpsilon = -0.1f;
 
+                            // collision should take into account the masses of both objects
+                            float totalMass = (passiveObject.mass + activeObject.mass);
+
+                            // move it relative to mass (locked objects return infinite mass)
+                            float passiveFactor = activeObject.mass / totalMass;
+                            float activeFactor = passiveObject.mass / totalMass;
+
+                            Vector3 totalVelocity = activeObject.futureState.velocity + passiveObject.futureState.velocity;
+
+                            Vector3 activeVelocity = activeFactor * totalVelocity;
+                            Vector3 passiveVelocity = passiveFactor * totalVelocity;
+                            
+                            
+                            if (changeInFutureDistanceApart.X < collisionEpsilon && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Y && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Z)
+                            {
+                                activeObject.currentState.velocity = new Vector3(-amountOfBounce * activeVelocity.X, activeObject.futureState.velocity.Y, activeObject.futureState.velocity.Z);
+                                passiveObject.currentState.velocity = new Vector3(-amountOfBounce * passiveVelocity.X, passiveObject.futureState.velocity.Y, passiveObject.futureState.velocity.Z);
+
+                                activeObject.currentState.acceleration = new Vector3(0, activeObject.futureState.acceleration.Y, activeObject.futureState.acceleration.Z);
+                                passiveObject.currentState.acceleration = new Vector3(0, passiveObject.futureState.acceleration.Y, passiveObject.futureState.acceleration.Z);
+                            }
+
+                            if (changeInFutureDistanceApart.Y < collisionEpsilon && changeInFutureDistanceApart.Y < changeInFutureDistanceApart.X && changeInFutureDistanceApart.Y < changeInFutureDistanceApart.Z)
+                            {
+                                activeObject.currentState.velocity = new Vector3(activeObject.futureState.velocity.X, -amountOfBounce * activeVelocity.Y, activeObject.futureState.velocity.Z);
+                                passiveObject.currentState.velocity = new Vector3(passiveObject.futureState.velocity.X, -amountOfBounce * passiveVelocity.Y, passiveObject.futureState.velocity.Z);
+                                activeObject.currentState.acceleration = new Vector3(activeObject.futureState.acceleration.X, 0, activeObject.futureState.acceleration.Z);
+                                passiveObject.currentState.acceleration = new Vector3(passiveObject.futureState.acceleration.X, 0, passiveObject.futureState.acceleration.Z);
+                            }
+
+                            if (changeInFutureDistanceApart.Z < collisionEpsilon && changeInFutureDistanceApart.Z < changeInFutureDistanceApart.X && changeInFutureDistanceApart.Z < changeInFutureDistanceApart.Y)
+                            {
+                                activeObject.currentState.velocity = new Vector3(activeObject.futureState.velocity.X, activeObject.futureState.velocity.Y, -amountOfBounce * activeVelocity.Z);
+                                passiveObject.currentState.velocity = new Vector3(passiveObject.futureState.velocity.X, passiveObject.futureState.velocity.Y, -amountOfBounce * passiveVelocity.Z);
+
+                                activeObject.currentState.acceleration = new Vector3(activeObject.futureState.acceleration.X, activeObject.futureState.acceleration.Y, 0);
+                                passiveObject.currentState.acceleration = new Vector3(passiveObject.futureState.acceleration.X, passiveObject.futureState.acceleration.Y, 0);
+                            }
+                            
                             // resolve the collision
+                            /*
                             if (changeInFutureDistanceApart.X < collisionEpsilon && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Y && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Z)
                             {
                                 activeObject.currentState.velocity = new Vector3(-amountOfBounce * activeObject.futureState.velocity.X, activeObject.futureState.velocity.Y, activeObject.futureState.velocity.Z);
@@ -142,7 +182,8 @@ namespace Muffin.Components.Physics
 
                                 activeObject.currentState.acceleration = new Vector3(activeObject.futureState.acceleration.X, activeObject.futureState.acceleration.Y, 0);
                                 passiveObject.currentState.acceleration = new Vector3(passiveObject.futureState.acceleration.X, passiveObject.futureState.acceleration.Y, 0);
-                            }
+                            }*/
+
 
                             // we only want to process one collision for this timestep, so break
                             break;
@@ -216,28 +257,15 @@ namespace Muffin.Components.Physics
                         // now we want to correct the smallest absolute value of these
                         Vector3 tempCorrect = VectorAbs(correction);
 
-
-
                         /*
                          * This code uses the relative weight of the two objects to determine how much to move them.
                          * */
 
                         float totalMass = (passiveObject.mass + activeObject.mass);
-                        float passiveFactor, activeFactor;
-
-                        // if its too heavy, don't move it at all (or if the other object is locked)
-                        if (passiveObject.mass > activeObject.mass * GameConstants.MaxMoveWeightRatio || passiveObject.locked)
-                        {
-                            passiveFactor = 0.0f;
-                            activeFactor = 1.0f;
-                        }
-                        else
-                        {
-                            // move it relative to weights
-                            passiveFactor = activeObject.mass / totalMass;
-                            activeFactor = passiveObject.mass / totalMass;
-                        }
-
+                       
+                        // move it relative to mass (locked objects return infinite mass)
+                        float passiveFactor = activeObject.mass / totalMass;
+                        float activeFactor = passiveObject.mass / totalMass;
 
                         // if x is the smallest, fix it in the x direction
                         if (tempCorrect.X < tempCorrect.Y && tempCorrect.X < tempCorrect.Z)
