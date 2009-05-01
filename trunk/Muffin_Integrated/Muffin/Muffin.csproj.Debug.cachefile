@@ -53,6 +53,10 @@ Content\Models\coin\Metal_Aluminum_Anodized.xnb
 Content\Models\ai\Asphalt_New.xnb
 Content\Models\grass\Groundcover_Sand_Smooth.xnb
 Content\Models\grass\Vegetation_Grass_Artificial.xnb
+Content\Models\cloudMap.xnb
+Content\Textures\cloudMap.xnb
+Content\Textures\level_background.xnb
+Content\Models\level_background.xnb
 Content\Courier New.xnb
 Content\Audio\likeit.xnb
 Content\Audio\select.xnb
@@ -64,6 +68,7 @@ Content\Audio\coin.xnb
 Content\Audio\star_born.xnb
 Content\Textures\healthBar.xnb
 Content\Audio\background.xnb
+Content\Models\dome.xnb
 Content\Models\box\Wood_Cherry_Original_0.xnb
 Content\Models\player\Metal_Steel_Textured_White_0.xnb
 Content\Models\ai\Asphalt_New_0.xnb
@@ -71,11 +76,6 @@ Content\Models\grass\Groundcover_Sand_Smooth_0.xnb
 Content\Models\grass\Vegetation_Grass_Artificial_0.xnb
 Content\Models\coin\Metal_Aluminum_Anodized_0.xnb
 Content\Models\star\Metal_Corrogated_Shiny_0.xnb
-Content\Models\cloudMap.xnb
-Content\Textures\cloudMap.xnb
-Content\Models\dome.xnb
-Content\Textures\level_background.xnb
-Content\Models\level_background.xnb
 Content\Models\cloudMap_0.xnb
 Content\Audio\background.wma
 Content\Levels\level1.xml

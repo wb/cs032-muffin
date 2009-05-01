@@ -214,6 +214,22 @@ namespace Definitions
             }
         }
 
+        /*
+         * This method applies a force on the center of the object.
+         * */
+
+        public void applyForceAtCenter(Vector3 force)
+        {
+
+            // Error Checking: make sure this force wont make the total acceleration too large
+            float acceleration = ((_currentState.acceleration * _mass + force) / mass).Length();
+            if (acceleration < GameConstants.MaxAcceleration && -acceleration > -GameConstants.MaxAcceleration)
+            {
+                // add this force on to the linear force
+                _force += force;
+            }
+        }
+
         public void integrate(float timestep)
         {
 
@@ -395,9 +411,20 @@ namespace Definitions
             set { _model = value; }
         }
 
+        /*
+         * If this object is locked, its mass is essentially infinite, so
+         * return the largest float.
+         * */
+
         public float mass
         {
-            get { return _mass; }
+            get
+            {
+                if (_locked)
+                    return float.MaxValue;
+                else
+                    return _mass;
+            }
             set { _mass = value; }
         }
 
