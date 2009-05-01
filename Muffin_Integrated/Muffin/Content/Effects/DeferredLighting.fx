@@ -79,10 +79,10 @@ PixelToFrame PixelShaderFunction (VertexToPixel inVS) : COLOR0{
 	if(!xEnableLighting) {
 		Output.Depth = -1.0f;   
 
-		float4 topColor = float4(0.3f, 0.3f, 0.9f, 1);    
+		float4 topColor = float4(0.1f, 0.5f, 0.9f, 1);    
 		float4 bottomColor = 1;    
 	    
-		float4 baseColor = lerp(bottomColor, topColor, saturate((inVS.ObjectPos.y)/0.6f));
+		float4 baseColor = lerp(bottomColor, topColor, saturate((inVS.ObjectPos.y)/0.7f));
 		float4 cloudValue = tex2D(TextureSampler, inVS.TexCoords).r;
 	    
 		Output.Color = lerp(baseColor,1, cloudValue);       

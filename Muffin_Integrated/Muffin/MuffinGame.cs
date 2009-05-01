@@ -110,6 +110,7 @@ namespace Muffin
             _levels.Add(new LevelObject("level_ladder"));
             _levels.Add(new LevelObject("level_new_player_ai_coins_star"));
             _levels.Add(new LevelObject("level_new_tall"));
+            _levels.Add(new LevelObject("level_thegap"));
             _levels.Add(new LevelObject("kevins_test_levely_thing"));
             _levels.Add(new LevelObject("level_crazyass"));
 
