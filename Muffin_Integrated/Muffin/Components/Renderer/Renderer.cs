@@ -126,7 +126,7 @@ namespace Muffin.Components.Renderer
             m_models = new List<Model>();
             m_objects = m_game.allObjects;
             m_model_textures = new List<Texture2D[]>();
-            game.IsMouseVisible = true;
+            game.IsMouseVisible = false;
         }
 
         void graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
@@ -248,6 +248,7 @@ namespace Muffin.Components.Renderer
 
             skyDome = LoadModel("dome", out modelTexture);
             skyTexture = m_game.Content.Load<Texture2D>("Textures\\cloudMap");
+            //skyTexture = m_game.Content.Load<Texture2D>("Textures\\level_background");
 
             setModels();
             //SetUpCamera();
