@@ -194,7 +194,7 @@ namespace Muffin.Components.AI
             // Update grid based on objects that have moved
             foreach (GameObject o in m_game.updated)
             {
-                if (o is AIObject || o is PlayerObject)
+                if (o is AIObject || o is PlayerObject || o is CollectableObject)
                     continue;
 
                 Point oldPos;

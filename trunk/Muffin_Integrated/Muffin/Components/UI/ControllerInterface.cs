@@ -93,7 +93,20 @@ namespace Muffin.Components.UI
                 if (_gameObject.jumpCount < 2 && (buttonA.getButtonState() == 1))
                     _muffinGame.playSoundClip("jump");
 
-                _gameObject.move(g.ThumbSticks.Left.Y, g.ThumbSticks.Left.X, g.ThumbSticks.Left.X, (buttonA.getButtonState() == 1 ? true : false), (g.Buttons.X == ButtonState.Pressed));
+                // controls
+                float leftRight = g.ThumbSticks.Left.X;
+                float upDown = g.ThumbSticks.Left.Y;
+                float strafeLeftRight = g.ThumbSticks.Left.X;
+
+                // add d-pad controls for strafing to make life easier
+                Boolean strafing = ((g.Buttons.X == ButtonState.Pressed) || g.DPad.Down == ButtonState.Pressed || g.DPad.Up == ButtonState.Pressed || g.DPad.Left == ButtonState.Pressed || g.DPad.Right == ButtonState.Pressed);
+
+                if (g.DPad.Left == ButtonState.Pressed || g.DPad.Right == ButtonState.Pressed)
+                    strafeLeftRight += (g.DPad.Left == ButtonState.Pressed ? -1 : 0) + (g.DPad.Right == ButtonState.Pressed ? 1 : 0);
+                if(g.DPad.Up == ButtonState.Pressed || g.DPad.Down == ButtonState.Pressed)
+                    upDown += (g.DPad.Up == ButtonState.Pressed ? 1 : 0) + (g.DPad.Down == ButtonState.Pressed ? -1 : 0);
+
+                _gameObject.move(upDown, leftRight, strafeLeftRight, (buttonA.getButtonState() == 1 ? true : false), strafing);
             }
 
 
