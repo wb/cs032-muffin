@@ -18,7 +18,7 @@
     <ManifestCertificateThumbprint>9EF907086EC279043E454D873AB9A868BD3C9090</ManifestCertificateThumbprint>
     <ManifestKeyFile>Muffin_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <PublishUrl>C:\Users\Walter\Desktop\MuffinExe\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
