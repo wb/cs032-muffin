@@ -20,6 +20,7 @@ using Muffin.Components.Renderer;
 using Muffin.Components.Physics;
 using Muffin.Components.UI;
 using Muffin.Components.AI;
+using Muffin.Components.Collision;
 using Muffin.Objects;
 
 namespace Muffin
@@ -52,7 +53,7 @@ namespace Muffin
         private int _currentLevel = 0;
 
         //GameComponents
-        GameComponent _renderer, _physics, _inputManager, _ai, _menuComponent;
+        GameComponent _renderer, _physics, _inputManager, _ai, _menuComponent, _collision;
 
         // Class for loading levels
         XMLParser _xmlParser;
@@ -86,6 +87,7 @@ namespace Muffin
         public SpriteBatch spriteBatch;
 
         private SoundManager _soundManager;
+        private Grid _grid;
 
         public MuffinGame()
         {
@@ -112,36 +114,38 @@ namespace Muffin
             _levels.Add(new LevelObject("level_new_tall"));
             _levels.Add(new LevelObject("level_thegap"));
             _levels.Add(new LevelObject("kevins_test_levely_thing"));
-            _levels.Add(new LevelObject("level_kevin1"));
             _levels.Add(new LevelObject("level_crazyass"));
-            //_levels.Add(new LevelObject("level_ridiculous")); // use this to test your grid, maybe?
 
             LoadLevel(0);
 
             _renderer = new Renderer(this);
             Components.Add(_renderer);
             _renderer.UpdateOrder = 0;
-            
+
+            _collision = new CollisionSet(this);
+            Components.Add(_collision);
+            _collision.UpdateOrder = 1;
+
             _inputManager = new InputManager(this);
             Components.Add(_inputManager);
-            _inputManager.UpdateOrder = 1;
+            _inputManager.UpdateOrder = 2;
 
             _menuComponent = new MenuComponent(this);
             Components.Add(_menuComponent);
-            _menuComponent.UpdateOrder = 2;
+            _menuComponent.UpdateOrder = 3;
 
             _physics = new Physics(this);
             Components.Add(_physics);
-            _physics.UpdateOrder = 3;
+            _physics.UpdateOrder = 4;
 
             _ai = new AI(this);
             Components.Add(_ai);
-            _ai.UpdateOrder = 4;
+            _ai.UpdateOrder = 5;
 
             _paused = false;
             _gameOver = false;
 
-        }        
+        }
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -151,11 +155,11 @@ namespace Muffin
         /// </summary>
         protected override void Initialize()
         {
-            _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging = 
+            _terrainChanged = _AIChanged = _playersChanged = _terrainChanging = _AIChanging = _playersChanging =
                 _objectsRemoved = _objectsRemoving = false;
 
             // create a new camera
-            _camera = new GameCamera(this.getPlayer(), this.getPlayer().position + new Vector3(-400,400,-400), this.getPlayer().position, graphics.GraphicsDevice.Viewport.AspectRatio);
+            _camera = new GameCamera(this.getPlayer(), 24 * new Vector3(-20, 40, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
             // and pass it to the renderer
             ((Renderer)_renderer).SetUpCamera(_camera);
 
@@ -187,10 +191,10 @@ namespace Muffin
             // play background music
             MediaPlayer.Play(Content.Load<Song>("Audio\\background"));
             MediaPlayer.IsRepeating = true;
-                        
+
         }
 
-       
+
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -213,7 +217,7 @@ namespace Muffin
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-                
+
             // TODO: Add your update logic here
             beginTick();
 
@@ -265,7 +269,7 @@ namespace Muffin
         }
 
         # region Game-specific methods
-        
+
         protected void LoadLevel(int level)
         {
             // load the current level
@@ -280,7 +284,7 @@ namespace Muffin
             // Load the current level
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
-            
+
             foreach (GameObject o in objs)
             {
                 if (o is TerrainObject)
@@ -304,7 +308,7 @@ namespace Muffin
                 if (o.modelName == ModelName.COIN)
                     _numberOfCoins++;
                 else if (o.modelName == ModelName.STAR)
-                    this.getCurrentLevel().goal = o; 
+                    this.getCurrentLevel().goal = o;
             }
         }
 
@@ -365,7 +369,7 @@ namespace Muffin
 
         public void addUpdateObject(GameObject o)
         {
-            if(!_updatingObjects.Contains(o))
+            if (!_updatingObjects.Contains(o))
                 _updatingObjects.Add(o);
 
             if (o is TerrainObject)
@@ -400,6 +404,12 @@ namespace Muffin
 
         #region Gets and sets
 
+        public Grid grid
+        {
+            get { return _grid; }
+            set { _grid = value; }
+        }
+
         public List<GameObject> allObjects { get { return _allObjects; } }
         public List<TerrainObject> allTerrain { get { return _allTerrain; } }
         public List<AIObject> allAI { get { return _allAIObjects; } }
@@ -426,7 +436,7 @@ namespace Muffin
 
         public TerrainObject topmostTerrain(int X, int Y)
         {
-            return ((AI) _ai).topmostTerrain(X,Y);
+            return ((AI)_ai).topmostTerrain(X, Y);
         }
         #endregion
 
@@ -440,7 +450,7 @@ namespace Muffin
             set { _paused = value; }
         }
 
-        
+
 
         /*
          * This method shows the pause menu.
@@ -519,7 +529,7 @@ namespace Muffin
                 ((MenuComponent)_menuComponent).showLevelFailedMenu(false);
                 _paused = false;
             }
-            else if(show && !_levelFailedMenu)
+            else if (show && !_levelFailedMenu)
             {
                 Console.WriteLine("You died! Retrying level.");
                 this.playSoundClip("die");
@@ -529,7 +539,7 @@ namespace Muffin
             }
 
         }
-        
+
 
         /*
          * This passes input to the menus.
@@ -554,7 +564,7 @@ namespace Muffin
         /*
          * This method returns the current level.
          * */
-        
+
         public LevelObject getCurrentLevel()
         {
             return getLevel(_currentLevel);
@@ -577,7 +587,7 @@ namespace Muffin
                 // load this level
                 LoadLevelIndex(_currentLevel);
             }
-            
+
         }
 
         /*
@@ -600,6 +610,7 @@ namespace Muffin
             ((Renderer)_renderer).setModels();
             _camera.setPlayerToFollow(this.getPlayer());
             ((InputManager)_inputManager).setPlayerToControl(this.getPlayer());
+            _collision.Initialize();
         }
 
         public void newGame()
@@ -618,7 +629,7 @@ namespace Muffin
         public void playSoundClip(String name)
         {
             if (_soundManager != null)
-            _soundManager.playSound(name);
+                _soundManager.playSound(name);
         }
         #endregion
 
