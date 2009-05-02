@@ -40,9 +40,6 @@ namespace Muffin.Components.Physics
 
         public override void Update(GameTime gameTime)
         {
-            // spin the star!
-
-
 
             // if paused, return
             if (_muffinGame.paused)
