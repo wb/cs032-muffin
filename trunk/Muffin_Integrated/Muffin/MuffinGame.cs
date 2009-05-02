@@ -112,7 +112,9 @@ namespace Muffin
             _levels.Add(new LevelObject("level_new_tall"));
             _levels.Add(new LevelObject("level_thegap"));
             _levels.Add(new LevelObject("kevins_test_levely_thing"));
+            _levels.Add(new LevelObject("level_kevin1"));
             _levels.Add(new LevelObject("level_crazyass"));
+            //_levels.Add(new LevelObject("level_ridiculous")); // use this to test your grid, maybe?
 
             LoadLevel(0);
 
@@ -153,7 +155,7 @@ namespace Muffin
                 _objectsRemoved = _objectsRemoving = false;
 
             // create a new camera
-            _camera = new GameCamera(this.getPlayer(), 24 * new Vector3(-20, 40, -20), new Vector3(0, 0, 0), graphics.GraphicsDevice.Viewport.AspectRatio);
+            _camera = new GameCamera(this.getPlayer(), this.getPlayer().position + new Vector3(-400,400,-400), this.getPlayer().position, graphics.GraphicsDevice.Viewport.AspectRatio);
             // and pass it to the renderer
             ((Renderer)_renderer).SetUpCamera(_camera);
 

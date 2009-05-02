@@ -152,7 +152,7 @@ namespace Definitions
             // the min and max are (0,0,0) and (D.x, D.y, D.z) where D is the dimension vector
             Vector3 min, max;
 
-            float scaleFactor = 1.005f;
+            float scaleFactor = 1.003f;
 
             min = -0.5f * _dimensions * scaleFactor;
             max = 0.5f * _dimensions * scaleFactor;
