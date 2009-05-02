@@ -11,9 +11,9 @@ FBXHeaderExtension:  {
         Year: 2009
         Month: 5
         Day: 2
-        Hour: 15
-        Minute: 34
-        Second: 23
+        Hour: 16
+        Minute: 23
+        Second: 24
         Millisecond: 0
     }
     Creator: "FBX SDK/FBX Plugins version 2009.1"
@@ -21,7 +21,7 @@ FBXHeaderExtension:  {
         FlagPLE: 0
     }
 }
-CreationTime: "2009-05-02 15:34:23:000"
+CreationTime: "2009-05-02 16:23:24:000"
 Creator: "FBX SDK/FBX Plugins build 20080516"
 
 ; Document Description
@@ -375,9 +375,9 @@ Objects:  {
             Comment: ""
         }
         Properties60:  {
-            Property: "DocumentUrl", "KString", "", "//var/folders/At/At9eTZEdFMaGbMMHq4Qd4E+++TI/-Tmp-/com.google.sketchuppro7.Walter4HgYIV.fbx"
+            Property: "DocumentUrl", "KString", "", "//var/folders/At/At9eTZEdFMaGbMMHq4Qd4E+++TI/-Tmp-/com.google.sketchuppro7.Walter547Eij.fbx"
              
-            Property: "SrcDocumentUrl", "KString", "", "//var/folders/At/At9eTZEdFMaGbMMHq4Qd4E+++TI/-Tmp-/com.google.sketchuppro7.Walter4HgYIV.fbx"
+            Property: "SrcDocumentUrl", "KString", "", "//var/folders/At/At9eTZEdFMaGbMMHq4Qd4E+++TI/-Tmp-/com.google.sketchuppro7.Walter547Eij.fbx"
              
             Property: "Original", "Compound", ""
             Property: "Original|ApplicationVendor", "KString", "", ""
