@@ -28,7 +28,7 @@ namespace Definitions
         protected Material _material;
         protected float _mass, _scale;
         protected ModelName _modelName;
-        protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove, _previousToMove, _moveVector;
+        protected Vector3 _force, _centerOfMass, _torque, _dimensions, _toMove, _previousToMove, _moveVector,_index;
         protected Matrix _intertiaTensor;
         protected Boolean _locked, _active, _toBeRemoved;
         protected BoundingBox _boundingBox;
@@ -386,6 +386,11 @@ namespace Definitions
          * Follow the naming scheme below by using the variable name without
          * the preceeding underscore.
          * */
+        public Vector3 index
+        {
+            get { return _index; }
+            set { _index = value; }
+        }
 
         public BoundingBox boundingBox
         {
