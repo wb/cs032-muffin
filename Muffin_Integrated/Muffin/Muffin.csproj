@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\AI\AI.cs" />
+    <Compile Include="Components\AI\PriorityQueue.cs" />
     <Compile Include="Components\AI\WeightedGraph.cs" />
     <Compile Include="Components\Collision\CollisionSet.cs" />
     <Compile Include="Components\Collision\Grid.cs" />
