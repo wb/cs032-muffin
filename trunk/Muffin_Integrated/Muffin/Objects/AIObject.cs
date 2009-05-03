@@ -81,29 +81,33 @@ namespace Definitions
 
         private void setDirection()
         {
-            if (_path.Count > 0)
+            if (_path != null && _path.Count > 0)
             {
                 Vector3 curDest = _path[0];
                 Vector3 direction = curDest - position;
                 direction.Y = 0;
-                if (direction.Length() < 1)
+                while (direction.Length() < 1 && _path.Count > 0)
                 {
                     _path.RemoveAt(0);
+                    if (_path.Count > 0)
+                    {
+                        curDest = _path[0];
+                        direction = curDest - position;
+                    }
                 }
-                else
-                {
-                    direction.Normalize();
-                    controlInput(new Vector2(direction.X, direction.Z), false);
-                }
+                direction.Y = 0;
+                direction.Normalize();
+                controlInput(new Vector2(direction.X, direction.Z), false);
             }
         }
 
         public void doAI(AI a)
         {
-            // Dumb AI, tries to reach the player
-
-            _path.Clear();
-            _path.Add(a.game.allPlayer[0].position);
+            _path = null;
+            PlayerObject o = a.game.allPlayer[0];
+            _path = a.findPath(a.topmostTerrain(position.X, position.Z), a.topmostTerrain(o.position.X, o.position.Z));
+            if(_path != null && _path.Count == 0)
+                _path.Add(a.game.allPlayer[0].position);
 
             setDirection();
         }

@@ -7,7 +7,7 @@ namespace Muffin
 {
     public class GraphEdge<T>
     {
-        private int m_weight;
+        private double m_weight;
 
         public GraphEdge(T destination, bool isPassable)
         { // Should typically only be called with isPassable = false, pass int weight when isPassable should be true
@@ -15,7 +15,7 @@ namespace Muffin
             passable = isPassable;
         }
 
-        public GraphEdge(T destination, int edgeWeight) 
+        public GraphEdge(T destination, double edgeWeight) 
         {
             node = destination;
             weight = edgeWeight;
@@ -23,7 +23,7 @@ namespace Muffin
         }
 
         public T node { get; set; }
-        public int weight 
+        public double weight 
         {
             get 
             { 
@@ -63,7 +63,16 @@ namespace Muffin
             }
         }
 
-        public void SetEdge(T from, T to, int weight)
+        public List<GraphEdge<T>> GetEdges(T node)
+        {
+            List<GraphEdge<T>> edges = null;
+            if (m_data.TryGetValue(node, out edges))
+                return edges;
+            else
+                return null;
+        }
+
+        public void SetEdge(T from, T to, double weight)
         {
             if (!m_data.ContainsKey(from))
                 AddNode(from);

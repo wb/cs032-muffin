@@ -107,7 +107,9 @@ namespace Muffin
 
             // create some levels
             _levels = new List<LevelObject>();
+
             _levels.Add(new LevelObject("level"));
+            _levels.Add(new LevelObject("level_ai3"));
             _levels.Add(new LevelObject("level_thegap2"));
             _levels.Add(new LevelObject("level_ladder"));
             _levels.Add(new LevelObject("level_new_player_ai_coins_star"));
@@ -586,6 +588,7 @@ namespace Muffin
                 _currentLevel++;
                 // load this level
                 LoadLevelIndex(_currentLevel);
+                (_ai as AI).buildGrid();
             }
 
         }
