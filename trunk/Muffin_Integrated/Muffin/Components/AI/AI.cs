@@ -350,6 +350,7 @@ namespace Muffin.Components.AI
 
         public List<Vector3> findPath(TerrainObject start, TerrainObject end)
         {
+            DateTime _start = DateTime.Now;
             List<Vector3> pl = new List<Vector3>();
             if (start == null)
                 return pl;
@@ -358,12 +359,17 @@ namespace Muffin.Components.AI
             PriorityQueue<double, Path<TerrainObject>> pq = new PriorityQueue<double, Path<TerrainObject>>();
             pq.Enqueue(0, new Path<TerrainObject>(start));
 
+            TimeSpan _elapsed = new TimeSpan(0);
             while (!pq.IsEmpty)
             {
+                _elapsed = DateTime.Now - _start;
+
                 Path<TerrainObject> path = pq.Dequeue();
                 if (closed.Contains(path.LastStep))
                     continue;
-                if (path.LastStep.Equals(end))
+                // If pathfinding is taking too long, just use the best path so far
+                // it should get us going in the right general direction
+                if (_elapsed.TotalMilliseconds > 50.0 || path.LastStep.Equals(end))
                 {
                     foreach (TerrainObject o in path)
                         pl.Insert(0, new Vector3(o.position.X, o.position.Y, o.position.Z));
