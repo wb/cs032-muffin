@@ -648,6 +648,11 @@ namespace Muffin.Components.Renderer
             spriteBatch.Draw(deferredShadowMap, new Rectangle(0, 0, 400, 300), Color.White);
             spriteBatch.End();
             */
+
+            //spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
+            //spriteBatch.Draw((m_model_textures.ElementAt((int)ModelName.GRASS)).ElementAt(0), new Rectangle(0, 0, 400, 300), Color.White);
+            //spriteBatch.Draw((m_model_textures.ElementAt((int)ModelName.GRASS)).ElementAt(1), new Rectangle(400, 0, 400, 300), Color.White);
+            //spriteBatch.End();
             base.Draw(gameTime);
         }
 
@@ -727,7 +732,6 @@ namespace Muffin.Components.Renderer
                 foreach (Effect currentEffect in mesh.Effects)
                 {
                     Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
-                    Matrix worldMatrixInv = Matrix.Invert(worldMatrix);
                     currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
                     currentEffect.Parameters["xCameraViewProjection"].SetValue(viewProjection);
                     currentEffect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
@@ -752,7 +756,6 @@ namespace Muffin.Components.Renderer
                 foreach (Effect currentEffect in mesh.Effects)
                 {
                     Matrix worldMatrix = modelTransforms[mesh.ParentBone.Index] * wMatrix;
-                    Matrix worldMatrixInv = Matrix.Invert(worldMatrix);
                     currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
                     currentEffect.Parameters["xCameraViewProjection"].SetValue(viewProjection);
                     currentEffect.Parameters["xCameraPos"].SetValue(camera.cameraPosition);
