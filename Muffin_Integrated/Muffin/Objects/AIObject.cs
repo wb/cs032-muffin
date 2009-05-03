@@ -22,7 +22,7 @@ namespace Definitions
         private int _health, _lives;
         private AIState _state;
 
-        private List<Vector3> _path;
+        protected List<Vector3> _path;
 
         /*
          * This constructor makes a few assumptions.  Namely that an AIObject is an enemy.
@@ -79,7 +79,7 @@ namespace Definitions
                    Matrix.CreateTranslation(_currentState.position * GameConstants.GameObjectScale);
         }
 
-        private void setDirection()
+        protected virtual void setDirection()
         {
             if (_path != null && _path.Count > 0)
             {
@@ -101,7 +101,7 @@ namespace Definitions
             }
         }
 
-        public void doAI(AI a)
+        public virtual void doAI(AI a)
         {
             _path = null;
             PlayerObject o = a.game.allPlayer[0];
