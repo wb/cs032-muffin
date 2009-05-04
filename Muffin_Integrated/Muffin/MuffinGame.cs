@@ -291,10 +291,12 @@ namespace Muffin
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
 
-            AIRailObject rail = new AIRailObject(null, ModelName.AI, new Vector3(100, 10, 10), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, true);
+            AIRailObject rail = new AIRailObject(null, ModelName.AI, new Vector3(100, 10, 10), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
             List<Vector3> list = new List<Vector3>();
             rail.dest.Add(new Vector3(200, 200, 100));
             rail.dest.Add(new Vector3(100, 300, 100));
+            rail.dest.Add(new Vector3(100, 200, 200));
+            rail.dest.Add(new Vector3(200, 300, 200));
             
 
             objs.Add(rail);
