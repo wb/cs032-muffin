@@ -88,5 +88,18 @@ namespace Definitions
             setDirection();
         }
 
+
+        public override void applyForce(Vector3 force, Vector3 location)
+        {
+            // DO NOTHING!
+        }
+
+     
+
+        public override void applyForceAtCenter(Vector3 force)
+        {
+            // DO NOTHING!
+        }
+
     }
 }
