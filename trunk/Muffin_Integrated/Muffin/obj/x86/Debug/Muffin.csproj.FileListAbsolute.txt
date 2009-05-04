@@ -118,3 +118,5 @@ C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Mu
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\obj\x86\Debug\Muffin.pdb
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_spiralsauce.xml
 C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_falldown.xml
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_stack.xml
+C:\Users\Walter\Documents\cs032-muffin\Muffin_Integrated\Muffin\bin\x86\Debug\Content\Levels\level_gridtest.xml
