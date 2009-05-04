@@ -137,7 +137,27 @@ namespace Muffin.Components.Physics
                                     Vector3 activeVelocity = activeFactor * totalVelocity;
                                     Vector3 passiveVelocity = passiveFactor * totalVelocity;
 
+                                    /*
+                                     * In order to ensure that rail objects carry player objects, we must remove all collision in the x and y direction if and only if
+                                     * the player object is above the rail object.
+                                     * 
+                                     * */
 
+                                    float twoWithError = 2.1f; // we must divide by a little over two to account to ensure they appear to be touching even if slightly apart
+
+                                    // if we are above the rail object
+                                    if (activeObject is AIRailObject && passiveObject is PlayerObject && (passiveObject.position.Y - activeObject.position.Y >= (passiveObject.dimensions.Y + activeObject.dimensions.Y) / twoWithError))
+                                    {
+                                        // make sure they collide only in the y direction
+                                        changeInFutureDistanceApart.Y = -float.MaxValue;
+                                    }
+                                    // the other case for being above
+                                    else if (activeObject is PlayerObject && passiveObject is AIRailObject && (activeObject.position.Y - passiveObject.position.Y >= (activeObject.dimensions.Y + passiveObject.dimensions.Y) / twoWithError))
+                                    {
+                                        // make sure they collide only in the y direction
+                                        changeInFutureDistanceApart.Y = -float.MaxValue;
+                                    }
+                                    
                                     if (changeInFutureDistanceApart.X < collisionEpsilon && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Y && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Z)
                                     {
                                         activeObject.currentState.velocity = new Vector3(-amountOfBounce * activeVelocity.X, activeObject.futureState.velocity.Y, activeObject.futureState.velocity.Z);
@@ -164,34 +184,6 @@ namespace Muffin.Components.Physics
                                         passiveObject.currentState.acceleration = new Vector3(passiveObject.futureState.acceleration.X, passiveObject.futureState.acceleration.Y, 0);
                                     }
 
-                                    // resolve the collision
-                                    /*
-                                    if (changeInFutureDistanceApart.X < collisionEpsilon && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Y && changeInFutureDistanceApart.X < changeInFutureDistanceApart.Z)
-                                    {
-                                        activeObject.currentState.velocity = new Vector3(-amountOfBounce * activeObject.futureState.velocity.X, activeObject.futureState.velocity.Y, activeObject.futureState.velocity.Z);
-                                        passiveObject.currentState.velocity = new Vector3(-amountOfBounce * passiveObject.futureState.velocity.X, passiveObject.futureState.velocity.Y, passiveObject.futureState.velocity.Z);
-
-                                        activeObject.currentState.acceleration = new Vector3(0, activeObject.futureState.acceleration.Y, activeObject.futureState.acceleration.Z);
-                                        passiveObject.currentState.acceleration = new Vector3(0, passiveObject.futureState.acceleration.Y, passiveObject.futureState.acceleration.Z);
-                                    }
-
-                                    if (changeInFutureDistanceApart.Y < collisionEpsilon && changeInFutureDistanceApart.Y < changeInFutureDistanceApart.X && changeInFutureDistanceApart.Y < changeInFutureDistanceApart.Z)
-                                    {
-                                        activeObject.currentState.velocity = new Vector3(activeObject.futureState.velocity.X, -amountOfBounce * activeObject.futureState.velocity.Y, activeObject.futureState.velocity.Z);
-                                        passiveObject.currentState.velocity = new Vector3(passiveObject.futureState.velocity.X, -amountOfBounce * passiveObject.futureState.velocity.Y, passiveObject.futureState.velocity.Z);
-
-                                        activeObject.currentState.acceleration = new Vector3(activeObject.futureState.acceleration.X, 0, activeObject.futureState.acceleration.Z);
-                                        passiveObject.currentState.acceleration = new Vector3(passiveObject.futureState.acceleration.X, 0, passiveObject.futureState.acceleration.Z);
-                                    }
-
-                                    if (changeInFutureDistanceApart.Z < collisionEpsilon && changeInFutureDistanceApart.Z < changeInFutureDistanceApart.X && changeInFutureDistanceApart.Z < changeInFutureDistanceApart.Y)
-                                    {
-                                        activeObject.currentState.velocity = new Vector3(activeObject.futureState.velocity.X, activeObject.futureState.velocity.Y, -amountOfBounce * activeObject.futureState.velocity.Z);
-                                        passiveObject.currentState.velocity = new Vector3(passiveObject.futureState.velocity.X, passiveObject.futureState.velocity.Y, -amountOfBounce * passiveObject.futureState.velocity.Z);
-
-                                        activeObject.currentState.acceleration = new Vector3(activeObject.futureState.acceleration.X, activeObject.futureState.acceleration.Y, 0);
-                                        passiveObject.currentState.acceleration = new Vector3(passiveObject.futureState.acceleration.X, passiveObject.futureState.acceleration.Y, 0);
-                                    }*/
 
 
                                     // we only want to process one collision for this timestep, so break
@@ -287,68 +279,97 @@ namespace Muffin.Components.Physics
                                 float passiveFactor = activeObject.mass / totalMass;
                                 float activeFactor = passiveObject.mass / totalMass;
 
-                                // if x is the smallest, fix it in the x direction
-                                if (tempCorrect.X < tempCorrect.Y && tempCorrect.X < tempCorrect.Z)
+                                /*
+                                 * Rail Objects, when they come in contact with the bottom of the player, are supposed to move the player with them.
+                                 * 
+                                 * */
+
+                                float twoWithError = 2.1f; // we must divide by a little over two to account to ensure they appear to be touching even if slightly apart
+
+                                // if we are above the rail object
+                                if (activeObject is AIRailObject && passiveObject is PlayerObject && (passiveObject.position.Y - activeObject.position.Y >= (passiveObject.dimensions.Y + activeObject.dimensions.Y) / twoWithError))
                                 {
-                                    // need to see which size of the activeObject the passiveObject is on
-                                    int sign = (relativePositions.X > 0 ? 1 : -1);
-
-                                    // move the passive object
-                                    passiveObject.futureState.position = passiveObject.futureState.position + sign * passiveFactor * new Vector3(correction.X, 0, 0);
-                                    passiveObject.currentState.position = passiveObject.currentState.position + sign * passiveFactor * new Vector3(correction.X, 0, 0);
-
-                                    // attempt at friction
-                                    //passiveObject.controlInput(100 * sign * passiveFactor * new Vector2(correction.X, 0), false);
-
-                                    // move the active object
-                                    activeObject.futureState.position = activeObject.futureState.position - sign * activeFactor * new Vector3(correction.X, 0, 0);
-                                    activeObject.currentState.position = activeObject.currentState.position - sign * activeFactor * new Vector3(correction.X, 0, 0);
-
-                                    // attempt at friction
-                                    //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(correction.X, 0), false);
-
-
+                                    // calculate how much the rail object has moved since the last update
+                                    Vector3 amountMoved = activeObject.currentState.position - activeObject.previousState.position;
+                                    // and add that to the player object
+                                    passiveObject.currentState.position = passiveObject.currentState.position + amountMoved;
                                 }
-                                // if y is the smallest, fix it in the y direction
-                                else if (tempCorrect.Y < tempCorrect.X && tempCorrect.Y < tempCorrect.Z)
+                                // the other case for being above
+                                else if (activeObject is PlayerObject && passiveObject is AIRailObject && (activeObject.position.Y - passiveObject.position.Y >= (activeObject.dimensions.Y + passiveObject.dimensions.Y) / twoWithError))
                                 {
+                                    // we need to catch this case, but do nothing
+                                }
 
-                                    // whichever one is higher moves.  the other stays still
-                                    if (relativePositions.Y > 0)
+                                /*
+                                 * Eeverything else should be handled the normal way.
+                                 * 
+                                 * */
+                                else
+                                {
+                                    // if x is the smallest, fix it in the x direction
+                                    if (tempCorrect.X < tempCorrect.Y && tempCorrect.X < tempCorrect.Z)
                                     {
-                                        // if the active object is higher, move it
-                                        activeObject.futureState.position = activeObject.futureState.position - new Vector3(0, correction.Y, 0);
-                                        activeObject.currentState.position = activeObject.currentState.position - new Vector3(0, correction.Y, 0);
+                                        // need to see which size of the activeObject the passiveObject is on
+                                        int sign = (relativePositions.X > 0 ? 1 : -1);
+
+                                        // move the passive object
+                                        passiveObject.futureState.position = passiveObject.futureState.position + sign * passiveFactor * new Vector3(correction.X, 0, 0);
+                                        passiveObject.currentState.position = passiveObject.currentState.position + sign * passiveFactor * new Vector3(correction.X, 0, 0);
+
+                                        // attempt at friction
+                                        //passiveObject.controlInput(100 * sign * passiveFactor * new Vector2(correction.X, 0), false);
+
+                                        // move the active object
+                                        activeObject.futureState.position = activeObject.futureState.position - sign * activeFactor * new Vector3(correction.X, 0, 0);
+                                        activeObject.currentState.position = activeObject.currentState.position - sign * activeFactor * new Vector3(correction.X, 0, 0);
+
+                                        // attempt at friction
+                                        //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(correction.X, 0), false);
+
+
                                     }
-                                    // otherwise the passive object is higher, so move it
-                                    else
+                                    // if y is the smallest, fix it in the y direction
+                                    else if (tempCorrect.Y < tempCorrect.X && tempCorrect.Y < tempCorrect.Z)
                                     {
-                                        passiveObject.futureState.position = passiveObject.futureState.position - new Vector3(0, correction.Y, 0);
-                                        passiveObject.currentState.position = passiveObject.currentState.position - new Vector3(0, correction.Y, 0);
+
+                                        // whichever one is higher moves.  the other stays still
+                                        if (relativePositions.Y > 0)
+                                        {
+                                            // if the active object is higher, move it
+                                            activeObject.futureState.position = activeObject.futureState.position - new Vector3(0, correction.Y, 0);
+                                            activeObject.currentState.position = activeObject.currentState.position - new Vector3(0, correction.Y, 0);
+                                        }
+                                        // otherwise the passive object is higher, so move it
+                                        else
+                                        {
+                                            passiveObject.futureState.position = passiveObject.futureState.position - new Vector3(0, correction.Y, 0);
+                                            passiveObject.currentState.position = passiveObject.currentState.position - new Vector3(0, correction.Y, 0);
+                                        }
+                                    }
+                                    // otherwise, fix it in the z direction
+                                    else if (tempCorrect.Z < tempCorrect.X && tempCorrect.Z < tempCorrect.Y)
+                                    {
+                                        // need to see which size of the passiveObject the activeObject is on
+                                        int sign = (relativePositions.Z > 0 ? 1 : -1);
+
+                                        // move the passive object
+                                        passiveObject.futureState.position = passiveObject.futureState.position + sign * passiveFactor * new Vector3(0, 0, correction.Z);
+                                        passiveObject.currentState.position = passiveObject.currentState.position + sign * passiveFactor * new Vector3(0, 0, correction.Z);
+
+                                        // attempt at friction
+                                        //passiveObject.controlInput(100 * sign * passiveFactor * new Vector2(0, correction.Z), false);
+
+                                        // move the active object
+                                        activeObject.futureState.position = activeObject.futureState.position - sign * activeFactor * new Vector3(0, 0, correction.Z);
+                                        activeObject.currentState.position = activeObject.currentState.position - sign * activeFactor * new Vector3(0, 0, correction.Z);
+
+                                        // attempt at friction
+                                        //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(0, correction.Z), false);
+
+
                                     }
                                 }
-                                // otherwise, fix it in the z direction
-                                else if (tempCorrect.Z < tempCorrect.X && tempCorrect.Z < tempCorrect.Y)
-                                {
-                                    // need to see which size of the passiveObject the activeObject is on
-                                    int sign = (relativePositions.Z > 0 ? 1 : -1);
 
-                                    // move the passive object
-                                    passiveObject.futureState.position = passiveObject.futureState.position + sign * passiveFactor * new Vector3(0, 0, correction.Z);
-                                    passiveObject.currentState.position = passiveObject.currentState.position + sign * passiveFactor * new Vector3(0, 0, correction.Z);
-
-                                    // attempt at friction
-                                    //passiveObject.controlInput(100 * sign * passiveFactor * new Vector2(0, correction.Z), false);
-
-                                    // move the active object
-                                    activeObject.futureState.position = activeObject.futureState.position - sign * activeFactor * new Vector3(0, 0, correction.Z);
-                                    activeObject.currentState.position = activeObject.currentState.position - sign * activeFactor * new Vector3(0, 0, correction.Z);
-
-                                    // attempt at friction
-                                    //activeObject.controlInput(-100 * sign * activeFactor * new Vector2(0, correction.Z), false);
-
-
-                                }
 
                             }
                         }

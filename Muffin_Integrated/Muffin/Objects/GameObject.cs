@@ -541,6 +541,10 @@ namespace Definitions
             get { return _jumpCount; }
             set { _jumpCount = value; }
         }
+        public Vector3 dimensions
+        {
+            get { return _dimensions; }
+        }
 
         #endregion
 
