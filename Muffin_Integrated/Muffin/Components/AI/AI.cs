@@ -143,6 +143,15 @@ namespace Muffin.Components.AI
 
         public void buildGrid()
         {
+            int s = 0;
+            foreach (AIObject o in game.allAI)
+            {
+                o.updateCountdown = s;
+                s++;
+                if (s > GameConstants.AIUpdateInterval)
+                    s = 0;
+            }
+
             m_maxX = 0; m_maxY = 0;
 
             // First, build the grid
