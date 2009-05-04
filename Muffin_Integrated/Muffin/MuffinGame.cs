@@ -109,7 +109,6 @@ namespace Muffin
             _levels = new List<LevelObject>();
 
             _levels.Add(new LevelObject("ai_test1"));
-            //_levels.Add(new LevelObject("level_falldown"));
             _levels.Add(new LevelObject("level_ai3"));
             _levels.Add(new LevelObject("level_thegap2"));
             _levels.Add(new LevelObject("level_ladder"));
@@ -293,8 +292,8 @@ namespace Muffin
 
             AIRailObject rail = new AIRailObject(null, ModelName.AI, new Vector3(100, 10, 10), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
             List<Vector3> list = new List<Vector3>();
-            rail.dest.Add(new Vector3(200, 200, 100));
-            rail.dest.Add(new Vector3(200, 100, 100));
+            rail.dest.Add(new Vector3(200, 45, 400));
+            rail.dest.Add(new Vector3(1000, 45, 400));
 //            rail.dest.Add(new Vector3(100, 200, 200));
 //            rail.dest.Add(new Vector3(200, 300, 200));
             
