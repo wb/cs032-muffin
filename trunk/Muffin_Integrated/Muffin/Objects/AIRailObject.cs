@@ -22,9 +22,9 @@ namespace Definitions
             _pathDir = 1;
         }
 
-        public override void controlInput(Vector2 dir, bool jump)
+        public void controlInput(Vector3 dir, bool jump)
         {
-            _toMove = new Vector3(dir.X, 0, dir.Y);
+            _toMove = dir;
 
             //_orientation = Quaternion.Slerp(_orientation, Quaternion.CreateFromAxisAngle(Vector3.Up, angle),0.01f);
             if (jump && _jumpCount < 2)
@@ -55,7 +55,6 @@ namespace Definitions
             {
                 Vector3 curDest = _path[_node];
                 Vector3 direction = curDest - position;
-                direction.Y = 0;
                 if (direction.Length() < 1)
                 {
                     int next = _node + _pathDir;
@@ -74,12 +73,11 @@ namespace Definitions
                         _node = next;
                         curDest = _path[next];
                         direction = curDest - position;
-                        direction.Y = 0;
                     }
                 }
 
                 direction.Normalize();
-                controlInput(new Vector2(direction.X, direction.Z), false);
+                controlInput(direction, false);
             }
         }
 

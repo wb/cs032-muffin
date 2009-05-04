@@ -34,5 +34,6 @@ namespace Definitions
         // AI Constants
         public const float MaxFallDistance = 60f;
         public const float MaxAITime = 50f;         // Time in ms to spend on EACH AIObject's pathfinding
+        public const int AIUpdateInterval = 10;     // Do AI pathfinding once every this many ticks
     }
 }

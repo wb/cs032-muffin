@@ -103,11 +103,17 @@ namespace Definitions
 
         public virtual void doAI(AI a)
         {
-            _path = null;
             PlayerObject o = a.game.allPlayer[0];
-            _path = a.findPath(a.topmostTerrain(position.X, position.Z), a.topmostTerrain(o.position.X, o.position.Z));
-            if(_path != null && _path.Count == 0)
-                _path.Add(a.game.allPlayer[0].position);
+            if (updateCountdown == 0)
+            {
+                _path = null;
+                _path = a.findPath(a.topmostTerrain(position.X, position.Z), a.topmostTerrain(o.position.X, o.position.Z));
+                if (_path != null && _path.Count == 0)
+                    _path.Add(a.game.allPlayer[0].position);
+                updateCountdown = GameConstants.AIUpdateInterval;
+            }
+            else
+                updateCountdown--;
 
             setDirection();
         }
@@ -126,6 +132,7 @@ namespace Definitions
             set { _lives = value; }
         }
 
+        public int updateCountdown { get; set; }
         public List<Vector3> dest { get { return _path; } }
 
         #endregion
