@@ -197,7 +197,7 @@ namespace Definitions
          * a given location.
          * */
 
-        public void applyForce(Vector3 force, Vector3 location)
+        public virtual void applyForce(Vector3 force, Vector3 location)
         {
             // Error Checking: make sure this force wont make the total acceleration too large
             float acceleration = ((_currentState.acceleration * _mass + force) / mass).Length();
@@ -218,7 +218,7 @@ namespace Definitions
          * This method applies a force on the center of the object.
          * */
 
-        public void applyForceAtCenter(Vector3 force)
+        public virtual void applyForceAtCenter(Vector3 force)
         {
 
             // Error Checking: make sure this force wont make the total acceleration too large
