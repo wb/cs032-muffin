@@ -32,6 +32,7 @@ namespace Definitions
         public const int SCREEN_HEIGHT = 800;
 
         // AI Constants
-        public const float MaxFallDistance = 60;
+        public const float MaxFallDistance = 60f;
+        public const float MaxAITime = 50f;         // Time in ms to spend on EACH AIObject's pathfinding
     }
 }

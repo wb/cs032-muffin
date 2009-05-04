@@ -232,8 +232,7 @@ namespace Definitions
 
         public void integrate(float timestep)
         {
-
-
+            
             // do the integration only if this object is not locked and is currently active
             if (!_locked && _active)
             {
@@ -268,20 +267,6 @@ namespace Definitions
                     _futureState.velocity = new Vector3(_futureState.velocity.X, 0, _futureState.velocity.Z);
                 }
 
-                // check for min position
-                float minPosition = (this is PlayerObject ? GameConstants.MinHeightPlayer : GameConstants.MinHeightObject);
-
-                if (_futureState.position.Y < minPosition)
-                {
-                    _toBeRemoved = true;
-
-                    _futureState.position = new Vector3(_futureState.position.X, minPosition, _futureState.position.Z);
-                    _futureState.acceleration = new Vector3(_futureState.acceleration.X, 0, _futureState.acceleration.Z);
-                    _futureState.velocity = new Vector3(_futureState.velocity.X, 0, _futureState.velocity.Z);
-
-                  
-                }
-
                 // account for air resistance, general drag, etc
                 _futureState.velocity = 0.995f * _futureState.velocity;
                 _futureState.angularVelocity = 0.995f * _futureState.angularVelocity;
@@ -300,6 +285,14 @@ namespace Definitions
             // update the bounding box if we've moved (during collision resolution)
             if (!_locked)
             {
+                // check for min position
+                float minPosition = (this is PlayerObject ? GameConstants.MinHeightPlayer : GameConstants.MinHeightObject);
+
+                if (_futureState.position.Y < minPosition)
+                {
+                    _toBeRemoved = true;
+                }
+
                 // get the move vector -- cap it for safety
                 _moveVector = _currentState.position - _previousState.position;
                 float length, maxSpeed = 1.0f;

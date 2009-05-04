@@ -121,7 +121,7 @@ namespace Muffin.Components.UI
 
             // testing for next level
             if (lkey.getButtonState() == 1)
-                _muffinGame.levelCompleted();
+                _muffinGame.starCollected();
 
             // pause if we must pause
             if (escape.getButtonState() == 1)
