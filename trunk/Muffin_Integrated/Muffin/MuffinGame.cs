@@ -109,7 +109,7 @@ namespace Muffin
             _levels = new List<LevelObject>();
 
             _levels.Add(new LevelObject("ai_test1"));
-            _levels.Add(new LevelObject("level"));
+            //_levels.Add(new LevelObject("level_falldown"));
             _levels.Add(new LevelObject("level_ai3"));
             _levels.Add(new LevelObject("level_thegap2"));
             _levels.Add(new LevelObject("level_ladder"));
