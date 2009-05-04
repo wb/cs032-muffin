@@ -68,6 +68,11 @@ namespace Muffin.Components.Collision
             return true;
         }
 
+        public void removeElement(GameObject currentO)
+        {
+            grids[(int)currentO.index.X, (int)currentO.index.Y, (int)currentO.index.Z].content.Remove(currentO);           
+        }
+
         public List<List<GameObject>> getList(int x, int y, int z)
         {
             List<List<GameObject>> collision = new List<List<GameObject>>();

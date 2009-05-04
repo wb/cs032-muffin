@@ -108,6 +108,7 @@ namespace Muffin
             // create some levels
             _levels = new List<LevelObject>();
 
+            _levels.Add(new LevelObject("ai_test1"));
             _levels.Add(new LevelObject("level"));
             _levels.Add(new LevelObject("level_ai3"));
             _levels.Add(new LevelObject("level_thegap2"));
@@ -248,7 +249,10 @@ namespace Muffin
             foreach (GameObject o in _updatedObjects)
             {
                 if (o.toBeRemoved && !(o is PlayerObject))
+                {
+                    this.grid.removeElement(o);
                     this.removeObject(o);
+                }
             }
 
             base.Update(gameTime);
@@ -391,6 +395,7 @@ namespace Muffin
                 _removingObjects.Add(o);
 
                 _allObjects.Remove(o);
+
                 if (o is TerrainObject)
                     _allTerrain.Remove((TerrainObject)o);
                 else if (o is PlayerObject)
@@ -588,7 +593,7 @@ namespace Muffin
                 _currentLevel++;
                 // load this level
                 LoadLevelIndex(_currentLevel);
-                (_ai as AI).buildGrid();
+                
             }
 
         }
@@ -614,6 +619,7 @@ namespace Muffin
             _camera.setPlayerToFollow(this.getPlayer());
             ((InputManager)_inputManager).setPlayerToControl(this.getPlayer());
             _collision.Initialize();
+            (_ai as AI).buildGrid();
         }
 
         public void newGame()

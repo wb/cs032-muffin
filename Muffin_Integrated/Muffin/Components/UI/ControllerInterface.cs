@@ -112,7 +112,7 @@ namespace Muffin.Components.UI
 
             // test load next level
             if (buttonY.getButtonState() == 1)
-                _muffinGame.levelCompleted();
+                _muffinGame.starCollected();
 
             // pause if we must pause
             if (buttonStart.getButtonState() == 1)

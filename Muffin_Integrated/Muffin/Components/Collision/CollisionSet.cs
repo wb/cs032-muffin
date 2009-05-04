@@ -42,7 +42,7 @@ namespace Muffin.Components.Collision
         public override void Initialize()
         {
             // TODO: Add your initialization code here
-            _muffinGame.grid = new Grid(new Vector3(-100, -100, -100), new Vector3(5000, 5000, 5000));
+            _muffinGame.grid = new Grid(new Vector3(-400, -400, -400), new Vector3(5000, 5000, 5000));
             foreach (GameObject o in _muffinGame.allObjects)
             {
                 _muffinGame.grid.insertElement(o);

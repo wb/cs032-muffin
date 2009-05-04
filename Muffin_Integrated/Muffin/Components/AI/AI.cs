@@ -263,11 +263,12 @@ namespace Muffin.Components.AI
 
                     // Remove from old location
                     SortedList<float, GameObject> l = m_grid[oldPos.X, oldPos.Y];
-                    try
+                    if (l != null)
                     {
-                        l.RemoveAt(l.IndexOfValue(o));
+                        int i = l.IndexOfValue(o);
+                        if(i >= 0 && i < l.Count() - 1)
+                            l.RemoveAt(i);
                     }
-                    catch (Exception e) { }
 
                     // Make sure the object hasn't moved off the edge of the world
                     int maxX = m_grid.GetLength(0);
@@ -275,11 +276,14 @@ namespace Muffin.Components.AI
                     if (thisX >= 0 && thisX < maxX && thisY >= 0 && thisY < maxY)
                     {
                         // if not, put in new location
-                        try
-                        {
-                            m_grid[thisX, thisY].Add(o.position.Y, o);
-                        }
-                        catch (Exception e) { }
+                        if(l != null)
+                            if(l.IndexOfValue(o) == -1)
+                                if(m_grid[thisX, thisY] != null)
+                                    try
+                                    {
+                                        m_grid[thisX, thisY].Add(o.position.Y, o);
+                                    }
+                                    catch (Exception e) { }
                         m_index[o] = new Point(thisX, thisY);
                     }
                     else
@@ -369,7 +373,7 @@ namespace Muffin.Components.AI
                     continue;
                 // If pathfinding is taking too long, just use the best path so far
                 // it should get us going in the right general direction
-                if (_elapsed.TotalMilliseconds > 50.0 || path.LastStep.Equals(end))
+                if (_elapsed.TotalMilliseconds > GameConstants.MaxAITime || path.LastStep.Equals(end))
                 {
                     foreach (TerrainObject o in path)
                         pl.Insert(0, new Vector3(o.position.X, o.position.Y, o.position.Z));
