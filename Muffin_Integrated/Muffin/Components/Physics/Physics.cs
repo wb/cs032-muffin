@@ -108,8 +108,10 @@ namespace Muffin.Components.Physics
 
                                     // change how much bounce collisions give
                                     float amountOfBounce = 0.2f;
+
+                                    // this makes it easier for people to jump onto moving boxes
                                     if(passiveObject is AIRailObject)
-                                        amountOfBounce = 0.0f;
+                                        amountOfBounce = -0.2f;
 
                                     Vector3 futureDistanceApart = activeObject.futureState.position - passiveObject.futureState.position;
                                     Vector3 currentDistanceApart = activeObject.currentState.position - passiveObject.currentState.position;
