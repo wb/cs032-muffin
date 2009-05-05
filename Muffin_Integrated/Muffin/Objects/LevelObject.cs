@@ -33,6 +33,7 @@ namespace Muffin.Objects
         private CollectableObject _goal;
         private float _ceiling, _floor; // these are the max and min height of the level (players cant go above or below this level)
         private XmlDocument _levelFile; // this is the file containing the definition for this level
+        private String _levelName;
 
         public LevelObject(String levelName)
         {
@@ -41,6 +42,7 @@ namespace Muffin.Objects
             {
                 _levelFile = new XmlDocument();
                 _levelFile.Load("Content\\Levels\\" + levelName + ".xml");
+                _levelName = levelName;
                 
             }
             else
@@ -72,6 +74,11 @@ namespace Muffin.Objects
         {
             get { return _goal; }
             set { _goal = value; }
+        }
+
+        public String levelName
+        {
+            get { return _levelName; }
         }
     }
 }

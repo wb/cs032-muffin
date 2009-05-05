@@ -112,7 +112,7 @@ namespace Muffin
             _levels.Add(new LevelObject("level_ai3"));
             _levels.Add(new LevelObject("level_thegap2"));
             _levels.Add(new LevelObject("level_ladder"));
-            _levels.Add(new LevelObject("level_new_player_ai_coins_star"));
+            _levels.Add(new LevelObject("level_moving_platform"));
             _levels.Add(new LevelObject("level_new_tall"));
             _levels.Add(new LevelObject("level_thegap"));
             _levels.Add(new LevelObject("kevins_test_levely_thing"));
@@ -289,19 +289,40 @@ namespace Muffin
             // Load the current level
             List<GameObject> objs = new List<GameObject>();
             _xmlParser.loadLevel(objs, null);
+           
+            if (this.getCurrentLevel().levelName == "level_moving_platform")
+            {
+                AIRailObject rail = new AIRailObject(null, ModelName.AI, new Vector3(60, 45, 60), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
+                List<Vector3> list = new List<Vector3>();
+                rail.dest.Add(new Vector3(60, 45, 60));
+                rail.dest.Add(new Vector3(1080, 45, 60)); 
+                objs.Add(rail);
 
-            AIRailObject rail = new AIRailObject(null, ModelName.AI, new Vector3(100, 10, 10), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
-            List<Vector3> list = new List<Vector3>();
-            rail.dest.Add(new Vector3(200, 45, 400));
-            rail.dest.Add(new Vector3(400, 45, 400));
-            rail.dest.Add(new Vector3(400, 45, 200));
-            rail.dest.Add(new Vector3(200, 45, 200));
-//            rail.dest.Add(new Vector3(100, 200, 200));
-//            rail.dest.Add(new Vector3(200, 300, 200));
-            
+                rail = new AIRailObject(null, ModelName.AI, new Vector3(1080, 45, 60), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
+                list = new List<Vector3>();
+                rail.dest.Add(new Vector3(1080, 45, 60));
+                rail.dest.Add(new Vector3(1080, 45, 1080));
+                objs.Add(rail);
 
-            objs.Add(rail);
+                rail = new AIRailObject(null, ModelName.AI, new Vector3(1080, 45, 1080), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
+                list = new List<Vector3>();
+                rail.dest.Add(new Vector3(1080, 45, 1080));
+                rail.dest.Add(new Vector3(60, 45, 1080));
+                objs.Add(rail);
 
+                rail = new AIRailObject(null, ModelName.AI, new Vector3(60, 45, 1080), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
+                list = new List<Vector3>();
+                rail.dest.Add(new Vector3(60, 45, 1080));
+                rail.dest.Add(new Vector3(60, 45, 60));
+                objs.Add(rail);
+
+                rail = new AIRailObject(null, ModelName.AI, new Vector3(180, 30, 180), Quaternion.Identity, new Vector3(60, 60, 60), 1000.0f, GameConstants.GameObjectScale, false);
+                list = new List<Vector3>();
+                rail.dest.Add(new Vector3(180, 30, 180));
+                rail.dest.Add(new Vector3(510, 30, 510));
+                objs.Add(rail);
+
+            }
             foreach (GameObject o in objs)
             {
                 if (o is TerrainObject)
